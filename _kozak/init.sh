@@ -35,9 +35,9 @@ _q60f="keychron_q60_ansi_kozak.bin"
 
 
 # edit aliases
-alias q0='e "$_q0"'
-alias q2='e "$_q2"'
-alias q60='e "$_q60"'
+alias q0='cd "$_q0"; e'
+alias q2='cd "$_q2"; e'
+alias q60='cd "$_q60"; e'
 
 
 # autocorrect aliases
