@@ -5,17 +5,19 @@
 echo "<< QMK Kozak >>"
 
 
+eval `qmk env | grep "QMK_HOME"`
+
 
 # dirs
-KOZAK="_kozak"
+KOZAK="$QMK_HOME/_kozak"
 BUILDS="$KOZAK/builds"
 
 
 
 # active board dirs
-_q0="keyboards/keychron/q0"
-_q2="keyboards/keychron/q2"
-_q60="keyboards/keychron/q60"
+_q0="$QMK_HOME/keyboards/keychron/q0"
+_q2="$QMK_HOME/keyboards/keychron/q2"
+_q60="$QMK_HOME/keyboards/keychron/q60"
 
 # custom keymaps
 _q0km="$_q0/rev_0131/keymaps/kozak"

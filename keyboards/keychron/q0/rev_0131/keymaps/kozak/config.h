@@ -22,8 +22,10 @@
 #define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // 1 = enable, 0 = disable
 #define DEFAULT_FN_LAYER_SHOW_COLOR      1             // 1 = enable, 0 = disable
 #define DEFAULT_RGB_ENABLE_BASE          1             // 1 = enable, 0 = disable
-#define RGB_MATRIX_DEFAULT_HUE           12            // HSV warm white (Base layer)
-#define RGB_MATRIX_DEFAULT_SAT           191           // HSV warm white (Base layer)
+// #define RGB_MATRIX_DEFAULT_HUE           12            // HSV warm white (Base layer)
+#define RGB_MATRIX_DEFAULT_HUE           36            // HSV warm white (Base layer)
+// #define RGB_MATRIX_DEFAULT_SAT           191           // HSV warm white (Base layer)
+#define RGB_MATRIX_DEFAULT_SAT           159           // HSV warm white (Base layer)
 #define RGB_MATRIX_DEFAULT_VAL           255           // HSV warm white (Base layer)
 #define RGB_MATRIX_DEFAULT_SPD           0             // Effect speed (Base layer)
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // (Base layer)
@@ -50,3 +52,11 @@
 
 // Layer count
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
+
+
+// LED current settings
+#undef CKLED2001_CURRENT_TUNE
+// #define CKLED2001_CURRENT_TUNE { 0xFF, 0xFF, 0x70, 0xFF, 0xFF, 0x70, 0xFF, 0xFF, 0x70, 0xFF, 0xFF, 0x70 }    // q0
+// #define CKLED2001_CURRENT_TUNE { 0xCA, 0xCA, 0x60, 0xCA, 0xCA, 0x60, 0xCA, 0xCA, 0x60, 0xCA, 0xCA, 0x60 }    // q2
+// #define CKLED2001_CURRENT_TUNE { 0xD8, 0xD8, 0x60, 0xD8, 0xD8, 0x60, 0xD8, 0xD8, 0x60, 0xD8, 0xD8, 0x60 }    // q60
