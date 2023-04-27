@@ -49,8 +49,8 @@ alias acrm_q2='[ -e "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h ] && rm
 alias acrm_q60='[ -e "$_q60"/ansi/keymaps/kozak/autocorrect_data.h ] && rm "$_q60"/ansi/keymaps/kozak/autocorrect_data.h'
 alias acrm="acrm_q2 && acrm_q60"
 
-alias acg_q2='qmk generate-autocorrect-data _kozak/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
-alias acg_q60='qmk generate-autocorrect-data _kozak/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
+alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
+alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
 alias acg="acg_q2 && acg_q60"
 
 alias acr="acrm; acg"
