@@ -35,12 +35,12 @@ enum my_bootloader_state {
 #define KC_ZMNS G(KC_MINS)
 #define KC_ZPLS G(KC_EQL)
 #define KC_ZACT G(KC_0)
-#define KC_MVLT G(KC_LBRC)
-#define KC_MVRT G(KC_RBRC)
+#define KC_MVLT LSG(KC_LBRC)
+#define KC_MVRT LSG(KC_RBRC)
 #define KC_MVLS C(KC_LEFT)
 #define KC_MVRS C(KC_RGHT)
-#define KC_WBAK LSG(KC_LBRC)
-#define KC_WFOR LSG(KC_RBRC)
+#define KC_WBAK G(KC_LBRC)
+#define KC_WFOR G(KC_RBRC)
 
 // clang-format off
 

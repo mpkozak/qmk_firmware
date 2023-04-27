@@ -53,6 +53,7 @@ tkae:         -> take
 taht          -> that
 cannt         -> cannot
 :tiem:        -> time
+wehre         -> where
 # :lsot:        -> lost
 
 
