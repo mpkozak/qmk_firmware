@@ -29,19 +29,19 @@ enum my_bootloader_state {
     BOOTLOADER_DO
 } bootloader_state;
 
-// #define KC_EMOC C(G(KC_SPC))
-#define KC_FST  C(G(KC_F))
-#define KC_LSCR C(G(KC_Q))
-#define KC_PSTT S(A(G(KC_V)))
-#define KC_ZMNS G(KC_MINS)
-#define KC_ZPLS G(KC_EQL)
-#define KC_ZACT G(KC_0)
-#define KC_MVLT LSG(KC_LBRC)
-#define KC_MVRT LSG(KC_RBRC)
-#define KC_MVLS C(KC_LEFT)
-#define KC_MVRS C(KC_RGHT)
-#define KC_WBAK G(KC_LBRC)
-#define KC_WFOR G(KC_RBRC)
+#define KC_LSCR C(G(KC_Q))      // lock screen
+#define KC_EMOC C(G(KC_SPC))    // character picker
+#define KC_FST  C(G(KC_F))      // fullscreen toggle
+#define KC_PSTT S(A(G(KC_V)))   // paste plaintext
+#define KC_ZMNS G(KC_MINS)      // zoom out
+#define KC_ZPLS G(KC_EQL)       // zoom in
+#define KC_ZACT G(KC_0)         // zoom actual
+#define KC_MVLT LSG(KC_LBRC)    // move left tab
+#define KC_MVRT LSG(KC_RBRC)    // move right tab
+#define KC_MVLS C(KC_LEFT)      // move left space
+#define KC_MVRS C(KC_RGHT)      // move right space
+#define KC_WBAK G(KC_LBRC)      // browser back
+#define KC_WFOR G(KC_RBRC)      // browser forward
 
 // clang-format off
 

@@ -1,5 +1,6 @@
 # kozak
 _kozak/builds
+z_*
 
 # Junk files
 *.bak

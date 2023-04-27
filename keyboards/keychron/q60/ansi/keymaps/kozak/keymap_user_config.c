@@ -21,10 +21,10 @@ typedef struct {
     uint8_t fn_layer_transparent_keys_off;
     uint8_t fn_layer_color_enable;
     uint8_t enable_base;
+    HSV hsv_fn0;
     HSV hsv_fn1;
     HSV hsv_fn2;
     HSV hsv_fn3;
-    HSV hsv_fn4;
 } user_config_t;
 
 user_config_t user_config;
@@ -58,6 +58,10 @@ uint8_t user_config_get_enable_base(void) {
     return user_config.enable_base;
 }
 
+HSV user_config_get_hsv_fn0(void) {
+    return user_config.hsv_fn0;
+}
+
 HSV user_config_get_hsv_fn1(void) {
     return user_config.hsv_fn1;
 }
@@ -68,10 +72,6 @@ HSV user_config_get_hsv_fn2(void) {
 
 HSV user_config_get_hsv_fn3(void) {
     return user_config.hsv_fn3;
-}
-
-HSV user_config_get_hsv_fn4(void) {
-    return user_config.hsv_fn4;
 }
 
 // setters
@@ -91,6 +91,11 @@ void user_config_toggle_enable_base(void) {
     user_config_write_eeprom();
 }
 
+void user_config_set_hsv_fn0(HSV hsv) {
+    user_config.hsv_fn0 = hsv;
+    user_config_write_eeprom();
+}
+
 void user_config_set_hsv_fn1(HSV hsv) {
     user_config.hsv_fn1 = hsv;
     user_config_write_eeprom();
@@ -103,10 +108,5 @@ void user_config_set_hsv_fn2(HSV hsv) {
 
 void user_config_set_hsv_fn3(HSV hsv) {
     user_config.hsv_fn3 = hsv;
-    user_config_write_eeprom();
-}
-
-void user_config_set_hsv_fn4(HSV hsv) {
-    user_config.hsv_fn4 = hsv;
     user_config_write_eeprom();
 }

@@ -40,20 +40,25 @@
 
 
 ## custom
+cannt         -> cannot
+ahve:         -> have
+:klil:        -> kill
+:noe:         -> now
+:nwo:         -> now
 oru:          -> our
+tkae:         -> take
+taht          -> that
 :teh:         -> the
 :hte:         -> the
 :tehre        -> there
-ahve:         -> have
-yhou          -> you
+htis          -> this
 thoguht       -> thought
-:noe:         -> now
-:klil:        -> kill
-tkae:         -> take
-taht          -> that
-cannt         -> cannot
 :tiem:        -> time
+hwen          -> when
+wehn          -> when
+hwere         -> where
 wehre         -> where
+yhou          -> you
 # :lsot:        -> lost
 
 

@@ -19,8 +19,8 @@
 enum layers{
     BASE,           // Mac Base     (layer 0)
     BASE_SPD,       // Speed Base   (layer 1)
-    _FN1,           // Fn1          (layer 2)
-    _FN2,           // Fn2          (layer 3)
-    _FN3,           // Fn3          (layer 4)
-    _FN4            // Fn4          (layer 5)
+    BASE_FN,        // Fn Base      (layer 2)
+    _FN1,           // Fn1          (layer 3)
+    _FN2,           // Fn2          (layer 4)
+    _FN3,           // Fn3          (layer 5)
 };
