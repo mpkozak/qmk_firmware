@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define EECONFIG_USER_DATA_SIZE 1  // size of eeprom data, do not change.
+#define EECONFIG_USER_DATA_SIZE 15  // size of eeprom data, do not change.
 
 // default options applied when eeprom is cleared
 #define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // default layer transparency
@@ -34,16 +34,12 @@
 #define RGBLIGHT_VAL_STEP 16      // units to step when in/decreasing value (brightness)
 
 // Dynamic Fn Layer RGB indicator options
-// #define SPD_LAYER_COLOR 0xFE, 0x23, 0x00   // layer 1; RGB orange
-// #define FN0_LAYER_COLOR 0x00, 0xFF, 0xFF   // layer 2; RGB cyan
-// #define FN1_LAYER_COLOR 0x00, 0x00, 0xFF   // layer 3; RGB blue
-// #define FN2_LAYER_COLOR 0x00, 0xFF, 0x00   // layer 4; RGB green
-// #define FN3_LAYER_COLOR 0xFF, 0x00, 0x00   // layer 5; RGB red
-#define SPD_LAYER_HUE 6     // layer 1; RGB orange
-#define FN0_LAYER_HUE 127   // layer 2; RGB cyan
-#define FN1_LAYER_HUE 171   // layer 3; RGB blue
-#define FN2_LAYER_HUE 85    // layer 4; RGB green
-#define FN3_LAYER_HUE 0     // layer 5; RGB red
+#define SPD_LAYER_COLOR 0xFE, 0x23, 0x00   // layer 1; RGB orange
+// #define FN0_LAYER_COLOR 0xFF, 0x00, 0xFF   // layer 2; RGB magenta
+#define FN0_LAYER_COLOR 0x00, 0xFF, 0xFF   // layer 2; RGB cyan
+#define FN1_LAYER_COLOR 0x00, 0x00, 0xFF   // layer 3; RGB blue
+#define FN2_LAYER_COLOR 0x00, 0xFF, 0x00   // layer 4; RGB green
+#define FN3_LAYER_COLOR 0xFF, 0x00, 0x00   // layer 5; RGB red
 
 // Override + Disable LED current settings
 #undef CKLED2001_CURRENT_TUNE

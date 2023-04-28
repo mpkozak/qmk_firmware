@@ -40,12 +40,17 @@
 
 
 ## custom
+begna         -> began
 cannt         -> cannot
+oging         -> going
 ahve:         -> have
 :klil:        -> kill
+lvoe          -> love
 :noe:         -> now
 :nwo:         -> now
 oru:          -> our
+:osme         -> some
+osme:         -> some
 tkae:         -> take
 taht          -> that
 :teh:         -> the
@@ -58,8 +63,12 @@ hwen          -> when
 wehn          -> when
 hwere         -> where
 wehre         -> where
+iwth          -> with
+wiht          -> with
+eyar          -> year
 yhou          -> you
 # :lsot:        -> lost
+
 
 
 

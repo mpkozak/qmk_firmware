@@ -18,6 +18,9 @@
 #include "keychron_common.h"
 #include "keymap_user.h"
 #include "keymap_user_config.h"
+#ifdef RGB_MATRIX_ENABLE
+#    include "rgb_matrix_user.h"
+#endif
 
 enum my_bootloader_state {
     BOOTLOADER_INACTIVE,
@@ -95,13 +98,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // clang-format on
 
+void matrix_init_user(void) {
+#ifdef RGB_MATRIX_ENABLE
+    rgb_matrix_init_user();
+#endif
+}
+
 void keyboard_post_init_user(void) {
     user_config_read_eeprom();
 #ifdef AUTOCORRECT_OFF_AT_STARTUP
     // toggle autocorrect off at startup
-    if (autocorrect_is_enabled()) {
-        autocorrect_toggle();
-    }
+    if (autocorrect_is_enabled()) { autocorrect_toggle(); }
 #endif
 }
 
@@ -130,6 +137,7 @@ void housekeeping_task_user(void) {
     housekeeping_task_keychron();
 }
 
+
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case BASE:
@@ -137,7 +145,7 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
             rgb_matrix_enable_noeeprom();
             rgb_matrix_reload_from_eeprom();
             // check disable
-            if (!user_config_get_enable_rgb()) {
+            if (!user_config_get_enable_base()) {
                 rgb_matrix_disable_noeeprom();
             }
             break;
@@ -178,7 +186,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case RGB_TOG:
                 if (record->event.pressed) {
                     rgb_matrix_toggle_noeeprom();
-                    user_config_toggle_enable_rgb();
+                    user_config_toggle_enable_base();
                 }
                 return false;  // Skip all further processing of this key
             default:

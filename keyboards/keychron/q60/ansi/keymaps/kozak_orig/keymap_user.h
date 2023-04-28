@@ -16,13 +16,11 @@
 
 #pragma once
 
-void user_config_read_eeprom(void);
-void user_config_write_eeprom(void);
-
-// getters
-
-uint8_t user_config_get_enable_rgb(void);
-
-// setters
-
-void user_config_toggle_enable_rgb(void);
+enum layers{
+    BASE,           // Mac Base     (layer 0)
+    BASE_SPD,       // Speed Base   (layer 1)
+    BASE_FN,        // Fn Base      (layer 2)
+    _FN1,           // Fn1          (layer 3)
+    _FN2,           // Fn2          (layer 4)
+    _FN3,           // Fn3          (layer 5)
+};

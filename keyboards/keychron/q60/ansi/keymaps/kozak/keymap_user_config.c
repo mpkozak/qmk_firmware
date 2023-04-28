@@ -18,21 +18,13 @@
 #include "keymap_user_config.h"
 
 typedef struct {
-    uint8_t fn_layer_transparent_keys_off;
-    uint8_t fn_layer_color_enable;
-    uint8_t enable_base;
-    HSV hsv_fn0;
-    HSV hsv_fn1;
-    HSV hsv_fn2;
-    HSV hsv_fn3;
+    uint8_t enable_rgb;
 } user_config_t;
 
 user_config_t user_config;
 
 void eeconfig_init_user(void) {
-    user_config.fn_layer_transparent_keys_off = DEFAULT_FN_LAYER_TRANSPARENT_OFF;
-    user_config.fn_layer_color_enable = DEFAULT_FN_LAYER_SHOW_COLOR;
-    user_config.enable_base = DEFAULT_RGB_ENABLE_BASE;
+    user_config.enable_rgb = DEFAULT_RGB_ENABLE_BASE;
     user_config_write_eeprom();
 }
 
@@ -46,67 +38,13 @@ void user_config_write_eeprom(void) {
 
 // getters
 
-uint8_t user_config_get_fn_layer_transparent_keys_off(void) {
-    return user_config.fn_layer_transparent_keys_off;
-}
-
-uint8_t user_config_get_fn_layer_color_enable(void) {
-    return user_config.fn_layer_color_enable;
-}
-
-uint8_t user_config_get_enable_base(void) {
-    return user_config.enable_base;
-}
-
-HSV user_config_get_hsv_fn0(void) {
-    return user_config.hsv_fn0;
-}
-
-HSV user_config_get_hsv_fn1(void) {
-    return user_config.hsv_fn1;
-}
-
-HSV user_config_get_hsv_fn2(void) {
-    return user_config.hsv_fn2;
-}
-
-HSV user_config_get_hsv_fn3(void) {
-    return user_config.hsv_fn3;
+uint8_t user_config_get_enable_rgb(void) {
+    return user_config.enable_rgb;
 }
 
 // setters
 
-void user_config_toggle_fn_layer_transparent_keys_off(void) {
-    user_config.fn_layer_transparent_keys_off ^= 1;
-    user_config_write_eeprom();
-}
-
-void user_config_toggle_fn_layer_color_enable(void) {
-    user_config.fn_layer_color_enable ^= 1;
-    user_config_write_eeprom();
-}
-
-void user_config_toggle_enable_base(void) {
-    user_config.enable_base ^= 1;
-    user_config_write_eeprom();
-}
-
-void user_config_set_hsv_fn0(HSV hsv) {
-    user_config.hsv_fn0 = hsv;
-    user_config_write_eeprom();
-}
-
-void user_config_set_hsv_fn1(HSV hsv) {
-    user_config.hsv_fn1 = hsv;
-    user_config_write_eeprom();
-}
-
-void user_config_set_hsv_fn2(HSV hsv) {
-    user_config.hsv_fn2 = hsv;
-    user_config_write_eeprom();
-}
-
-void user_config_set_hsv_fn3(HSV hsv) {
-    user_config.hsv_fn3 = hsv;
+void user_config_toggle_enable_rgb(void) {
+    user_config.enable_rgb ^= 1;
     user_config_write_eeprom();
 }
