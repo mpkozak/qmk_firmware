@@ -53,35 +53,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      // _______,            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,      _______,       _______,           // r3
      // _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   _______, _______, _______), // r4
 
-    [BASE] = LAYOUT_ansi_67(
+    [BASE] = LAYOUT_ansi_67(        // layer 0
         LT(3,KC_ESC), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,    KC_BSPC,       KC_MUTE,
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, A(KC_BSPC),    LT(4,KC_GRV),
         KC_CAPS,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        LT(2,KC_BSLS),
         KC_LSFT,            KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,      KC_RSFT,       KC_UP,
         KC_LCTL,   KC_LOPTN,  KC_LCMMD,                         KC_SPC,                           KC_RCMMD, KC_ROPTN, MO(2),     KC_LEFT, KC_DOWN, KC_RGHT),
 
-    [BASE_SPD] = LAYOUT_ansi_67(
+    [BASE_SPD] = LAYOUT_ansi_67(    // layer 1
         TO(0),        KC_EXLM, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LPRN, KC_RPRN, KC_PMNS, KC_NO,     KC_BSPC,       KC_ZACT,
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,   A(KC_BSPC),    LT(4,KC_GRV),
         KC_NO,            KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        LT(2,KC_BSLS),
         OSM(MOD_LSFT),      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_PDOT, KC_QUES,      KC_CAPS,       KC_UP,
         KC_LCTL,   KC_NO,     TO(0),                            KC_SPC,                           KC_NO,    KC_NO,    MO(2),     KC_LEFT, KC_DOWN, KC_RGHT),
 
-    [_FN1] = LAYOUT_ansi_67(
+    [_FN1] = LAYOUT_ansi_67(        // layer 2
         _______,      KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       KC_LSCR,
         _______,        _______, _______, KC_EMOC, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       MO(3),
         _______,          _______, _______, _______, KC_FST,  _______, _______, _______, _______, _______, _______, _______,        MO(4),         _______,
         _______,            _______, _______, _______, KC_PSTT, _______, _______, _______, KC_MVLT, KC_MVRT, KC_ZACT,      MO(3),         QK_KB_0,
         _______,   _______,   _______,                          _______,                          MO(4),    MO(3),    _______,   KC_MVLS, KC_F11,  KC_MVRS),
 
-    [_FN2] = LAYOUT_ansi_67(
+    [_FN2] = LAYOUT_ansi_67(        // layer 3
         _______,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    _______,       KC_ZACT,
         _______,        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______,       _______,
         _______,            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,      _______,       KC_ZPLS,
         _______,   _______,   _______,                          _______,                          TO(1),    _______,  _______,   KC_WBAK, KC_ZMNS, KC_WFOR),
 
-    [_FN3] = LAYOUT_ansi_67(
+    [_FN3] = LAYOUT_ansi_67(        // layer 4
         _______,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   _______,       RGB_TOG,
         _______,        _______, _______, _______, NK_TOGG, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,
         _______,          RGB_SAD, RGB_SAI, _______, _______, RGB_HUD, RGB_HUI, _______, RGB_VAD, RGB_VAI, _______, _______,        _______,       _______,

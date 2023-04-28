@@ -19,14 +19,14 @@
 #define EECONFIG_USER_DATA_SIZE 15  // size of eeprom data, do not change.
 
 // default options applied when eeprom is cleared
-#define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // 1 = enable, 0 = disable
-#define DEFAULT_FN_LAYER_SHOW_COLOR      1             // 1 = enable, 0 = disable
-#define DEFAULT_RGB_ENABLE_BASE          1             // 1 = enable, 0 = disable
-#define RGB_MATRIX_DEFAULT_HUE           36            // HSV warm white (Base layer)
-#define RGB_MATRIX_DEFAULT_SAT           159           // HSV warm white (Base layer)
-#define RGB_MATRIX_DEFAULT_VAL           255           // HSV warm white (Base layer)
-#define RGB_MATRIX_DEFAULT_SPD           0             // Effect speed (Base layer)
-#define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // (Base layer)
+#define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // default layer transparency
+#define DEFAULT_FN_LAYER_SHOW_COLOR      1             // default show layer colors
+#define DEFAULT_RGB_ENABLE_BASE          1             // default lighting state - base layer
+#define RGB_MATRIX_DEFAULT_HUE           36            // default hue - base layer [warm white]
+#define RGB_MATRIX_DEFAULT_SAT           159           // default saturation - base layer
+#define RGB_MATRIX_DEFAULT_VAL           255           // default brightness
+#define RGB_MATRIX_DEFAULT_SPD           0             // default effect speed
+#define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // default effect
 
 // RGB setting change granularity
 #define RGBLIGHT_HUE_STEP 8       // units to step when in/decreasing hue
@@ -35,9 +35,10 @@
 
 // Dynamic Fn Layer RGB indicator options
 #define SPD_LAYER_COLOR 0xFE, 0x23, 0x00   // layer 1; RGB orange
-#define FN0_LAYER_COLOR 0x00, 0x00, 0xFF   // layer 2; RGB blue
-#define FN1_LAYER_COLOR 0x00, 0xFF, 0x00   // layer 3; RGB green
-#define FN2_LAYER_COLOR 0xFF, 0x00, 0xFF   // layer 4; RGB magenta
+// #define FN0_LAYER_COLOR 0xFF, 0x00, 0xFF   // layer 2; RGB magenta
+#define FN0_LAYER_COLOR 0x00, 0xFF, 0xFF   // layer 2; RGB cyan
+#define FN1_LAYER_COLOR 0x00, 0x00, 0xFF   // layer 3; RGB blue
+#define FN2_LAYER_COLOR 0x00, 0xFF, 0x00   // layer 4; RGB green
 #define FN3_LAYER_COLOR 0xFF, 0x00, 0x00   // layer 5; RGB red
 
 // Override + Disable LED current settings

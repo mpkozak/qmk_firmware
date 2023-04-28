@@ -103,7 +103,7 @@ function build {
     qmk clean
     qmk compile -kb "$kb" -km kozak
 
-    mv "$file" "$BUILDS/$fw_name"
+    mv "$QMK_HOME/$file" "$BUILDS/$fw_name"
 
     echo "build successful!"
 }

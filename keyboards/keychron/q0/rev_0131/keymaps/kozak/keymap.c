@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //     _______,   _______,  _______,  _______,  _______,
     //     _______,   _______,            _______),
 
-    [BASE] = LAYOUT_numpad_6x5(
+    [BASE] = LAYOUT_numpad_6x5(     // layer 0
         KC_MUTE,   TO(1),    TO(2),    TO(3),    TO(4),
         KC_BSPC,   KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
         KC_HOME,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    KC_PENT,
         KC_LCMMD,  LT(1,KC_P0),        KC_PDOT),
 
-    [_FN1] = LAYOUT_numpad_6x5(
+    [_FN1] = LAYOUT_numpad_6x5(     // layer 1
         KC_MUTE,   TO(0),    TO(2),    TO(3),    TO(4),
         _______,   KC_ZMNS,  KC_ZACT,  KC_ZPLS,  KC_WBAK,
         KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_WFOR,
@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
         KC_LCMMD,  LT(2,KC_SPC),       KC_LOPTN),
 
-    [_FN2] = LAYOUT_numpad_6x5(
+    [_FN2] = LAYOUT_numpad_6x5(     // layer 2
         KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
         _______,   _______,  _______,  KC_PSTT,  KC_LSCR,
         _______,   G(KC_X),  G(KC_C),  G(KC_V),  G(KC_Z),
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_LEFT,  KC_DOWN,  KC_RGHT,  LAG(KC_ESC),
         KC_FST,    _______,            KC_F11),
 
-    [_FN3] = LAYOUT_numpad_6x5(
+    [_FN3] = LAYOUT_numpad_6x5(     // layer 3
         RGB_TOG,   TO(1),    TO(2),    TO(0),    TO(4),
         _______,   RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,
         _______,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   RGB_RMOD, RGB_SPD,  _______,  _______,
         _______,   RGB_TOG,            _______),
 
-    [_FN4] = LAYOUT_numpad_6x5(
+    [_FN4] = LAYOUT_numpad_6x5(     // layer 4
         KC_ZACT,   TO(1),    TO(2),    TO(3),    TO(0),
         KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,
         KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,
