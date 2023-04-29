@@ -50,42 +50,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      // _______,         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,             _______, _______,  // r3
      //              _______,  _______,                                _______,                                _______,  _______),                 // r4
 
-    [BASE] = LAYOUT_ansi_60(        // layer 0
+    [BASE] = LAYOUT_ansi_60(        // layer 0 - white
         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
         KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,        KC_BSPC,
         KC_LCTL,       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
         KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,             KC_RSFT, MO(2),
                     KC_LOPTN, KC_LCMMD,                               LT(2,KC_SPC),                           KC_RCMMD, KC_ROPTN),
 
-    [BASE_SPD] = LAYOUT_ansi_60(    // layer 1
+    [BASE_SPD] = LAYOUT_ansi_60(    // layer 1 - orange
         TO(0),     KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_PMNS, KC_NO,   KC_NO,   KC_BSPC,
         KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,          A(KC_BSPC),
         KC_NO,         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
         OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_PDOT, KC_QUES,             KC_RSFT, MO(2),
                     KC_LCTL,  TO(0),                                  LT(2,KC_SPC),                           KC_RCMMD, KC_ROPTN),
 
-    [BASE_FN] = LAYOUT_ansi_60(     // layer 2
+    [BASE_FN] = LAYOUT_ansi_60(     // layer 2 - cyan
         KC_LSCR,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_MVLS, KC_UP,   KC_MVRS, KC_NO,   KC_MVLT, KC_MVRT,        TO(1),
+        KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_MVLS, KC_UP,   KC_MVRS, KC_NO,   KC_BRID, KC_BRIU,        TO(1),
         KC_LCTL,       KC_MVLS, KC_MVRS, KC_F11,  KC_FST,  KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,               TT(5),
-        KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_MVLT, KC_MVRT, KC_F11,              TT(4),   _______,
+        KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,             TT(4),   _______,
                     KC_LOPTN, KC_LCMMD,                               _______,                                TT(3),    KC_CAPS),
 
-    [_FN1] = LAYOUT_ansi_60(        // layer 3
+    [_FN1] = LAYOUT_ansi_60(        // layer 3 - blue
         TO(0),     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,   KC_NO,
         _______,     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_WBAK, KC_WFOR,        _______,
         _______,       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,               _______,
         _______,         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MVLS, KC_MVRS, QK_KB_0,             _______, _______,
                     _______,  _______,                                KC_SPC,                                 _______,  _______),
 
-    [_FN2] = LAYOUT_ansi_60(        // layer 4
+    [_FN2] = LAYOUT_ansi_60(        // layer 4 - green
         TO(0),     KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO,   KC_NO,
         _______,     KC_NO,   KC_NO,   KC_EMOC, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_KB_0, KC_MVLT, KC_MVRT,        _______,
         _______,       KC_NO,   KC_NO,   KC_NO,   KC_FST,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MVLS, KC_F11,  KC_MVRS,               _______,
         _______,         KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_NO,   KC_ZMNS, KC_ZPLS, KC_ZACT,             _______, _______,
                     _______,  _______,                                _______,                                _______,  _______),
 
-    [_FN3] = LAYOUT_ansi_60(        // layer 5
+    [_FN3] = LAYOUT_ansi_60(        // layer 5 - red
         TO(0),     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         _______,     KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,          _______,
         _______,       RGB_SAD, RGB_SAI, KC_NO,   KC_NO,   RGB_HUD, RGB_HUI, KC_NO,   RGB_VAD, RGB_VAI, KC_NO,   KC_NO,                 _______,
