@@ -59,6 +59,7 @@ taht          -> that
 htis          -> this
 thoguht       -> thought
 :tiem:        -> time
+:ot:          -> to
 hwen          -> when
 wehn          -> when
 hwere         -> where

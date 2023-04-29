@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_MVLS, KC_UP,   KC_MVRS, KC_NO,   KC_MVLT, KC_MVRT,        TO(1),
         KC_LCTL,       KC_MVLS, KC_MVRS, KC_F11,  KC_FST,  KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,               TT(5),
         KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_MVLT, KC_MVRT, KC_F11,              TT(4),   _______,
-                    KC_LOPTN, KC_LCMMD,                               _______,                                KC_CAPS,  TT(3)),
+                    KC_LOPTN, KC_LCMMD,                               _______,                                TT(3),    KC_CAPS),
 
     [_FN1] = LAYOUT_ansi_60(        // layer 3
         TO(0),     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,   KC_NO,
