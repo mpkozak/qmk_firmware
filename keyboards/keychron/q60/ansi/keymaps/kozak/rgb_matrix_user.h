@@ -16,4 +16,4 @@
 
 #pragma once
 
-void rgb_set_at_brightness(uint8_t val, uint8_t red, uint8_t green, uint8_t blue);
+RGB rgb_scaled_to_val(uint8_t val, uint8_t red, uint8_t green, uint8_t blue);

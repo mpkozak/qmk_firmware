@@ -76,6 +76,9 @@
 #undef RGB_MATRIX_KEYPRESSES
 #undef RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
+// Override + Disable DIP switch
+#undef DIP_SWITCH_ENABLE
+
 // Faster tap threshold
 #define TAPPING_TERM 160
 #define IGNORE_MOD_TAP_INTERRUPT
