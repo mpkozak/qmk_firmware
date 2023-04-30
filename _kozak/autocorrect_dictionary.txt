@@ -43,12 +43,16 @@
 aobut         -> about
 begna         -> began
 cannt         -> cannot
+:ofr:         -> for
 oging         -> going
 ahve:         -> have
+:ti:          -> it
 :klil:        -> kill
 lvoe          -> love
 :noe:         -> now
 :nwo:         -> now
+:fo:          -> of
+:ro:          -> or
 oru:          -> our
 :osme         -> some
 osme:         -> some
@@ -61,6 +65,7 @@ htis          -> this
 thoguht       -> thought
 :tiem:        -> time
 :ot:          -> to
+wamr          -> warm
 hwen          -> when
 wehn          -> when
 hwere         -> where
