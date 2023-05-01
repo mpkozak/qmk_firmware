@@ -47,10 +47,14 @@ cannt         -> cannot
 :ofr:         -> for
 oging         -> going
 ahve:         -> have
+hoep          -> hope
+# hwo           -> how
 # 8i            -> i
 :i:           -> I
+:si:          -> is
 :ti:          -> it
 :klil:        -> kill
+liek          -> like
 lvoe          -> love
 :noe:         -> now
 :nwo:         -> now
@@ -61,6 +65,7 @@ oru:          -> our
 :osme         -> some
 osme:         -> some
 tkae:         -> take
+atht          -> that
 taht          -> that
 :teh:         -> the
 :hte:         -> the

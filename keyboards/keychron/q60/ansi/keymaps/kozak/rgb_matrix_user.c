@@ -39,9 +39,6 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         case _FN2:
             rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
             break;
-        case _FN3:
-            rgb = rgb_scaled_to_val(current_val, FN3_LAYER_COLOR);
-            break;
         default:
             break;
     }
