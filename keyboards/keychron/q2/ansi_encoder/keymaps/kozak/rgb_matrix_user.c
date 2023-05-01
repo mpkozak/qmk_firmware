@@ -35,51 +35,43 @@ void rgb_matrix_init_user(void) {
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     uint8_t current_layer = get_highest_layer(layer_state);
+    uint8_t current_val = rgb_matrix_get_val();
+    HSV hsv = {RGB_MATRIX_DEFAULT_HUE, RGB_MATRIX_DEFAULT_SAT, current_val};
+    RGB rgb = hsv_to_rgb(hsv);
     switch (current_layer) {
         case BASE:
             break;
         case BASE_SPD:
-#ifdef SPD_LAYER_COLOR
-            if (user_config_get_fn_layer_color_enable()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, SPD_LAYER_COLOR);
-            }
-#endif
-            if (user_config_get_fn_layer_transparent_keys_off()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
-            }
+            rgb = rgb_scaled_to_val(current_val, SPD_LAYER_COLOR);
+            break;
+        case BASE_FN:
+            rgb = rgb_scaled_to_val(current_val, FN0_LAYER_COLOR);
             break;
         case _FN1:
-#ifdef FN1_LAYER_COLOR
-            if (user_config_get_fn_layer_color_enable()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, FN1_LAYER_COLOR);
-            }
-#endif
-            if (user_config_get_fn_layer_transparent_keys_off()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
-            }
+            rgb = rgb_scaled_to_val(current_val, FN1_LAYER_COLOR);
             break;
         case _FN2:
-#ifdef FN2_LAYER_COLOR
-            if (user_config_get_fn_layer_color_enable()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, FN2_LAYER_COLOR);
-            }
-#endif
-            if (user_config_get_fn_layer_transparent_keys_off()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
-            }
+            rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
             break;
-        case _FN3:
-#ifdef FN3_LAYER_COLOR
-            if (user_config_get_fn_layer_color_enable()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, FN3_LAYER_COLOR);
-            }
-#endif
-            if (user_config_get_fn_layer_transparent_keys_off()) {
-                rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
-            }
+        default:
             break;
     }
+    if (user_config_get_fn_layer_color_enable()) {
+        rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, rgb.r, rgb.g, rgb.b);
+    }
+    if (user_config_get_fn_layer_transparent_keys_off()) {
+        rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
+    }
     return false;
+}
+
+RGB rgb_scaled_to_val(uint8_t val, uint8_t red, uint8_t green, uint8_t blue) {
+    float value = val;
+    RGB rgb;
+    rgb.r = red * (value / 255);
+    rgb.g = green * (value / 255);
+    rgb.b = blue * (value / 255);
+    return rgb;
 }
 
 void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t layer, bool (*is_keycode)(uint16_t), uint8_t red, uint8_t green, uint8_t blue) {

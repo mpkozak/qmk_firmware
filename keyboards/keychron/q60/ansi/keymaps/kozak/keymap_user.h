@@ -17,7 +17,7 @@
 #pragma once
 
 enum layers{
-    BASE,           // Mac Base     (layer 0)
+    BASE,           // Base         (layer 0)
     BASE_SPD,       // Speed Base   (layer 1)
     BASE_FN,        // Fn Base      (layer 2)
     _FN1,           // Fn1          (layer 3)

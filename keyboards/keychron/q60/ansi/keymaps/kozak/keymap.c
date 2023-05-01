@@ -19,7 +19,7 @@
 #include "keymap_user.h"
 #include "keymap_user_config.h"
 
-enum my_bootloader_state {
+enum user_bootloader_state {
     BOOTLOADER_INACTIVE,
     BOOTLOADER_PRESSED,
     BOOTLOADER_WAIT,

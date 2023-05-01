@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define EECONFIG_USER_DATA_SIZE 12  // size of eeprom data, do not change.
+#define EECONFIG_USER_DATA_SIZE 3  // size of eeprom data, do not change.
 
 // default options applied when eeprom is cleared
 #define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // default layer transparency
@@ -34,10 +34,10 @@
 #define RGBLIGHT_VAL_STEP 16      // units to step when in/decreasing value (brightness)
 
 // Dynamic Fn Layer RGB indicator options
-#define SPD_LAYER_COLOR 0xFE, 0x23, 0x00   // layer 1; RGB orange
-#define FN1_LAYER_COLOR 0x00, 0x00, 0xFF   // layer 2; RGB blue
-#define FN2_LAYER_COLOR 0x00, 0xFF, 0x00   // layer 3; RGB green
-#define FN3_LAYER_COLOR 0xFF, 0x00, 0x00   // layer 4; RGB red
+#define SPD_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 1; RGB orange
+#define FN0_LAYER_COLOR 0x01, 0xEE, 0xFE   // layer 2; RGB cyan
+#define FN1_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 3; RGB green
+#define FN2_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 4; RGB blue
 
 // Override + Disable LED current settings
 #undef CKLED2001_CURRENT_TUNE
@@ -69,6 +69,9 @@
 #undef ENABLE_RGB_MATRIX_SOLID_SPLASH
 #undef RGB_MATRIX_KEYPRESSES
 #undef RGB_MATRIX_FRAMEBUFFER_EFFECTS
+
+// Override + Disable DIP switch
+#undef DIP_SWITCH_ENABLE
 
 // Faster tap threshold
 #define TAPPING_TERM 160

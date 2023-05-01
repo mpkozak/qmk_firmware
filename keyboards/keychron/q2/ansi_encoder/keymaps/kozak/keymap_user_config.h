@@ -23,16 +23,10 @@ void user_config_write_eeprom(void);
 
 uint8_t user_config_get_fn_layer_transparent_keys_off(void);
 uint8_t user_config_get_fn_layer_color_enable(void);
-uint8_t user_config_get_enable_base(void);
-HSV user_config_get_hsv_fn1(void);
-HSV user_config_get_hsv_fn2(void);
-HSV user_config_get_hsv_fn3(void);
+uint8_t user_config_get_enable_rgb(void);
 
 // setters
 
 void user_config_toggle_fn_layer_transparent_keys_off(void);
 void user_config_toggle_fn_layer_color_enable(void);
-void user_config_toggle_enable_base(void);
-void user_config_set_hsv_fn1(HSV hsv);
-void user_config_set_hsv_fn2(HSV hsv);
-void user_config_set_hsv_fn3(HSV hsv);
+void user_config_toggle_enable_rgb(void);
