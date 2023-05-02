@@ -62,13 +62,16 @@ lvoe          -> love
 :fo:          -> of
 :ro:          -> or
 oru:          -> our
+uot:          -> out
+:uot          -> out
 :osme         -> some
 osme:         -> some
 tkae:         -> take
 atht          -> that
 taht          -> that
-:teh:         -> the
 :hte:         -> the
+:teh:         -> the
+:tyhe         -> the
 :tehm         -> them
 :htem         -> them
 :tehre        -> there
@@ -76,6 +79,7 @@ htis          -> this
 thoguht       -> thought
 :tiem:        -> time
 :ot:          -> to
+:trian:       -> train
 wamr          -> warm
 hwen          -> when
 wehn          -> when
