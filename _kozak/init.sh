@@ -43,7 +43,7 @@ alias q60='cd "$_q60"; e'
 
 
 # autocorrect aliases
-alias ace='e _kozak/autocorrect_dictionary.txt'
+alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
 
 alias acrm_q2='[ -e "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h ] && rm "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h'
 alias acrm_q60='[ -e "$_q60"/ansi/keymaps/kozak/autocorrect_data.h ] && rm "$_q60"/ansi/keymaps/kozak/autocorrect_data.h'
