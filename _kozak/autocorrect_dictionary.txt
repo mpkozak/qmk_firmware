@@ -43,22 +43,23 @@
 aobut         -> about
 begna         -> began
 cannt         -> cannot
-# 3e            -> e
+:esle         -> else
+esle:         -> else
 :ofr:         -> for
 oging         -> going
 ahve:         -> have
 hoep          -> hope
-# hwo           -> how
-# 8i            -> i
 :i:           -> I
 :si:          -> is
 :ti:          -> it
 :klil:        -> kill
 liek          -> like
 lvoe          -> love
+mkae          -> make
+:mkaing:      -> making
+:midn:        -> mind
 :noe:         -> now
 :nwo:         -> now
-# 9o            -> o
 :fo:          -> of
 :ro:          -> or
 oru:          -> our
@@ -68,6 +69,7 @@ uot:          -> out
 osme:         -> some
 tkae:         -> take
 atht          -> that
+tghat         -> that
 taht          -> that
 :hte:         -> the
 :teh:         -> the
@@ -80,6 +82,7 @@ thoguht       -> thought
 :tiem:        -> time
 :ot:          -> to
 :trian:       -> train
+:su:          -> us
 wamr          -> warm
 hwen          -> when
 wehn          -> when
@@ -89,6 +92,14 @@ iwth          -> with
 wiht          -> with
 eyar          -> year
 yhou          -> you
+
+
+
+## illega/disabled
+# 3e            -> e
+# 8i            -> i
+# 9o            -> o
+# hwo           -> how
 
 
 
