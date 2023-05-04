@@ -40,6 +40,7 @@
 
 
 ## custom
+:adn:         -> and
 aobut         -> about
 begna         -> began
 cannt         -> cannot
@@ -48,6 +49,7 @@ esle:         -> else
 :ofr:         -> for
 oging         -> going
 ahve:         -> have
+ehre          -> here
 hoep          -> hope
 :i:           -> I
 :si:          -> is
@@ -58,6 +60,7 @@ lvoe          -> love
 mkae          -> make
 :mkaing:      -> making
 :midn:        -> mind
+:myu:         -> my
 :noe:         -> now
 :nwo:         -> now
 :fo:          -> of
@@ -76,18 +79,17 @@ taht          -> that
 :tyhe         -> the
 :tehm         -> them
 :htem         -> them
-:tehre        -> there
 htis          -> this
 thoguht       -> thought
 :tiem:        -> time
 :ot:          -> to
 :trian:       -> train
+udner         -> under
 :su:          -> us
 wamr          -> warm
 hwen          -> when
 wehn          -> when
 hwere         -> where
-wehre         -> where
 iwth          -> with
 wiht          -> with
 eyar          -> year
@@ -100,6 +102,8 @@ yhou          -> you
 # 8i            -> i
 # 9o            -> o
 # hwo           -> how
+# :tehre        -> there
+# wehre         -> where
 
 
 

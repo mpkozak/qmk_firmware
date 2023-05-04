@@ -15,6 +15,7 @@ BUILDS="$KOZAK/builds"
 
 
 # active board dirs
+_common="$QMK_HOME/keyboards/keychron/common"
 _q0="$QMK_HOME/keyboards/keychron/q0"
 _q2="$QMK_HOME/keyboards/keychron/q2"
 _q60="$QMK_HOME/keyboards/keychron/q60"
@@ -37,9 +38,13 @@ _q60f="keychron_q60_ansi_kozak.bin"
 
 
 # edit aliases
+alias common='cd $_common; e'
 alias q0='cd "$_q0"; e'
 alias q2='cd "$_q2"; e'
 alias q60='cd "$_q60"; e'
+alias l0='cd $_q0km; e'
+alias l2='cd $_q2km; e'
+alias l60='cd $_q60km; e'
 
 
 # autocorrect aliases

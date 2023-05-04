@@ -1,5 +1,6 @@
 VIA_ENABLE = yes
 AUTOCORRECT_ENABLE = yes
+DIP_SWITCH_ENABLE = no
 
 SRC += keymap_user_config.c
 
