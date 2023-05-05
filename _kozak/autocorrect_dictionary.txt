@@ -57,7 +57,9 @@ hoep          -> hope
 :klil:        -> kill
 liek          -> like
 lvoe          -> love
+amke          -> make
 mkae          -> make
+:amking:      -> making
 :mkaing:      -> making
 :midn:        -> mind
 :myu:         -> my
@@ -65,9 +67,11 @@ mkae          -> make
 :nwo:         -> now
 :fo:          -> of
 :ro:          -> or
+:os:          -> so
 oru:          -> our
 uot:          -> out
 :uot          -> out
+smae          -> same
 :osme         -> some
 osme:         -> some
 tkae:         -> take
