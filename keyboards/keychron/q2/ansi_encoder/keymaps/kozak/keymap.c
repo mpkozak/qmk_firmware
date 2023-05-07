@@ -39,7 +39,7 @@ enum user_keycodes {
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
-#define KC_FST  C(G(KC_F))      // fullscreen toggle
+#define KC_FSTG C(G(KC_F))      // fullscreen toggle
 #define KC_PSTT S(A(G(KC_V)))   // paste plaintext
 #define KC_ZMNS G(KC_MINS)      // zoom out
 #define KC_ZPLS G(KC_EQL)       // zoom in
@@ -50,6 +50,7 @@ enum user_keycodes {
 #define KC_MVRS C(KC_RGHT)      // move right space
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
+#define KC_BSPW A(KC_BSPC)      // backspace word
 
 // clang-format off
 
@@ -69,16 +70,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,   KC_LOPTN,  KC_LCMMD,                         LT(2,KC_SPC),                     KC_RCMMD, KC_ROPTN, MO(2),     KC_LEFT, KC_DOWN, KC_RGHT),
 
     [BASE_SPD] = LAYOUT_ansi_67(    // layer 1 - orange
-        TO(0),        KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_PMNS, KC_NO,     KC_BSPC,       KC_ZACT,
-        KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,   A(KC_BSPC),    LT(4,KC_GRV),
+        TO(0),        KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_PMNS, KC_NO,     KC_BSPC,       KC_MUTE,
+        KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,   KC_BSPW,       LT(4,KC_GRV),
         KC_NO,            KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        LT(3,KC_BSLS),
         OSM(MOD_LSFT),      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_PDOT, KC_QUES,      KC_CAPS,       KC_UP,
         KC_LCTL,   KC_LOPTN,  KC_LCMMD,                         LT(2,KC_SPC),                     KC_NO,    KC_NO,    MO(2),     KC_LEFT, KC_DOWN, KC_RGHT),
 
     [BASE_FN] = LAYOUT_ansi_67(        // layer 2 - cyan
-        KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    _______,       KC_ZACT,
-        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_MVLS, KC_UP,   KC_MVRS, KC_NO,   KC_BRID, KC_BRIU, KC_BSPC,       _______,
-        KC_CAPS,          KC_MVLS, KC_MVRS, KC_F11,  KC_FST,  KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,        KC_ENT,        _______,
+        KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
+        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_MVLS, KC_UP,   KC_MVRS, KC_NO,   KC_BRID, KC_BRIU, KC_BSPC,       LT(4,KC_GRV),
+        KC_CAPS,          KC_MVLS, KC_MVRS, KC_F11,  KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,        KC_ENT,        LT(3,KC_BSLS),
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,      KC_RSFT,       QK_KB_0,
         KC_LCTL,   KC_LOPTN,  KC_LCMMD,                         _______,                          TT(4),    TT(3),    _______,   KC_MVLS, KC_F11,  KC_MVRS),
 
@@ -86,8 +87,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(0),        KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       KC_NO,
         _______,        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, KC_WFOR, _______,       _______,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MVLT, KC_MVRT,        _______,       _______,
-        _______,            _______, _______, _______, _______, _______, _______, _______, KC_ZMNS, KC_ZPLS, KC_ZACT,      _______,       _______,
-        _______,   _______,   _______,                          KC_SPC,                           _______,  _______,  _______,   KC_MVLT, _______, KC_MVRT),
+        _______,            _______, _______, _______, _______, _______, _______, _______, KC_ZMNS, KC_ZPLS, KC_ZACT,      _______,       KC_ZPLS,
+        _______,   _______,   _______,                          KC_SPC,                           _______,  _______,  _______,   KC_MVLT, KC_ZMNS, KC_MVRT),
 
     [_FN2] = LAYOUT_ansi_67(        // layer 4 - blue
         TO(0),        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   _______,       RGB_TOG,
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [BASE]     = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [BASE_SPD] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
+    [BASE_SPD] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [BASE_FN]  = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
     [_FN1]     = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
     [_FN2]     = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
