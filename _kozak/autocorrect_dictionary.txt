@@ -63,6 +63,8 @@ mkae          -> make
 :mkaing:      -> making
 :midn:        -> mind
 :myu:         -> my
+enver         -> never
+:ont:         -> not
 :noe:         -> now
 :nwo:         -> now
 :fo:          -> of
@@ -106,6 +108,7 @@ yhou          -> you
 # 8i            -> i
 # 9o            -> o
 # hwo           -> how
+# :th:e         -> the
 # :tehre        -> there
 # wehre         -> where
 
