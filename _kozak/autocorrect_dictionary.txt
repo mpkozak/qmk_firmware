@@ -64,6 +64,7 @@ mkae          -> make
 :midn:        -> mind
 :myu:         -> my
 enver         -> never
+:nto:         -> not
 :ont:         -> not
 :noe:         -> now
 :nwo:         -> now
@@ -77,6 +78,7 @@ smae          -> same
 :osme         -> some
 osme:         -> some
 tkae:         -> take
+:tha:         -> that
 atht          -> that
 tghat         -> that
 taht          -> that
