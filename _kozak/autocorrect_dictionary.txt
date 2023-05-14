@@ -43,6 +43,7 @@
 :adn:         -> and
 aobut         -> about
 begna         -> began
+:ubt:         -> but
 cannt         -> cannot
 :esle         -> else
 esle:         -> else
@@ -62,6 +63,7 @@ mkae          -> make
 :amking:      -> making
 :mkaing:      -> making
 :midn:        -> mind
+mroe          -> more
 :myu:         -> my
 enver         -> never
 :nto:         -> not
@@ -100,6 +102,7 @@ wehn          -> when
 hwere         -> where
 iwth          -> with
 wiht          -> with
+wokr          -> work
 eyar          -> year
 yhou          -> you
 
