@@ -42,6 +42,7 @@
 ## custom
 :adn:         -> and
 aobut         -> about
+abck          -> back
 begna         -> began
 :ubt:         -> but
 cannt         -> cannot
@@ -64,6 +65,8 @@ mkae          -> make
 :mkaing:      -> making
 :midn:        -> mind
 mroe          -> more
+:mcuh:        -> much
+:msut:        -> must
 :myu:         -> my
 enver         -> never
 :nto:         -> not
@@ -90,6 +93,7 @@ taht          -> that
 :tehm         -> them
 :htem         -> them
 htis          -> this
+:thos:        -> this
 thoguht       -> thought
 :tiem:        -> time
 :ot:          -> to
