@@ -23,7 +23,7 @@ _q60="$QMK_HOME/keyboards/keychron/q60"
 # custom keymaps
 _q0km="$_q0/rev_0131/keymaps/kozak"
 _q2km="$_q2/ansi_encoder/keymaps/kozak"
-_q60km="$_q60/ansi/kozak"
+_q60km="$_q60/ansi/keymaps/kozak"
 
 # customized keyboards
 _q0c="keychron/q0/rev_0131"

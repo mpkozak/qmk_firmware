@@ -46,6 +46,7 @@ abck          -> back
 begna         -> began
 :ubt:         -> but
 cannt         -> cannot
+:od:          -> do
 :esle         -> else
 esle:         -> else
 :ofr:         -> for
@@ -54,6 +55,7 @@ ahve:         -> have
 ehre          -> here
 hoep          -> hope
 :i:           -> I
+:fi:          -> if
 :si:          -> is
 :ti:          -> it
 :klil:        -> kill
@@ -63,6 +65,7 @@ amke          -> make
 mkae          -> make
 :amking:      -> making
 :mkaing:      -> making
+:mayve:       -> maybe
 :midn:        -> mind
 mroe          -> more
 :mcuh:        -> much
@@ -112,7 +115,7 @@ yhou          -> you
 
 
 
-## illega/disabled
+## illegal/disabled
 # 3e            -> e
 # 8i            -> i
 # 9o            -> o
