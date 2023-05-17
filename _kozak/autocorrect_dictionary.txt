@@ -40,18 +40,21 @@
 
 
 ## custom
+:lal:         -> all
+laly:         -> ally
 :adn:         -> and
 aobut         -> about
 abck          -> back
 begna         -> began
 :ubt:         -> but
 cannt         -> cannot
+dya           -> day
 :od:          -> do
 :esle         -> else
 esle:         -> else
 :ofr:         -> for
 oging         -> going
-ahve:         -> have
+ahv           -> hav
 ehre          -> here
 hoep          -> hope
 :i:           -> I
@@ -119,6 +122,7 @@ yhou          -> you
 # 3e            -> e
 # 8i            -> i
 # 9o            -> o
+# ahve:         -> have
 # hwo           -> how
 # :th:e         -> the
 # :tehre        -> there
@@ -245,7 +249,7 @@ stregth       -> strength
 strengh       -> strength
 tkaes         -> takes
 therfore      -> therefore
-todya         -> today
+# todya         -> today
 toghether     -> together
 unkown        -> unknown
 unqiue        -> unique
@@ -338,7 +342,7 @@ tolerence     -> tolerance
 cacheing      -> caching
 complier      -> compiler
 doulbe        -> double
-dyanmic       -> dynamic
+# dyanmic       -> dynamic
 # As in "execute", "executable", "executing", ...
 excecut       -> execut
 failse        -> false
