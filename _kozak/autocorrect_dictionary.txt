@@ -38,8 +38,10 @@
 #    https://www.wordfrequency.info/samples.asp
 
 
+########################################
+## Custom
 
-## custom
+## transposition
 :lal:         -> all
 laly:         -> ally
 :adn:         -> and
@@ -47,7 +49,7 @@ aobut         -> about
 abck          -> back
 begna         -> began
 :ubt:         -> but
-cannt         -> cannot
+:cuold        -> could
 dya           -> day
 :od:          -> do
 :esle         -> else
@@ -57,27 +59,23 @@ oging         -> going
 ahv           -> hav
 ehre          -> here
 hoep          -> hope
-:i:           -> I
 :fi:          -> if
 :si:          -> is
 :ti:          -> it
-:klil:        -> kill
+:klil         -> kill
 liek          -> like
 lvoe          -> love
 amke          -> make
 mkae          -> make
 :amking:      -> making
 :mkaing:      -> making
-:mayve:       -> maybe
 :midn:        -> mind
 mroe          -> more
 :mcuh:        -> much
 :msut:        -> must
-:myu:         -> my
 enver         -> never
 :nto:         -> not
 :ont:         -> not
-:noe:         -> now
 :nwo:         -> now
 :fo:          -> of
 :ro:          -> or
@@ -89,21 +87,17 @@ smae          -> same
 :osme         -> some
 osme:         -> some
 tkae:         -> take
-:tha:         -> that
 atht          -> that
-tghat         -> that
 taht          -> that
 :hte:         -> the
 :teh:         -> the
-:tyhe         -> the
 :tehm         -> them
 :htem         -> them
 htis          -> this
-:thos:        -> this
 thoguht       -> thought
 :tiem:        -> time
 :ot:          -> to
-:trian:       -> train
+:trian        -> train
 udner         -> under
 :su:          -> us
 wamr          -> warm
@@ -113,9 +107,26 @@ hwere         -> where
 iwth          -> with
 wiht          -> with
 wokr          -> work
+:wuold        -> would
 eyar          -> year
+
+## ommission
+cannt         -> cannot
+:tha:         -> that
+
+## extraneous
+:myu:         -> my
+tghat         -> that
+:tyhe         -> the
 yhou          -> you
 
+## erroneous
+:mayve:       -> maybe
+:noe:         -> now
+:thos:        -> this
+
+## capitalization
+:i:           -> I
 
 
 ## illegal/disabled
@@ -129,6 +140,9 @@ yhou          -> you
 # wehre         -> where
 
 
+
+########################################
+## Built-in
 
 ## 10 most common words.
 # The words "there", "about", "their", "would", "people", "which", "could",
