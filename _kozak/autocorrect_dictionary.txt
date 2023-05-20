@@ -89,10 +89,9 @@ osme:         -> some
 tkae:         -> take
 atht          -> that
 taht          -> that
-:hte:         -> the
+:ht           -> th
 :teh:         -> the
 :tehm         -> them
-:htem         -> them
 htis          -> this
 thoguht       -> thought
 :tiem:        -> time
@@ -119,6 +118,7 @@ cannt         -> cannot
 tghat         -> that
 :tyhe         -> the
 yhou          -> you
+yuou          -> you
 
 ## erroneous
 :mayve:       -> maybe
@@ -135,7 +135,9 @@ yhou          -> you
 # 9o            -> o
 # ahve:         -> have
 # hwo           -> how
+# :hte:         -> the
 # :th:e         -> the
+# :htem         -> them
 # :tehre        -> there
 # wehre         -> where
 
@@ -149,7 +151,7 @@ yhou          -> you
 # "think", "other", and "because" are among the most common words in English
 # that are 5 letters or longer. (We don't include entries for words shorter than
 # that to avoid false triggering.)
-:htere        -> there
+# :htere        -> there
 abbout        -> about
 abotu         -> about
 baout         -> about
@@ -168,8 +170,8 @@ whihc         -> which
 whlch         -> which
 wihch         -> which
 coudl         -> could
-:htikn        -> think
-:htink        -> think
+# :htikn        -> think
+# :htink        -> think
 thikn         -> think
 thiunk        -> think
 tihkn         -> think
