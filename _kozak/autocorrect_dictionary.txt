@@ -98,6 +98,7 @@ thoguht       -> thought
 :ot:          -> to
 :trian        -> train
 udner         -> under
+:pu:          -> up
 :su:          -> us
 wamr          -> warm
 hwen          -> when
