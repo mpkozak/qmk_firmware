@@ -36,16 +36,18 @@ _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 
 
+# fs aliases
+alias b='open $BUILDS'
 
 # edit aliases
 alias common='cd $_common; e'
 alias q0='cd "$_q0"; e'
 alias q2='cd "$_q2"; e'
 alias q60='cd "$_q60"; e'
-alias l0='cd $_q0km; e'
-alias l2='cd $_q2km; e'
-alias l60='cd $_q60km; e'
-
+alias e0='cd $_q0km; e'
+alias e2='cd $_q2km; e'
+alias e60='cd $_q60km; e'
+alias ek='e "$KOZAK"'
 
 # autocorrect aliases
 alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
