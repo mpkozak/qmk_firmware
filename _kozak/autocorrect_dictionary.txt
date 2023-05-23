@@ -60,6 +60,7 @@ ahv           -> hav
 ehre          -> here
 hoep          -> hope
 :fi:          -> if
+:itno:        -> into
 :si:          -> is
 :ti:          -> it
 :klil         -> kill
@@ -83,6 +84,7 @@ enver         -> never
 oru:          -> our
 uot:          -> out
 :uot          -> out
+:epople:      -> people
 smae          -> same
 :osme         -> some
 osme:         -> some
