@@ -245,20 +245,29 @@ bool is_alpha (uint16_t keycode) {
     }
 }
 
-uint16_t prev_keycode = KC_ESC;
+bool is_prev_alpha = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (process_record_keychron(keycode, record)) {
         // ignore suprious number keys in the middle of alphas for speed layer
         if (get_highest_layer(layer_state) == BASE_SPD) {
             if (is_number(keycode)) {
-                if (is_alpha(prev_keycode)) {
+                if (is_prev_alpha) {
                     return false;
                 }
             }
-        }
-        if (record->event.pressed) {
-            prev_keycode = keycode;
+            // update previous keycode is_alpha state
+            if (record->event.pressed) {
+                if (is_alpha(keycode)) {    // keycode is alpha
+                    if (!is_prev_alpha) {
+                        is_prev_alpha = true;
+                    }
+                } else {                    // keycode is not alpha
+                    if (is_prev_alpha) {
+                        is_prev_alpha = false;
+                    }
+                }
+            }
         }
         switch (keycode) {
             case QK_BOOT:
