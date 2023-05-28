@@ -183,8 +183,83 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
+bool is_number(uint16_t keycode) {
+    switch (keycode) {
+        case KC_P1:
+        case KC_P2:
+        case KC_P3:
+        case KC_P4:
+        case KC_P5:
+        case KC_P6:
+        case KC_P7:
+        case KC_P8:
+        case KC_P9:
+        case KC_P0:
+        case KC_1:
+        case KC_2:
+        case KC_3:
+        case KC_4:
+        case KC_5:
+        case KC_6:
+        case KC_7:
+        case KC_8:
+        case KC_9:
+        case KC_0:
+            return true;
+        default:
+            return false;
+    }
+}
+
+bool is_alpha (uint16_t keycode) {
+    switch (keycode) {
+        case KC_A:
+        case KC_B:
+        case KC_C:
+        case KC_D:
+        case KC_E:
+        case KC_F:
+        case KC_G:
+        case KC_H:
+        case KC_I:
+        case KC_J:
+        case KC_K:
+        case KC_L:
+        case KC_M:
+        case KC_N:
+        case KC_O:
+        case KC_P:
+        case KC_Q:
+        case KC_R:
+        case KC_S:
+        case KC_T:
+        case KC_U:
+        case KC_V:
+        case KC_W:
+        case KC_X:
+        case KC_Y:
+        case KC_Z:
+            return true;
+        default:
+            return false;
+    }
+}
+
+uint16_t prev_keycode = KC_ESC;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (process_record_keychron(keycode, record)) {
+        // ignore suprious number keys in the middle of alphas for speed layer
+        if (get_highest_layer(layer_state) == BASE_SPD) {
+            if (is_number(keycode)) {
+                if (is_alpha(prev_keycode)) {
+                    return false;
+                }
+            }
+        }
+        if (record->event.pressed) {
+            prev_keycode = keycode;
+        }
         switch (keycode) {
             case QK_BOOT:
                 // We want to turn off LEDs before calling bootloader, so here
