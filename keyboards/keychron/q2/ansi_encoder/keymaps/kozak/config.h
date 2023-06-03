@@ -78,6 +78,9 @@
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
+// One-shot timeout
+#define ONESHOT_TIMEOUT 500
+
 // Autocorrect is on at start up. If you want Autocorrect to be off at startup,
 // un-comment the following line
 #define AUTOCORRECT_OFF_AT_STARTUP
