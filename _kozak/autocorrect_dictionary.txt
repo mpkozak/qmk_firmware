@@ -60,6 +60,7 @@ ahv           -> hav
 ehre          -> here
 hoep          -> hope
 :fi:          -> if
+ign:          -> ing
 :itno:        -> into
 :si:          -> is
 :ti:          -> it
