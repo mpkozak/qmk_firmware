@@ -69,6 +69,7 @@ liek          -> like
 lvoe          -> love
 amke          -> make
 mkae          -> make
+maek          -> make
 :amking:      -> making
 :mkaing:      -> making
 :midn:        -> mind
