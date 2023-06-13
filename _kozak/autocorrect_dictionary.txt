@@ -49,7 +49,6 @@ aobut         -> about
 abck          -> back
 begna         -> began
 :ubt:         -> but
-:cuold        -> could
 dya           -> day
 :od:          -> do
 :esle         -> else
@@ -82,6 +81,8 @@ enver         -> never
 :nwo:         -> now
 :fo:          -> of
 :ro:          -> or
+uold          -> ould
+:sya:         -> say
 :os:          -> so
 oru:          -> our
 uot:          -> out
@@ -111,7 +112,6 @@ hwere         -> where
 iwth          -> with
 wiht          -> with
 wokr          -> work
-:wuold        -> would
 eyar          -> year
 
 ## ommission
@@ -138,6 +138,7 @@ yuou          -> you
 # 3e            -> e
 # 8i            -> i
 # 9o            -> o
+# :cuold        -> could
 # ahve:         -> have
 # hwo           -> how
 # :hte:         -> the
@@ -145,6 +146,7 @@ yuou          -> you
 # :htem         -> them
 # :tehre        -> there
 # wehre         -> where
+# :wuold        -> would
 
 
 
