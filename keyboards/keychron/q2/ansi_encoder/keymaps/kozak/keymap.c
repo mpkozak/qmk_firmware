@@ -48,6 +48,7 @@ enum user_keycodes {
 #define KC_MVRT LSG(KC_RBRC)    // move right tab
 #define KC_MVLS C(KC_LEFT)      // move left space
 #define KC_MVRS C(KC_RGHT)      // move right space
+#define KC_DESK KC_F11          // show desktop
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_BSPW A(KC_BSPC)      // backspace word
@@ -79,9 +80,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE_FN] = LAYOUT_ansi_67(        // layer 2 - cyan
         KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
         KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_BRID, KC_BRIU, KC_BSPC,       LT(4,KC_GRV),
-        KC_CAPS,          KC_MVLS, KC_MVRS, KC_F11,  KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,        KC_ENT,        LT(3,KC_BSLS),
+        KC_CAPS,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,        KC_ENT,        LT(3,KC_BSLS),
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,      KC_RSFT,       QK_KB_0,
-        KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          TT(4),    TT(3),    _______,   KC_MVLS, KC_F11,  KC_MVRS),
+        KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          TT(4),    TT(3),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
     [_FN1] = LAYOUT_ansi_67(        // layer 3 - green
         TO(0),        KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       KC_NO,
