@@ -84,14 +84,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,             KC_RSFT, MO(3),
                     KC_LOPT,  KC_LCMD,                                _______,                                KC_RCMD,  KC_ROPT),
 
-    [_FN1] = LAYOUT_ansi_60(        // layer 3 - green [right-side arrows + quick toggles]
-        TO(0),     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_VAD, RGB_VAI, KC_VOLD, KC_VOLU,
-        _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_BRID, KC_BRIU,        KC_MUTE,
+    [_FN1] = LAYOUT_ansi_60(        // layer 3 - blue [right-side arrows + quick toggles]
+        TO(0),     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU,
+        _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_VOLD, KC_VOLU,        KC_MUTE,
         _______,       _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,               _______,
         _______,         _______, _______, _______, _______, _______, _______, _______, KC_DESK, KC_MVLS, KC_MVRS,             KC_CAPS, _______,
                     _______,  _______,                                _______,                                KC_CAPS,  TT(4)),
 
-    [_FN2] = LAYOUT_ansi_60(        // layer 4 - blue [mac fn keys + rbg settings]
+    [_FN2] = LAYOUT_ansi_60(        // layer 4 - green [mac fn keys + rbg settings]
         TO(0),     KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
         _______,     _______, _______, _______, NK_TOGG, _______, _______, _______, _______, _______, _______, KC_TGTL, KC_TGCL,        _______,
         _______,       RGB_SAD, RGB_SAI, _______, _______, RGB_HUD, RGB_HUI, _______, RGB_VAD, RGB_VAI, _______, _______,               _______,
