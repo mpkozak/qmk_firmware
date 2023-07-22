@@ -71,23 +71,23 @@ enum user_keycodes {
                         KC_HOME,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
                         KC_END,    KC_P4,    KC_P5,    KC_P6,
                         KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    KC_PENT,
-                        KC_LCMMD,  LT(1,KC_P0),        KC_PDOT),
+                        TT(1),     LT(1,KC_P0),        KC_PDOT),
 
                     [_FN1] = LAYOUT_numpad_6x5(     // layer 1
                         KC_MUTE,   TO(0),    TO(2),    TO(3),    TO(4),
                         KC_BSPC,   KC_ZMNS,  KC_ZACT,  KC_ZPLS,  KC_WBAK,
                         KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_WFOR,
                         KC_PGDN,   KC_MVLS,  KC_UP,    KC_MVRS,
-                        _______,   KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
-                        KC_LCMMD,  LT(2,KC_SPC),       KC_LOPTN),
+                        KC_LCMMD,  KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
+                        _______,   LT(2,KC_SPC),       KC_LOPTN),
 
                     [_FN2] = LAYOUT_numpad_6x5(     // layer 2
                         KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
                         KC_FSTG,   _______,  _______,  KC_PSTT,  KC_LSCR,
                         _______,   G(KC_X),  G(KC_C),  G(KC_V),  G(KC_Z),
-                        _______,   KC_MVLS,  KC_UP,    KC_MVRS,
-                        _______,   KC_LEFT,  KC_DOWN,  KC_RGHT,  LAG(KC_ESC),
-                        _______,    _______,            KC_F11),
+                        _______,   KC_MVLS,  _______,  KC_MVRS,
+                        _______,   _______,  _______,  _______,  LAG(KC_ESC),
+                        _______,   _______,            KC_F11),
 
                     [_FN3] = LAYOUT_numpad_6x5(     // layer 3
                         RGB_TOG,   TO(1),    TO(2),    TO(0),    TO(4),
