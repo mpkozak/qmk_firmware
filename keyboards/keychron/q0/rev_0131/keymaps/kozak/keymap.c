@@ -52,6 +52,7 @@ enum user_keycodes {
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_BSPW A(KC_BSPC)      // backspace word
+#define KC_FRCQ LAG(KC_ESC)     // force quit
 
 // clang-format off
 
@@ -70,30 +71,30 @@ enum user_keycodes {
                         KC_ESC,    KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
                         KC_HOME,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
                         KC_END,    KC_P4,    KC_P5,    KC_P6,
-                        KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    KC_PENT,
+                        KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    LT(1,KC_PENT),
                         TT(1),     LT(1,KC_P0),        KC_PDOT),
 
                     [_FN1] = LAYOUT_numpad_6x5(     // layer 1
                         KC_MUTE,   TO(0),    TO(2),    TO(3),    TO(4),
-                        KC_BSPC,   KC_ZMNS,  KC_ZACT,  KC_ZPLS,  KC_WBAK,
-                        KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_WFOR,
+                        KC_BSPC,   KC_WBAK,  KC_WFOR,  KC_ZACT,  KC_ZMNS,
+                        KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_ZPLS,
                         KC_PGDN,   KC_MVLS,  KC_UP,    KC_MVRS,
                         KC_LCMMD,  KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
                         _______,   LT(2,KC_SPC),       KC_LOPTN),
 
                     [_FN2] = LAYOUT_numpad_6x5(     // layer 2
                         KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
-                        KC_FSTG,   _______,  _______,  KC_PSTT,  KC_LSCR,
-                        _______,   G(KC_X),  G(KC_C),  G(KC_V),  G(KC_Z),
-                        _______,   KC_MVLS,  _______,  KC_MVRS,
-                        _______,   _______,  _______,  _______,  LAG(KC_ESC),
+                        KC_FRCQ,   G(KC_X),  G(KC_C),  G(KC_V),  KC_PSTT,
+                        _______,   _______,  _______,  _______,  G(KC_Z),
+                        _______,   _______,  _______,  _______,
+                        _______,   _______,  _______,  _______,  KC_FSTG,
                         _______,   _______,            KC_F11),
 
                     [_FN3] = LAYOUT_numpad_6x5(     // layer 3
                         RGB_TOG,   TO(1),    TO(2),    TO(0),    TO(4),
-                        KC_TGCL,   RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,
-                        KC_TGTL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
-                        _______,   RGB_MOD,  RGB_SPI,  _______,
+                        _______,   RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,
+                        KC_TGCL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
+                        KC_TGTL,   RGB_MOD,  RGB_SPI,  _______,
                         _______,   RGB_RMOD, RGB_SPD,  _______,  _______,
                         _______,   RGB_TOG,            _______),
 
