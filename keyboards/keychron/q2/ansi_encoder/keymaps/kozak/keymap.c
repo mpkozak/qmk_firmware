@@ -84,14 +84,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,      KC_RSFT,       QK_KB_0,
         KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          TT(4),    TT(3),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
-    [_FN1] = LAYOUT_ansi_67(        // layer 3 - green
+    [_FN1] = LAYOUT_ansi_67(        // layer 3 - blue
         TO(0),        KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       KC_NO,
         _______,        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, KC_WFOR, _______,       _______,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MVLT, KC_MVRT,        _______,       _______,
         _______,            _______, _______, _______, _______, _______, _______, _______, KC_ZMNS, KC_ZPLS, KC_ZACT,      _______,       KC_ZPLS,
         _______,   _______,   _______,                          KC_SPC,                           _______,  _______,  _______,   KC_MVLT, KC_ZMNS, KC_MVRT),
 
-    [_FN2] = LAYOUT_ansi_67(        // layer 4 - blue
+    [_FN2] = LAYOUT_ansi_67(        // layer 4 - green
         TO(0),        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   _______,       RGB_TOG,
         _______,        _______, _______, _______, NK_TOGG, _______, _______, _______, _______, _______, _______, KC_TGTL, KC_TGCL, _______,       _______,
         _______,          RGB_SAD, RGB_SAI, _______, _______, RGB_HUD, RGB_HUI, _______, RGB_VAD, RGB_VAI, _______, _______,        _______,       _______,
