@@ -41,17 +41,17 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch (current_layer) {
         case BASE:
             break;
+        case BASE_CALC:
+            rgb = rgb_scaled_to_val(current_val, CALC_LAYER_COLOR);
+            break;
+        case BASE_FN:
+            rgb = rgb_scaled_to_val(current_val, FN0_LAYER_COLOR);
+            break;
         case _FN1:
             rgb = rgb_scaled_to_val(current_val, FN1_LAYER_COLOR);
             break;
         case _FN2:
             rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
-            break;
-        case _FN3:
-            rgb = rgb_scaled_to_val(current_val, FN3_LAYER_COLOR);
-            break;
-        case _FN4:
-            rgb = rgb_scaled_to_val(current_val, FN4_LAYER_COLOR);
             break;
         default:
             break;

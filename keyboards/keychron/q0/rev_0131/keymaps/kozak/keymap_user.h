@@ -17,9 +17,9 @@
 #pragma once
 
 enum layers{
-    BASE,           // base         (layer 0)
-    _FN1,           // Fn1          (layer 1)
-    _FN2,           // Fn2          (layer 2)
-    _FN3,           // Fn3          (layer 3)
-    _FN4            // Fn4          (layer 4)
+    BASE,           // Base         (layer 0)
+    BASE_CALC,      // Calc Base    (layer 1)
+    BASE_FN,        // Fn Base      (layer 2)
+    _FN1,           // Fn1          (layer 3)
+    _FN2,           // Fn2          (layer 4)
 };

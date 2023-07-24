@@ -56,66 +56,66 @@ enum user_keycodes {
 
 // clang-format off
 
-                const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-                // template
-                    // [BASE] = LAYOUT_numpad_6x5(
-                    //     _______,   _______,  _______,  _______,  _______,
-                    //     _______,   _______,  _______,  _______,  _______,
-                    //     _______,   _______,  _______,  _______,  _______,
-                    //     _______,   _______,  _______,  _______,
-                    //     _______,   _______,  _______,  _______,  _______,
-                    //     _______,   _______,            _______),
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+// template
+    // [BASE] = LAYOUT_numpad_6x5(
+    //     _______,   _______,  _______,  _______,  _______,
+    //     _______,   _______,  _______,  _______,  _______,
+    //     _______,   _______,  _______,  _______,  _______,
+    //     _______,   _______,  _______,  _______,
+    //     _______,   _______,  _______,  _______,  _______,
+    //     _______,   _______,            _______),
 
-                    [BASE] = LAYOUT_numpad_6x5(     // layer 0
-                        KC_MUTE,   TO(1),    TO(2),    TO(3),    TO(4),
-                        KC_ESC,    KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
-                        KC_HOME,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
-                        KC_END,    KC_P4,    KC_P5,    KC_P6,
-                        KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    LT(1,KC_PENT),
-                        TT(1),     LT(1,KC_P0),        KC_PDOT),
+    [BASE] = LAYOUT_numpad_6x5(     // layer 0 - white
+        KC_MUTE,   TO(1),    TO(2),    TO(3),    TO(4),
+        KC_ESC,    KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
+        KC_HOME,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
+        KC_END,    KC_P4,    KC_P5,    KC_P6,
+        KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    LT(2,KC_PENT),
+        TT(3),     LT(1,KC_P0),        KC_PDOT),
 
-                    [_FN1] = LAYOUT_numpad_6x5(     // layer 1
-                        KC_MUTE,   TO(0),    TO(2),    TO(3),    TO(4),
-                        KC_BSPC,   KC_WBAK,  KC_WFOR,  KC_ZACT,  KC_ZMNS,
-                        KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_ZPLS,
-                        KC_PGDN,   KC_MVLS,  KC_UP,    KC_MVRS,
-                        KC_LCMMD,  KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
-                        _______,   LT(2,KC_SPC),       KC_LOPTN),
+    [BASE_CALC] = LAYOUT_numpad_6x5(     // layer 1 - orange
+        KC_ZACT,   TO(0),    TO(2),    TO(3),    TO(4),
+        KC_BSPC,   KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
+        KC_LPRN,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
+        KC_RPRN,   KC_P4,    KC_P5,    KC_P6,
+        KC_SPC,    KC_P1,    KC_P2,    KC_P3,    LT(2,KC_PENT),
+        TT(3),     LT(2,KC_P0),        KC_PDOT),
 
-                    [_FN2] = LAYOUT_numpad_6x5(     // layer 2
-                        KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
-                        KC_FRCQ,   G(KC_X),  G(KC_C),  G(KC_V),  KC_PSTT,
-                        _______,   _______,  _______,  _______,  G(KC_Z),
-                        _______,   _______,  _______,  _______,
-                        _______,   _______,  _______,  _______,  KC_FSTG,
-                        _______,   _______,            KC_F11),
+    [BASE_FN] = LAYOUT_numpad_6x5(     // layer 2 - cyan
+        KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
+        KC_BSPC,   KC_WBAK,  KC_WFOR,  KC_ZACT,  KC_ZMNS,
+        KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_ZPLS,
+        KC_PGDN,   KC_MVLS,  KC_UP,    KC_MVRS,
+        KC_LCMMD,  KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
+        _______,   LT(3,KC_SPC),       KC_LOPTN),
 
-                    [_FN3] = LAYOUT_numpad_6x5(     // layer 3
-                        RGB_TOG,   TO(1),    TO(2),    TO(0),    TO(4),
-                        _______,   RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,
-                        KC_TGCL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
-                        KC_TGTL,   RGB_MOD,  RGB_SPI,  _______,
-                        _______,   RGB_RMOD, RGB_SPD,  _______,  _______,
-                        _______,   RGB_TOG,            _______),
+    [_FN1] = LAYOUT_numpad_6x5(     // layer 3 - blue
+        KC_ZACT,   TO(1),    TO(2),    TO(0),    TO(4),
+        KC_LSCR,   G(KC_X),  G(KC_C),  G(KC_V),  KC_PSTT,
+        KC_FSTG,   KC_MVLT,  QK_KB_0,  KC_MVRT,  G(KC_Z),
+        KC_FRCQ,   KC_MVLS,  KC_UP,    KC_MVRS,
+        KC_BSPC,   KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
+        _______,   KC_SPC,             KC_DESK),
 
-                    [_FN4] = LAYOUT_numpad_6x5(     // layer 4
-                        KC_ZACT,   TO(1),    TO(2),    TO(3),    TO(0),
-                        KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,
-                        KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,
-                        KC_NO,     KC_NO,    KC_NO,    KC_NO,
-                        KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,
-                        KC_NO,     KC_NO,              KC_NO)
-                };
+    [_FN2] = LAYOUT_numpad_6x5(     // layer 4 - green
+        RGB_TOG,   TO(1),    TO(2),    TO(3),    TO(0),
+        _______,   RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,
+        KC_TGCL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
+        KC_TGTL,   RGB_MOD,  RGB_SPI,  _______,
+        _______,   RGB_RMOD, RGB_SPD,  _______,  _______,
+        _______,   RGB_TOG,            _______)
+};
 
-                #if defined(ENCODER_MAP_ENABLE)
-                const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-                    [BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-                    [_FN1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-                    [_FN2] = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
-                    [_FN3] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
-                    [_FN4] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) }
-                };
-                #endif // ENCODER_MAP_ENABLE
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
+    [BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [BASE_CALC] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
+    [BASE_FN] = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
+    [_FN1] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
+    [_FN2] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) }
+};
+#endif // ENCODER_MAP_ENABLE
 
 // clang-format on
 
