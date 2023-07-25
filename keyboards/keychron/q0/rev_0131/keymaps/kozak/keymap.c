@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LPRN,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
         KC_RPRN,   KC_P4,    KC_P5,    KC_P6,
         KC_SPC,    KC_P1,    KC_P2,    KC_P3,    LT(2,KC_PENT),
-        TT(3),     LT(2,KC_P0),        KC_PDOT),
+        TT(3),     LT(5,KC_P0),        KC_PDOT),
 
     [BASE_FN] = LAYOUT_numpad_6x5(     // layer 2 - cyan
         KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
@@ -104,7 +104,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TGCL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
         KC_TGTL,   RGB_MOD,  RGB_SPI,  _______,
         _______,   RGB_RMOD, RGB_SPD,  _______,  _______,
-        _______,   RGB_TOG,            _______)
+        _______,   RGB_TOG,            _______),
+
+    [_FN3] = LAYOUT_numpad_6x5(     // layer 5 - yellow
+        _______,   _______,  _______,  _______,  _______,
+        _______,   KC_DLR,   KC_PERC,  KC_CIRC,  KC_UNDS,
+        _______,   KC_LPRN,  _______,  KC_RPRN,  KC_AMPR,
+        _______,   _______,  _______,  _______,
+        _______,   _______,  _______,  _______,  KC_PIPE,
+        _______,   _______,            KC_QUES)
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -113,7 +121,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [BASE_CALC] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
     [BASE_FN] = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
     [_FN1] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
-    [_FN2] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) }
+    [_FN2] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [_FN3] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) }
 };
 #endif // ENCODER_MAP_ENABLE
 

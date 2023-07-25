@@ -38,6 +38,7 @@
 #define FN0_LAYER_COLOR 0x01, 0xEE, 0xFE   // layer 2; RGB cyan
 #define FN1_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 3; RGB blue
 #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 4; RGB green
+#define FN3_LAYER_COLOR 0xFE, 0xE4, 0x01   // layer 5; RGB yellow
 
 // Override + Disable LED current settings
 #undef CKLED2001_CURRENT_TUNE
@@ -74,7 +75,7 @@
 #undef NUM_LOCK_LED_INDEX
 
 // Layer count
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
 // Faster tap threshold
 #define TAPPING_TERM 160
