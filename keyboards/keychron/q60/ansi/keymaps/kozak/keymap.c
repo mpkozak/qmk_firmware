@@ -28,7 +28,6 @@ enum user_bootloader_state {
     BOOTLOADER_WAIT,
     BOOTLOADER_DO
 } bootloader_state;
-
 enum user_keycodes {
     KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE = QK_USER_0,
     KC_FN_LAYER_COLOR_TOGGLE,
@@ -53,6 +52,18 @@ enum user_keycodes {
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_BSPW A(KC_BSPC)      // backspace word
 
+const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
+const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
+const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &comma_override,
+    &period_override,
+    &hyphen_override,
+    NULL // Null terminate the array of overrides!
+};
+
 // clang-format off
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -71,10 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_LOPT,  OSM(MOD_LGUI),                          LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT),
 
     [BASE_SPD] = LAYOUT_ansi_60(    // layer 1 - orange
-        TO(0),     KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_PMNS, KC_NO,   KC_NO,   KC_BSPC,
+        TO(0),     KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, KC_NO,   KC_NO,   KC_BSPC,
         KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,          KC_BSPW,
         KC_NO,         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
-        OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_PDOT, KC_QUES,             KC_RSFT, MO(3),
+        OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,             KC_RSFT, MO(3),
                     KC_LCTL,  KC_LCMD,                                LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT),
 
     [BASE_FN] = LAYOUT_ansi_60(     // layer 2 - cyan
