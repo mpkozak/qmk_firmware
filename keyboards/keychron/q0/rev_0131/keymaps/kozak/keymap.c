@@ -47,7 +47,7 @@ enum user_keycodes {
 #define KC_MVLT LSG(KC_LBRC)    // move left tab
 #define KC_MVRT LSG(KC_RBRC)    // move right tab
 #define KC_MVLS C(KC_LEFT)      // move left space
-#define KC_MVRS C(KC_RGHT)      // move right spacee
+#define KC_MVRS C(KC_RGHT)      // move right space
 #define KC_DESK KC_F11          // show desktop
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
@@ -124,7 +124,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_FN2] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
     [_FN3] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) }
 };
-#endif // ENCODER_MAP_ENABLE
+#endif
 
 // clang-format on
 

@@ -19,19 +19,20 @@
 #define EECONFIG_USER_DATA_SIZE 3  // size of eeprom data, do not change.
 
 // default options applied when eeprom is cleared
-#define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // default layer transparency
+#define DEFAULT_FN_LAYER_TRANSPARENT_OFF 1             // default layer transparency
 #define DEFAULT_FN_LAYER_SHOW_COLOR      1             // default show layer colors
 #define DEFAULT_RGB_ENABLE_BASE          1             // default lighting state - base layer
 #define RGB_MATRIX_DEFAULT_HUE           36            // default hue - base layer [warm white]
 #define RGB_MATRIX_DEFAULT_SAT           159           // default saturation - base layer
-#define RGB_MATRIX_DEFAULT_VAL           255           // default brightness
+#define RGB_MATRIX_DEFAULT_VAL           127           // default brightness
 #define RGB_MATRIX_DEFAULT_SPD           0             // default effect speed
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // default effect
 
 // RGB setting change granularity
-#define RGBLIGHT_HUE_STEP 8       // units to step when in/decreasing hue
-#define RGBLIGHT_SAT_STEP 8       // units to step when in/decreasing saturation
-#define RGBLIGHT_VAL_STEP 16      // units to step when in/decreasing value (brightness)
+#define RGB_MATRIX_HUE_STEP 8       // units to step when in/decreasing hue
+#define RGB_MATRIX_SAT_STEP 8       // units to step when in/decreasing saturation
+#define RGB_MATRIX_VAL_STEP 8       // units to step when in/decreasing value (brightness)
+#define RGB_MATRIX_SPD_STEP 8       // units to step when in/decreasing speed
 
 // Dynamic Fn Layer RGB indicator options
 #define SPD_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 1; RGB orange
@@ -70,10 +71,10 @@
 #undef RGB_MATRIX_KEYPRESSES
 #undef RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
-// Override + Disable DIP switch
+// Disable DIP switch
 #undef DIP_SWITCH_ENABLE
 
-// Override Layer
+// Override Layer count
 #undef DYNAMIC_KEYMAP_LAYER_COUNT
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
@@ -85,11 +86,8 @@
 // One-shot timeout
 #define ONESHOT_TIMEOUT 500
 
-// Autocorrect is on at start up. If you want Autocorrect to be off at startup,
-// un-comment the following line
+// Disable Autocorrect at startup
 #define AUTOCORRECT_OFF_AT_STARTUP
 
-// Autoshift
-// #define AUTO_SHIFT_TIMEOUT 150
-// #define NO_AUTO_SHIFT_SPECIAL
-// #define NO_AUTO_SHIFT_NUMERIC
+// Backlight timeout
+#define RGB_DISABLE_TIMEOUT 300000  // 5 minutes

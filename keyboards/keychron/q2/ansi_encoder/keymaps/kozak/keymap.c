@@ -52,6 +52,19 @@ enum user_keycodes {
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_BSPW A(KC_BSPC)      // backspace word
+#define KC_FRCQ LAG(KC_ESC)     // force quit
+
+const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
+const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
+const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &comma_override,
+    &period_override,
+    &hyphen_override,
+    NULL // Null terminate the array of overrides!
+};
 
 // clang-format off
 
@@ -68,35 +81,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,       LT(4,KC_GRV),
         KC_CAPS,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        LT(3,KC_BSLS),
         KC_LSFT,            KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,      KC_RSFT,       KC_UP,
-        KC_LCTL,   KC_LOPT,   OSM(MOD_LGUI),                    LT(2,KC_SPC),                     KC_RCMD,  KC_ROPT,  MO(2),     KC_LEFT, KC_DOWN, KC_RGHT),
+        KC_LCTL,   KC_LOPT,   OSM(MOD_LGUI),                    LT(2,KC_SPC),                     KC_RCMD,  KC_ROPT,  TT(3),     KC_LEFT, KC_DOWN, KC_RGHT),
 
     [BASE_SPD] = LAYOUT_ansi_67(    // layer 1 - orange
-        TO(0),        KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_PMNS, KC_NO,     KC_BSPC,       KC_MUTE,
+        TO(0),        KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, KC_NO,     KC_BSPC,       KC_MUTE,
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,   KC_BSPW,       LT(4,KC_GRV),
         KC_NO,            KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        LT(3,KC_BSLS),
-        OSM(MOD_LSFT),      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_PDOT, KC_QUES,      KC_CAPS,       KC_UP,
-        KC_LCTL,   KC_LOPT,   KC_LCMD,                          LT(2,KC_SPC),                     KC_NO,    KC_NO,    MO(2),     KC_LEFT, KC_DOWN, KC_RGHT),
+        OSM(MOD_LSFT),      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,      KC_RSFT,       KC_UP,
+        KC_LCTL,   KC_LOPT,   KC_LCMD,                          LT(2,KC_SPC),                     KC_NO,    KC_NO,    TT(3),     KC_LEFT, KC_DOWN, KC_RGHT),
 
     [BASE_FN] = LAYOUT_ansi_67(        // layer 2 - cyan
         TO(0),        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
-        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_BRID, KC_BRIU, KC_BSPC,       LT(4,KC_GRV),
+        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, KC_BRID, KC_BRIU, KC_BSPC,       LT(4,KC_GRV),
         KC_CAPS,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,        KC_ENT,        LT(3,KC_BSLS),
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,      KC_RSFT,       QK_KB_0,
-        KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          TT(4),    TT(3),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
+        KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          KC_CAPS,  TT(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
-    [_FN1] = LAYOUT_ansi_67(        // layer 3 - blue
-        KC_LSCR,      KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       KC_NO,
-        _______,        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, KC_WFOR, _______,       _______,
-        _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MVLT, KC_MVRT,        _______,       _______,
-        _______,            _______, _______, _______, KC_PSTT, _______, _______, _______, KC_ZMNS, KC_ZPLS, KC_ZACT,      _______,       KC_ZPLS,
-        _______,   _______,   _______,                          KC_SPC,                           _______,  _______,  _______,   KC_MVLT, KC_ZMNS, KC_MVRT),
+    [_FN1] = LAYOUT_ansi_67(        // layer 3 - blue [right-side arrows + quick toggles]
+        KC_LSCR,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   _______,       KC_LSCR,
+        _______,        KC_MVLT, KC_MVRT, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_MVLT, KC_MVRT, _______,       _______,
+        _______,          KC_MVLS, KC_MVRS, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,        _______,       _______,
+        _______,            _______, _______, _______, KC_PSTT, _______, _______, _______, KC_DESK, KC_MVLS, KC_MVRS,      _______,       QK_KB_0,
+        _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
-    [_FN2] = LAYOUT_ansi_67(        // layer 4 - green
-        TO(0),        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   _______,       RGB_TOG,
+    [_FN2] = LAYOUT_ansi_67(        // layer 4 - green [mac fn keys + rbg settings]
+        TO(0),        KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       RGB_TOG,
         _______,        _______, _______, _______, NK_TOGG, _______, _______, _______, _______, _______, _______, KC_TGTL, KC_TGCL, _______,       _______,
         _______,          RGB_SAD, RGB_SAI, _______, _______, RGB_HUD, RGB_HUI, _______, RGB_VAD, RGB_VAI, _______, _______,        _______,       _______,
-        _______,            _______, _______, RGB_SPD, RGB_SPI, _______, RGB_RMOD,RGB_MOD, _______, _______, _______,      _______,       _______,
-        _______,   _______,   _______,                          RGB_TOG,                          _______,  _______,  _______,   KC_WBAK, _______, KC_WFOR)
+        RGB_TOG,            _______, _______, RGB_SPD, RGB_SPI, _______, RGB_RMOD,RGB_MOD, _______, _______, _______,      _______,       KC_ZPLS,
+        _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   KC_MVLT, KC_ZMNS, KC_MVRT)
 };
 
 // clang-format on
@@ -162,6 +175,7 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
             if (!user_config_get_enable_rgb()) {
                 rgb_matrix_disable_noeeprom();
             }
+            break;
         default:
             break;
     }

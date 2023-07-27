@@ -28,6 +28,7 @@ enum user_bootloader_state {
     BOOTLOADER_WAIT,
     BOOTLOADER_DO
 } bootloader_state;
+
 enum user_keycodes {
     KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE = QK_USER_0,
     KC_FN_LAYER_COLOR_TOGGLE,
@@ -51,6 +52,7 @@ enum user_keycodes {
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_BSPW A(KC_BSPC)      // backspace word
+#define KC_FRCQ LAG(KC_ESC)     // force quit
 
 const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
 const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
@@ -78,21 +80,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
         KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,        KC_BSPC,
         KC_LCTL,       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
-        KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,             KC_RSFT, MO(3),
+        KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,             KC_RSFT, TT(3),
                     KC_LOPT,  OSM(MOD_LGUI),                          LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT),
 
     [BASE_SPD] = LAYOUT_ansi_60(    // layer 1 - orange
         TO(0),     KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, KC_NO,   KC_NO,   KC_BSPC,
         KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,          KC_BSPW,
         KC_NO,         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
-        OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,             KC_RSFT, MO(3),
+        OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,             KC_RSFT, TT(3),
                     KC_LCTL,  KC_LCMD,                                LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT),
 
     [BASE_FN] = LAYOUT_ansi_60(     // layer 2 - cyan
         TO(0),     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
         KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, KC_BRID, KC_BRIU,        KC_BSPC,
         KC_LCTL,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,               KC_ENT,
-        KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,             KC_RSFT, MO(3),
+        KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,             KC_RSFT, TT(3),
                     KC_LOPT,  KC_LCMD,                                _______,                                KC_RCMD,  KC_ROPT),
 
     [_FN1] = LAYOUT_ansi_60(        // layer 3 - blue [right-side arrows + quick toggles]
@@ -106,8 +108,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(0),     KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
         _______,     _______, _______, _______, NK_TOGG, _______, _______, _______, _______, _______, _______, KC_TGTL, KC_TGCL,        _______,
         _______,       RGB_SAD, RGB_SAI, _______, _______, RGB_HUD, RGB_HUI, _______, RGB_VAD, RGB_VAI, _______, _______,               _______,
-        _______,         _______, _______, RGB_SPD, RGB_SPI, _______, RGB_RMOD,RGB_MOD, _______, _______, _______,             _______, _______,
-                    _______,  _______,                                RGB_TOG,                                _______,  _______)
+        RGB_TOG,         _______, _______, RGB_SPD, RGB_SPI, _______, RGB_RMOD,RGB_MOD, _______, _______, _______,             _______, _______,
+                    _______,  _______,                                _______,                                _______,  _______)
 };
 
 // clang-format on

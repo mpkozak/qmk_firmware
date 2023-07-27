@@ -19,22 +19,23 @@
 #define EECONFIG_USER_DATA_SIZE 3  // size of eeprom data, do not change.
 
 // default options applied when eeprom is cleared
-#define DEFAULT_FN_LAYER_TRANSPARENT_OFF 0             // default layer transparency
+#define DEFAULT_FN_LAYER_TRANSPARENT_OFF 1             // default layer transparency
 #define DEFAULT_FN_LAYER_SHOW_COLOR      1             // default show layer colors
 #define DEFAULT_RGB_ENABLE_BASE          1             // default lighting state - base layer
 #define RGB_MATRIX_DEFAULT_HUE           36            // default hue - base layer [warm white]
 #define RGB_MATRIX_DEFAULT_SAT           159           // default saturation - base layer
-#define RGB_MATRIX_DEFAULT_VAL           255           // default brightness
+#define RGB_MATRIX_DEFAULT_VAL           127           // default brightness
 #define RGB_MATRIX_DEFAULT_SPD           0             // default effect speed
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // default effect
 
 // RGB setting change granularity
-#define RGBLIGHT_HUE_STEP 8       // units to step when in/decreasing hue
-#define RGBLIGHT_SAT_STEP 8       // units to step when in/decreasing saturation
-#define RGBLIGHT_VAL_STEP 16      // units to step when in/decreasing value (brightness)
+#define RGB_MATRIX_HUE_STEP 8       // units to step when in/decreasing hue
+#define RGB_MATRIX_SAT_STEP 8       // units to step when in/decreasing saturation
+#define RGB_MATRIX_VAL_STEP 8       // units to step when in/decreasing value (brightness)
+#define RGB_MATRIX_SPD_STEP 8       // units to step when in/decreasing speed
 
 // Dynamic Fn Layer RGB indicator options
-#define CALC_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 1; RGB orange
+#define CALC_LAYER_COLOR 0xFE, 0x11, 0x00  // layer 1; RGB orange
 #define FN0_LAYER_COLOR 0x01, 0xEE, 0xFE   // layer 2; RGB cyan
 #define FN1_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 3; RGB blue
 #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 4; RGB green
@@ -47,27 +48,6 @@
 // #define CKLED2001_CURRENT_TUNE { 0xD8, 0xD8, 0x60, 0xD8, 0xD8, 0x60, 0xD8, 0xD8, 0x60, 0xD8, 0xD8, 0x60 }    // q60
 
 // Override + Disable RGB Matrix Animation modes
-#undef ENABLE_RGB_MATRIX_BREATHING
-#undef ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
-#undef ENABLE_RGB_MATRIX_CYCLE_ALL
-#undef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-#undef ENABLE_RGB_MATRIX_CYCLE_UP_DOWN
-#undef ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
-#undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN
-#undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
-#undef ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
-#undef ENABLE_RGB_MATRIX_CYCLE_SPIRAL
-#undef ENABLE_RGB_MATRIX_DUAL_BEACON
-#undef ENABLE_RGB_MATRIX_RAINBOW_BEACON
-#undef ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-#undef ENABLE_RGB_MATRIX_PIXEL_RAIN
-#undef ENABLE_RGB_MATRIX_TYPING_HEATMAP
-#undef ENABLE_RGB_MATRIX_DIGITAL_RAIN
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
-#undef ENABLE_RGB_MATRIX_SPLASH
-#undef ENABLE_RGB_MATRIX_SOLID_SPLASH
 #undef RGB_MATRIX_KEYPRESSES
 #undef RGB_MATRIX_FRAMEBUFFER_EFFECTS
 
@@ -84,3 +64,6 @@
 
 // One-shot timeout
 #define ONESHOT_TIMEOUT 500
+
+// Backlight timeout
+#define RGB_DISABLE_TIMEOUT 300000  // 5 minutes

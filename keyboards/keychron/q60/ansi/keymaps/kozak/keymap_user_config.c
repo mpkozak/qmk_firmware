@@ -18,9 +18,9 @@
 #include "keymap_user_config.h"
 
 typedef struct {
-    uint8_t enable_rgb;
     uint8_t fn_layer_transparent_keys_off;
     uint8_t fn_layer_color_enable;
+    uint8_t enable_rgb;
 } user_config_t;
 
 user_config_t user_config;
