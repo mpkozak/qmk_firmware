@@ -66,4 +66,4 @@
 #define ONESHOT_TIMEOUT 500
 
 // Backlight timeout
-#define RGB_DISABLE_TIMEOUT 300000  // 5 minutes
+#define RGB_MATRIX_TIMEOUT 300000  // 5 minutes

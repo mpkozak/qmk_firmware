@@ -86,4 +86,4 @@
 #define AUTOCORRECT_OFF_AT_STARTUP
 
 // Backlight timeout
-#define RGB_DISABLE_TIMEOUT 300000  // 5 minutes
+#define RGB_MATRIX_TIMEOUT 300000  // 5 minutes
