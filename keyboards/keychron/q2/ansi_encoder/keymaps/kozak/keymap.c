@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,        KC_MVLT, KC_MVRT, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_MVLT, KC_MVRT, _______,       _______,
         _______,          KC_MVLS, KC_MVRS, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT,        _______,       _______,
         _______,            _______, _______, _______, KC_PSTT, _______, _______, _______, KC_DESK, KC_MVLS, KC_MVRS,      _______,       QK_KB_0,
-        _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   KC_MVLS, KC_DESK, KC_MVRS),
+        _______,   _______,   _______,                          _______,                          KC_CAPS,  TT(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
     [_FN2] = LAYOUT_ansi_67(        // layer 4 - green [mac fn keys + rbg settings]
         TO(0),        KC_BRID, KC_BRIU, QK_KB_0, QK_KB_1, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       RGB_TOG,
