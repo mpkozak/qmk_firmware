@@ -92,8 +92,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE_FN] = LAYOUT_ansi_60(     // layer 2 - cyan
         TO(0),     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
-        KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, KC_BRID, KC_BRIU,        KC_BSPC,
-        KC_LCTL,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,               KC_ENT,
+        KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, _______, TG(1),   _______, _______, KC_UP,   KC_MVLT, KC_MVRT, KC_BRID, KC_BRIU,        KC_BSPC,
+        KC_LCTL,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_MVLS, KC_MVRS,               KC_ENT,
         KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, QK_KB_0, KC_VOLD, KC_VOLU, KC_MUTE,             KC_RSFT, TT(3),
                     KC_LOPT,  KC_LCMD,                                _______,                                KC_RCMD,  KC_ROPT),
 
