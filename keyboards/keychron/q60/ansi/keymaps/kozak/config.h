@@ -79,7 +79,7 @@
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 // Faster tap threshold
-#define TAPPING_TERM 135
+#define TAPPING_TERM 150
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
