@@ -75,7 +75,7 @@
 #undef DIP_SWITCH_ENABLE
 
 // Faster tap threshold
-#define TAPPING_TERM 160
+#define TAPPING_TERM 150
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
