@@ -55,6 +55,7 @@ enum user_keycodes {
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_BSPW A(KC_BSPC)      // backspace word
 #define KC_FRCQ LAG(KC_ESC)     // force quit
+#define KC_CMNT G(KC_SLSH)      // comment shortcut
 
 const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
 const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
@@ -94,9 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE_FN] = LAYOUT_ansi_67(        // layer 2 - cyan
         TO(0),        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
-        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, _______, TG(1),   _______, _______, KC_UP,   _______, _______, KC_MVLT, KC_MVRT, KC_BSPC,       LT(4,KC_GRV),
-        KC_CAPS,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,        KC_ENT,        LT(3,KC_BSLS),
-        KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, _______, KC_MVLS, KC_MVRS, KC_MCTL,      KC_RSFT,       KC_MCTL,
+        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, _______, TG(1),   _______, _______, KC_UP,   _______, _______, KC_MVLS, KC_MVRS, KC_DEL,        LT(4,KC_GRV),
+        KC_CAPS,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_MCTL,        KC_ENT,        LT(3,KC_BSLS),
+        KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, _______, KC_MVLT, KC_MVRT, KC_CMNT,      KC_RSFT,       KC_MCTL,
         KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          KC_CAPS,  TT(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
     [_FN1] = LAYOUT_ansi_67(        // layer 3 - blue [right-side arrows + quick toggles]
