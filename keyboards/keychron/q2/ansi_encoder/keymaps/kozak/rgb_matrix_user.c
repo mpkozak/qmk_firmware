@@ -83,5 +83,5 @@ void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t l
     }
 }
 
-bool is_transparent(uint16_t keycode) { return keycode == KC_TRNS; }
+bool is_transparent(uint16_t keycode) { return keycode == KC_TRNS || keycode == KC_NO; }
 bool is_not_transparent(uint16_t keycode) { return keycode != KC_TRNS; }
