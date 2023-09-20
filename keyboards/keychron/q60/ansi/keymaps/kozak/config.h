@@ -35,9 +35,9 @@
 #define RGB_MATRIX_SPD_STEP 8       // units to step when in/decreasing speed
 
 // Dynamic Fn Layer RGB indicator options
-#define SPD_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 1; RGB orange
-#define FN0_LAYER_COLOR 0x01, 0xEE, 0xFE   // layer 2; RGB cyan
-#define FN1_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 3; RGB blue
+#define SPD_LAYER_COLOR 0x01, 0xEE, 0xFE   // layer 1; RGB cyan
+#define FN0_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 2; RGB blue
+#define FN1_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 3; RGB orange
 #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 4; RGB green
 
 // Override + Disable LED current settings
