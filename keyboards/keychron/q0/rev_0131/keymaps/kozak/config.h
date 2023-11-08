@@ -24,7 +24,7 @@
 #define DEFAULT_RGB_ENABLE_BASE          1             // default lighting state - base layer
 #define RGB_MATRIX_DEFAULT_HUE           36            // default hue - base layer [warm white]
 #define RGB_MATRIX_DEFAULT_SAT           159           // default saturation - base layer
-#define RGB_MATRIX_DEFAULT_VAL           127           // default brightness
+#define RGB_MATRIX_DEFAULT_VAL           63            // default brightness
 #define RGB_MATRIX_DEFAULT_SPD           0             // default effect speed
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // default effect
 
@@ -66,4 +66,4 @@
 #define ONESHOT_TIMEOUT 500
 
 // Backlight timeout
-#define RGB_MATRIX_TIMEOUT 300000  // 5 minutes
+#define RGB_MATRIX_TIMEOUT 150000  // 2.5 minutes
