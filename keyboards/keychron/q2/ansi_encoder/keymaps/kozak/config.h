@@ -41,6 +41,7 @@
 #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 4; RGB green
 
 // Override + Disable LED current settings
+#undef SNLED27351_CURRENT_TUNE
 #undef CKLED2001_CURRENT_TUNE
 // #define CKLED2001_CURRENT_TUNE { 0xFF, 0xFF, 0x70, 0xFF, 0xFF, 0x70, 0xFF, 0xFF, 0x70, 0xFF, 0xFF, 0x70 }    // q0
 // #define CKLED2001_CURRENT_TUNE { 0xCA, 0xCA, 0x60, 0xCA, 0xCA, 0x60, 0xCA, 0xCA, 0x60, 0xCA, 0xCA, 0x60 }    // q2
@@ -70,6 +71,9 @@
 #undef ENABLE_RGB_MATRIX_SOLID_SPLASH
 #undef RGB_MATRIX_KEYPRESSES
 #undef RGB_MATRIX_FRAMEBUFFER_EFFECTS
+
+// Disable caps lock LED
+#undef CAPS_LOCK_LED_INDEX
 
 // Disable DIP switch
 #undef DIP_SWITCH_ENABLE
