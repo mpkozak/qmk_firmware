@@ -21,17 +21,17 @@ _q2="$QMK_HOME/keyboards/keychron/q2"
 _q60="$QMK_HOME/keyboards/keychron/q60"
 
 # custom keymaps
-_q0km="$_q0/rev_0131/keymaps/kozak"
+_q0km="$_q0/plus/keymaps/kozak"
 _q2km="$_q2/ansi_encoder/keymaps/kozak"
 _q60km="$_q60/ansi/keymaps/kozak"
 
 # customized keyboards
-_q0c="keychron/q0/rev_0131"
+_q0c="keychron/q0/plus"
 _q2c="keychron/q2/ansi_encoder"
 _q60c="keychron/q60/ansi"
 
 # build filenames
-_q0f="keychron_q0_rev_0131_kozak.bin"
+_q0f="keychron_q0_plus_kozak.bin"
 _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 

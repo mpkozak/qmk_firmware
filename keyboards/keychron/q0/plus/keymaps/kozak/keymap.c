@@ -36,6 +36,8 @@ enum user_keycodes {
 
 #define KC_TGTL KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE
 #define KC_TGCL KC_FN_LAYER_COLOR_TOGGLE
+#define KC_MCTL QK_KB_0
+#define KC_LPAD QK_KB_1
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
@@ -66,49 +68,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //     _______,   _______,  _______,  _______,  _______,
     //     _______,   _______,            _______),
 
-    [BASE] = LAYOUT_numpad_6x5(     // layer 0 - white
-        KC_MUTE,   TO(1),    TO(2),    TO(3),    TO(4),
+    [BASE] = LAYOUT_numpad_6x5(        // layer 0 - white
+        KC_MUTE,   KC_F1,    KC_F2,    KC_F3,    KC_BSPC,
         KC_ESC,    KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
-        KC_HOME,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
-        KC_END,    KC_P4,    KC_P5,    KC_P6,
-        KC_LCTL,   KC_P1,    KC_P2,    KC_P3,    LT(2,KC_PENT),
-        TT(3),     LT(1,KC_P0),        KC_PDOT),
+        KC_TAB,    KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
+        KC_LCTL,   KC_P4,    KC_P5,    KC_P6,
+        KC_LSFT,   KC_P1,    KC_P2,    KC_P3,    LT(1,KC_PENT),
+        MO(1),     LT(2,KC_P0),        KC_PDOT),
 
-    [BASE_CALC] = LAYOUT_numpad_6x5(     // layer 1 - orange
-        KC_ZACT,   TO(0),    TO(2),    TO(3),    TO(4),
-        KC_BSPC,   KC_PEQL,  KC_PSLS,  KC_PAST,  KC_PMNS,
-        KC_LPRN,   KC_P7,    KC_P8,    KC_P9,    KC_PPLS,
-        KC_RPRN,   KC_P4,    KC_P5,    KC_P6,
-        KC_SPC,    KC_P1,    KC_P2,    KC_P3,    LT(2,KC_PENT),
-        TT(3),     LT(5,KC_P0),        KC_PDOT),
-
-    [BASE_FN] = LAYOUT_numpad_6x5(     // layer 2 - cyan
-        KC_LSCR,   TO(1),    TO(0),    TO(3),    TO(4),
-        KC_BSPC,   KC_WBAK,  KC_WFOR,  KC_ZACT,  KC_ZMNS,
-        KC_PGUP,   KC_MVLT,  QK_KB_0,  KC_MVRT,  KC_ZPLS,
-        KC_PGDN,   KC_MVLS,  KC_UP,    KC_MVRS,
-        KC_LCMMD,  KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
-        _______,   LT(3,KC_SPC),       KC_LOPTN),
-
-    [_FN1] = LAYOUT_numpad_6x5(     // layer 3 - blue
-        KC_ZACT,   TO(1),    TO(2),    TO(0),    TO(4),
+    [BASE_FN] = LAYOUT_numpad_6x5(     // layer 1 - blue
+        KC_ZACT,   KC_F4,    KC_F5,    KC_F6,    KC_DEL,
         KC_LSCR,   G(KC_X),  G(KC_C),  G(KC_V),  KC_PSTT,
-        KC_FSTG,   KC_MVLT,  QK_KB_0,  KC_MVRT,  G(KC_Z),
-        KC_FRCQ,   KC_MVLS,  KC_UP,    KC_MVRS,
-        KC_BSPC,   KC_LEFT,  KC_DOWN,  KC_RGHT,  MT(MOD_LSFT,KC_PENT),
+        KC_SPC,    KC_MVLT,  KC_MCTL,  KC_MVRT,  G(KC_Z),
+        _______,   KC_MVLS,  KC_UP,    KC_MVRS,
+        _______,   KC_LEFT,  KC_DOWN,  KC_RGHT,  _______,
         _______,   KC_SPC,             KC_DESK),
 
-    [_FN2] = LAYOUT_numpad_6x5(     // layer 4 - green
-        RGB_TOG,   TO(1),    TO(2),    TO(3),    TO(0),
-        _______,   RGB_HUI,  RGB_SAI,  RGB_VAI,  _______,
-        KC_TGCL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  _______,
-        KC_TGTL,   RGB_MOD,  RGB_SPI,  _______,
-        _______,   RGB_RMOD, RGB_SPD,  _______,  _______,
-        _______,   RGB_TOG,            _______),
+    [_FN1] = LAYOUT_numpad_6x5(        // layer 2 - orange
+        KC_LSCR,   KC_F7,    KC_F8,    KC_F9,    _______,
+        TO(3),     KC_MVLT,  KC_MCTL,  KC_MVRT,  _______,
+        KC_SPC,    KC_MVLS,  KC_UP,    KC_MVRS,  _______,
+        MO(4),     KC_LEFT,  KC_DOWN,  KC_RGHT,
+        TO(4),     _______,  _______,  _______,  _______,
+        MO(3),     _______,            _______),
 
-    [_FN3] = LAYOUT_numpad_6x5(     // layer 5 - yellow
-        _______,   _______,  _______,  _______,  _______,
-        _______,   KC_DLR,   KC_PERC,  KC_CIRC,  KC_UNDS,
+    [_FN2] = LAYOUT_numpad_6x5(        // layer 3 - green
+        RGB_TOG,   KC_F10,   KC_F11,   KC_F12,   TO(0),
+        TO(0),     RGB_HUI,  RGB_SAI,  RGB_VAI,  KC_NO,
+        KC_TGCL,   RGB_HUD,  RGB_SAD,  RGB_VAD,  KC_NO,
+        KC_TGTL,   RGB_MOD,  RGB_SPI,  KC_NO,
+        KC_NO,     RGB_RMOD, RGB_SPD,  KC_NO,    KC_NO,
+        KC_NO,     RGB_TOG,            KC_NO),
+
+    [_FN3] = LAYOUT_numpad_6x5(        // layer 4 - yellow
+        KC_TRNS,   _______,  _______,  _______,  TO(0),
+        TO(0),     KC_DLR,   KC_PERC,  KC_CIRC,  KC_UNDS,
         _______,   KC_LPRN,  _______,  KC_RPRN,  KC_AMPR,
         _______,   _______,  _______,  _______,
         _______,   _______,  _______,  _______,  KC_PIPE,
@@ -118,7 +112,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [BASE_CALC] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
     [BASE_FN] = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
     [_FN1] = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
     [_FN2] = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
