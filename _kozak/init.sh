@@ -19,21 +19,25 @@ _common="$QMK_HOME/keyboards/keychron/common"
 _q0="$QMK_HOME/keyboards/keychron/q0"
 _q2="$QMK_HOME/keyboards/keychron/q2"
 _q60="$QMK_HOME/keyboards/keychron/q60"
+_tempo="$QMK_HOME/keyboards/mode/m60h"
 
 # custom keymaps
 _q0km="$_q0/plus/keymaps/kozak"
 _q2km="$_q2/ansi_encoder/keymaps/kozak"
 _q60km="$_q60/ansi/keymaps/kozak"
+_tempokm="$_tempo/keymaps/kozak"
 
 # customized keyboards
 _q0c="keychron/q0/plus"
 _q2c="keychron/q2/ansi_encoder"
 _q60c="keychron/q60/ansi"
+_tempoc="mode/m60h"
 
 # build filenames
 _q0f="keychron_q0_plus_kozak.bin"
 _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
+_tempof="mode_m60h_kozak.bin"
 
 
 # fs aliases
@@ -44,10 +48,12 @@ alias common='cd $_common; e'
 alias q0='cd "$_q0"; e'
 alias q2='cd "$_q2"; e'
 alias q60='cd "$_q60"; e'
+alias tempo='cd "$_tempo"; e'
+alias ek='e "$KOZAK"'
 alias e0='cd $_q0km; e'
 alias e2='cd $_q2km; e'
 alias e60='cd $_q60km; e'
-alias ek='e "$KOZAK"'
+alias etempo='cd $_tempokm; e'
 
 # autocorrect aliases
 alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
@@ -88,6 +94,11 @@ function build {
         kb="$_q60c"
         file="$_q60f"
         ac=1
+    elif [[ "$1" == "tempo" ]]; then
+        board_name="tempo"
+        kb="$_tempoc"
+        file="$_tempof"
+        # ac=1
     else
         echo "invalid selection: $1"
         return
