@@ -76,6 +76,12 @@
 // Disable num lock LED
 #undef NUM_LOCK_LED_INDEX
 
+// Reposition bootmagic to ESC key pos
+#undef BOOTMAGIC_LITE_ROW
+#undef BOOTMAGIC_LITE_COLUMN
+#define BOOTMAGIC_LITE_ROW 1
+#define BOOTMAGIC_LITE_COLUMN 0
+
 // Layer count
 #define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
