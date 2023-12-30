@@ -2,6 +2,7 @@ VIA_ENABLE = yes
 AUTOCORRECT_ENABLE = yes
 DIP_SWITCH_ENABLE = no
 KEY_OVERRIDE_ENABLE = yes
+LTO_ENABLE = yes
 
 SRC += keymap_user_config.c
 

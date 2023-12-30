@@ -60,15 +60,18 @@ alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
 
 alias acrm_q2='[ -e "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h ] && rm "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h'
 alias acrm_q60='[ -e "$_q60"/ansi/keymaps/kozak/autocorrect_data.h ] && rm "$_q60"/ansi/keymaps/kozak/autocorrect_data.h'
-alias acrm="acrm_q2 && acrm_q60"
+alias acrm_tempo='[ -e "$_tempo"/keymaps/kozak/autocorrect_data.h ] && rm "$_tempo"/keymaps/kozak/autocorrect_data.h'
+alias acrm="acrm_q2 && acrm_q60 && acrm_tempo"
 
 alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
 alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
-alias acg="acg_q2 && acg_q60"
+alias acg_tempo='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb mode/m60h -km kozak'
+alias acg="acg_q2 && acg_q60 && acg_tempo"
 
 alias acr="acrm; acg"
 alias acr_q2='acrm_q2; acg_q2'
 alias acr_q60='acrm_q60; acg_q60'
+alias acr_tempo='acrm_tempo; acg_tempo'
 
 
 
@@ -98,7 +101,7 @@ function build {
         board_name="tempo"
         kb="$_tempoc"
         file="$_tempof"
-        # ac=1
+        ac=1
     else
         echo "invalid selection: $1"
         return

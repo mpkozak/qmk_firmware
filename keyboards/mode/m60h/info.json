@@ -10,7 +10,7 @@
         "console": false,
         "extrakey": true,
         "mousekey": true,
-        "nkro": false,
+        "nkro": true,
         "rgblight": true
     },
     "matrix_pins": {
@@ -20,16 +20,16 @@
     "processor": "STM32F401",
     "rgblight": {
         "animations": {
-            "alternating": true,
-            "breathing": true,
-            "christmas": true,
-            "knight": true,
-            "rainbow_mood": true,
-            "rainbow_swirl": true,
-            "rgb_test": true,
-            "snake": true,
-            "static_gradient": true,
-            "twinkle": true
+            "alternating": false,
+            "breathing": false,
+            "christmas": false,
+            "knight": false,
+            "rainbow_mood": false,
+            "rainbow_swirl": false,
+            "rgb_test": false,
+            "snake": false,
+            "static_gradient": false,
+            "twinkle": false
         },
         "driver": "ws2812",
         "led_count": 20,
