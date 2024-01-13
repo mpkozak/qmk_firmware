@@ -66,7 +66,8 @@ alias acrm="acrm_q2 && acrm_q60 && acrm_tempo"
 alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
 alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
 alias acg_tempo='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb mode/m60h -km kozak'
-alias acg="acg_q2 && acg_q60 && acg_tempo"
+# alias acg="acg_q2 && acg_q60 && acg_tempo"
+alias acg="acg_q2 && acg_q60"
 
 alias acr="acrm; acg"
 alias acr_q2='acrm_q2; acg_q2'
@@ -101,7 +102,6 @@ function build {
         board_name="tempo"
         kb="$_tempoc"
         file="$_tempof"
-        ac=1
     else
         echo "invalid selection: $1"
         return
