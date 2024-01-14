@@ -18,13 +18,6 @@
 #include "keymap_user_config.h"
 #include "keymap_user.h"
 
-// enum user_bootloader_state {
-//     BOOTLOADER_INACTIVE,
-//     BOOTLOADER_PRESSED,
-//     BOOTLOADER_WAIT,
-//     BOOTLOADER_DO
-// } bootloader_state;
-
 #define KC_MCTL QK_KB_0
 #define KC_LPAD QK_KB_1
 
@@ -45,18 +38,6 @@
 #define KC_BSPW A(KC_BSPC)      // backspace word
 #define KC_FRCQ LAG(KC_ESC)     // force quit
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
-
-// const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
-// const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
-// const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
-
-// // This globally defines all key overrides to be used
-// const key_override_t **key_overrides = (const key_override_t *[]){
-//     &comma_override,
-//     &period_override,
-//     &hyphen_override,
-//     NULL // Null terminate the array of overrides!
-// };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -105,22 +86,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           _______, _______,                   _______,                            _______, _______
     )
 
-    // [0] = LAYOUT_60_hhkb(
-    //     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
-    //     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
-    //     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
-    //     KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, MO(1),
-    //                       KC_LALT, KC_LGUI,                   KC_SPC,                             KC_RGUI, KC_RALT
-    // ),
-
-    // [1] = LAYOUT_60_hhkb(
-    //     QK_BOOT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
-    //     KC_CAPS, _______, KC_UP,   _______, _______, KC_BRID, KC_BRIU, _______, KC_PSCR, KC_SCRL, KC_PAUS, KC_UP,   _______, _______,
-    //     _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, KC_HOME, KC_PGUP, KC_LEFT, KC_RGHT,          _______,
-    //     _______,          KC_VOLD, KC_VOLU, KC_MUTE, KC_MPLY, _______, _______, _______, KC_END,  KC_PGDN, KC_DOWN, _______, _______,
-    //                       _______, _______,                   _______,                            _______, _______
-    // )
-
     // [BASE_SPD] = LAYOUT_60_hhkb(   // layer 1 - cyan
     //     TO(0),   KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, KC_NO,   KC_NO,   KC_BSPW,
     //     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,   KC_BSPC,
@@ -131,128 +96,106 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// void keyboard_post_init_user(void) {
-// #ifdef AUTOCORRECT_OFF_AT_STARTUP
-//     // toggle autocorrect off at startup
-//     if (autocorrect_is_enabled()) {
-//         autocorrect_toggle();
-//     }
-// #endif
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    return process_record_kozak(keycode, record);
+}
+
+
+
+const rgblight_segment_t PROGMEM rbg_layer_base[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 20, BASE_LAYER_HSV}
+);
+
+const rgblight_segment_t PROGMEM rbg_layer_base_fn[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 20, FN0_LAYER_HSV}
+);
+
+const rgblight_segment_t PROGMEM rbg_layer_fn1[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 20, FN1_LAYER_HSV}
+);
+
+const rgblight_segment_t PROGMEM rbg_layer_fn2[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 20, FN2_LAYER_HSV}
+);
+
+const rgblight_segment_t* const PROGMEM rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    rbg_layer_base,
+    rbg_layer_base_fn,
+    rbg_layer_fn1,
+    rbg_layer_fn2
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = rgb_layers;
+}
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, BASE));
+    return state;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, BASE));
+    rgblight_set_layer_state(1, layer_state_cmp(state, BASE_FN));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _FN1));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _FN2));
+    return state;
+}
+
+
+
+
+
+// RGB rgb_scaled_to_val(uint8_t val, uint8_t red, uint8_t green, uint8_t blue) {
+//     float value = val;
+//     RGB rgb;
+//     rgb.r = red * (value / 255);
+//     rgb.g = green * (value / 255);
+//     rgb.b = blue * (value / 255);
+//     return rgb;
 // }
 
-// void housekeeping_task_user(void) {
-//     switch(bootloader_state) {
-//         case BOOTLOADER_DO:
-//             // bootloader was pressed two frames ago. RGB should now be off,
-//             // so we can call the bootloader.
-//             reset_keyboard();
-//             break;
-//         case BOOTLOADER_WAIT:
-//             // bootloader was pressed on previous frame, we wait this frame and
-//             // set flag to do bootloader at end of next frame. For some reason, my
-//             // Q2 needed this extra wait frame.
-//             bootloader_state = BOOTLOADER_DO;
-//             break;
-//         case BOOTLOADER_PRESSED:
-//             // User pressed bootloader keycode and RGB was disabled earlier in this
-//             // frame. However RGB changes wont take place immediately, so we set a
-//             // flag here which will be caught at end of the next frame.
-//             bootloader_state = BOOTLOADER_WAIT;
-//             break;
-//         default:
-//             break;
-//     }
-// }
-
-// layer_state_t layer_state_set_user(layer_state_t state) {
+// layer_state_t default_layer_state_set_user(layer_state_t state) {
+//     HSV hsv = {RGBLIGHT_DEFAULT_HUE, RGBLIGHT_DEFAULT_SAT, RGBLIGHT_DEFAULT_VAL};
+//     RGB rgb = hsv_to_rgb(hsv);
 //     switch (get_highest_layer(state)) {
-//         case BASE_SPD:
-//             if (!autocorrect_is_enabled()) {
-//                 autocorrect_enable();
+//         case BASE:
+//             if (rgblight_is_enabled()) {
+//                 rgblight_setrgb(rgb.r, rgb.g, rgb.b);
 //             }
 //             break;
 //         default:
-//             if (autocorrect_is_enabled()) {
-//                 autocorrect_disable();
-//             }
 //             break;
 //     }
 //     return state;
 // }
 
-// bool is_number(uint16_t keycode) {
-//     switch (keycode) {
-//         case KC_P1 ... KC_P0:
-//         case KC_1 ... KC_0:
-//             return true;
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     uint8_t current_layer = get_highest_layer(layer_state);
+//     uint8_t current_val = rgblight_get_val();
+//     HSV hsv = {RGBLIGHT_DEFAULT_HUE, RGBLIGHT_DEFAULT_SAT, current_val};
+//     RGB rgb = hsv_to_rgb(hsv);
+//     switch (current_layer) {
+//         case BASE:
+//             break;
+//         case BASE_FN:
+//             rgb = rgb_scaled_to_val(current_val, FN0_LAYER_COLOR);
+//             break;
+//         case _FN1:
+//             rgb = rgb_scaled_to_val(current_val, FN1_LAYER_COLOR);
+//             break;
+//         case _FN2:
+//             rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
+//             break;
 //         default:
-//             return false;
+//             rgb = hsv_to_rgb(hsv);
+//             break;
 //     }
-// }
-
-// bool is_alpha (uint16_t keycode) {
-//     switch (keycode) {
-//         case KC_A ... KC_Z:
-//             return true;
-//         default:
-//             return false;
+//     if (rgblight_is_enabled()) {
+//         rgblight_setrgb(rgb.r, rgb.g, rgb.b);
 //     }
+//     return state;
 // }
-
-// bool is_prev_alpha = false;
-
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     if (process_record_kozak(keycode, record)) {
-//         // ignore suprious number keys in the middle of alphas for speed layer
-//         if (get_highest_layer(layer_state) == BASE_SPD) {
-//             if (is_number(keycode)) {
-//                 if (is_prev_alpha) {
-//                     return false;
-//                 }
-//             }
-//             // update previous keycode is_alpha state
-//             if (record->event.pressed) {
-//                 if (is_alpha(keycode)) {    // keycode is alpha
-//                     if (!is_prev_alpha) {
-//                         is_prev_alpha = true;
-//                     }
-//                 } else {                    // keycode is not alpha
-//                     if (is_prev_alpha) {
-//                         is_prev_alpha = false;
-//                     }
-//                 }
-//             }
-//         }
-//         // switch (keycode) {
-//         //     case QK_BOOT:
-//         //         // We want to turn off LEDs before calling bootloader, so here
-//         //         // we call rgb_matrix_disable_noeeprom() and set a flag because
-//         //         // the LEDs won't be updated until the next frame.
-//         //         if (record->event.pressed) {
-//         //             rgb_matrix_disable_noeeprom();
-//         //             bootloader_state = BOOTLOADER_PRESSED;
-//         //         }
-//         //         return false;  // Skip all further processing of this key
-//         //     case RGB_TOG:
-//         //         if (record->event.pressed) {
-//         //             rgb_matrix_toggle_noeeprom();
-//         //             user_config_toggle_enable_rgb();
-//         //         }
-//         //         return false;  // Skip all further processing of this key
-//         //     case KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE:
-//         //         if (record->event.pressed) {
-//         //             user_config_toggle_fn_layer_transparent_keys_off();
-//         //         }
-//         //         return false;  // Skip all further processing of this key
-//         //     case KC_FN_LAYER_COLOR_TOGGLE:
-//         //         if (record->event.pressed) {
-//         //             user_config_toggle_fn_layer_color_enable();
-//         //         }
-//         //         return false;  // Skip all further processing of this key
-//         //     default:
-//         //         return true;  // Process all other keycodes normally
-//         // }
-//     }
-//     return true;
-// }
-

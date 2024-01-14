@@ -20,6 +20,10 @@
 #undef RGBLIGHT_DEFAULT_MODE
 #define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
 
+// config layer lights
+#define RGBLIGHT_LAYERS
+#define RGBLIGHT_LAYERS_RETAIN_VAL
+
 // default options applied when eeprom is cleared
 #define RGBLIGHT_DEFAULT_HUE           36            // default hue - base layer [warm white]
 #define RGBLIGHT_DEFAULT_SAT           159           // default saturation - base layer
@@ -32,10 +36,16 @@
 #define RGBLIGHT_SAT_STEP 8       // units to step when in/decreasing saturation
 #define RGBLIGHT_VAL_STEP 8       // units to step when in/decreasing value (brightness)
 
+// // Dynamic Fn Layer RGB indicator options
+// #define FN0_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 1; RGB blue
+// #define FN1_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 2; RGB orange
+// #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 3; RGB green
+
 // Dynamic Fn Layer RGB indicator options
-#define FN0_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 1; RGB blue
-#define FN1_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 2; RGB orange
-#define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 3; RGB green
+#define BASE_LAYER_HSV 36,  159, 63    // layer 0; HSV white
+#define FN0_LAYER_HSV  173, 252, 255   // layer 1; HSV blue
+#define FN1_LAYER_HSV  3,   252, 255   // layer 2; HSV orange
+#define FN2_LAYER_HSV  88,  252, 255   // layer 3; HSV green
 
 // Override + Disable RGB Light Animation modes
 #undef RGBLIGHT_ANIMATIONS
