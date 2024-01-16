@@ -27,7 +27,7 @@
 // default options applied when eeprom is cleared
 #define RGBLIGHT_DEFAULT_HUE           36            // default hue - base layer [warm white]
 #define RGBLIGHT_DEFAULT_SAT           159           // default saturation - base layer
-#define RGBLIGHT_DEFAULT_VAL           63            // default brightness
+#define RGBLIGHT_DEFAULT_VAL           47            // default brightness
 #define RGBLIGHT_DEFAULT_SPD           0             // default effect speed
 #define RGBLIGHT_DEFAULT_ON            true
 
@@ -42,10 +42,10 @@
 // #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 3; RGB green
 
 // Dynamic Fn Layer RGB indicator options
-#define BASE_LAYER_HSV 36,  159, 63    // layer 0; HSV white
-#define FN0_LAYER_HSV  173, 252, 63    // layer 1; HSV blue
-#define FN1_LAYER_HSV  3,   252, 63    // layer 2; HSV orange
-#define FN2_LAYER_HSV  88,  252, 63    // layer 3; HSV green
+#define BASE_LAYER_HSV 36,  159, 47    // layer 0; HSV white
+#define FN0_LAYER_HSV  173, 252, 47    // layer 1; HSV blue
+#define FN1_LAYER_HSV  3,   252, 47    // layer 2; HSV orange
+#define FN2_LAYER_HSV  88,  252, 47    // layer 3; HSV green
 
 // Override + Disable RGB Light Animation modes
 #undef RGBLIGHT_ANIMATIONS
@@ -81,3 +81,4 @@
 
 // RBG Light Sleep
 #define RGBLIGHT_SLEEP
+#define RGBLIGHT_TIMEOUT 150000  // 2.5 minutes
