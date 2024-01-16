@@ -56,6 +56,8 @@ enum user_keycodes {
 #define KC_BSPW A(KC_BSPC)      // backspace word
 #define KC_FRCQ LAG(KC_ESC)     // force quit
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
+#define KC_NTAB G(KC_T)         // new tab
+#define KC_REFR G(KC_R)         // refresh
 
 const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
 const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
@@ -95,14 +97,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE_FN] = LAYOUT_ansi_67(        // layer 2 - blue
         TO(0),        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
-        KC_INS,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_MVLS, KC_MVRS, KC_DEL,        LT(4,KC_GRV),
+        KC_INS,         KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_MVLS, KC_MVRS, KC_DEL,        LT(4,KC_GRV),
         KC_CAPS,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_MCTL,        KC_ENT,        LT(3,KC_BSLS),
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, KC_NO,   KC_MVLT, KC_MVRT, KC_CMNT,      KC_RSFT,       KC_MCTL,
         KC_LCTL,   KC_LOPT,   KC_LCMD,                          _______,                          KC_CAPS,  TT(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
     [_FN1] = LAYOUT_ansi_67(        // layer 3 - orange [right-side arrows + quick toggles]
         KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    _______,       KC_LSCR,
-        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, _______,       _______,
+        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, _______,       _______,
         _______,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,        _______,       _______,
         _______,            KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,      _______,       KC_MCTL,
         _______,   _______,   _______,                          _______,                          KC_CAPS,  TT(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS),

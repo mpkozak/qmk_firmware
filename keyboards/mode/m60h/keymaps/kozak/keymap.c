@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LOPT, KC_LCMD,                   LT(1,KC_SPC),                       KC_RCMD, KC_ROPT
     ),
 
-    [BASE_FN] = LAYOUT_60_hhkb(    // layer 2 - blue
+    [BASE_FN] = LAYOUT_60_hhkb(    // layer 1 - blue
         TO(0),   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
         KC_INS,  KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_MVLS, KC_MVRS, KC_DEL,
         KC_LCTL, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_MCTL,          KC_ENT,
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LOPT, KC_LCMD,                   _______,                            KC_RCMD, KC_ROPT
     ),
 
-    [_FN1] = LAYOUT_60_hhkb(       // layer 3 - orange [right-side arrows + quick toggles]
+    [_FN1] = LAYOUT_60_hhkb(       // layer 2 - orange [right-side arrows + quick toggles]
         KC_LSCR, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
         KC_TAB,  KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, KC_MUTE,
         _______, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,          _______,
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           _______, _______,                   _______,                            _______, TT(3)
     ),
 
-    [_FN2] = LAYOUT_60_hhkb(       // layer 4 - green [mac fn keys + rbg settings]
+    [_FN2] = LAYOUT_60_hhkb(       // layer 3 - green [mac fn keys + rbg settings]
         TO(0),   KC_BRID, KC_BRIU, KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
         _______, KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______, _______,
         _______, RGB_SAD, RGB_SAI, KC_NO,   KC_NO,   RGB_HUD, RGB_HUI, KC_NO,   RGB_VAD, RGB_VAI, KC_NO,   KC_NO,            _______,
