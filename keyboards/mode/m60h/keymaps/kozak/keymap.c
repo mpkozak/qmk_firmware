@@ -130,41 +130,43 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
 
+// https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md#keyboard-housekeeping
 
-// https://gist.github.com/aashreys/01cb34605a290a7cfb94a856bdabc94c
-
-static uint16_t key_timer; // timer to track the last keyboard activity
-static void refresh_rgb(void); // refreshes the activity timer and RGB, invoke whenever activity happens
+static uint32_t key_timer;           // timer for last keyboard activity, use 32bit value and function to make longer idle time possible
+static void refresh_rgb(void);       // refreshes the activity timer and RGB, invoke whenever any activity happens
 static void check_rgb_timeout(void); // checks if enough time has passed for RGB to timeout
-bool is_rgb_timeout = false; // store if RGB has timed out or not in a boolean
+bool is_rgb_timeout = false;         // store if RGB has timed out or not in a boolean
 
-void refresh_rgb() {
-  key_timer = timer_read(); // store time of last refresh
-  if (is_rgb_timeout) { // only do something if rgb has timed out
-    is_rgb_timeout = false;
-    rgblight_wakeup();
-  }
+void refresh_rgb(void) {
+    key_timer = timer_read32();     // store time of last refresh
+    if (is_rgb_timeout) {
+        is_rgb_timeout = false;
+        rgblight_wakeup();
+    }
 }
 
-void check_rgb_timeout() {
-  if (!is_rgb_timeout && timer_elapsed(key_timer) > RGBLIGHT_TIMEOUT) {
-    rgblight_suspend();
-    is_rgb_timeout = true;
-  }
+void check_rgb_timeout(void) {
+    if (!is_rgb_timeout && timer_elapsed32(key_timer) > RGBLIGHT_TIMEOUT) {     // check if RGB has already timeout and if enough time has passed
+        rgblight_suspend();
+        is_rgb_timeout = true;
+    }
 }
 
-/* Runs at the end of each scan loop, check if RGB timeout has occured */
+/* Then, call the above functions from QMK's built in post processing functions like so */
+/* Runs at the end of each scan loop, check if RGB timeout has occured or not */
 void housekeeping_task_user(void) {
-  #ifdef RGBLIGHT_TIMEOUT
-  check_rgb_timeout();
-  #endif
+    #ifdef RGBLIGHT_TIMEOUT
+        check_rgb_timeout();
+    #endif
 }
 
 /* Runs after each key press, check if activity occurred */
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
-  #ifdef RGBLIGHT_TIMEOUT
-  if (record->event.pressed) refresh_rgb();
-  #endif
+    #ifdef RGBLIGHT_TIMEOUT
+        if (record->event.pressed) {
+            refresh_rgb();
+        }
+    #endif
 }
 
 

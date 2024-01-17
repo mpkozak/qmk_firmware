@@ -80,5 +80,5 @@
 #define AUTOCORRECT_OFF_AT_STARTUP
 
 // RBG Light Sleep
-#define RGBLIGHT_SLEEP
-#define RGBLIGHT_TIMEOUT 150000  // 2.5 minutes
+#define RGBLIGHT_SLEEP              // enable rgblight_suspend() and rgblight_wakeup() in keymap.c
+#define RGBLIGHT_TIMEOUT 150000     // 2.5 minutes
