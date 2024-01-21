@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN2] = LAYOUT_60_hhkb(       // layer 3 - green [mac fn keys + rbg settings]
         TO(0),   KC_BRID, KC_BRIU, KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
-        _______, KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______, _______,
+        _______, KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______, _______,
         _______, RGB_SAD, RGB_SAI, KC_NO,   KC_NO,   RGB_HUD, RGB_HUI, KC_NO,   RGB_VAD, RGB_VAI, KC_NO,   KC_NO,            _______,
         RGB_TOG,          KC_NO,   KC_NO,   RGB_SPD, RGB_SPI, KC_NO,   RGB_RMOD,RGB_MOD, KC_NO,   KC_NO,   KC_NO,   _______, _______,
                           _______, _______,                   _______,                            _______, _______

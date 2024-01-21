@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN2] = LAYOUT_ansi_67(        // layer 4 - green [mac fn keys + rbg settings]
         TO(0),        KC_BRID, KC_BRIU, KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,   _______,       RGB_TOG,
-        _______,        KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TGTL, KC_TGCL, _______,       _______,
+        _______,        KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TGTL, KC_TGCL, _______,       _______,
         _______,          RGB_SAD, RGB_SAI, KC_NO,   KC_NO,   RGB_HUD, RGB_HUI, KC_NO,   RGB_VAD, RGB_VAI, KC_NO,   KC_NO,          _______,       _______,
         RGB_TOG,            KC_NO,   KC_NO,   RGB_SPD, RGB_SPI, KC_NO,   RGB_RMOD,RGB_MOD, KC_NO,   KC_NO,   KC_NO,        _______,       KC_ZPLS,
         _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   KC_MVLT, KC_ZMNS, KC_MVRT)
