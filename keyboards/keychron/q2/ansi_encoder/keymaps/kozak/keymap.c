@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN1] = LAYOUT_ansi_67(        // layer 3 - orange [right-side arrows + quick toggles]
         KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    _______,       KC_LSCR,
         KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, _______,       _______,
-        _______,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,        _______,       _______,
+        _______,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,        KC_PENT,       _______,
         _______,            KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,      _______,       KC_MCTL,
         _______,   _______,   _______,                          _______,                          KC_CAPS,  TT(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS),
 
