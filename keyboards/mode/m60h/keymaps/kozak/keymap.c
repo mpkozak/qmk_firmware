@@ -32,11 +32,11 @@
 #define KC_DESK KC_F11          // show desktop
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
-#define KC_BSPW A(KC_BSPC)      // backspace word
-#define KC_FRCQ LAG(KC_ESC)     // force quit
+// #define KC_BSPW A(KC_BSPC)      // backspace word
+// #define KC_FRCQ LAG(KC_ESC)     // force quit
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
 #define KC_NTAB G(KC_T)         // new tab
-#define KC_REFR G(KC_R)         // refresh
+#define KC_REFR LSG(KC_R)       // refresh
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -47,13 +47,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
      * │ Ctrl │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │  Enter │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┤
-     * │ Shift  │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ Shift│MO1│
+     * │ Shift  │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ Shift│ Fn│
      * └─────┬──┴┬──┴──┬┴───┴───┴───┴───┴───┴───┴──┬┴───┴┬───┬─┴───┘
-     *       │Alt│ GUI │                           │ GUI │Alt│
+     *       │Opt│ Cmd │                           │ Cmd │Opt│
      *       └───┴─────┴───────────────────────────┴─────┴───┘
      */
 
-    [BASE] = LAYOUT_60_hhkb(       // layer 0 - white
+    [BASE] = LAYOUT_60_hhkb(       // layer 0 BASE - white
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LOPT, KC_LCMD,                   LT(1,KC_SPC),                       KC_RCMD, KC_ROPT
     ),
 
-    [BASE_FN] = LAYOUT_60_hhkb(    // layer 1 - blue
+    [BASE_FN] = LAYOUT_60_hhkb(    // layer 1 BASE_FN - blue
         TO(0),   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
         KC_INS,  KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_MVLS, KC_MVRS, KC_DEL,
         KC_LCTL, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_MCTL,          KC_ENT,
@@ -69,17 +69,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LOPT, KC_LCMD,                   _______,                            KC_RCMD, KC_ROPT
     ),
 
-    [_FN1] = LAYOUT_60_hhkb(       // layer 2 - orange [right-side arrows + quick toggles]
+    [_FN1] = LAYOUT_60_hhkb(       // layer 2 _FN1 - orange [right-side arrows + quick toggles]
         KC_LSCR, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
         KC_TAB,  KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT, KC_MUTE,
-        _______, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,          KC_PENT,
+        _______, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,          KC_PENT,
         _______,          KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS, KC_CAPS, _______,
                           _______, _______,                   _______,                            _______, TT(3)
     ),
 
-    [_FN2] = LAYOUT_60_hhkb(       // layer 3 - green [mac fn keys + rbg settings]
-        TO(0),   KC_BRID, KC_BRIU, KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
-        _______, KC_NO,   KC_NO,   KC_NO,   NK_TOGG, KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______, _______,
+    [_FN2] = LAYOUT_60_hhkb(       // layer 3 _FN2 - green [mac media keys + rbg settings]
+        TO(0),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MPRV, KC_MPLY, KC_MNXT, KC_NO,   KC_NO,   KC_NO,   _______, _______,
+        _______, QK_BOOT, KC_NO,   KC_NO,   NK_TOGG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,
         _______, RGB_SAD, RGB_SAI, KC_NO,   KC_NO,   RGB_HUD, RGB_HUI, KC_NO,   RGB_VAD, RGB_VAI, KC_NO,   KC_NO,            _______,
         RGB_TOG,          KC_NO,   KC_NO,   RGB_SPD, RGB_SPI, KC_NO,   RGB_RMOD,RGB_MOD, KC_NO,   KC_NO,   KC_NO,   _______, _______,
                           _______, _______,                   _______,                            _______, _______
