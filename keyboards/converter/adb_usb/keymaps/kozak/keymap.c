@@ -39,11 +39,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_m0116_ansi(
                                                     QK_BOOT,
         _______,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,     KC_DEL,         KC_NO,  KC_NO,  KC_NO,  KC_MUTE,
-        KC_INS,     KC_MVLT,KC_MVRT,KC_EMOC,KC_REFR,KC_NTAB,KC_NO,  KC_NO,  KC_UP,  KC_NO,  KC_NO,  KC_NO,  KC_NO,                  KC_NO,  KC_NO,  KC_NO,  KC_VOLU,
-        _______,      KC_MVLS,KC_MVRS,KC_DESK,KC_FSTG,KC_LPAD,KC_NO,  KC_LEFT,KC_DOWN,KC_RGHT,KC_NO,  KC_NO,        _______,        KC_NO,  KC_NO,  KC_NO,  KC_VOLD,
+        KC_INS,     KC_MVLT,KC_MVRT,KC_EMOC,KC_REFR,KC_NTAB,KC_NO,  KC_NO,  KC_UP,  KC_NO,  KC_NO,  KC_NO,  KC_NO,                  KC_NO,  KC_UP,  KC_NO,  KC_VOLU,
+        _______,      KC_MVLS,KC_MVRS,KC_DESK,KC_FSTG,KC_LPAD,KC_NO,  KC_LEFT,KC_DOWN,KC_RGHT,KC_NO,  KC_NO,        _______,        KC_LEFT,KC_DOWN,KC_RGHT,KC_VOLD,
         _______,          KC_NO,  KC_NO,  KC_NO,  KC_PSTT,KC_WBAK,KC_WFOR,KC_MCTL,KC_DESK,KC_MVLS,KC_MVRS,          _______,        KC_NO,  KC_NO,  KC_NO,
-        _______,_______,   _______,   _______,               _______,               _______,_______,_______,_______,_______,        _______,        KC_NO,  _______
-    ),
+        _______,_______,   _______,   _______,               _______,               _______,KC_MVLS,KC_MVRS,KC_DESK,_______,        _______,        KC_NO,  _______
+    )
 };
 
 
