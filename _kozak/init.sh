@@ -53,11 +53,13 @@ alias q0='cd "$_q0"; e'
 alias q2='cd "$_q2"; e'
 alias q60='cd "$_q60"; e'
 alias tempo='cd "$_tempo"; e'
+alias adb='cd "$_adb"; e'
 alias ek='e "$KOZAK"'
 alias e0='cd $_q0km; e'
 alias e2='cd $_q2km; e'
 alias e60='cd $_q60km; e'
 alias etempo='cd $_tempokm; e'
+alias eadb='cd $_adbkm; e'
 
 # autocorrect aliases
 alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
