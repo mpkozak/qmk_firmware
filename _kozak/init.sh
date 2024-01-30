@@ -20,24 +20,28 @@ _q0="$QMK_HOME/keyboards/keychron/q0"
 _q2="$QMK_HOME/keyboards/keychron/q2"
 _q60="$QMK_HOME/keyboards/keychron/q60"
 _tempo="$QMK_HOME/keyboards/mode/m60h"
+_adb="$QMK_HOME/keyboards/converter/adb_usb"
 
 # custom keymaps
 _q0km="$_q0/plus/keymaps/kozak"
 _q2km="$_q2/ansi_encoder/keymaps/kozak"
 _q60km="$_q60/ansi/keymaps/kozak"
 _tempokm="$_tempo/keymaps/kozak"
+_adbkm="$_adb/keymaps/kozak"
 
 # customized keyboards
 _q0c="keychron/q0/plus"
 _q2c="keychron/q2/ansi_encoder"
 _q60c="keychron/q60/ansi"
 _tempoc="mode/m60h"
+_adbc="converter/adb_usb/rev1"
 
 # build filenames
 _q0f="keychron_q0_plus_kozak.bin"
 _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 _tempof="mode_m60h_kozak.bin"
+_adbf="converter_adb_usb_rev1_kozak.hex"
 
 
 # fs aliases
@@ -82,6 +86,7 @@ function build {
     local board_name=""
     local kb=""
     local file=""
+    local ext="bin"
     local ac=0
 
     if [[ "$1" == "q0" ]]; then
@@ -102,6 +107,11 @@ function build {
         board_name="tempo"
         kb="$_tempoc"
         file="$_tempof"
+    elif [[ "$1" == "adb" ]]; then
+        board_name="m0116"
+        kb="$_adbc"
+        file="$_adbf"
+        ext="hex"
     else
         echo "invalid selection: $1"
         return
@@ -114,7 +124,7 @@ function build {
 
     echo "building the $board_name..."
 
-    local fw_name="$board_name-kozak_$sha.bin"
+    local fw_name="$board_name-kozak_$sha.$ext"
 
     if [[ $ac -eq 1 ]]; then
         echo "updating autocorrect definitions"
