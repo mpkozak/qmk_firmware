@@ -3,7 +3,7 @@
 
 
 #define KC_SPUP LT(1,KC_SPC)      // space-fn
-#define KC_UPUP LT(1,KC_SPC)      // up-fn
+#define KC_UPUP LT(1,KC_UP)       // up-fn
 #define KC_NZUP LT(1,KC_P0)       // nzero-fn
 #define KC_GCMD LGUI_T(KC_GRV)    // grave-command
 #define KC_BCMD RGUI_T(KC_BSLS)   // backslash-command
