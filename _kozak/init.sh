@@ -29,7 +29,8 @@ _q2km="$_q2/ansi_encoder/keymaps/kozak"
 _q60km="$_q60/ansi/keymaps/kozak"
 _tempokm="$_tempo/keymaps/kozak"
 _adbkm="$_adb/keymaps/kozak"
-_m0110km="$_m0110/keymaps/kozak"
+_m0110km="$_m0110/keymaps/kozak-m0110"
+_m0110akm="$_m0110/keymaps/kozak-m0110a"
 
 # customized keyboards
 _q0c="keychron/q0/plus"
@@ -45,7 +46,8 @@ _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 _tempof="mode_m60h_kozak.bin"
 _adbf="converter_adb_usb_rev1_kozak.hex"
-_m0110f="converter_m0110_usb_kozak.hex"
+_m0110f="converter_m0110_usb_kozak-m0110.hex"
+_m0110af="converter_m0110_usb_kozak-m0110a.hex"
 
 
 # fs aliases
@@ -66,6 +68,7 @@ alias e60='cd $_q60km; e'
 alias etempo='cd $_tempokm; e'
 alias eadb='cd $_adbkm; e'
 alias em0110='cd "$_m0110km"; e'
+alias em0110a='cd "$_m0110akm"; e'
 
 # autocorrect aliases
 alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
@@ -92,6 +95,7 @@ function build {
     local sha="$(git rev-parse --short HEAD)"
     local board_name=""
     local kb=""
+    local km="kozak"
     local file=""
     local ext="bin"
     local ac=0
@@ -119,9 +123,16 @@ function build {
         kb="$_adbc"
         file="$_adbf"
         ext="hex"
+    elif [[ "$1" == "m0110a" ]]; then
+        board_name="m0110a"
+        kb="$_m0110c"
+        km="kozak-m0110a"
+        file="$_m0110af"
+        ext="hex"
     elif [[ "$1" == "m0110" ]]; then
         board_name="m0110"
         kb="$_m0110c"
+        km="kozak-m0110"
         file="$_m0110f"
         ext="hex"
     else
@@ -144,7 +155,7 @@ function build {
     fi
 
     qmk clean
-    qmk compile -kb "$kb" -km kozak
+    qmk compile -kb "$kb" -km "$km"
 
     mv "$QMK_HOME/$file" "$BUILDS/$fw_name"
 
