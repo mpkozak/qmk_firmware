@@ -28,7 +28,7 @@ _q0km="$_q0/plus/keymaps/kozak"
 _q2km="$_q2/ansi_encoder/keymaps/kozak"
 _q60km="$_q60/ansi/keymaps/kozak"
 _tempokm="$_tempo/keymaps/kozak"
-_adbkm="$_adb/keymaps/kozak"
+_m0116km="$_adb/keymaps/kozak-m0116"
 _m0110km="$_m0110/keymaps/kozak-m0110"
 _m0110akm="$_m0110/keymaps/kozak-m0110a"
 
@@ -45,7 +45,7 @@ _q0f="keychron_q0_plus_kozak.bin"
 _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 _tempof="mode_m60h_kozak.bin"
-_adbf="converter_adb_usb_rev1_kozak.hex"
+_m0116f="converter_adb_usb_rev1_kozak-m0116.hex"
 _m0110f="converter_m0110_usb_kozak-m0110.hex"
 _m0110af="converter_m0110_usb_kozak-m0110a.hex"
 
@@ -66,7 +66,7 @@ alias e0='cd $_q0km; e'
 alias e2='cd $_q2km; e'
 alias e60='cd $_q60km; e'
 alias etempo='cd $_tempokm; e'
-alias eadb='cd $_adbkm; e'
+alias em0116='cd $_m0116km; e'
 alias em0110='cd "$_m0110km"; e'
 alias em0110a='cd "$_m0110akm"; e'
 
@@ -118,10 +118,11 @@ function build {
         board_name="tempo"
         kb="$_tempoc"
         file="$_tempof"
-    elif [[ "$1" == "adb" ]]; then
+    elif [[ "$1" == "m0116" ]]; then
         board_name="m0116"
         kb="$_adbc"
-        file="$_adbf"
+        km="kozak-m0116"
+        file="$_m0116f"
         ext="hex"
     elif [[ "$1" == "m0110a" ]]; then
         board_name="m0110a"
