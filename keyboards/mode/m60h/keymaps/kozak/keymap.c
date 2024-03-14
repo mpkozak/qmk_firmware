@@ -42,7 +42,7 @@
 #define KC_RCLF RCMD_T(KC_LEFT) // right command under left arrow
 #define KC_RFRT LT(2, KC_RGHT)  // right fn (layer 2) under right arrow
 #define KC_RSUP RSFT_T(KC_UP)   // right shift under up arrow
-#define KC_RODN RSFT_T(KC_DOWN) // right option under down arrow
+#define KC_RODN ROPT_T(KC_DOWN) // right option under down arrow
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
