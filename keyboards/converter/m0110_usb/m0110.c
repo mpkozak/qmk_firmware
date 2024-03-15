@@ -106,7 +106,9 @@ void m0110_init(void) {
 uint8_t m0110_send(uint8_t data) {
     m0110_error = 0;
 
-    print("m0110_send: "); print_hex8(data); print("\n");
+    if (data != 0x14) {
+        print("m0110_send: "); print_hex8(data); print("\n");
+    }
 
     request();
     WAIT_MS(clock_lo, 250, 1);  // keyboard may block long time
@@ -146,7 +148,9 @@ uint8_t m0110_recv(void) {
     }
     idle();
 
-    print("m0110_recv: "); print_hex8(data); print("\n");
+    if (data != 0x7B) {
+        print("m0110_recv: "); print_hex8(data); print("\n");
+    }
 
     return data;
 ERROR:
