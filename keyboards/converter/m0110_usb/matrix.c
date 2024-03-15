@@ -34,8 +34,8 @@ Ported to QMK by Techsock <info@techsock.com>
 
 #define CAPS        0x39
 #define CAPS_BREAK  (CAPS | 0x80)
-#define ROW(key)    ((key)>>3&0x0F)
-#define COL(key)    ((key)&0x07)
+#define ROW(key)    ((key)>>3&0x0F)     // bits 3-6 of input key
+#define COL(key)    ((key)&0x07)        // bits 0-2 of input key (rightmost 3 bits)
 
 
 static bool is_modified = false;

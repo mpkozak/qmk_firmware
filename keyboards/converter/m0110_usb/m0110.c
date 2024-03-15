@@ -92,6 +92,7 @@ void m0110_init(void) {
     _delay_ms(1000);
 
     /* Not needed to initialize in fact.
+    */
         uint8_t data;
         m0110_send(M0110_MODEL);
         data = m0110_recv();
@@ -100,11 +101,12 @@ void m0110_init(void) {
         m0110_send(M0110_TEST);
         data = m0110_recv();
         print("m0110_init test: "); print_hex8(data); print("\n");
-    */
 }
 
 uint8_t m0110_send(uint8_t data) {
     m0110_error = 0;
+
+    print("m0110_send: "); print_hex8(data); print("\n");
 
     request();
     WAIT_MS(clock_lo, 250, 1);  // keyboard may block long time
@@ -143,6 +145,9 @@ uint8_t m0110_recv(void) {
         }
     }
     idle();
+
+    print("m0110_recv: "); print_hex8(data); print("\n");
+
     return data;
 ERROR:
     print("m0110_recv err: ");
@@ -301,7 +306,11 @@ uint8_t m0110_recv_key(void) {
     }
 }
 
-static inline uint8_t raw2scan(uint8_t raw) { return (raw == M0110_NULL) ? M0110_NULL : ((raw == M0110_ERROR) ? M0110_ERROR : (((raw & 0x80) | ((raw & 0x7F) >> 1)))); }
+static inline uint8_t raw2scan(uint8_t raw) {
+    return (raw == M0110_NULL) ? M0110_NULL :
+           ((raw == M0110_ERROR) ? M0110_ERROR :
+           (((raw & 0x80) | ((raw & 0x7F) >> 1))));
+}
 
 static inline uint8_t inquiry(void) {
     m0110_send(M0110_INQUIRY);
