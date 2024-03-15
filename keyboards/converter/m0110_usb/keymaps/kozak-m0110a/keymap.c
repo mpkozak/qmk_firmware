@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,                            _______,                            _______, _______, _______, _______, _______,         _______,          _______
     ),
     [_FN1] = LAYOUT_ansi(
-        KC_LSCR, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,         QK_BOOT, _______, _______, KC_MUTE,
+        KC_LSCR, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,         QK_BOOT, QK_RBT,  DB_TOGG, KC_MUTE,
         KC_INS,  KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT,                  _______, _______, _______, KC_VOLD,
         _______, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,          _______,         _______, _______, _______, KC_VOLU,
         _______,          KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,         _______, _______, _______, _______,
