@@ -38,7 +38,7 @@ _q2c="keychron/q2/ansi_encoder"
 _q60c="keychron/q60/ansi"
 _tempoc="mode/m60h"
 _adbc="converter/adb_usb/rev1"
-_m0110c="converter/m0110_usb"
+_m0110c="converter/m0110_usb/kozak"
 
 # build filenames
 _q0f="keychron_q0_plus_kozak.bin"
@@ -46,8 +46,8 @@ _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 _tempof="mode_m60h_kozak.bin"
 _m0116f="converter_adb_usb_rev1_kozak-m0116.hex"
-_m0110f="converter_m0110_usb_kozak-m0110.hex"
-_m0110af="converter_m0110_usb_kozak-m0110a.hex"
+_m0110f="converter_m0110_usb_kozak_kozak-m0110.hex"
+_m0110af="converter_m0110_usb_kozak_kozak-m0110a.hex"
 
 
 # fs aliases
