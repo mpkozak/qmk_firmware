@@ -17,8 +17,8 @@
 #pragma once
 
 // Override info.json
+#undef MANUFACTURER
 #define MANUFACTURER "kozak"
-// #define PRODUCT "M0110"
 
 // Override Layer count
 #undef DYNAMIC_KEYMAP_LAYER_COUNT

@@ -17,5 +17,5 @@
 #pragma once
 
 // Override info.json
-// #define MANUFACTURER "kozak"
+#undef PRODUCT
 #define PRODUCT "M0110"
