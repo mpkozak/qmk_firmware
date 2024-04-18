@@ -29,8 +29,8 @@ _q2km="$_q2/ansi_encoder/keymaps/kozak"
 _q60km="$_q60/ansi/keymaps/kozak"
 _tempokm="$_tempo/keymaps/kozak"
 _m0116km="$_adb/keymaps/kozak-m0116"
-_m0110km="$_m0110/keymaps/kozak-m0110"
-_m0110akm="$_m0110/keymaps/kozak-m0110a"
+_m0110km="$_m0110/kozak/keymaps/m0110"
+_m0110akm="$_m0110/kozak/keymaps/m0110a"
 
 # customized keyboards
 _q0c="keychron/q0/plus"
@@ -46,8 +46,8 @@ _q2f="keychron_q2_ansi_encoder_kozak.bin"
 _q60f="keychron_q60_ansi_kozak.bin"
 _tempof="mode_m60h_kozak.bin"
 _m0116f="converter_adb_usb_rev1_kozak-m0116.hex"
-_m0110f="converter_m0110_usb_kozak_kozak-m0110.hex"
-_m0110af="converter_m0110_usb_kozak_kozak-m0110a.hex"
+_m0110f="converter_m0110_usb_kozak_m0110.hex"
+_m0110af="converter_m0110_usb_kozak_m0110a.hex"
 
 
 # fs aliases
@@ -127,13 +127,13 @@ function build {
     elif [[ "$1" == "m0110a" ]]; then
         board_name="m0110a"
         kb="$_m0110c"
-        km="kozak-m0110a"
+        km="m0110a"
         file="$_m0110af"
         ext="hex"
     elif [[ "$1" == "m0110" ]]; then
         board_name="m0110"
         kb="$_m0110c"
-        km="kozak-m0110"
+        km="m0110"
         file="$_m0110f"
         ext="hex"
     else
