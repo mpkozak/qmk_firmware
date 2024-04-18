@@ -106,7 +106,7 @@ void m0110_init(void) {
 uint8_t m0110_send(uint8_t data) {
     m0110_error = 0;
 
-    if (data != 0x14) {
+    if ((data != 0x10) & (data != 0x14)) {      // ignore inquiry + instant outgoing
         print("m0110_send: "); print_hex8(data); print("\n");
     }
 
@@ -228,8 +228,9 @@ uint8_t m0110_recv_key(void) {
         raw    = rawbuf;
         rawbuf = 0x00;
     } else {
-        raw = instant();  // Use INSTANT for better response. Should be INQUIRY ?
+        raw = inquiry();  // Use INSTANT for better response. Should be INQUIRY ?
     }
+
     switch (KEY(raw)) {
         case M0110_KEYPAD:
             raw2 = instant();
@@ -249,7 +250,7 @@ uint8_t m0110_recv_key(void) {
             return (raw2scan(raw2) | M0110_KEYPAD_OFFSET);
             break;
         case M0110_SHIFT:
-            raw2 = instant();
+            raw2 = inquiry();
             switch (KEY(raw2)) {
                 case M0110_SHIFT:
                     // Case: 5-8,C,G,H
@@ -318,7 +319,11 @@ static inline uint8_t raw2scan(uint8_t raw) {
 
 static inline uint8_t inquiry(void) {
     m0110_send(M0110_INQUIRY);
-    return m0110_recv();
+    uint8_t data = m0110_recv();
+    if (data != M0110_NULL) {
+        dprintf("%02X ", data);
+    }
+    return data;
 }
 
 static inline uint8_t instant(void) {
