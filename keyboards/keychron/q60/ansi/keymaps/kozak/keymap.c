@@ -61,7 +61,7 @@ enum user_keycodes {
 
 // right-side mod arrow cluster
 #define KC_RSUP RSFT_T(KC_UP)   // right shift under up arrow
-#define KC_RFDN LT(2, KC_DOWN)  // right fn (layer 2) under down arrow
+#define KC_RFDN LT(3, KC_DOWN)  // right fn (layer 3) under down arrow
 #define KC_RCLF RCMD_T(KC_LEFT) // right command under left arrow
 #define KC_RORT ROPT_T(KC_RGHT) // right option under right arrow
 
