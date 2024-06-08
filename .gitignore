@@ -1,6 +1,7 @@
 # kozak
 _kozak/builds
 z_*
+lib/chibios-contrib
 
 # Junk files
 *.bak
