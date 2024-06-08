@@ -21,8 +21,8 @@
 
 // M0116-specific
 // #define KC_CMDG LCMD_T(KC_GRV)          // left command + grave
-#define KC_CMDB RCMD_T(KC_BSLS)         // right command + backslash
-#define KC_OPTL ROPT_T(KC_LEFT)         // right option + left arrow
+#define KC_CMDA RCMD_T(KC_BSLS)         // right command + backslash
+#define KC_OPTA ROPT_T(KC_LEFT)         // right option + left arrow
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* M0116
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                  KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,          KC_P4,   KC_P5,   KC_P6,   KC_PMNS,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,         KC_P1,   KC_P2,   KC_P3,
-        KC_LCAP, KC_LOPT, KC_LCMD, LT(2,KC_GRV),              LT(1,KC_SPC),              KC_CMDB, KC_OPTL, KC_RGHT, KC_DOWN, LT(2,KC_UP),     LT(2, KC_P0),     KC_PDOT, KC_PENT
+        MO(2),   KC_LOPT, KC_LCMD, LT(2,KC_GRV),              LT(1,KC_SPC),              KC_CMDA, KC_OPTA, KC_RGHT, KC_DOWN, LT(2,KC_UP),     LT(2, KC_P0),     KC_PDOT, KC_PENT
     ),
     [BASE_FN] = LAYOUT_m0116_ansi(
                                                      _______,
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,         QK_BOOT, KC_NO,   KC_NO,   KC_MUTE,
         _______, KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_UP,   KC_NO,   KC_VOLU,
         _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,            _______,         KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD,
-        _______,          KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,         KC_NO,   KC_NO,   KC_NO,
+        _______,          KC_DESK, KC_MVLS, KC_MVRS, KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,         KC_NO,   KC_NO,   KC_NO,
         _______, _______, _______, _______,                   _______,                   _______, KC_MVLS, KC_MVRS, KC_DESK, _______,         _______,          KC_NO,   _______
     )
 };
