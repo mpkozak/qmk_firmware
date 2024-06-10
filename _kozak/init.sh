@@ -30,6 +30,7 @@ _q60km="$_q60/ansi/keymaps/kozak"
 _tempokm="$_tempo/keymaps/kozak"
 _m0116km="$_adb/keymaps/kozak-m0116"
 _m0110km="$_m0110/kozak/keymaps/m0110"
+_m0120km="$_m0110/kozak/keymaps/m0110_m0120"
 _m0110akm="$_m0110/kozak/keymaps/m0110a"
 
 # customized keyboards
@@ -47,6 +48,7 @@ _q60f="keychron_q60_ansi_kozak.bin"
 _tempof="mode_m60h_kozak.bin"
 _m0116f="converter_adb_usb_rev1_kozak-m0116.hex"
 _m0110f="converter_m0110_usb_kozak_m0110.hex"
+_m0120f="converter_m0110_usb_kozak_m0110_m0120.hex"
 _m0110af="converter_m0110_usb_kozak_m0110a.hex"
 
 
@@ -129,6 +131,12 @@ function build {
         kb="$_m0110c"
         km="m0110a"
         file="$_m0110af"
+        ext="hex"
+    elif [[ "$1" == "m0120" ]]; then
+        board_name="m0110-m0120"
+        kb="$_m0110c"
+        km="m0110_m0120"
+        file="$_m0120f"
         ext="hex"
     elif [[ "$1" == "m0110" ]]; then
         board_name="m0110"

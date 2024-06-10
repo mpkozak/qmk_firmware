@@ -16,8 +16,6 @@
 
 #pragma once
 
-enum layers{
-    BASE,           // Base         (layer 0)
-    FN0,            // Fn 0         (layer 1)
-    FN1             // Fn 1         (layer 2)
-};
+// Override info.json
+#undef PRODUCT
+#define PRODUCT "M0110 / M0120"
