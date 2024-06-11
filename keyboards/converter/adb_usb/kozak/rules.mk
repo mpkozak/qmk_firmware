@@ -15,3 +15,5 @@ VIA_ENABLE = no
 AUTOCORRECT_ENABLE = no
 KEY_OVERRIDE_ENABLE = no
 LTO_ENABLE = yes
+
+SRC = matrix.c adb.c led.c
