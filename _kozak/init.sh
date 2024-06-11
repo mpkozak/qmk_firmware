@@ -83,6 +83,7 @@ alias acrm="acrm_q2 && acrm_q60 && acrm_tempo"
 alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
 alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
 alias acg_tempo='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb mode/m60h -km kozak'
+alias acg_m0116='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0116'
 alias acg="acg_q2 && acg_q60"
 
 alias acr="acrm; acg"

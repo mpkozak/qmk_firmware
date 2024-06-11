@@ -19,3 +19,6 @@
 // Override info.json
 #undef PRODUCT
 #define PRODUCT "M0116"
+
+// Disable Autocorrect at startup
+#define AUTOCORRECT_OFF_AT_STARTUP

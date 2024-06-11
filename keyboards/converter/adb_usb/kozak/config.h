@@ -22,7 +22,7 @@
 
 // Override Layer count
 #undef DYNAMIC_KEYMAP_LAYER_COUNT
-#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
 // // Override Macro count
 // #undef DYNAMIC_KEYMAP_MACRO_COUNT
