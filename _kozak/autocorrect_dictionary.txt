@@ -49,6 +49,7 @@ aobut         -> about
 abck          -> back
 begna         -> began
 :ubt:         -> but
+:cuold        -> could
 dya           -> day
 :od:          -> do
 :esle         -> else
@@ -56,6 +57,8 @@ esle:         -> else
 :ofr:         -> for
 oging         -> going
 ahv           -> hav
+ahve:         -> have
+:ahve         -> have
 ehre          -> here
 hoep          -> hope
 :fi:          -> if
@@ -96,22 +99,31 @@ atht          -> that
 taht          -> that
 :ht           -> th
 :teh:         -> the
+:hte:         -> the
 :tehm         -> them
+:htem         -> them
+:hten         -> then
+:tehre        -> there
 htis          -> this
 thoguht       -> thought
 :tiem:        -> time
+tino:         -> tion
 :ot:          -> to
+:oto:         -> too
 :trian        -> train
 udner         -> under
 :pu:          -> up
 :su:          -> us
+veyr          -> very
 wamr          -> warm
 hwen          -> when
 wehn          -> when
 hwere         -> where
+wehre         -> where
 iwth          -> with
 wiht          -> with
 wokr          -> work
+:wuold        -> would
 eyar          -> year
 
 ## ommission
@@ -138,15 +150,7 @@ yuou          -> you
 # 3e            -> e
 # 8i            -> i
 # 9o            -> o
-# :cuold        -> could
-# ahve:         -> have
-# hwo           -> how
-# :hte:         -> the
 # :th:e         -> the
-# :htem         -> them
-# :tehre        -> there
-# wehre         -> where
-# :wuold        -> would
 
 
 
