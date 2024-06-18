@@ -18,7 +18,7 @@
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
 #define KC_NTAB G(KC_T)         // new tab
 #define KC_REFR LSG(KC_R)       // refresh
-#define ___x___ KC_NO           // nukk
+#define ___x___ KC_NO           // null
 
 // M0116-specific
 // #define KC_CMDG LCMD_T(KC_GRV)          // left command + grave

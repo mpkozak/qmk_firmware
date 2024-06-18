@@ -1,0 +1,50 @@
+10                      11
+ 0                      5V
+ 1                      G
+ G                      RST
+ G                      3V3
+ 2                      29
+ 3                      28
+ 4                      27
+ 5                      26
+ 6                      22
+ 7                      20
+ 8  25                  23
+ 9  12  13  14  15  16  21
+
+
+1       GND3
+2       X0              GP10
+3       X1              GP0
+4       X2              GP1
+5       X3              GP2
+6       X4              GP3
+7       X5              GP4
+8       X6              GP5
+9       X7              GP6
+10      X8              GP7
+11      X9              GP8
+12      X10             GP9
+13      Y0              GP21
+14      Y1              GP23
+15      Y2              GP20
+16      Y3              GP22
+17      Y4              GP26
+18      Y5              GP27
+19      Y6              GP28
+20      Y7              GP29
+21      CAPS LOCK       GP12
+22      SHIFT           GP13
+23      CONTROL         GP14
+24      OPTION          GP15
+25      COMMAND         GP16
+26      GND1
+27      GND2
+28      (SPARE)
+29      ADB
+30      BUTTON
+31      (iso_a)
+32      (iso_B)
+3V3     (SPARE)
+34      GND3
+
