@@ -59,14 +59,19 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 }
 
 
-/* Runs after each key press, check if activity occurred */
-void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        gpio_write_pin_high(LED_PIN);
-    } else {
-        gpio_write_pin_low(LED_PIN);
-    }
-}
+
+
+
+
+
+// /* Runs after each key press, check if activity occurred */
+// void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     if (record->event.pressed) {
+//         gpio_write_pin_high(LED_PIN);
+//     } else {
+//         gpio_write_pin_low(LED_PIN);
+//     }
+// }
 
 
 
