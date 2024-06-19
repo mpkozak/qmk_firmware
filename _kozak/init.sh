@@ -22,6 +22,7 @@ _q60="$QMK_HOME/keyboards/keychron/q60"
 _tempo="$QMK_HOME/keyboards/mode/m60h"
 _adb="$QMK_HOME/keyboards/converter/adb_usb"
 _m0110="$QMK_HOME/keyboards/converter/m0110_usb"
+_portable="$QMK_HOME/keyboards/converter/macintosh_portable"
 
 # custom keymaps
 _q0km="$_q0/plus/keymaps/kozak"
@@ -32,6 +33,7 @@ _m0116km="$_adb/kozak/keymaps/m0116"
 _m0110km="$_m0110/kozak/keymaps/m0110"
 _m0120km="$_m0110/kozak/keymaps/m0110_m0120"
 _m0110akm="$_m0110/kozak/keymaps/m0110a"
+_portablekm="$_portable/keymaps/default"
 
 # customized keyboards
 _q0c="keychron/q0/plus"
@@ -40,6 +42,7 @@ _q60c="keychron/q60/ansi"
 _tempoc="mode/m60h"
 _adbc="converter/adb_usb/kozak"
 _m0110c="converter/m0110_usb/kozak"
+_portablec="converter/macintosh_portable"
 
 # build filenames
 _q0f="keychron_q0_plus_kozak.bin"
@@ -50,6 +53,7 @@ _m0116f="converter_adb_usb_kozak_m0116.hex"
 _m0110f="converter_m0110_usb_kozak_m0110.hex"
 _m0120f="converter_m0110_usb_kozak_m0110_m0120.hex"
 _m0110af="converter_m0110_usb_kozak_m0110a.hex"
+_portablef="converter_macintosh_portable_default.uf2"
 
 
 # fs aliases
@@ -63,6 +67,7 @@ alias q60='cd "$_q60"; e'
 alias tempo='cd "$_tempo"; e'
 alias adb='cd "$_adb"; e'
 alias m0110='cd "$_m0110"; e'
+alias portable='cd $_portable; e'
 alias ek='e "$KOZAK"'
 alias e0='cd $_q0km; e'
 alias e2='cd $_q2km; e'
@@ -147,6 +152,12 @@ function build {
         km="m0110"
         file="$_m0110f"
         ext="hex"
+    elif [[ "$1" == "portable" ]]; then
+        board_name="macintosh_portable"
+        kb="$_portablec"
+        km="default"
+        file="$_portablef"
+        ext="uf2"
     else
         echo "invalid selection: $1"
         return
