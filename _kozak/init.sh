@@ -33,7 +33,7 @@ _m0116km="$_adb/kozak/keymaps/m0116"
 _m0110km="$_m0110/kozak/keymaps/m0110"
 _m0120km="$_m0110/kozak/keymaps/m0110_m0120"
 _m0110akm="$_m0110/kozak/keymaps/m0110a"
-_portablekm="$_portable/keymaps/default"
+_portablekm="$_portable/keymaps/kozak"
 
 # customized keyboards
 _q0c="keychron/q0/plus"
@@ -53,7 +53,7 @@ _m0116f="converter_adb_usb_kozak_m0116.hex"
 _m0110f="converter_m0110_usb_kozak_m0110.hex"
 _m0120f="converter_m0110_usb_kozak_m0110_m0120.hex"
 _m0110af="converter_m0110_usb_kozak_m0110a.hex"
-_portablef="converter_macintosh_portable_default.uf2"
+_portablef="converter_macintosh_portable_kozak.uf2"
 
 
 # fs aliases
@@ -155,7 +155,7 @@ function build {
     elif [[ "$1" == "portable" ]]; then
         board_name="macintosh_portable"
         kb="$_portablec"
-        km="default"
+        km="kozak"
         file="$_portablef"
         ext="uf2"
     else

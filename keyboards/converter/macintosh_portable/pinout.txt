@@ -25,14 +25,14 @@
 10      X8              GP7
 11      X9              GP8
 12      X10             GP9
-13      Y0              GP21
-14      Y1              GP23
-15      Y2              GP20
-16      Y3              GP22
-17      Y4              GP26
-18      Y5              GP27
-19      Y6              GP28
-20      Y7              GP29
+13      Y0              GP28
+14      Y1              GP29
+15      Y2              GP26
+16      Y3              GP27
+17      Y4              GP20
+18      Y5              GP22
+19      Y6              GP21
+20      Y7              GP23
 21      CAPS LOCK       GP12
 22      SHIFT           GP13
 23      CONTROL         GP14
