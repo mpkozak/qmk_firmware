@@ -3,7 +3,7 @@
 
 // Override Layer count
 #undef DYNAMIC_KEYMAP_LAYER_COUNT
-#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
 // Faster tap threshold
 #define TAPPING_TERM 160
@@ -12,3 +12,6 @@
 
 // One-shot timeout
 #define ONESHOT_TIMEOUT 500
+
+// Disable Autocorrect at startup
+#define AUTOCORRECT_OFF_AT_STARTUP
