@@ -178,7 +178,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 bool is_number(uint16_t keycode) {
     switch (keycode) {
         case KC_P1 ... KC_P0:
-        case KC_1 ... KC_0:
+        // case KC_1 ... KC_0:
             return true;
         default:
             return false;
