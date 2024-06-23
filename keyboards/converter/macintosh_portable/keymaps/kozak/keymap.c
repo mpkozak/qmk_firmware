@@ -3,6 +3,8 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
+#include "keymap_introspection.h"
+#include "print.h"
 
 
 
@@ -106,15 +108,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ////////////////////////////////////////////////////////////////////////////////
 // DIP switch keys
 
-const uint16_t PROGMEM dip_codes[5] = {
-    KC_LCAP,
-    KC_LSFT,
-    KC_LCTL,
-    KC_LOPT,
-    KC_LCMD
+// const uint16_t PROGMEM dip_codes[5] = {
+//     KC_LCAP,
+//     KC_LSFT,
+//     KC_LCTL,
+//     KC_LOPT,
+//     KC_LCMD
+// };
+
+
+const uint8_t PROGMEM dip_matrix[][2] = {
+    {0, 5},
+    {1, 4},     // {3, 4}
+    {3, 0},
+    {0, 1},
+    {2, 1}
 };
 
+
+uint16_t get_dip_keycode(uint8_t layer, uint8_t row, uint8_t col) {
+    uint16_t keycode = keycode_at_keymap_location(layer, row, col);
+    if (keycode == KC_TRNS) {
+        return get_dip_keycode(layer - 1, row, col);
+    }
+    return keycode;
+}
+
+
 bool dip_switch_update_user(uint8_t index, bool active) {
+
+
+    uint8_t layer = get_highest_layer(layer_state);
+    uint8_t row = dip_matrix[index][0];
+    uint8_t col = dip_matrix[index][1];
+    uint16_t keycode = get_dip_keycode(layer, row, col);
+
+    uprintf("kc: 0x%04X, layer: %2u, col: %2u, row: %2u", keycode, layer, col, row);
+    print("\n");
+
+
     // use Locking Caps Lock keyswitch to toggle BASE_SPD layer on/off
     if (index == 0) {
         if (active) {
@@ -130,12 +162,21 @@ bool dip_switch_update_user(uint8_t index, bool active) {
         }
         return true;
     }
-    // otherwise handle keycode normally
+
+
     if (active) {
-        register_code(dip_codes[index]);
+        register_code(keycode);
     } else {
-        unregister_code(dip_codes[index]);
+        unregister_code(keycode);
     }
+
+    // otherwise handle keycode normally
+    // if (active) {
+    //     register_code(dip_codes[index]);
+    // } else {
+    //     unregister_code(dip_codes[index]);
+    // }
+
     return true;
 }
 
@@ -145,6 +186,11 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 // Autocorrect stack
 
 void keyboard_post_init_user(void) {
+// Customise these values to desired behaviour
+    debug_enable=true;
+    // debug_matrix=true;
+    debug_keyboard=true;
+    //debug_mouse=true;
 #ifdef AUTOCORRECT_OFF_AT_STARTUP
     // toggle autocorrect off at startup
     if (autocorrect_is_enabled()) {
