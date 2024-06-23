@@ -18,11 +18,11 @@
 // Disable Autocorrect at startup
 #define AUTOCORRECT_OFF_AT_STARTUP
 
-// Disable LED diagnostic blinking
-#undef LED_DIAG_BLINK
-
 // Disable LED power status
 #undef LED_POWER_ON
 
 // Disable LED diagnostic blinking
 #undef LED_DIAG_BLINK
+
+// Enable LED layer status
+#define LED_LAYER_STATUS
