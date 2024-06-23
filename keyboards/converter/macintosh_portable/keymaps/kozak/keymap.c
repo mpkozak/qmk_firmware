@@ -108,15 +108,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ////////////////////////////////////////////////////////////////////////////////
 // DIP switch keys
 
-// const uint16_t PROGMEM dip_codes[5] = {
-//     KC_LCAP,
-//     KC_LSFT,
-//     KC_LCTL,
-//     KC_LOPT,
-//     KC_LCMD
-// };
-
-
 const uint8_t PROGMEM dip_matrix[][2] = {
     {0, 5},
     {1, 4},     // {3, 4}
@@ -136,18 +127,13 @@ uint16_t get_dip_keycode(uint8_t layer, uint8_t row, uint8_t col) {
 
 
 bool dip_switch_update_user(uint8_t index, bool active) {
-
-
     uint8_t layer = get_highest_layer(layer_state);
     uint8_t row = dip_matrix[index][0];
     uint8_t col = dip_matrix[index][1];
     uint16_t keycode = get_dip_keycode(layer, row, col);
+    uprintf("kc: 0x%04X, layer: %2u, col: %2u, row: %2u", keycode, layer, col, row); print("\n");
 
-    uprintf("kc: 0x%04X, layer: %2u, col: %2u, row: %2u", keycode, layer, col, row);
-    print("\n");
-
-
-    // use Locking Caps Lock keyswitch to toggle BASE_SPD layer on/off
+// use Locking Caps Lock keyswitch to toggle BASE_SPD layer on/off
     if (index == 0) {
         if (active) {
             layer_move(BASE_SPD);
@@ -163,19 +149,23 @@ bool dip_switch_update_user(uint8_t index, bool active) {
         return true;
     }
 
+// handle oneshot keycodes
+    if (IS_QK_ONE_SHOT_MOD(keycode)) {
+        print("IS ONESHOT\n");
+        if (active) {
+            set_oneshot_mods(QK_ONE_SHOT_MOD_GET_MODS(keycode));
+        } else {
+            // clear_oneshot_mods();
+        }
+        return true;
+    }
 
+// otherwise handle keycode normally
     if (active) {
         register_code(keycode);
     } else {
         unregister_code(keycode);
     }
-
-    // otherwise handle keycode normally
-    // if (active) {
-    //     register_code(dip_codes[index]);
-    // } else {
-    //     unregister_code(dip_codes[index]);
-    // }
 
     return true;
 }
@@ -187,10 +177,10 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 
 void keyboard_post_init_user(void) {
 // Customise these values to desired behaviour
-    debug_enable=true;
+    // debug_enable=true;
     // debug_matrix=true;
-    debug_keyboard=true;
-    //debug_mouse=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
 #ifdef AUTOCORRECT_OFF_AT_STARTUP
     // toggle autocorrect off at startup
     if (autocorrect_is_enabled()) {
