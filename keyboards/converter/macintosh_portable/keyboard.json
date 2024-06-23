@@ -11,7 +11,7 @@
         "extrakey": true,
         "mousekey": false,
         "dip_switch": true,
-        "nkro": false
+        "nkro": true
     },
     "qmk": {
         "locking": {

@@ -4,6 +4,11 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Custom keycodes
+
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
 #define KC_FSTG C(G(KC_F))      // fullscreen toggle
@@ -99,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// MCU LED
+// DIP switch keys
 
 const uint16_t PROGMEM dip_codes[5] = {
     KC_LCAP,
@@ -110,6 +115,7 @@ const uint16_t PROGMEM dip_codes[5] = {
 };
 
 bool dip_switch_update_user(uint8_t index, bool active) {
+    // use Locking Caps Lock keyswitch to toggle BASE_SPD layer on/off
     if (index == 0) {
         if (active) {
             layer_move(BASE_SPD);
@@ -118,6 +124,7 @@ bool dip_switch_update_user(uint8_t index, bool active) {
         }
         return true;
     }
+    // otherwise handle keycode normally
     if (active) {
         register_code(dip_codes[index]);
     } else {
@@ -131,18 +138,23 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 ////////////////////////////////////////////////////////////////////////////////
 // MCU LED
 
+/* Activate MCU led on power-on */
 void keyboard_pre_init_user(void) {
-  setPinOutput(LED_PIN);
-  writePinHigh(LED_PIN);
+    setPinOutput(LED_PIN);
+#ifdef LED_POWER_ON
+    writePinHigh(LED_PIN);
+#endif
 }
 
-/* Runs after each key press, check if activity occurred */
+/* Runs after each key press, toggles MCU LED off with keydown */
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef LED_DIAG_BLINK
     if (record->event.pressed) {
         gpio_write_pin_low(LED_PIN);
     } else {
         gpio_write_pin_high(LED_PIN);
     }
+#endif
 }
 
 
@@ -178,7 +190,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 bool is_number(uint16_t keycode) {
     switch (keycode) {
         case KC_P1 ... KC_P0:
-        // case KC_1 ... KC_0:
+        case KC_2 ... KC_9:         // range change to allow ! and ) after alphas
             return true;
         default:
             return false;

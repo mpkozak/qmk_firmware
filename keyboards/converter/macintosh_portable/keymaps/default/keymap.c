@@ -5,7 +5,15 @@
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// Custom keycodes
+
 #define ___x___ KC_NO           // null
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Layout
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Macintosh Portable
@@ -29,17 +37,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,         KC_P1,   KC_P2,   KC_P3,   KC_PENT,
         KC_LCAP, KC_LOPT, KC_LCMD, KC_GRV,                    KC_SPC,                    KC_PENT, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP,           KC_P0,            KC_PDOT
     )
-
-    // [0] = LAYOUT_5120_ansi(
-    //     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
-    //     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
-    //     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
-    //     KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,
-    //     KC_LCAP, KC_LOPT, KC_LCMD, KC_GRV,                    KC_SPC,                    KC_PENT, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP
-    // )
 };
 
 
+
+////////////////////////////////////////////////////////////////////////////////
+// DIP switch keys
 
 const uint16_t PROGMEM dip_codes[5] = {
     KC_LCAP,
@@ -60,43 +63,24 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// MCU LED
+
+/* Activate MCU led on power-on */
 void keyboard_pre_init_user(void) {
-  setPinOutput(LED_PIN);
-  writePinHigh(LED_PIN);
+    setPinOutput(LED_PIN);
+#ifdef LED_POWER_ON
+    writePinHigh(LED_PIN);
+#endif
 }
 
-/* Runs after each key press, check if activity occurred */
+/* Runs after each key press, toggles MCU LED off with keydown */
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef LED_DIAG_BLINK
     if (record->event.pressed) {
         gpio_write_pin_low(LED_PIN);
     } else {
         gpio_write_pin_high(LED_PIN);
     }
+#endif
 }
-
-
-
-
-
-// // Does not work
-
-// #ifdef DIP_SWITCH_MAP_ENABLE
-
-// const uint16_t PROGMEM dip_switch_map[NUM_DIP_SWITCHES][NUM_DIP_STATES] = {
-//     DIP_SWITCH_OFF_ON(KC_LCAP, KC_LCAP),
-//     DIP_SWITCH_OFF_ON(KC_LSFT, KC_LSFT),
-//     DIP_SWITCH_OFF_ON(KC_LCTL, KC_LCTL),
-//     DIP_SWITCH_OFF_ON(KC_LOPT, KC_LOPT),
-//     DIP_SWITCH_OFF_ON(KC_LCMD, KC_LCMD)
-// };
-
-// bool dip_switch_update_user(uint8_t index, bool active) {
-//     if (active) {
-//         register_code(dip_switch_map[index][1]);
-//     } else {
-//         unregister_code(dip_switch_map[index][0]);
-//     }
-//     return false;
-// }
-
-// #endif
