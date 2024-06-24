@@ -11,6 +11,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
+enum custom_keycodes {
+  KC_TGSP = SAFE_RANGE          // locking speed toggle
+};
+
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
 #define KC_FSTG C(G(KC_F))      // fullscreen toggle
@@ -78,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,
-        KC_LCAP, KC_LOPT, KC_LCMD, KC_CMDG,                   LT(1,KC_SPC),              KC_CMDE, KC_OPTA, KC_RGHT, KC_DOWN, LT(2,KC_UP)
+        KC_TGSP, KC_LOPT, KC_LCMD, KC_CMDG,                   LT(1,KC_SPC),              KC_CMDE, KC_OPTA, KC_RGHT, KC_DOWN, LT(2,KC_UP)
     ),
     [FN0] = LAYOUT_5120_ansi(
         QK_BOOT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,
@@ -108,65 +112,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ////////////////////////////////////////////////////////////////////////////////
 // DIP switch keys
 
-const uint8_t PROGMEM dip_matrix[][2] = {
-    {0, 5},
-    {1, 4},     // {3, 4}
-    {3, 0},
-    {0, 1},
-    {2, 1}
+const keypos_t PROGMEM dip_keypos[5] = {
+    MAKE_KEYPOS(0, 5),
+    MAKE_KEYPOS(1, 4),     // (3, 4)
+    MAKE_KEYPOS(3, 0),
+    MAKE_KEYPOS(0, 1),
+    MAKE_KEYPOS(2, 1)
 };
 
-
-uint16_t get_dip_keycode(uint8_t layer, uint8_t row, uint8_t col) {
-    uint16_t keycode = keycode_at_keymap_location(layer, row, col);
-    if (keycode == KC_TRNS) {
-        return get_dip_keycode(layer - 1, row, col);
-    }
-    return keycode;
-}
-
-
 bool dip_switch_update_user(uint8_t index, bool active) {
-    uint8_t layer = get_highest_layer(layer_state);
-    uint8_t row = dip_matrix[index][0];
-    uint8_t col = dip_matrix[index][1];
-    uint16_t keycode = get_dip_keycode(layer, row, col);
-    uprintf("kc: 0x%04X, layer: %2u, col: %2u, row: %2u", keycode, layer, col, row); print("\n");
-
-// use Locking Caps Lock keyswitch to toggle BASE_SPD layer on/off
-    if (index == 0) {
-        if (active) {
-            layer_move(BASE_SPD);
-#ifdef LED_LAYER_STATUS
-            gpio_write_pin_high(LED_PIN);
-#endif
-        } else {
-            layer_clear();
-#ifdef LED_LAYER_STATUS
-            gpio_write_pin_low(LED_PIN);
-#endif
-        }
-        return true;
-    }
-
-// handle oneshot keycodes
-    if (IS_QK_ONE_SHOT_MOD(keycode)) {
-        print("IS ONESHOT\n");
-        if (active) {
-            set_oneshot_mods(QK_ONE_SHOT_MOD_GET_MODS(keycode));
-        } else {
-            // clear_oneshot_mods();
-        }
-        return true;
-    }
-
-// otherwise handle keycode normally
-    if (active) {
-        register_code(keycode);
-    } else {
-        unregister_code(keycode);
-    }
-
+    keypos_t key = dip_keypos[index];
+    keyevent_t event = MAKE_KEYEVENT(key.row, key.col, active);
+    action_exec(event);
     return true;
 }
 
@@ -195,11 +152,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             if (!autocorrect_is_enabled()) {
                 autocorrect_enable();
             }
+#ifdef LED_LAYER_STATUS
+            gpio_write_pin_high(LED_PIN);
+#endif
             break;
         default:
             if (autocorrect_is_enabled()) {
                 autocorrect_disable();
             }
+#ifdef LED_LAYER_STATUS
+            gpio_write_pin_low(LED_PIN);
+#endif
             break;
     }
     return state;
@@ -227,6 +190,15 @@ bool is_alpha (uint16_t keycode) {
 bool is_prev_alpha = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // speed layer toggle
+    if (keycode == KC_TGSP) {
+        if (record->event.pressed) {
+            layer_move(BASE_SPD);
+        } else {
+            layer_clear();
+        }
+        return false;
+    }
     // ignore suprious number keys in the middle of alphas for speed layer
     if (get_highest_layer(layer_state) == BASE_SPD) {
         if (is_number(keycode)) {
@@ -249,6 +221,73 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// [removed] DIP switch keys -- WORKS
+
+// const uint8_t PROGMEM dip_matrix[][2] = {
+//     {0, 5},
+//     {1, 4},     // {3, 4}
+//     {3, 0},
+//     {0, 1},
+//     {2, 1}
+// };
+
+// uint16_t get_dip_keycode(uint8_t layer, uint8_t row, uint8_t col) {
+//     uint16_t keycode = keycode_at_keymap_location(layer, row, col);
+//     if (keycode == KC_TRNS) {
+//         return get_dip_keycode(layer - 1, row, col);
+//     }
+//     return keycode;
+// }
+
+// bool dip_switch_update_user(uint8_t index, bool active) {
+//     uint8_t layer = get_highest_layer(layer_state);
+//     uint8_t row = dip_matrix[index][0];
+//     uint8_t col = dip_matrix[index][1];
+//     uint16_t keycode = get_dip_keycode(layer, row, col);
+//     uprintf("kc: 0x%04X, layer: %2u, col: %2u, row: %2u", keycode, layer, col, row); print("\n");
+
+// // use Locking Caps Lock keyswitch to toggle BASE_SPD layer on/off
+//     if (index == 0) {
+//         if (active) {
+//             layer_move(BASE_SPD);
+// #ifdef LED_LAYER_STATUS
+//             gpio_write_pin_high(LED_PIN);
+// #endif
+//         } else {
+//             layer_clear();
+// #ifdef LED_LAYER_STATUS
+//             gpio_write_pin_low(LED_PIN);
+// #endif
+//         }
+//         return true;
+//     }
+
+// // handle oneshot keycodes
+//     if (IS_QK_ONE_SHOT_MOD(keycode)) {
+//         print("IS ONESHOT\n");
+//         if (active) {
+//             set_oneshot_mods(QK_ONE_SHOT_MOD_GET_MODS(keycode));
+//         } else {
+//             // clear_oneshot_mods();
+//         }
+//         return true;
+//     }
+
+// // otherwise handle keycode normally
+//     if (active) {
+//         register_code(keycode);
+//     } else {
+//         unregister_code(keycode);
+//     }
+
+//     return true;
+// }
 
 
 
