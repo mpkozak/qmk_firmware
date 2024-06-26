@@ -44,19 +44,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ////////////////////////////////////////////////////////////////////////////////
 // DIP switch keys
 
-const uint16_t PROGMEM dip_codes[5] = {
-    KC_LCAP,
-    KC_LSFT,
-    KC_LCTL,
-    KC_LOPT,
-    KC_LCMD
-};
+// const uint16_t PROGMEM dip_codes[5] = {
+//     KC_LCAP,
+//     KC_LSFT,
+//     KC_LCTL,
+//     KC_LOPT,
+//     KC_LCMD
+// };
 
-bool dip_switch_update_user(uint8_t index, bool active) {
-    if (active) {
-        register_code(dip_codes[index]);
-    } else {
-        unregister_code(dip_codes[index]);
-    }
-    return true;
-}
+// bool dip_switch_update_user(uint8_t index, bool active) {
+//     if (active) {
+//         register_code(dip_codes[index]);
+//     } else {
+//         unregister_code(dip_codes[index]);
+//     }
+//     return true;
+// }
