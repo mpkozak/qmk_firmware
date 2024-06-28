@@ -8,7 +8,7 @@
 
 const keypos_t PROGMEM dip_keypos[5] = {
     MAKE_KEYPOS(0, 5),
-    MAKE_KEYPOS(1, 4),     // (3, 4)
+    MAKE_KEYPOS(1, 4),     // OR (3, 4) -- L/R shift keys tied together
     MAKE_KEYPOS(3, 0),
     MAKE_KEYPOS(0, 1),
     MAKE_KEYPOS(2, 1)

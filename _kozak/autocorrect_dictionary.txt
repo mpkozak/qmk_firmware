@@ -59,7 +59,6 @@ ahv           -> hav
 ehre          -> here
 hoep          -> hope
 :fi:          -> if
-ign:          -> ing
 :itno:        -> into
 :si:          -> is
 :ti:          -> it
@@ -144,6 +143,7 @@ yuou          -> you
 # ahve:         -> have
 # :ahve         -> have
 # :cuold        -> could
+# ign:          -> ing
 # :hte:         -> the
 # :htem         -> them
 # :hten         -> then
