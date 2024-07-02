@@ -3,26 +3,29 @@
 
 
 
-// Override Layer count
+/* Override Layer count */
 #undef DYNAMIC_KEYMAP_LAYER_COUNT
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
-// Faster tap threshold
+/* Faster tap threshold */
 #define TAPPING_TERM 160
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
-// One-shot timeout
-#define ONESHOT_TIMEOUT 500
+/* One-shot timeout */
+#define ONESHOT_TIMEOUT 160
 
-// Disable Autocorrect at startup
+/* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP
 
-// Disable LED power status
+/* Disable LED power status */
 #undef LED_POWER_ON
 
-// Disable LED diagnostic blinking
+/* Disable LED diagnostic blinking */
 #undef LED_DIAG_BLINK
 
-// Enable LED layer status
+/* Disable debug output */
+#undef DEBUG_ENABLE
+
+/* Enable LED layer status */
 #define LED_LAYER_STATUS

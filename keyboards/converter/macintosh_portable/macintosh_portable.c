@@ -5,13 +5,34 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // DIP switch keys
+/*
+Modifier keys are wired to dedicated pins that short to ground when active.
+These are wired to dedicated pins on the MCU and interpreted by QMK as DIP
+switches. In order to facilitate easier keymap modification, layers, etc., the
+relevant modifier keys have been assigned (otherwise unused) matrix positions in
+the defined layout macros. When one of these keys is pressed, we intercept the
+DIP switch event and dispatch a normal key event with the keycode defined in the
+keymap at that matrix position in the current active layer.
+**Caveat**
+It is impossible to distinguish between the left/right shift keys as they are
+wired in parallel. Each shift key has been assigned a unique matrix position and
+both are included in the layout macros for the sake of consistency. However,
+closure of either shift key will always register the same matrix position. By
+default, the left shift keymap assignment(s) are used (any keycodes assigned to
+right shift are ignored). This behavior can be swapped by setting the
+'DIP_KEYMAP_USE_RIGHT_SHIFT' flag.
+*/
 
 const keypos_t PROGMEM dip_keypos[5] = {
-    MAKE_KEYPOS(0, 5),
-    MAKE_KEYPOS(1, 4),     // OR (3, 4) -- L/R shift keys tied together
-    MAKE_KEYPOS(3, 0),
-    MAKE_KEYPOS(0, 1),
-    MAKE_KEYPOS(2, 1)
+    MAKE_KEYPOS(0, 5),      // caps lock
+#ifdef DIP_KEYMAP_USE_RIGHT_SHIFT
+    MAKE_KEYPOS(3, 4),      // shift (right)
+#else
+    MAKE_KEYPOS(1, 4),      // shift (left)
+#endif
+    MAKE_KEYPOS(3, 0),      // control
+    MAKE_KEYPOS(0, 1),      // option
+    MAKE_KEYPOS(2, 1)       // command
 };
 
 bool dip_switch_update_kb(uint8_t index, bool active) {
@@ -42,5 +63,18 @@ void post_process_record_kb(uint16_t keycode, keyrecord_t *record) {
     } else {
         gpio_write_pin_high(LED_PIN);
     }
+#endif
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Debug output enable
+
+void keyboard_post_init_kb(void) {
+#ifdef DEBUG_ENABLE
+    debug_enable=true;
+    debug_matrix=true;
+    debug_keyboard=true;
 #endif
 }

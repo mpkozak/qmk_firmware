@@ -102,7 +102,7 @@
                 {"label": "↑", "matrix": [5, 2], "x": 13.5, "y": 4}
             ]
         },
-        "LAYOUT_5120_numpad": {
+        "LAYOUT_5120_ansi_numpad": {
             "layout": [
                 {"label": "esc", "matrix": [0, 6], "x": 0, "y": 0},
                 {"label": "1!", "matrix": [1, 6], "x": 1, "y": 0},

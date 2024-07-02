@@ -9,6 +9,9 @@
 /* Compensate for lack of matrix diodes */
 #define MATRIX_HAS_GHOST
 
+/* Specify which shift key mapping to use */
+// #define DIP_KEYMAP_USE_RIGHT_SHIFT
+
 /* Define MCU LED pin */
 #define LED_PIN GP17
 
@@ -18,8 +21,8 @@
 /* Enable LED diagnostic blinking */
 #define LED_DIAG_BLINK
 
-/* Enable LED layer status */
-// #define LED_LAYER_STATUS
+/* Enable debug output */
+#define DEBUG_ENABLE
 
 /* Double tap reset button to enter bootloader */
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
