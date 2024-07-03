@@ -82,10 +82,10 @@ alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
 
 alias acrm_q2='[ -e "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h ] && rm "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h'
 alias acrm_q60='[ -e "$_q60"/ansi/keymaps/kozak/autocorrect_data.h ] && rm "$_q60"/ansi/keymaps/kozak/autocorrect_data.h'
-alias acrm_tempo='[ -e "$_tempo"/keymaps/kozak/autocorrect_data.h ] && rm "$_tempo"/keymaps/kozak/autocorrect_data.h'
+# alias acrm_tempo='[ -e "$_tempo"/keymaps/kozak/autocorrect_data.h ] && rm "$_tempo"/keymaps/kozak/autocorrect_data.h'
 alias acrm_m0116='[ -e "$_adb"/kozak/keymaps/m0116/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0116/autocorrect_data.h'
 alias acrm_portable='[ -e "$_portable"/keymaps/kozak/autocorrect_data.h ] && rm "$_portable"/keymaps/kozak/autocorrect_data.h'
-alias acrm="acrm_q2 && acrm_q60 && acrm_tempo && acrm_m0116 && acrm_portable"
+alias acrm="acrm_q2 && acrm_q60 && acrm_m0116 && acrm_portable"
 
 alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
 alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
@@ -137,6 +137,7 @@ function build {
         km="m0116"
         file="$_m0116f"
         ext="hex"
+        ac=1
     elif [[ "$1" == "m0110a" ]]; then
         board_name="m0110a"
         kb="$_m0110c"
@@ -161,6 +162,7 @@ function build {
         km="kozak"
         file="$_portablef"
         ext="uf2"
+        ac=1
     else
         echo "invalid selection: $1"
         return

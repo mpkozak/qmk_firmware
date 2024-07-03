@@ -1,4 +1,4 @@
-/* Copyright 2023 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,8 +15,12 @@
  */
 
 #include QMK_KEYBOARD_H
-// #include "keymap_user_config.h"
 #include "keymap_user.h"
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Custom keycodes
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
@@ -43,6 +47,11 @@
 #define KC_RFDN LT(2, KC_DOWN)  // right fn (layer 2) under down arrow
 #define KC_RCLF RCMD_T(KC_LEFT) // right command under left arrow
 #define KC_RORT ROPT_T(KC_RGHT) // right option under right arrow
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Layout
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -90,8 +99,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_TOG,          KC_NO,   KC_NO,   RGB_SPD, RGB_SPI, KC_NO,   RGB_RMOD,RGB_MOD, KC_NO,   KC_NO,   KC_NO,   _______, _______,
                           _______, _______,                   _______,                            _______, _______
     )
-
 };
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// RGB layers
 
 const rgblight_segment_t PROGMEM rbg_layer_base[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 20, BASE_LAYER_HSV}
@@ -136,6 +149,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// RGB timeout
+
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md#keyboard-housekeeping
 
 static uint32_t key_timer;           // timer for last keyboard activity, use 32bit value and function to make longer idle time possible
@@ -174,66 +190,3 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     #endif
 }
-
-
-
-
-
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     return process_record_kozak(keycode, record);
-// }
-
-
-
-
-
-// RGB rgb_scaled_to_val(uint8_t val, uint8_t red, uint8_t green, uint8_t blue) {
-//     float value = val;
-//     RGB rgb;
-//     rgb.r = red * (value / 255);
-//     rgb.g = green * (value / 255);
-//     rgb.b = blue * (value / 255);
-//     return rgb;
-// }
-
-// layer_state_t default_layer_state_set_user(layer_state_t state) {
-//     HSV hsv = {RGBLIGHT_DEFAULT_HUE, RGBLIGHT_DEFAULT_SAT, RGBLIGHT_DEFAULT_VAL};
-//     RGB rgb = hsv_to_rgb(hsv);
-//     switch (get_highest_layer(state)) {
-//         case BASE:
-//             if (rgblight_is_enabled()) {
-//                 rgblight_setrgb(rgb.r, rgb.g, rgb.b);
-//             }
-//             break;
-//         default:
-//             break;
-//     }
-//     return state;
-// }
-
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     uint8_t current_layer = get_highest_layer(layer_state);
-//     uint8_t current_val = rgblight_get_val();
-//     HSV hsv = {RGBLIGHT_DEFAULT_HUE, RGBLIGHT_DEFAULT_SAT, current_val};
-//     RGB rgb = hsv_to_rgb(hsv);
-//     switch (current_layer) {
-//         case BASE:
-//             break;
-//         case BASE_FN:
-//             rgb = rgb_scaled_to_val(current_val, FN0_LAYER_COLOR);
-//             break;
-//         case _FN1:
-//             rgb = rgb_scaled_to_val(current_val, FN1_LAYER_COLOR);
-//             break;
-//         case _FN2:
-//             rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
-//             break;
-//         default:
-//             rgb = hsv_to_rgb(hsv);
-//             break;
-//     }
-//     if (rgblight_is_enabled()) {
-//         rgblight_setrgb(rgb.r, rgb.g, rgb.b);
-//     }
-//     return state;
-// }

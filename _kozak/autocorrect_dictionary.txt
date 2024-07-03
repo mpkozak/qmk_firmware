@@ -49,6 +49,7 @@ aobut         -> about
 abck          -> back
 begna         -> began
 :ubt:         -> but
+:cna:         -> can
 dya           -> day
 :od:          -> do
 :esle         -> else
