@@ -1,4 +1,4 @@
-/* Copyright 2023 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,12 +22,22 @@
 #    include "rgb_matrix_user.h"
 #endif
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Bootloader
+
 enum user_bootloader_state {
     BOOTLOADER_INACTIVE,
     BOOTLOADER_PRESSED,
     BOOTLOADER_WAIT,
     BOOTLOADER_DO
 } bootloader_state;
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Custom keycodes
 
 enum user_keycodes {
     KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE = QK_USER_0,
@@ -65,6 +75,11 @@ enum user_keycodes {
 #define KC_RCLF RCMD_T(KC_LEFT) // right command under left arrow
 #define KC_RORT ROPT_T(KC_RGHT) // right option under right arrow
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Key overrides for autocorrect BASE_SPD layer
+
 const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
 const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
 const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
@@ -76,6 +91,11 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &hyphen_override,
     NULL // Null terminate the array of overrides!
 };
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Layout
 
 // clang-format off
 
@@ -144,19 +164,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // clang-format on
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+// RGB layers
+
 void matrix_init_user(void) {
 #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_init_user();
-#endif
-}
-
-void keyboard_post_init_user(void) {
-    user_config_read_eeprom();
-#ifdef AUTOCORRECT_OFF_AT_STARTUP
-    // toggle autocorrect off at startup
-    if (autocorrect_is_enabled()) {
-        autocorrect_toggle();
-    }
 #endif
 }
 
@@ -202,6 +217,21 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
     return state;
 }
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Autocorrect stack
+
+void keyboard_post_init_user(void) {
+    user_config_read_eeprom();
+#ifdef AUTOCORRECT_OFF_AT_STARTUP
+    // toggle autocorrect off at startup
+    if (autocorrect_is_enabled()) {
+        autocorrect_toggle();
+    }
+#endif
+}
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case BASE_SPD:
@@ -221,7 +251,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 bool is_number(uint16_t keycode) {
     switch (keycode) {
         case KC_P1 ... KC_P0:
-        // case KC_1 ... KC_0:
+        case KC_2 ... KC_9:         // range change to allow ! and ) after alphas
             return true;
         default:
             return false;
