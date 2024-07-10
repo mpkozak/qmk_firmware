@@ -8,12 +8,12 @@
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
 /* Faster tap threshold */
-#define TAPPING_TERM 160
+#define TAPPING_TERM 175
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
 /* One-shot timeout */
-#define ONESHOT_TIMEOUT 160
+#define ONESHOT_TIMEOUT 175
 
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP
