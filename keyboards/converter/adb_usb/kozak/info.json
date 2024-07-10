@@ -1,11 +1,11 @@
 {
-  "keyboard_name": "M0116",
+  "keyboard_name": "adb",
   "manufacturer": "kozak",
   "url": "",
   "maintainer": "qmk",
   "usb": {
-    "vid": "0xFEED",
-    "pid": "0x0116",
+    "vid": "0x4D4B",
+    "pid": "0x0ADB",
     "device_version": "1.0.1"
   },
   "processor": "atmega32u4",
