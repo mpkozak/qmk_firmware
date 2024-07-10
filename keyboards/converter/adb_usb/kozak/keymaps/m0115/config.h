@@ -22,3 +22,10 @@
 
 // Disable Autocorrect at startup
 #define AUTOCORRECT_OFF_AT_STARTUP
+
+// Keyboard LEDs
+#define USB_LED_NUM_LOCK                0
+#define USB_LED_CAPS_LOCK               1
+#define USB_LED_SCROLL_LOCK             2
+#define USB_LED_COMPOSE                 3
+#define USB_LED_KANA                    4
