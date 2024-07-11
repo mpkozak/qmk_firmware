@@ -1,5 +1,30 @@
+/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Custom keycodes
+
+enum custom_keycodes {
+  KC_TGSP = SAFE_RANGE          // locking speed toggle
+};
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
@@ -27,6 +52,10 @@
 #define KC_GRV2 LT(2,KC_GRV)            // backtick/grave + layer 2
 
 
+
+////////////////////////////////////////////////////////////////////////////////
+// Key overrides for autocorrect BASE_SPD layer
+
 const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
 const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
 const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
@@ -39,6 +68,10 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     NULL // Null terminate the array of overrides!
 };
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Layout
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* M0116
@@ -94,6 +127,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// Autocorrect stack
+
 void keyboard_post_init_user(void) {
 #ifdef AUTOCORRECT_OFF_AT_STARTUP
     // toggle autocorrect off at startup
@@ -122,7 +158,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 bool is_number(uint16_t keycode) {
     switch (keycode) {
         case KC_P1 ... KC_P0:
-        case KC_1 ... KC_0:
+        case KC_2 ... KC_9:         // range change to allow ! and ) after alphas
             return true;
         default:
             return false;
@@ -141,6 +177,15 @@ bool is_alpha (uint16_t keycode) {
 bool is_prev_alpha = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // speed layer toggle
+    if (keycode == KC_TGSP) {
+        if (record->event.pressed) {
+            layer_move(BASE_SPD);
+        } else {
+            layer_clear();
+        }
+        return false;
+    }
     // ignore suprious number keys in the middle of alphas for speed layer
     if (get_highest_layer(layer_state) == BASE_SPD) {
         if (is_number(keycode)) {

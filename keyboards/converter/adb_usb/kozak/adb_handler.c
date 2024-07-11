@@ -14,23 +14,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include QMK_KEYBOARD_H
+#include "adb.h"
 
-/* Override info.json */
-#undef MANUFACTURER
-#define MANUFACTURER "kozak"
 
-/* Override Layer count */
-#undef DYNAMIC_KEYMAP_LAYER_COUNT
-#define DYNAMIC_KEYMAP_LAYER_COUNT
 
-/* Faster tap threshold */
-#define TAPPING_TERM 175
-#undef PERMISSIVE_HOLD
-#undef PREVENT_STUCK_MODIFIERS
-
-/* One-shot timeout */
-#define ONESHOT_TIMEOUT 175
-
-/* Disable Autocorrect at startup */
-#define AUTOCORRECT_OFF_AT_STARTUP
+/* Change keyboard handler to distinguish right side modifiers */
+void keyboard_post_init_kb(void) {
+    uint16_t reg3;
+    reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
+    adb_host_listen(ADB_ADDR_KEYBOARD, ADB_REG_3, (reg3 >> 8), ADB_HANDLER_AEK_RMOD);
+    reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
+}

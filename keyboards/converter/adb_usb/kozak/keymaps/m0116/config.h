@@ -1,4 +1,4 @@
-/* Copyright 2023 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,6 @@
 
 #pragma once
 
-// Override info.json
+/* Override info.json */
 #undef PRODUCT
 #define PRODUCT "M0116"
-
-// Disable Autocorrect at startup
-#define AUTOCORRECT_OFF_AT_STARTUP

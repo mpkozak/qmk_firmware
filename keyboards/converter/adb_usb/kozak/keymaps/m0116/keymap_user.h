@@ -1,4 +1,4 @@
-/* Copyright 2023 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
