@@ -16,7 +16,6 @@
 
 #include QMK_KEYBOARD_H
 #include "adb.h"
-// #include "led.h"
 
 
 
@@ -44,7 +43,7 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
     // uint8_t led = (0x01 << layer) >> 1;
     uint8_t led = get_led_mask();
     led_set(led);
-    return state;
+    return layer_state_set_user(state);
 }
 
 
