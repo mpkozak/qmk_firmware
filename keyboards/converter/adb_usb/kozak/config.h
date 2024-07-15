@@ -19,6 +19,10 @@
 /* Override info.json */
 #undef MANUFACTURER
 #define MANUFACTURER "kozak"
+#undef VENDOR_ID
+#define VENDOR_ID 0x4D4B
+#undef PRODUCT_ID
+#define PRODUCT_ID 0x0ADB
 
 /* Override Layer count */
 #undef DYNAMIC_KEYMAP_LAYER_COUNT

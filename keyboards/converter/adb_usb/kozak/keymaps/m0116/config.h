@@ -19,6 +19,8 @@
 /* Override info.json */
 #undef PRODUCT
 #define PRODUCT "M0116"
+#undef PRODUCT_ID
+#define PRODUCT_ID 0x0116
 
 /* ADB port setting */
 #define ADB_PORT        PORTD
