@@ -19,3 +19,10 @@
 /* Override info.json */
 #undef PRODUCT
 #define PRODUCT "M0115"
+
+/* ADB port setting */
+#define ADB_PORT        PORTD
+#define ADB_PIN         PIND
+#define ADB_DDR         DDRD
+#define ADB_DATA_BIT    0
+#define ADB_PSW_BIT     1       // optional

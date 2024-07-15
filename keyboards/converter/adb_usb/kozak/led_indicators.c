@@ -28,38 +28,18 @@ uint8_t get_led_mask(void) {
 
 /* Replace LED indicator set fn */
 void led_set(uint8_t usb_led) {
-    // uint8_t layer = get_highest_layer(layer_state);
-    // uint8_t led = (0x01 << layer) >> 1;
-    uint8_t led = get_led_mask();
-    adb_host_kbd_led(~led);
+    led_t led_state = host_keyboard_led_state();
+    // invert led mask when caps lock is active
+    uint8_t led_mask = get_led_mask();
+    if (led_state.caps_lock) {
+        led_mask = ~led_mask;
+    }
+    adb_host_kbd_led(~led_mask);
 }
 
 /* Toggle LED indicator update on layer change */
 layer_state_t layer_state_set_kb(layer_state_t state) {
-    // Listen Register2
-    //  upper byte: not used
-    //  lower byte: bit2=ScrollLock, bit1=CapsLock, bit0=NumLock
-    // uint8_t layer = get_highest_layer(state);
-    // uint8_t led = (0x01 << layer) >> 1;
     uint8_t led = get_led_mask();
     led_set(led);
     return layer_state_set_user(state);
 }
-
-
-
-
-
-// bool led_update_user(led_t led_state) {
-//     // uint8_t layer = get_highest_layer(layer_state);
-//     // uint8_t led = (0x01 << layer) >> 1;
-//     // led_set(led);
-//     return false;
-// }
-
-// bool led_update_kb(led_t led_state) {
-//     // uint8_t layer = get_highest_layer(layer_state);
-//     // uint8_t led = (0x01 << layer) >> 1;
-//     // led_set(led);
-//     return false;
-// }
