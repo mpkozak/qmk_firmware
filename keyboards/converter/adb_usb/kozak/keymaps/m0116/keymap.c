@@ -105,15 +105,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS,                  _______, _______, _______, _______,
         _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, ___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,         _______, _______, _______, _______,
         _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,          _______,         _______, _______, _______,
-        _______, _______, _______, _______,                   _______,                   _______, _______, _______, _______, _______,         _______,          _______, _______
+        _______, _______, _______, _______,                   _______,                   _______, _______, _______, _______, _______,         _______,          KC_TAB,  _______
     ),
     [FN1] = LAYOUT_m0116(
                                                      QK_BOOT,
-        KC_LSCR, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,         KC_TAB,  ___x___, ___x___, KC_MUTE,
+        KC_LSCR, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,         KC_BSPC, ___x___, ___x___, KC_MUTE,
         _______, ___x___, KC_UP,   ___x___, KC_REFR, KC_NTAB, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___,                  ___x___, KC_UP,   ___x___, KC_VOLU,
         _______, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___,          _______,         KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD,
-        _______,          KC_DESK, KC_MVLS, KC_MVRS, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,         ___x___, ___x___, ___x___,
-        _______, _______, _______, _______,                   G(KC_SPC),                 _______, KC_MVLS, KC_MVRS, KC_DESK, _______,         _______,          KC_BSPC, _______
+        _______,          KC_DESK, KC_MVLS, KC_MVRS, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,         G(KC_1), G(KC_2), G(KC_3),
+        _______, _______, _______, _______,                   G(KC_SPC),                 _______, KC_MVLS, KC_MVRS, KC_DESK, _______,         _______,          KC_TAB,  _______
     ),
     [BASE_SPD] = LAYOUT_m0116(
                                                      ___x___,
