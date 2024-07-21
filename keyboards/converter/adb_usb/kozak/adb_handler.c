@@ -21,8 +21,10 @@
 
 /* Change keyboard handler to distinguish right side modifiers */
 void keyboard_post_init_kb(void) {
-    uint16_t reg3;
-    reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
-    adb_host_listen(ADB_ADDR_KEYBOARD, ADB_REG_3, (reg3 >> 8), ADB_HANDLER_AEK_RMOD);
-    reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
+    uint16_t reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
+    uint8_t handler = (reg3 & 0xFF);
+    if (handler == ADB_HANDLER_AEK) {
+        adb_host_listen(ADB_ADDR_KEYBOARD, ADB_REG_3, (reg3 >> 8), ADB_HANDLER_AEK_RMOD);
+        reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
+    }
 }
