@@ -145,11 +145,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             if (!autocorrect_is_enabled()) {
                 autocorrect_enable();
             }
+            TXLED1;
+            RXLED1;
             break;
         default:
             if (autocorrect_is_enabled()) {
                 autocorrect_disable();
             }
+            TXLED0;
+            RXLED0;
             break;
     }
     return state;
