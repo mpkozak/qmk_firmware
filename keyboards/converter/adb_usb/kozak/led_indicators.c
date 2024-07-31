@@ -19,27 +19,42 @@
 
 
 
-/* Generate LED bytemask for current highest layer */
-uint8_t get_led_mask(void) {
-    uint8_t layer = get_highest_layer(layer_state);
-    uint8_t led = (0x01 << layer) >> 1;
-    return led;
+/* Write LED state bitmask to ADB bus */
+void adb_led_set(uint8_t led_mask) {
+    adb_host_kbd_led(~led_mask);
 }
 
-/* Replace LED indicator set fn */
-void led_set(uint8_t usb_led) {
-    led_t led_state = host_keyboard_led_state();
+/* Generate LED bytemask for current highest layer + caps state */
+uint8_t get_led_mask(uint8_t layer, led_t led_state) {
+    uint8_t led_mask = (0x01 << layer) >> 1;
     // invert led mask when caps lock is active
-    uint8_t led_mask = get_led_mask();
     if (led_state.caps_lock) {
         led_mask = ~led_mask;
     }
-    adb_host_kbd_led(~led_mask);
+    return led_mask;
 }
 
 /* Toggle LED indicator update on layer change */
 layer_state_t layer_state_set_kb(layer_state_t state) {
-    uint8_t led = get_led_mask();
-    led_set(led);
+    uint8_t layer = get_highest_layer(state);
+    led_t led_state = host_keyboard_led_state();
+    uint8_t led_mask = get_led_mask(layer, led_state);
+    adb_led_set(led_mask);
     return layer_state_set_user(state);
+}
+
+/* Default LED indicator setup */
+layer_state_t default_layer_state_set_kb(layer_state_t state) {
+    uint8_t layer = get_highest_layer(state);
+    led_t led_state = host_keyboard_led_state();
+    uint8_t led_mask = get_led_mask(layer, led_state);
+    adb_led_set(led_mask);
+    return default_layer_state_set_user(state);
+}
+
+/* Replace LED state indicator set fn */
+void led_set(uint8_t usb_led) {
+    uint8_t layer = get_highest_layer(layer_state);
+    uint8_t led_mask = get_led_mask(layer, (led_t)usb_led);
+    adb_led_set(led_mask);
 }
