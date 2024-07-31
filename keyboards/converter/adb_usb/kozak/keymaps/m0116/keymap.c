@@ -131,6 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Autocorrect stack
 
 void keyboard_post_init_user(void) {
+    TX_RX_LED_INIT;
 #ifdef AUTOCORRECT_OFF_AT_STARTUP
     // toggle autocorrect off at startup
     if (autocorrect_is_enabled()) {

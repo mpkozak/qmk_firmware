@@ -40,7 +40,7 @@
 #define AUTOCORRECT_OFF_AT_STARTUP
 
 /* MCU onboard leds */
-// #define TX_RX_LED_INIT  DDRD |= (1<<5), DDRB |= (1<<0)
+#define TX_RX_LED_INIT  DDRD |= (1<<5), DDRB |= (1<<0)
 #define TXLED0          PORTD |= (1<<5)
 #define TXLED1          PORTD &= ~(1<<5)
 #define RXLED0          PORTB |= (1<<0)
