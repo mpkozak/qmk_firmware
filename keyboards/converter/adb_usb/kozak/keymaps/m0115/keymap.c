@@ -16,6 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
+#include "mcu_leds.c"
 
 
 
@@ -129,7 +130,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Autocorrect stack
 
 void keyboard_post_init_user(void) {
-    TX_RX_LED_INIT;
 #ifdef AUTOCORRECT_OFF_AT_STARTUP
     // toggle autocorrect off at startup
     if (autocorrect_is_enabled()) {
@@ -139,20 +139,19 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+    mcu_led_enable();
     switch (get_highest_layer(state)) {
         case BASE_SPD:
             if (!autocorrect_is_enabled()) {
                 autocorrect_enable();
             }
-            TXLED1;
-            RXLED1;
+            mcu_leds_on();
             break;
         default:
             if (autocorrect_is_enabled()) {
                 autocorrect_disable();
             }
-            TXLED0;
-            RXLED0;
+            mcu_leds_off();
             break;
     }
     return state;
