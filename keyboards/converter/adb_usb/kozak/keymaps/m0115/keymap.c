@@ -47,7 +47,7 @@ enum custom_keycodes {
 #define ___x___ KC_NO           // null
 
 // M0115-specific
-#define KC_CALU LCAG(KC_PEQL)   // launch calculator from services menu
+#define KC_CALU HYPR(KC_PEQL)   // launch calculator from services menu
 
 
 
