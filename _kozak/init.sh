@@ -15,7 +15,7 @@ BUILDS="$KOZAK/builds"
 
 
 # active board dirs
-_common="$QMK_HOME/keyboards/keychron/common"
+_keychron="$QMK_HOME/keyboards/keychron/common"
 _q0="$QMK_HOME/keyboards/keychron/q0"
 _q2="$QMK_HOME/keyboards/keychron/q2"
 _q60="$QMK_HOME/keyboards/keychron/q60"
@@ -62,7 +62,7 @@ _portablef="converter_macintosh_portable_kozak.uf2"
 alias b='open $BUILDS'
 
 # edit aliases
-alias common='cd $_common; e'
+alias keychron='cd $_keychron; e'
 alias q0='cd "$_q0"; e'
 alias q2='cd "$_q2"; e'
 alias q60='cd "$_q60"; e'
@@ -70,7 +70,9 @@ alias tempo='cd "$_tempo"; e'
 alias m0110='cd "$_m0110"; e'
 alias adb='cd "$_adb"; e'
 alias portable='cd $_portable; e'
+
 alias ek='e "$KOZAK"'
+
 alias e0='cd $_q0km; e'
 alias e2='cd $_q2km; e'
 alias e60='cd $_q60km; e'
@@ -89,7 +91,7 @@ alias acrm_q60='[ -e "$_q60"/ansi/keymaps/kozak/autocorrect_data.h ] && rm "$_q6
 alias acrm_m0115='[ -e "$_adb"/kozak/keymaps/m0115/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0115/autocorrect_data.h'
 alias acrm_m0116='[ -e "$_adb"/kozak/keymaps/m0116/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0116/autocorrect_data.h'
 alias acrm_portable='[ -e "$_portable"/keymaps/kozak/autocorrect_data.h ] && rm "$_portable"/keymaps/kozak/autocorrect_data.h'
-alias acrm="acrm_q2 && acrm_q60 && acrm_m0116 && acrm_portable"
+alias acrm="acrm_q2 && acrm_q60 && acrm_m0115 && acrm_m0116 && acrm_portable"
 
 alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
 alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'

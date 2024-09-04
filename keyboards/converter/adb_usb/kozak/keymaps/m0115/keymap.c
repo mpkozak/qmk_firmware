@@ -48,6 +48,7 @@ enum custom_keycodes {
 
 // M0115-specific
 #define KC_CALU HYPR(KC_PEQL)   // launch calculator from services menu
+#define KC_BTAB S(KC_TAB)       // backtab
 
 
 
@@ -113,13 +114,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,         _______, _______, _______,         ___x___, KC_UP,   ___x___, KC_VOLD,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,                                            KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,                  _______,                  G(KC_1), G(KC_2), G(KC_3),
-        _______, _______, _______,                            _______,                                     _______, _______, _______,         _______, _______, _______,         _______,          KC_TAB,  _______
+        _______, _______, _______,                            _______,                                     _______, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_TAB,  _______
     ),
     [BASE_SPD] = LAYOUT_m0115(
         TO(0),            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,         _______, _______, TO(0),                                      ___x___,
         KC_ESC,  KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___, KC_BSPC,         _______, _______, _______,         TO(0),   KC_PEQL, KC_PSLS, KC_PAST,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___, KC_BSPC,         _______, _______, _______,         KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
-        ___x___, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+        _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
         OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,          KC_RSFT,                  KC_UP,                    KC_P1,   KC_P2,   KC_P3,
         KC_LCTL, KC_LOPT, KC_LCMD,                            KC_SPC,                                      ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         KC_P0,            KC_PDOT, KC_PENT
     )

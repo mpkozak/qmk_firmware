@@ -92,7 +92,6 @@ smae          -> same
 :osme         -> some
 osme:         -> some
 tkae:         -> take
-atht          -> that
 taht          -> that
 :ht           -> th
 :teh:         -> the
@@ -140,6 +139,7 @@ yuou          -> you
 # 3e            -> e
 # 8i            -> i
 # 9o            -> o
+# atht          -> that
 # :th:e         -> the
 # ahve:         -> have
 # :ahve         -> have
