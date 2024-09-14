@@ -16,4 +16,6 @@ AUTOCORRECT_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 LTO_ENABLE = yes
 
+DEFERRED_EXEC_ENABLE = yes
+
 SRC = matrix.c adb.c

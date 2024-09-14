@@ -19,8 +19,13 @@
 
 
 
+/* Callback interval (ms) */
+#define INIT_CB_MS  60000   // 1 minute
+
+
+
 /* Change keyboard handler to distinguish right side modifiers */
-void keyboard_post_init_kb(void) {
+void adb_init(void) {
     uint16_t reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
     uint8_t handler = (reg3 & 0xFF);
     if (handler == ADB_HANDLER_AEK) {
@@ -28,3 +33,24 @@ void keyboard_post_init_kb(void) {
         reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
     }
 }
+
+/* Callback to reinvoke initialization handler */
+uint32_t adb_init_cb(uint32_t trigger_time, void *cb_arg) {
+    adb_init();
+    return INIT_CB_MS;
+}
+
+/* Initial invocation */
+void keyboard_post_init_kb(void) {
+    adb_init();
+    defer_exec(INIT_CB_MS, adb_init_cb, NULL);
+}
+
+
+
+
+
+
+
+// /* Callback registration */
+// deferred_token adb_init_token = defer_exec(60000, adb_init_cb, NULL);

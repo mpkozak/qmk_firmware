@@ -16,9 +16,15 @@
 
 #pragma once
 
-enum layers{
-    BASE,           // Base         (layer 0)
-    FN0,            // Fn 0         (layer 1)
-    BASE_SPD,       // Speed Base   (layer 2)
-    DEFAULT         // Default      (layer 3)
-};
+/* Override info.json */
+#undef PRODUCT
+#define PRODUCT "M0115v2"
+#undef PRODUCT_ID
+#define PRODUCT_ID 0x0115
+
+/* ADB port setting */
+#define ADB_PORT        PORTD
+#define ADB_PIN         PIND
+#define ADB_DDR         DDRD
+#define ADB_DATA_BIT    0
+#define ADB_PSW_BIT     1       // optional
