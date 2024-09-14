@@ -73,7 +73,7 @@ alias m0110='cd "$_m0110"; e'
 alias adb='cd "$_adb"; e'
 alias portable='cd $_portable; e'
 
-alias ek='e "$KOZAK"'
+alias ek='cd "$KOZAK"; e'
 
 alias e0='cd $_q0km; e'
 alias e2='cd $_q2km; e'
