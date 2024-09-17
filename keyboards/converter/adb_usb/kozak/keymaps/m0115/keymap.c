@@ -24,7 +24,8 @@
 // Custom keycodes
 
 enum custom_keycodes {
-  KC_TGSP = SAFE_RANGE          // locking speed toggle
+  KC_APFN = SAFE_RANGE,         // apple fn
+  KC_TGSP                       // locking speed toggle
 };
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS, KC_DEL,          _______, _______, _______,         ___x___, KC_UP,   ___x___, KC_VOLD,
         _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, ___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,                                            KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU,
         _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,          _______,                  _______,                  G(KC_1), G(KC_2), G(KC_3),
-        _______, _______, _______,                            _______,                                     _______, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_TAB,  _______
+        KC_APFN, _______, _______,                            _______,                                     _______, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_TAB,  _______
     ),
     [BASE_SPD] = LAYOUT_m0115(
         TO(0),            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,         _______, TO(0),   _______,                                    ___x___,
@@ -117,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LOPT, KC_LCMD,                            KC_SPC,                                      ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         KC_P0,            KC_PDOT, KC_PENT
     ),
     [DEFAULT] = LAYOUT_m0115(
-        KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,          KC_PSCR, KC_SCRL, KC_PAUS,                                    KC_PWR,
+        KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,          KC_PSCR, KC_SCRL, KC_PAUS,                                    KC_F20,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,         KC_INS,  KC_HOME, KC_PGUP,         KC_NUM,  KC_PEQL, KC_PSLS, KC_PAST,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,         KC_DEL,  KC_END,  KC_PGDN,         KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
         KC_LCAP, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
@@ -181,8 +182,17 @@ bool is_alpha (uint16_t keycode) {
 bool is_prev_alpha = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // apple fn key
+    if (keycode == KC_APFN) {
+        if (record->event.pressed) {
+            host_consumer_send(0x029D);
+        } else {
+            host_consumer_send(0);
+        }
+        return false;
+    }
     // default layer untoggle
-    if (keycode == KC_PWR) {                        // power key
+    if (keycode == KC_F20) {                        // power key
         if (record->event.pressed) {                // keydown event
             if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
                 layer_clear();

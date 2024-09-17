@@ -28,3 +28,9 @@
 #define ADB_DDR         DDRD
 #define ADB_DATA_BIT    0
 #define ADB_PSW_BIT     1       // optional
+
+/* Apple fn override */
+// #undef VENDOR_ID
+// #undef PRODUCT_ID
+// #define VENDOR_ID  0x05AC // Apple
+// #define PRODUCT_ID 0x0220 // Aluminum Keyboard (ANSI)
