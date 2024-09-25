@@ -60,20 +60,21 @@ enum user_keycodes {
 #define KC_MVRT LSG(KC_RBRC)    // move right tab
 #define KC_MVLS C(KC_LEFT)      // move left space
 #define KC_MVRS C(KC_RGHT)      // move right space
-#define KC_DESK KC_F11          // show desktop
+#define KC_DESK C(KC_DOWN)      // show desktop
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
-#define KC_BSPW A(KC_BSPC)      // backspace word
-// #define KC_FRCQ LAG(KC_ESC)     // force quit
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
 #define KC_NTAB G(KC_T)         // new tab
 #define KC_REFR LSG(KC_R)       // refresh
+#define ___x___ KC_NO           // null
+#define KC_BSPW A(KC_BSPC)      // backspace word
+// #define KC_FRCQ LAG(KC_ESC)     // force quit
 
 // right-side mod arrow cluster
-#define KC_RSUP RSFT_T(KC_UP)   // right shift under up arrow
-#define KC_RFDN LT(3, KC_DOWN)  // right fn (layer 3) under down arrow
-#define KC_RCLF RCMD_T(KC_LEFT) // right command under left arrow
-#define KC_RORT ROPT_T(KC_RGHT) // right option under right arrow
+#define KC_SHUP RSFT_T(KC_UP)   // right shift under up arrow
+#define KC_FNRT LT(3, KC_RGHT)  // right fn (layer 3) under right arrow
+#define KC_CMLF RCMD_T(KC_LEFT) // right command under left arrow
+#define KC_OPDN ROPT_T(KC_DOWN) // right option under down arrow
 
 
 
@@ -125,39 +126,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
         KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,        KC_BSPC,
         KC_LCTL,       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
-        KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,             KC_RSUP, KC_RFDN,
-                    KC_LOPT,  KC_LCMD,                                LT(2,KC_SPC),                           KC_RCLF,  KC_RORT
+        KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,             KC_SHUP, KC_FNRT,
+                    KC_LOPT,  KC_LCMD,                                LT(2,KC_SPC),                           KC_CMLF,  KC_OPDN
     ),
 
     [BASE_SPD] = LAYOUT_ansi_60(    // layer 1 BASE_SPD - cyan
-        TO(0),     KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, KC_NO,   KC_NO,   KC_BSPW,
-        KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_NO,   KC_NO,          KC_BSPC,
-        KC_NO,         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
+        TO(0),     KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___, ___x___, KC_BSPW,
+        KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___,        KC_BSPC,
+        ___x___,       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
         OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,             KC_RSFT, MO(3),
                     KC_LCTL,  KC_LCMD,                                LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT
         ),
 
-    [BASE_FN] = LAYOUT_ansi_60(     // layer 2 BASE_FN - blue
-        TO(0),     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
-        KC_INS,      KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_MVLS, KC_MVRS,        KC_DEL,
-        KC_LCTL,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_MCTL,               KC_ENT,
-        KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, KC_NO,   KC_MVLT, KC_MVRT, KC_CMNT,             KC_RSFT, MO(3),
+    [BASE_FN] = LAYOUT_ansi_60(     // layer 2 BASE_FN - blue [space fn]
+        KC_LSCR,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
+        KC_INS,      KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS,        KC_DEL,
+        KC_LCTL,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,               KC_ENT,
+        KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,             KC_RSFT, MO(3),
                     KC_LOPT,  KC_LCMD,                                _______,                                KC_RCMD,  KC_ROPT
         ),
 
     [_FN1] = LAYOUT_ansi_60(        // layer 3 _FN1 - orange [right-side arrows + quick toggles]
-        KC_LSCR,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
-        KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, KC_NO,   TG(1),   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_MVLT, KC_MVRT,        KC_MUTE,
-        _______,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_NO,   KC_NO,   KC_NO,   KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,               KC_PENT,
-        _______,         KC_NO,   KC_NO,   KC_NO,   KC_PSTT, KC_NO,   KC_NO,   KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,             KC_CAPS, _______,
-                    _______,  _______,                                _______,                                _______,  TT(4)
+        KC_LSCR,   ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
+        KC_TAB,      KC_MVLT, KC_MVRT, KC_EMOC, ___x___, TG(1),   ___x___, ___x___, ___x___, ___x___, KC_UP,   KC_MVLT, KC_MVRT,        KC_MUTE,
+        _______,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, ___x___, ___x___, ___x___, KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,               KC_PENT,
+        _______,         ___x___, ___x___, ___x___, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,             KC_CAPS, _______,
+                    _______,  _______,                                _______,                                _______, MO(4)
         ),
 
     [_FN2] = LAYOUT_ansi_60(        // layer 4 _FN2 - green [mac media keys + rbg settings]
-        TO(0),     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MPRV, KC_MPLY, KC_MNXT, KC_NO,   KC_NO,   KC_NO,   _______, _______,
-        _______,     QK_BOOT, KC_NO,   KC_NO,   NK_TOGG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TGTL, KC_TGCL,        _______,
-        _______,       RGB_SAD, RGB_SAI, KC_NO,   KC_NO,   RGB_HUD, RGB_HUI, KC_NO,   RGB_VAD, RGB_VAI, KC_NO,   KC_NO,                 _______,
-        RGB_TOG,         KC_NO,   KC_NO,   RGB_SPD, RGB_SPI, KC_NO,   RGB_RMOD,RGB_MOD, KC_NO,   KC_NO,   KC_NO,               _______, _______,
+        QK_BOOT,   ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___, _______, _______,
+        _______,     ___x___, ___x___, ___x___, NK_TOGG, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_TGTL, KC_TGCL,        _______,
+        _______,       RGB_SAD, RGB_SAI, ___x___, ___x___, RGB_HUD, RGB_HUI, ___x___, RGB_VAD, RGB_VAI, ___x___, ___x___,               _______,
+        RGB_TOG,         ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,             _______, _______,
                     _______,  _______,                                _______,                                _______,  _______
         )
 };
