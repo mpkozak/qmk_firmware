@@ -40,8 +40,6 @@
 #define KC_NTAB G(KC_T)         // new tab
 #define KC_REFR LSG(KC_R)       // refresh
 #define ___x___ KC_NO           // null
-// #define KC_BSPW A(KC_BSPC)      // backspace word
-// #define KC_FRCQ LAG(KC_ESC)     // force quit
 
 // right-side mod arrow cluster
 #define KC_SHUP RSFT_T(KC_UP)   // right shift under up arrow

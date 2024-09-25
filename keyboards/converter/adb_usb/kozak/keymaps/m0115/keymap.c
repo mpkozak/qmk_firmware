@@ -61,11 +61,10 @@ const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DO
 const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &comma_override,
     &period_override,
     &hyphen_override,
-    NULL // Null terminate the array of overrides!
 };
 
 

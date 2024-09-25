@@ -66,9 +66,8 @@ enum user_keycodes {
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
 #define KC_NTAB G(KC_T)         // new tab
 #define KC_REFR LSG(KC_R)       // refresh
-#define ___x___ KC_NO           // null
 #define KC_BSPW A(KC_BSPC)      // backspace word
-// #define KC_FRCQ LAG(KC_ESC)     // force quit
+#define ___x___ KC_NO           // null
 
 // right-side mod arrow cluster
 #define KC_SHUP RSFT_T(KC_UP)   // right shift under up arrow
@@ -86,11 +85,10 @@ const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DO
 const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &comma_override,
     &period_override,
     &hyphen_override,
-    NULL // Null terminate the array of overrides!
 };
 
 
@@ -136,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___x___,       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,               KC_ENT,
         OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,             KC_RSFT, MO(3),
                     KC_LCTL,  KC_LCMD,                                LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT
-        ),
+    ),
 
     [BASE_FN] = LAYOUT_ansi_60(     // layer 2 BASE_FN - blue [space fn]
         KC_LSCR,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
@@ -144,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,               KC_ENT,
         KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,             KC_RSFT, MO(3),
                     KC_LOPT,  KC_LCMD,                                _______,                                KC_RCMD,  KC_ROPT
-        ),
+    ),
 
     [_FN1] = LAYOUT_ansi_60(        // layer 3 _FN1 - orange [right-side arrows + quick toggles]
         KC_LSCR,   ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
@@ -152,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,       KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, ___x___, ___x___, ___x___, KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,               KC_PENT,
         _______,         ___x___, ___x___, ___x___, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,             KC_CAPS, _______,
                     _______,  _______,                                _______,                                _______, MO(4)
-        ),
+    ),
 
     [_FN2] = LAYOUT_ansi_60(        // layer 4 _FN2 - green [mac media keys + rbg settings]
         QK_BOOT,   ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___, _______, _______,
@@ -160,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,       RGB_SAD, RGB_SAI, ___x___, ___x___, RGB_HUD, RGB_HUI, ___x___, RGB_VAD, RGB_VAI, ___x___, ___x___,               _______,
         RGB_TOG,         ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,             _______, _______,
                     _______,  _______,                                _______,                                _______,  _______
-        )
+    )
 };
 
 // clang-format on

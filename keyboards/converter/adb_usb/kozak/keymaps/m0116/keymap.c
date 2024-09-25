@@ -38,7 +38,7 @@ enum custom_keycodes {
 #define KC_MVRT LSG(KC_RBRC)    // move right tab
 #define KC_MVLS C(KC_LEFT)      // move left space
 #define KC_MVRS C(KC_RGHT)      // move right space
-#define KC_DESK KC_F11          // show desktop
+#define KC_DESK C(KC_DOWN)      // show desktop
 #define KC_WBAK G(KC_LBRC)      // browser back
 #define KC_WFOR G(KC_RBRC)      // browser forward
 #define KC_CMNT G(KC_SLSH)      // comment shortcut
@@ -62,11 +62,10 @@ const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DO
 const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &comma_override,
     &period_override,
     &hyphen_override,
-    NULL // Null terminate the array of overrides!
 };
 
 
