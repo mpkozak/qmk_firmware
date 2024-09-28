@@ -26,7 +26,7 @@
 
 enum custom_keycodes {
   KC_APFN = SAFE_RANGE,         // apple fn
-  KC_CTFN,
+  LCTL_FN,                      // left control + apple fn (tap-hold)
 };
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
@@ -48,7 +48,7 @@ enum custom_keycodes {
 #define KC_REFR LSG(KC_R)       // refresh
 #define ___x___ KC_NO           // null
 
-// M0115-specific
+// M0115v2-specific
 #define KC_CALU HYPR(KC_PEQL)   // launch calculator from services menu
 #define KC_BTAB S(KC_TAB)       // backtab
 #define KC_CTAP LCTL_T(KC_CAPS) // left control / tap caps lock
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,         KC_DEL,  KC_END,  KC_PGDN,         KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
         KC_CTAP, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,                  KC_UP,                    KC_P1,   KC_P2,   KC_P3,
-        KC_CTFN, KC_LOPT, KC_LCMD,                            LT(1,KC_SPC),                                ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         LT(1, KC_P0),     KC_PDOT, LT(1, KC_PENT)
+        LCTL_FN, KC_LOPT, KC_LCMD,                            LT(1,KC_SPC),                                ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         LT(1, KC_P0),     KC_PDOT, LT(1, KC_PENT)
     ),
     [FN0] = LAYOUT_m0115(
         TO(0),            C(KC_1), C(KC_2), C(KC_3), C(KC_4), C(KC_5), C(KC_6), C(KC_7), C(KC_8), KC_F13,  KC_F14,  KC_F15,  KC_F16,          TO(0),   _______, _______,                                    QK_BOOT,
@@ -182,6 +182,30 @@ bool is_alpha (uint16_t keycode) {
 
 bool is_prev_alpha = false;
 
+bool process_record_spd(uint16_t keycode, keyrecord_t *record) {
+    // ignore suprious number keys in the middle of alphas for speed layer
+    if (get_highest_layer(layer_state) == BASE_SPD) {
+        if (is_number(keycode)) {
+            if (is_prev_alpha) {
+                return false;
+            }
+        }
+        // update previous keycode is_alpha state
+        if (record->event.pressed) {
+            if (is_alpha(keycode)) {    // keycode is alpha
+                if (!is_prev_alpha) {
+                    is_prev_alpha = true;
+                }
+            } else {                    // keycode is not alpha
+                if (is_prev_alpha) {
+                    is_prev_alpha = false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -189,7 +213,7 @@ bool is_prev_alpha = false;
 
 bool was_ctrl_tapped = false;
 bool is_fn_active = false;
-uint32_t fn_timer = 0;
+uint16_t fn_timer = 0;
 
 void housekeeping_task_user(void) {
     if (was_ctrl_tapped) {
@@ -199,11 +223,9 @@ void housekeeping_task_user(void) {
     }
 }
 
-
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
 // left control + tap/hold apple fn key
-    if (keycode == KC_CTFN) {
+    if (keycode == LCTL_FN) {
         if (record->event.pressed) {    // keydown
             if (was_ctrl_tapped) {      // control was tapped already
                 if (timer_elapsed(fn_timer) < TAPPING_TERM * 2) {       // recently enough
@@ -241,6 +263,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
     }
+    return true;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Process Record User
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_fn(keycode, record)) {
+        return false;
+    }
+    if (!process_record_spd(keycode, record)) {
+        return false;
+    }
     // default layer untoggle
     if (keycode == KC_F20) {                        // power key
         if (record->event.pressed) {                // keydown event
@@ -250,26 +287,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         }
         return true;
-    }
-    // ignore suprious number keys in the middle of alphas for speed layer
-    if (get_highest_layer(layer_state) == BASE_SPD) {
-        if (is_number(keycode)) {
-            if (is_prev_alpha) {
-                return false;
-            }
-        }
-        // update previous keycode is_alpha state
-        if (record->event.pressed) {
-            if (is_alpha(keycode)) {    // keycode is alpha
-                if (!is_prev_alpha) {
-                    is_prev_alpha = true;
-                }
-            } else {                    // keycode is not alpha
-                if (is_prev_alpha) {
-                    is_prev_alpha = false;
-                }
-            }
-        }
     }
     return true;
 }
