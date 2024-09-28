@@ -15,7 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "k_codes.c"
+#include "custom_keycodes.h"
 
 
 

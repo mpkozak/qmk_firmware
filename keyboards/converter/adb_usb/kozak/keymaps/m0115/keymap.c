@@ -16,9 +16,9 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
-#include "k_codes.c"
+#include "custom_keycodes.h"
 #include "fn_key.c"
-#include "autocorrect.c"
+#include "spd_autocorrect.c"
 #include "mcu_leds.c"
 
 
