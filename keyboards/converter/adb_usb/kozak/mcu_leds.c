@@ -36,3 +36,16 @@ void mcu_leds_off(void) {
     gpio_write_pin_high(RX_LED);
     gpio_write_pin_high(TX_LED);
 }
+
+layer_state_t layer_state_set_mcu(layer_state_t state) {
+    mcu_led_enable();
+    switch (get_highest_layer(state)) {
+        case SPD:
+            mcu_leds_on();
+            break;
+        default:
+            mcu_leds_off();
+            break;
+    }
+    return state;
+}

@@ -16,6 +16,9 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
+#include "k_codes.c"
+#include "fn_key.c"
+#include "autocorrect.c"
 #include "mcu_leds.c"
 
 
@@ -23,50 +26,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
-enum custom_keycodes {
-  KC_TGSP = SAFE_RANGE          // locking speed toggle
-};
-
-#define KC_LSCR C(G(KC_Q))      // lock screen
-#define KC_EMOC C(G(KC_SPC))    // character picker
-#define KC_FSTG C(G(KC_F))      // fullscreen toggle
-#define KC_PSTT S(A(G(KC_V)))   // paste plaintext
-#define KC_ZMNS G(KC_MINS)      // zoom out
-#define KC_ZPLS G(KC_EQL)       // zoom in
-#define KC_ZACT G(KC_0)         // zoom actual
-#define KC_MVLT LSG(KC_LBRC)    // move left tab
-#define KC_MVRT LSG(KC_RBRC)    // move right tab
-#define KC_MVLS C(KC_LEFT)      // move left space
-#define KC_MVRS C(KC_RGHT)      // move right space
-#define KC_DESK C(KC_DOWN)      // show desktop
-#define KC_WBAK G(KC_LBRC)      // browser back
-#define KC_WFOR G(KC_RBRC)      // browser forward
-#define KC_CMNT G(KC_SLSH)      // comment shortcut
-#define KC_NTAB G(KC_T)         // new tab
-#define KC_REFR LSG(KC_R)       // refresh
-#define ___x___ KC_NO           // null
-
-// M0116-specific
 // #define KC_CMDG LCMD_T(KC_GRV)          // left command + grave
 #define KC_CMDA RCMD_T(KC_BSLS)         // right command + backslash
 #define KC_OPTA ROPT_T(KC_LEFT)         // right option + left arrow
 #define KC_GRV2 LT(2,KC_GRV)            // backtick/grave + layer 2
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Key overrides for autocorrect BASE_SPD layer
-
-const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
-const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
-const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
-
-// This globally defines all key overrides to be used
-const key_override_t *key_overrides[] = {
-    &comma_override,
-    &period_override,
-    &hyphen_override,
-};
 
 
 
@@ -115,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,          KC_DESK, KC_MVLS, KC_MVRS, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,         G(KC_1), G(KC_2), G(KC_3),
         _______, _______, _______, _______,                   G(KC_SPC),                 _______, KC_MVLS, KC_MVRS, KC_DESK, _______,         _______,          KC_TAB,  _______
     ),
-    [BASE_SPD] = LAYOUT_m0116(
+    [SPD] = LAYOUT_m0116(
                                                      ___x___,
         TO(0),   KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___, KC_BSPC,         TO(0),   KC_PEQL, KC_PSLS, KC_PAST,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___,                  KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
@@ -128,111 +91,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Autocorrect stack
-
-void keyboard_post_init_user(void) {
-#ifdef AUTOCORRECT_OFF_AT_STARTUP
-    // toggle autocorrect off at startup
-    if (autocorrect_is_enabled()) {
-        autocorrect_toggle();
-    }
-#endif
-}
+// User hooks
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    mcu_led_enable();
-    switch (get_highest_layer(state)) {
-        case BASE_SPD:
-            if (!autocorrect_is_enabled()) {
-                autocorrect_enable();
-            }
-            mcu_leds_on();
-            break;
-        default:
-            if (autocorrect_is_enabled()) {
-                autocorrect_disable();
-            }
-            mcu_leds_off();
-            break;
-    }
+    state = layer_state_set_ac(state);
+    state = layer_state_set_mcu(state);
     return state;
 }
 
-bool is_number(uint16_t keycode) {
-    switch (keycode) {
-        case KC_P1 ... KC_P0:
-        case KC_2 ... KC_9:         // range change to allow ! and ) after alphas
-            return true;
-        default:
-            return false;
-    }
+void keyboard_post_init_user(void) {
+    keyboard_post_init_ac();
 }
 
-bool is_alpha (uint16_t keycode) {
-    switch (keycode) {
-        case KC_A ... KC_Z:
-            return true;
-        default:
-            return false;
-    }
+void housekeeping_task_user(void) {
+    housekeeping_task_fn();
 }
-
-bool is_prev_alpha = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // speed layer toggle
-    if (keycode == KC_TGSP) {
-        if (record->event.pressed) {
-            layer_move(BASE_SPD);
-        } else {
-            layer_clear();
-        }
+    if (!process_record_fn(keycode, record)) {
         return false;
     }
-    // ignore suprious number keys in the middle of alphas for speed layer
-    if (get_highest_layer(layer_state) == BASE_SPD) {
-        if (is_number(keycode)) {
-            if (is_prev_alpha) {
-                return false;
-            }
-        }
-        // update previous keycode is_alpha state
-        if (record->event.pressed) {
-            if (is_alpha(keycode)) {    // keycode is alpha
-                if (!is_prev_alpha) {
-                    is_prev_alpha = true;
-                }
-            } else {                    // keycode is not alpha
-                if (is_prev_alpha) {
-                    is_prev_alpha = false;
-                }
-            }
-        }
+    if (!process_record_ac(keycode, record)) {
+        return false;
     }
     return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ---------------------------------------|xxxxxxxxxxxxxxx|-----------------------------------------------------------|-------|-------------------------------|
-//                                             KC_EJCT,
-// xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxxxxxx|-------|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|
-// KC_ESC, KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS,KC_EQL,     KC_BSPC,        KC_NUM, KC_EQL, KC_PSLS,KC_PAST,
-// xxxxxxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|-------|-------|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|
-// KC_TAB,     KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC,KC_RBRC,                KC_P7,  KC_P8,  KC_P9,  KC_PPLS,
-// xxxxxxxxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxxxxxxxx|-------|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|
-// KC_LCTL,      KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,      KC_ENT,         KC_P4,  KC_P5,  KC_P6,  KC_PMNS,
-// xxxxxxxxxxxxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxxxxxxxxxxxx|-------|xxxxxxx|xxxxxxx|xxxxxxx|-------|
-// KC_LSFT,          KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,          KC_RSFT,        KC_P1,  KC_P2,  KC_P3,
-// xxxxxxx|xxxxxxx|xxxxxxxxxxxxx|xxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|xxxxxxx|-------|xxxxxxx|-------|xxxxxxx|xxxxxxx|
-// KC_LCAP,KC_LALT,   KC_LGUI,   KC_GRV,                KC_SPC,                KC_BSLS,KC_LEFT,KC_RGHT,KC_DOWN,KC_UP,          KC_P0,          KC_PDOT,KC_PENT
