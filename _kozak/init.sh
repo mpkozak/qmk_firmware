@@ -125,7 +125,7 @@ function build {
     local km="kozak"
     local file=""
     local ext="bin"
-    local ac=0
+    local ac=
 
     if [[ "$1" == "q0" ]]; then
         board_name="q0"
@@ -135,17 +135,17 @@ function build {
         board_name="q2"
         kb="$_q2c"
         file="$_q2f"
-        ac=1
+        ac="acr_q2"
     elif [[ "$1" == "q60" ]]; then
         board_name="q60"
         kb="$_q60c"
         file="$_q60f"
-        ac=1
+        ac="acr_q60"
     elif [[ "$1" == "tempo" ]]; then
         board_name="tempo"
         kb="$_tempoc"
         file="$_tempof"
-        ac=1
+        ac="acr_tempo"
     elif [[ "$1" == "m0110" ]]; then
         board_name="m0110"
         kb="$_m0110c"
@@ -170,28 +170,28 @@ function build {
         km="m0115"
         file="$_m0115f"
         ext="hex"
-        ac=1
+        ac="acr_m0115"
     elif [[ "$1" == "m0115v2" ]]; then
         board_name="m0115v2"
         kb="$_adbc"
         km="m0115v2"
         file="$_m0115v2f"
         ext="hex"
-        ac=1
+        ac="acr_m0115v2"
     elif [[ "$1" == "m0116" ]]; then
         board_name="m0116"
         kb="$_adbc"
         km="m0116"
         file="$_m0116f"
         ext="hex"
-        ac=1
+        ac="acr_m0116"
     elif [[ "$1" == "portable" ]]; then
         board_name="macintosh_portable"
         kb="$_portablec"
         km="kozak"
         file="$_portablef"
         ext="uf2"
-        ac=1
+        ac="acr_portable"
     else
         echo "invalid selection: $1"
         return
@@ -206,9 +206,9 @@ function build {
 
     local fw_name="$board_name-kozak_$sha.$ext"
 
-    if [[ $ac -eq 1 ]]; then
+    if [[ ! -z "$ac" ]]; then
         echo "updating autocorrect definitions"
-        acr
+        eval $ac
     fi
 
     qmk clean
