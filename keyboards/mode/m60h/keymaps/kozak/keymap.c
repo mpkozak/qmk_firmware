@@ -67,17 +67,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LOPT, KC_LCMD,                   LT(2,KC_SPC),                       KC_RCMD, KC_ROPT
     ),
     [FN0] = LAYOUT_60_hhkb(        // layer 2 FN0 - blue [space fn]
-        KC_LSCR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
+        KC_LSCR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  UG_VALD, UG_VALU,
         KC_INS,  KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS, KC_DEL,
         KC_LCTL, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          KC_ENT,
         KC_LSFT,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT, KC_RSFT, MO(3),
                           KC_LOPT, KC_LCMD,                   _______,                            KC_RCMD, KC_ROPT
     ),
     [FN1] = LAYOUT_60_hhkb(        // layer 3 FN1 - orange [right-side arrows + quick toggles]
-        QK_BOOT, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
+        QK_BOOT, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, UG_VALD, UG_VALU, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
         KC_TAB,  KC_MVLT, KC_MVRT, KC_EMOC, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, KC_UP,   KC_MVLT, KC_MVRT, KC_MUTE,
         _______, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, ___x___, ___x___, ___x___, KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,          KC_PENT,
-        RGB_TOG,          ___x___, ___x___, ___x___, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS, KC_CAPS, _______,
+        UG_TOGG,          ___x___, ___x___, ___x___, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS, KC_CAPS, _______,
                           _______, _______,                   _______,                            _______, _______
     )
 };

@@ -145,6 +145,7 @@ function build {
         board_name="tempo"
         kb="$_tempoc"
         file="$_tempof"
+        ac=1
     elif [[ "$1" == "m0110" ]]; then
         board_name="m0110"
         kb="$_m0110c"
