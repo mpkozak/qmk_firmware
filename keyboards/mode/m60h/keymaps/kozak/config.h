@@ -37,15 +37,15 @@
 #define RGBLIGHT_VAL_STEP 8       // units to step when in/decreasing value (brightness)
 
 // // Dynamic Fn Layer RGB indicator options
-// #define FN0_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 1; RGB blue
-// #define FN1_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 2; RGB orange
-// #define FN2_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 3; RGB green
+// #define SPD_LAYER_COLOR 0xFE, 0x11, 0x00   // layer 1; RGB orange
+// #define FN0_LAYER_COLOR 0x11, 0x01, 0xFE   // layer 2; RGB blue
+// #define FN1_LAYER_COLOR 0x01, 0xFE, 0x11   // layer 3; RGB green
 
 // Dynamic Fn Layer RGB indicator options
 #define BASE_LAYER_HSV 36,  159, 47    // layer 0; HSV white
-#define FN0_LAYER_HSV  173, 252, 47    // layer 1; HSV blue
-#define FN1_LAYER_HSV  3,   252, 47    // layer 2; HSV orange
-#define FN2_LAYER_HSV  88,  252, 47    // layer 3; HSV green
+#define SPD_LAYER_HSV  3,   252, 47    // layer 1; HSV orange
+#define FN0_LAYER_HSV  173, 252, 47    // layer 2; HSV blue
+#define FN1_LAYER_HSV  88,  252, 47    // layer 3; HSV green
 
 // Override + Disable RGB Light Animation modes
 #undef RGBLIGHT_ANIMATIONS

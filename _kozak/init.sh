@@ -90,21 +90,21 @@ alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
 
 alias acrm_q2='[ -e "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h ] && rm "$_q2"/ansi_encoder/keymaps/kozak/autocorrect_data.h'
 alias acrm_q60='[ -e "$_q60"/ansi/keymaps/kozak/autocorrect_data.h ] && rm "$_q60"/ansi/keymaps/kozak/autocorrect_data.h'
-# alias acrm_tempo='[ -e "$_tempo"/keymaps/kozak/autocorrect_data.h ] && rm "$_tempo"/keymaps/kozak/autocorrect_data.h'
+alias acrm_tempo='[ -e "$_tempo"/keymaps/kozak/autocorrect_data.h ] && rm "$_tempo"/keymaps/kozak/autocorrect_data.h'
 alias acrm_m0115='[ -e "$_adb"/kozak/keymaps/m0115/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0115/autocorrect_data.h'
 alias acrm_m0115v2='[ -e "$_adb"/kozak/keymaps/m0115v2/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0115v2/autocorrect_data.h'
 alias acrm_m0116='[ -e "$_adb"/kozak/keymaps/m0116/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0116/autocorrect_data.h'
 alias acrm_portable='[ -e "$_portable"/keymaps/kozak/autocorrect_data.h ] && rm "$_portable"/keymaps/kozak/autocorrect_data.h'
-alias acrm="acrm_q2 && acrm_q60 && acrm_m0115 && acrm_m0115v2 && acrm_m0116 && acrm_portable"
+alias acrm="acrm_q2 && acrm_q60 && acrm_tempo && acrm_m0115 && acrm_m0115v2 && acrm_m0116 && acrm_portable"
 
 alias acg_q2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q2/ansi_encoder -km kozak'
 alias acg_q60='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb keychron/q60/ansi -km kozak'
-# alias acg_tempo='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb mode/m60h -km kozak'
+alias acg_tempo='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb mode/m60h -km kozak'
 alias acg_m0115='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0115'
 alias acg_m0115v2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0115v2'
 alias acg_m0116='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0116'
 alias acg_portable='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/macintosh_portable -km kozak'
-alias acg="acg_q2 && acg_q60 && acg_m0115 && acg_m0115v2 && acg_m0116 && acg_portable"
+alias acg="acg_q2 && acg_q60 && acg_tempo && acg_m0115 && acg_m0115v2 && acg_m0116 && acg_portable"
 
 alias acr="acrm; acg"
 alias acr_q2='acrm_q2; acg_q2'
