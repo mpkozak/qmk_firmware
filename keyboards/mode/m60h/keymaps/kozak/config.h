@@ -22,7 +22,7 @@
 
 // config layer lights
 #define RGBLIGHT_LAYERS
-#define RGBLIGHT_LAYERS_RETAIN_VAL
+// #define RGBLIGHT_LAYERS_RETAIN_VAL
 
 // default options applied when eeprom is cleared
 #define RGBLIGHT_DEFAULT_HUE           36            // default hue - base layer [warm white]
@@ -43,9 +43,9 @@
 
 // Dynamic Fn Layer RGB indicator options
 #define BASE_LAYER_HSV 36,  159, 47    // layer 0; HSV white
-#define SPD_LAYER_HSV  3,   252, 47    // layer 1; HSV orange
-#define FN0_LAYER_HSV  173, 252, 47    // layer 2; HSV blue
-#define FN1_LAYER_HSV  88,  252, 47    // layer 3; HSV green
+#define SPD_LAYER_HSV  3,   252, 127   // layer 1; HSV orange
+#define FN0_LAYER_HSV  173, 252, 95    // layer 2; HSV blue
+#define FN1_LAYER_HSV  88,  252, 95    // layer 3; HSV green
 
 // Override + Disable RGB Light Animation modes
 #undef RGBLIGHT_ANIMATIONS
