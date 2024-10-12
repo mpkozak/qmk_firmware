@@ -113,7 +113,7 @@ hwere         -> where
 iwth          -> with
 wiht          -> with
 wokr          -> work
-eyar          -> year
+:eyar         -> year
 
 ## ommission
 cannt         -> cannot
