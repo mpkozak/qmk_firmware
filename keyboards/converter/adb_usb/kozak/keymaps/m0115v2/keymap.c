@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(0),            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,         _______, TO(0),   _______,                                    ___x___,
         KC_ESC,  KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___, KC_BSPC,         _______, _______, _______,         TO(0),   KC_PEQL, KC_PSLS, KC_PAST,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___, KC_BSPC,         _______, _______, _______,         KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
-        _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+        ___x___, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
         OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,          KC_RSFT,                  KC_UP,                    KC_P1,   KC_P2,   KC_P3,
         KC_LCTL, KC_LOPT, KC_LCMD,                            KC_SPC,                                      ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         KC_P0,            KC_PDOT, KC_PENT
     ),
@@ -95,6 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = layer_state_set_ac(state);
     state = layer_state_set_mcu(state);
+    if (get_highest_layer(state) == SPD) {
+        if (host_keyboard_led_state().caps_lock) {
+            register_code(KC_CAPS);
+        }
+    }
     return state;
 }
 
