@@ -35,6 +35,7 @@ _m0110akm="$_m0110/kozak/keymaps/m0110a"
 _m0115km="$_adb/kozak/keymaps/m0115"
 _m0115v2km="$_adb/kozak/keymaps/m0115v2"
 _m0116km="$_adb/kozak/keymaps/m0116"
+_m3501km="$_adb/kozak/keymaps/m3501"
 _portablekm="$_portable/keymaps/kozak"
 
 # customized keyboards
@@ -57,6 +58,7 @@ _m0110af="converter_m0110_usb_kozak_m0110a.hex"
 _m0115f="converter_adb_usb_kozak_m0115.hex"
 _m0115v2f="converter_adb_usb_kozak_m0115v2.hex"
 _m0116f="converter_adb_usb_kozak_m0116.hex"
+_m3501f="converter_adb_usb_kozak_m3501.hex"
 _portablef="converter_macintosh_portable_kozak.uf2"
 
 
@@ -84,6 +86,7 @@ alias em0110a='cd "$_m0110akm"; e'
 alias em0115='cd $_m0115km; e'
 alias em0115v2='cd $_m0115v2km; e'
 alias em0116='cd $_m0116km; e'
+alias em3501='cd $_m3501km; e'
 
 # autocorrect aliases
 alias ace='e "$KOZAK"/autocorrect_dictionary.txt'
@@ -94,6 +97,7 @@ alias acrm_tempo='[ -e "$_tempo"/keymaps/kozak/autocorrect_data.h ] && rm "$_tem
 alias acrm_m0115='[ -e "$_adb"/kozak/keymaps/m0115/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0115/autocorrect_data.h'
 alias acrm_m0115v2='[ -e "$_adb"/kozak/keymaps/m0115v2/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0115v2/autocorrect_data.h'
 alias acrm_m0116='[ -e "$_adb"/kozak/keymaps/m0116/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m0116/autocorrect_data.h'
+alias acrm_m3501='[ -e "$_adb"/kozak/keymaps/m3501/autocorrect_data.h ] && rm "$_adb"/kozak/keymaps/m3501/autocorrect_data.h'
 alias acrm_portable='[ -e "$_portable"/keymaps/kozak/autocorrect_data.h ] && rm "$_portable"/keymaps/kozak/autocorrect_data.h'
 alias acrm="acrm_q2 && acrm_q60 && acrm_tempo && acrm_m0115 && acrm_m0115v2 && acrm_m0116 && acrm_portable"
 
@@ -103,6 +107,7 @@ alias acg_tempo='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.t
 alias acg_m0115='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0115'
 alias acg_m0115v2='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0115v2'
 alias acg_m0116='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m0116'
+alias acg_m3501='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/adb_usb/kozak -km m3501'
 alias acg_portable='qmk generate-autocorrect-data "$KOZAK"/autocorrect_dictionary.txt -kb converter/macintosh_portable -km kozak'
 alias acg="acg_q2 && acg_q60 && acg_tempo && acg_m0115 && acg_m0115v2 && acg_m0116 && acg_portable"
 
@@ -113,6 +118,7 @@ alias acr_tempo='acrm_tempo; acg_tempo'
 alias acr_m0115='acrm_m0115; acg_m0115'
 alias acr_m0115v2='acrm_m0115v2; acg_m0115v2'
 alias acr_m0116='acrm_m0116; acg_m0116'
+alias acr_m3501='acrm_m3501; acg_m3501'
 alias acr_portable='acrm_portable; acg_portable'
 
 
@@ -185,6 +191,13 @@ function build {
         file="$_m0116f"
         ext="hex"
         ac="acr_m0116"
+    elif [[ "$1" == "m3501" ]]; then
+        board_name="m3501"
+        kb="$_adbc"
+        km="m3501"
+        file="$_m3501f"
+        ext="hex"
+        ac="acr_m3501"
     elif [[ "$1" == "portable" ]]; then
         board_name="macintosh_portable"
         kb="$_portablec"
