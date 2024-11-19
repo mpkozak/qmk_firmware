@@ -35,44 +35,44 @@ void housekeeping_task_fn(void) {
 }
 
 bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
-// left control + tap/hold apple fn key
-    if (keycode == LCTL_FN) {
-        if (record->event.pressed) {    // keydown
-            if (was_ctrl_tapped) {      // control was tapped already
-                if (timer_elapsed(fn_timer) < TAPPING_TERM * 2) {       // recently enough
-                    was_ctrl_tapped = false;
-                    host_consumer_send(0x029D);     // send fn
-                    is_fn_active = true;
+    switch (keycode) {
+        case LCTL_FN:       // left control + tap/hold apple fn key
+            if (record->event.pressed) {    // keydown
+                if (was_ctrl_tapped) {      // control was tapped already
+                    if (timer_elapsed(fn_timer) < TAPPING_TERM * 2) {       // recently enough
+                        was_ctrl_tapped = false;
+                        host_consumer_send(0x029D);     // send fn
+                        is_fn_active = true;
+                        return false;
+                    } else {                // not recently enough
+                        was_ctrl_tapped = false;
+                    }
+                }                           // ctrl was not tapped already
+                register_code(KC_LCTL);     // send ctrl
+                fn_timer = timer_read();    // start timer
+                return false;
+            } else {                        // keyup
+                if (is_fn_active) {         // fn was active
+                    host_consumer_send(0);  // clear fn
+                    is_fn_active = false;
                     return false;
-                } else {                // not recently enough
-                    was_ctrl_tapped = false;
                 }
-            }                           // ctrl was not tapped already
-            register_code(KC_LCTL);     // send ctrl
-            fn_timer = timer_read();    // start timer
-            return false;
-        } else {                        // keyup
-            if (is_fn_active) {         // fn was active
-                host_consumer_send(0);  // clear fn
-                is_fn_active = false;
+                if (timer_elapsed(fn_timer) <= TAPPING_TERM * 2) {   // was tapped
+                    was_ctrl_tapped = true;
+                    fn_timer = timer_read();     // restart timer
+                }
+                unregister_code(KC_LCTL);       // clear ctrl
                 return false;
             }
-            if (timer_elapsed(fn_timer) <= TAPPING_TERM * 2) {   // was tapped
-                was_ctrl_tapped = true;
-                fn_timer = timer_read();     // restart timer
+        case KC_APFN:       // apple fn key
+            if (record->event.pressed) {
+                host_consumer_send(0x029D);
+            } else {
+                host_consumer_send(0);
             }
-            unregister_code(KC_LCTL);       // clear ctrl
             return false;
-        }
+        default:
+            was_ctrl_tapped = false;
+            return true;
     }
-// apple fn key
-    if (keycode == KC_APFN) {
-        if (record->event.pressed) {
-            host_consumer_send(0x029D);
-        } else {
-            host_consumer_send(0);
-        }
-        return false;
-    }
-    return true;
 }
