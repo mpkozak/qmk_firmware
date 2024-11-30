@@ -22,9 +22,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Control/Fn tap+hold stack
 
-bool was_ctrl_tapped = false;
-bool is_fn_active = false;
-uint16_t fn_timer = 0;
+static bool was_ctrl_tapped = false;
+static bool is_ctrl_clean = false;
+static bool is_fn_active = false;
+static uint16_t fn_timer = 0;
 
 void housekeeping_task_fn(void) {
     if (was_ctrl_tapped) {
@@ -49,6 +50,7 @@ bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
                     }
                 }                           // ctrl was not tapped already
                 register_code(KC_LCTL);     // send ctrl
+                is_ctrl_clean = true;
                 fn_timer = timer_read();    // start timer
                 return false;
             } else {                        // keyup
@@ -58,8 +60,10 @@ bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
                     return false;
                 }
                 if (timer_elapsed(fn_timer) <= TAPPING_TERM * 2) {   // was tapped
-                    was_ctrl_tapped = true;
-                    fn_timer = timer_read();     // restart timer
+                    if (is_ctrl_clean) {                             // without other keystroke occurring
+                        was_ctrl_tapped = true;
+                        fn_timer = timer_read();     // restart timer
+                    }
                 }
                 unregister_code(KC_LCTL);       // clear ctrl
                 return false;
@@ -72,6 +76,7 @@ bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         default:
+            is_ctrl_clean = false;
             was_ctrl_tapped = false;
             return true;
     }
