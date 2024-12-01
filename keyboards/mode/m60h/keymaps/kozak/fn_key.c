@@ -31,7 +31,6 @@ void housekeeping_task_fn(void) {
     if (was_ctrl_tapped) {
         if (timer_elapsed(fn_timer) >= TAPPING_TERM * 2) {
             was_ctrl_tapped = false;
-            is_ctrl_clean = false;
         }
     }
 }
@@ -40,7 +39,7 @@ bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LCTL_FN:       // left control + tap/hold apple fn key
             if (record->event.pressed) {    // keydown
-                if (was_ctrl_tapped && is_ctrl_clean) {      // control was tapped already
+                if (was_ctrl_tapped) {      // control was tapped already
                     if (timer_elapsed(fn_timer) < TAPPING_TERM * 2) {       // recently enough
                         was_ctrl_tapped = false;
                         host_consumer_send(0x029D);     // send fn
@@ -61,8 +60,10 @@ bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
                     return false;
                 }
                 if (timer_elapsed(fn_timer) <= TAPPING_TERM * 2) {   // was tapped
-                    was_ctrl_tapped = true;
-                    fn_timer = timer_read();     // restart timer
+                    if (is_ctrl_clean) {                             // without other keystroke occurring
+                        was_ctrl_tapped = true;
+                        fn_timer = timer_read();     // restart timer
+                    }
                 }
                 unregister_code(KC_LCTL);       // clear ctrl
                 return false;
@@ -75,10 +76,8 @@ bool process_record_fn(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         default:
-            if (record->event.pressed) {
-                is_ctrl_clean = false;
-                was_ctrl_tapped = false;
-            }
+            is_ctrl_clean = false;
+            was_ctrl_tapped = false;
             return true;
     }
 }
