@@ -24,25 +24,25 @@
 
 
 
-void adb_status(void) {
-    // uint16_t reg0 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_0);
-    // uint16_t reg1 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_1);
-    uint16_t reg2 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_2);
-    int keys = (reg2 & 0x7FC0) >> 6;                    // bits 6-14
-    int leds = (reg2 & 0x7);                            // bits 0-2
-    uint16_t reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
-    int service_request = (reg3 & 0x2000) >> 13;        // bit  13
-    int device_address = (reg3 & 0xF00) >> 8;           // bits 8-11
-    uint8_t device_handler_id = (reg3 & 0xFF);          // bits 0-7
-    print("__ADB-status__"); print("\n");
-    // xprintf("         adb_reg2: %b \n", reg2);
-    // xprintf("         adb_reg3: %b \n", reg3);
-    xprintf("        reg2_keys: %09b \n", keys);
-    xprintf("        reg2_leds: %03b \n", leds);
-    xprintf("  service_request: %u \n", service_request);
-    xprintf("   device_address: %u \n", device_address);
-    xprintf("device_handler_id: 0x%02X \n", device_handler_id);
-}
+// void adb_status(void) {
+//     // uint16_t reg0 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_0);
+//     // uint16_t reg1 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_1);
+//     uint16_t reg2 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_2);
+//     int keys = (reg2 & 0x7FC0) >> 6;                    // bits 6-14
+//     int leds = (reg2 & 0x7);                            // bits 0-2
+//     uint16_t reg3 = adb_host_talk(ADB_ADDR_KEYBOARD, ADB_REG_3);
+//     int service_request = (reg3 & 0x2000) >> 13;        // bit  13
+//     int device_address = (reg3 & 0xF00) >> 8;           // bits 8-11
+//     uint8_t device_handler_id = (reg3 & 0xFF);          // bits 0-7
+//     print("__ADB-status__"); print("\n");
+//     // xprintf("         adb_reg2: %b \n", reg2);
+//     // xprintf("         adb_reg3: %b \n", reg3);
+//     xprintf("        reg2_keys: %09b \n", keys);
+//     xprintf("        reg2_leds: %03b \n", leds);
+//     xprintf("  service_request: %u \n", service_request);
+//     xprintf("   device_address: %u \n", device_address);
+//     xprintf("device_handler_id: 0x%02X \n", device_handler_id);
+// }
 
 
 
@@ -135,9 +135,9 @@ void housekeeping_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (get_highest_layer(layer_state) == DFLT) {
-        adb_status();
-    }
+    // if (get_highest_layer(layer_state) == DFLT) {
+    //     adb_status();
+    // }
     if (!process_record_fn(keycode, record)) {
         return false;
     }
