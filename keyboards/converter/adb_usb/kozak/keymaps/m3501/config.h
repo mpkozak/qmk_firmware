@@ -18,9 +18,9 @@
 
 /* Override info.json */
 #undef PRODUCT
-#define PRODUCT "M0115v2"
+#define PRODUCT "M3501"
 #undef PRODUCT_ID
-#define PRODUCT_ID 0x0115
+#define PRODUCT_ID 0x3501
 
 /* ADB port setting */
 #define ADB_PORT        PORTD
