@@ -21,19 +21,5 @@
 #define PRODUCT "M3501"
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x3501
-
-/* ADB port setting */
-#define ADB_PORT        PORTD
-#define ADB_PIN         PIND
-#define ADB_DDR         DDRD
-#define ADB_DATA_BIT    0
-#define ADB_PSW_BIT     1       // optional
-
-/* Apple fn override */
-// #undef VENDOR_ID
-// #undef PRODUCT_ID
-// #define VENDOR_ID  0x05AC // Apple
-// #define PRODUCT_ID 0x0220 // Aluminum Keyboard (ANSI)
-
-
-#undef AUTOCORRECT_OFF_AT_STARTUP
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE

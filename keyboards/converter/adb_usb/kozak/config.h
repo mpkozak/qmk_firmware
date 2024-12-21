@@ -24,6 +24,13 @@
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x0ADB
 
+/* ADB port setting */
+#define ADB_PORT        PORTD
+#define ADB_PIN         PIND
+#define ADB_DDR         DDRD
+#define ADB_DATA_BIT    0
+#define ADB_PSW_BIT     1       // optional
+
 /* Override Layer count */
 #undef DYNAMIC_KEYMAP_LAYER_COUNT
 #define DYNAMIC_KEYMAP_LAYER_COUNT
@@ -39,9 +46,17 @@
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP
 
+
+
 /* MCU onboard leds */
 // #define TX_RX_LED_INIT  DDRD |= (1<<5), DDRB |= (1<<0)
 // #define TXLED0          PORTD |= (1<<5)
 // #define TXLED1          PORTD &= ~(1<<5)
 // #define RXLED0          PORTB |= (1<<0)
 // #define RXLED1          PORTB &= ~(1<<0)
+
+/* Apple fn override */
+// #undef VENDOR_ID
+// #undef PRODUCT_ID
+// #define VENDOR_ID  0x05AC // Apple
+// #define PRODUCT_ID 0x0220 // Aluminum Keyboard (ANSI)
