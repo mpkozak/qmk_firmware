@@ -34,21 +34,23 @@ uint8_t get_led_mask(uint8_t layer, led_t led_state) {
     return led_mask;
 }
 
-/* Toggle LED indicator update on layer change */
-layer_state_t layer_state_set_kb(layer_state_t state) {
+/* Parse target LED state + write to ADB bus */
+void adb_led_layer_state_set(layer_state_t state) {
     uint8_t layer = get_highest_layer(state);
     led_t led_state = host_keyboard_led_state();
     uint8_t led_mask = get_led_mask(layer, led_state);
     adb_led_set(led_mask);
+}
+
+/* Toggle LED indicator update on layer change */
+layer_state_t layer_state_set_kb(layer_state_t state) {
+    adb_led_layer_state_set(state);
     return layer_state_set_user(state);
 }
 
 /* Default LED indicator setup */
 layer_state_t default_layer_state_set_kb(layer_state_t state) {
-    uint8_t layer = get_highest_layer(state);
-    led_t led_state = host_keyboard_led_state();
-    uint8_t led_mask = get_led_mask(layer, led_state);
-    adb_led_set(led_mask);
+    adb_led_layer_state_set(state);
     return default_layer_state_set_user(state);
 }
 
