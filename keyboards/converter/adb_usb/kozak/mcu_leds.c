@@ -16,20 +16,16 @@
 
 #include QMK_KEYBOARD_H
 
-/* Map MCU LED pins */
-#define RX_LED B0
-#define TX_LED D5
 
 
-
-void mcu_led_enable(void) {
+void mcu_led_reset(void) {
     gpio_set_pin_output(RX_LED);
     gpio_set_pin_output(TX_LED);
+    gpio_write_pin_high(RX_LED);
+    gpio_write_pin_high(TX_LED);
 }
 
 void mcu_led_toggle(uint8_t led_state) {
-    gpio_write_pin_high(RX_LED);
-    gpio_write_pin_high(TX_LED);
     if (led_state & 0x01) {
         gpio_write_pin_low(RX_LED);
     }
@@ -39,7 +35,7 @@ void mcu_led_toggle(uint8_t led_state) {
 }
 
 layer_state_t layer_state_set_mcu(layer_state_t state) {
-    mcu_led_enable();
+    mcu_led_reset();
     switch (get_highest_layer(state)) {
         case DFLT:
             mcu_led_toggle(0x02);
@@ -48,35 +44,8 @@ layer_state_t layer_state_set_mcu(layer_state_t state) {
             mcu_led_toggle(0x03);
             break;
         default:
-            mcu_led_toggle(0x00);
+            // mcu_led_toggle(0x00);
             break;
     }
     return state;
 }
-
-
-
-
-
-// void mcu_leds_on(void) {
-//     gpio_write_pin_low(RX_LED);
-//     gpio_write_pin_low(TX_LED);
-// }
-
-// void mcu_leds_off(void) {
-//     gpio_write_pin_high(RX_LED);
-//     gpio_write_pin_high(TX_LED);
-// }
-
-// layer_state_t layer_state_set_mcu(layer_state_t state) {
-//     mcu_led_enable();
-//     switch (get_highest_layer(state)) {
-//         case SPD:
-//             mcu_leds_on();
-//             break;
-//         default:
-//             mcu_leds_off();
-//             break;
-//     }
-//     return state;
-// }

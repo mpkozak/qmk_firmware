@@ -31,9 +31,12 @@
 #define ADB_DATA_BIT    0
 #define ADB_PSW_BIT     1       // optional
 
-/* Override Layer count */
-#undef DYNAMIC_KEYMAP_LAYER_COUNT
-#define DYNAMIC_KEYMAP_LAYER_COUNT
+/* ADB handler callback interval (ms) */
+#define ADB_INIT_CB_MS  60000   // 1 minute
+
+/* Map MCU LED pins */
+#define RX_LED B0
+#define TX_LED D5
 
 /* Faster tap threshold */
 #define TAPPING_TERM 175
@@ -45,6 +48,8 @@
 
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP
+
+
 
 
 
