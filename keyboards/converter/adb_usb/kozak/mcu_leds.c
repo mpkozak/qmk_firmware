@@ -49,3 +49,20 @@ layer_state_t layer_state_set_mcu(layer_state_t state) {
     }
     return state;
 }
+
+
+
+/* Runs after each key press, toggles MCU LED off with keydown */
+#ifdef LED_DIAG_BLINK
+void post_process_record_kb(uint16_t keycode, keyrecord_t *record) {
+    if (get_highest_layer(layer_state) == DFLT) {
+        if (record->event.pressed) {
+            gpio_write_pin_low(RX_LED);
+            gpio_write_pin_high(TX_LED);
+        } else {
+            gpio_write_pin_high(RX_LED);
+            gpio_write_pin_low(TX_LED);
+        }
+    }
+}
+#endif

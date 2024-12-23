@@ -38,6 +38,9 @@
 #define RX_LED B0
 #define TX_LED D5
 
+/* Enable LED diagnostic blinking */
+#define LED_DIAG_BLINK
+
 /* Faster tap threshold */
 #define TAPPING_TERM 175
 #undef PERMISSIVE_HOLD
