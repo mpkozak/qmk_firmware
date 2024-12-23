@@ -82,7 +82,7 @@ bool is_alpha (uint16_t keycode) {
     }
 }
 
-bool is_prev_alpha = false;
+static bool is_prev_alpha = false;
 
 bool process_record_ac(uint16_t keycode, keyrecord_t *record) {
     // speed layer toggle

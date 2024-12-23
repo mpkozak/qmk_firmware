@@ -11,14 +11,13 @@ USB_HID_ENABLE   = yes
 BACKLIGHT_ENABLE = no
 CUSTOM_MATRIX    = yes
 
-VIA_ENABLE = no
-AUTOCORRECT_ENABLE = yes
-KEY_OVERRIDE_ENABLE = yes
-LTO_ENABLE = yes
+VIA_ENABLE					= no
+AUTOCORRECT_ENABLE	= yes
+KEY_OVERRIDE_ENABLE	= yes
+LTO_ENABLE					= yes
 
-DEFERRED_EXEC_ENABLE = yes 	# allow adb_handler recurring cb
-
-KEYBOARD_SHARED_EP = yes		# apple fn workaround
+DEFERRED_EXEC_ENABLE	= yes		# allow adb_handler recurring cb
+KEYBOARD_SHARED_EP		= yes		# apple fn workaround
 
 SRC = matrix.c adb.c
 SRC += adb_handler.c
