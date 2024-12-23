@@ -64,10 +64,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FN0] = LAYOUT_m0116(
                                                      QK_BOOT,
         TT(3),   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,          KC_BSPC, KC_CALU, ___x___, KC_MUTE,
-        KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT,                  ___x___, KC_UP,   ___x___, KC_VOLU,
-        KC_APFN, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, ___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,         KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD,
+        KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, TO(2),   ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT,                  KC_BTAB, KC_UP,   KC_TAB,  KC_VOLU,
+        KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, ___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,         KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD,
         _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MCTL, KC_MVLS, KC_MVRS,          _______,         G(KC_1), G(KC_2), G(KC_3),
-        TO(2),   _______, _______, _______,                   _______,                   _______, KC_MVLS, KC_MVRS, KC_DESK, _______,         _______,          KC_TAB,  _______
+        KC_APFN, _______, _______, _______,                   _______,                   _______, KC_MVLS, KC_MVRS, KC_DESK, _______,         _______,          KC_TAB,  _______
     ),
     [SPD] = LAYOUT_m0116(
                                                      TO(0),
