@@ -16,22 +16,38 @@
 
 #pragma once
 
-// Override info.json
+/* Override info.json */
 #undef MANUFACTURER
 #define MANUFACTURER "kozak"
+#undef VENDOR_ID
+#define VENDOR_ID 0x4D4B
+#undef PRODUCT_ID
+#define PRODUCT_ID 0x0110
 
-// Override Layer count
-#undef DYNAMIC_KEYMAP_LAYER_COUNT
-#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+/* Port setting */
+#define M0110_CLOCK_PORT        PORTD
+#define M0110_CLOCK_PIN         PIND
+#define M0110_CLOCK_DDR         DDRD
+#define M0110_CLOCK_BIT         1
+#define M0110_DATA_PORT         PORTD
+#define M0110_DATA_PIN          PIND
+#define M0110_DATA_DDR          DDRD
+#define M0110_DATA_BIT          0
 
-// // Override Macro count
-// #undef DYNAMIC_KEYMAP_MACRO_COUNT
-// #define DYNAMIC_KEYMAP_MACRO_COUNT 0
+/* Map MCU LED pins */
+#define RX_LED B0
+#define TX_LED D5
 
-// Faster tap threshold
-#define TAPPING_TERM 160
+/* Enable LED diagnostic blinking */
+#define LED_DIAG_BLINK
+
+/* Faster tap threshold */
+#define TAPPING_TERM 175
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
-// One-shot timeout
-#define ONESHOT_TIMEOUT 500
+/* One-shot timeout */
+#define ONESHOT_TIMEOUT 175
+
+/* Disable Autocorrect at startup */
+#define AUTOCORRECT_OFF_AT_STARTUP

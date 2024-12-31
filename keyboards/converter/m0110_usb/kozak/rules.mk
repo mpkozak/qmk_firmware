@@ -1,6 +1,3 @@
-# Processor frequency
-F_CPU = 16000000
-
 # Build Options
 #   change yes to no to disable
 #
@@ -14,9 +11,14 @@ USB_HID_ENABLE   = yes
 BACKLIGHT_ENABLE = no
 CUSTOM_MATRIX    = yes
 
-VIA_ENABLE = no
-AUTOCORRECT_ENABLE = no
-KEY_OVERRIDE_ENABLE = no
-LTO_ENABLE = yes
+VIA_ENABLE					= no
+AUTOCORRECT_ENABLE	= no
+KEY_OVERRIDE_ENABLE	= no
+LTO_ENABLE					= yes
+
+KEYBOARD_SHARED_EP  = yes		# apple fn workaround
+
+# Processor frequency
+F_CPU = 16000000
 
 SRC = matrix.c m0110.c

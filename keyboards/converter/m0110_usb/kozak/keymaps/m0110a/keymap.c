@@ -1,46 +1,38 @@
-/*
-Copyright 2011,2012,2015 Jun Wako <wakojun@gmail.com>
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
---------------
-
-Ported to QMK by Techsock <info@techsock.com>
-*/
+/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
+#include "custom_keycodes.h"
+// #include "fn_key.c"
+// #include "spd_autocorrect.c"
+// #include "mcu_leds.c"
 
-#define KC_LSCR C(G(KC_Q))      // lock screen
-#define KC_EMOC C(G(KC_SPC))    // character picker
-#define KC_FSTG C(G(KC_F))      // fullscreen toggle
-#define KC_PSTT S(A(G(KC_V)))   // paste plaintext
-#define KC_ZMNS G(KC_MINS)      // zoom out
-#define KC_ZPLS G(KC_EQL)       // zoom in
-#define KC_ZACT G(KC_0)         // zoom actual
-#define KC_MVLT LSG(KC_LBRC)    // move left tab
-#define KC_MVRT LSG(KC_RBRC)    // move right tab
-#define KC_MVLS C(KC_LEFT)      // move left space
-#define KC_MVRS C(KC_RGHT)      // move right space
-#define KC_DESK KC_F11          // show desktop
-#define KC_WBAK G(KC_LBRC)      // browser back
-#define KC_WFOR G(KC_RBRC)      // browser forward
-#define KC_CMNT G(KC_SLSH)      // comment shortcut
-#define KC_NTAB G(KC_T)         // new tab
-#define KC_REFR LSG(KC_R)       // refresh
-#define ___x___ KC_NO           // null
 
-// M0110A-specific
+
+////////////////////////////////////////////////////////////////////////////////
+// Custom keycodes
+
 #define KC_CMDA RCMD_T(KC_BSLS) // right command + backslash
 #define KC_OPTA ROPT_T(KC_LEFT) // right option + left arrow
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Layout
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	/* M0110A
@@ -57,6 +49,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └─────┴───────┴───────────────────────────┴───┴───┴───┴───┘ └───────┴───┴───┘
 	 */
 
+    [DFLT] = LAYOUT_m0110a(
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,         KC_ESC,  KC_PEQL, KC_PSLS, KC_PAST,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                  KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
+        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+        KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,           KC_P1,   KC_P2,   KC_P3,   KC_PENT,
+        KC_LOPT, KC_LCMD,                            KC_SPC,                                      KC_BSLS, KC_LEFT, KC_RGHT, KC_DOWN,         KC_P0,            KC_PDOT
+    ),
     [BASE] = LAYOUT_m0110a(
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,         KC_BSPC, KC_PEQL, KC_PSLS, KC_PAST,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                  KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
@@ -79,3 +78,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,                            _______,                                     _______, _______, _______, _______,         _______,          _______
     )
 };
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// User hooks
+
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     state = layer_state_set_ac(state);
+//     state = layer_state_set_mcu(state);
+//     return state;
+// }
+
+// void keyboard_post_init_user(void) {
+//     keyboard_post_init_ac();
+// }
+
+// void housekeeping_task_user(void) {
+//     housekeeping_task_fn();
+// }
+
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     if (!process_record_fn(keycode, record)) {
+//         return false;
+//     }
+//     if (!process_record_ac(keycode, record)) {
+//         return false;
+//     }
+//     // default layer untoggle
+//     if (keycode == KC_F20) {                        // power key
+//         if (record->event.pressed) {                // keydown event
+//             if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
+//                 layer_clear();
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+//     return true;
+// }

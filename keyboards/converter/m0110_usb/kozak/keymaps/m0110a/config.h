@@ -16,6 +16,8 @@
 
 #pragma once
 
-// Override info.json
+/* Override info.json */
 #undef PRODUCT
 #define PRODUCT "M0110A"
+#undef PRODUCT_ID
+#define PRODUCT_ID 0x110A

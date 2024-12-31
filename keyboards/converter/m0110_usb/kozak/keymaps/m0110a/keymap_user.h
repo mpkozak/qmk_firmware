@@ -17,7 +17,8 @@
 #pragma once
 
 enum layers{
+    DFLT,           // Default      (layer 3)
     BASE,           // Base         (layer 0)
     FN0,            // Fn 0         (layer 1)
-    FN1             // Fn 1         (layer 2)
+    FN1,            // Fn 1         (layer 2)
 };
