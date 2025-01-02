@@ -228,7 +228,8 @@ uint8_t m0110_recv_key(void) {
         raw    = rawbuf;
         rawbuf = 0x00;
     } else {
-        raw = inquiry();  // Use INSTANT for better response. Should be INQUIRY ?
+        // raw = inquiry();
+        raw = instant();  // Use INSTANT for better response. Should be INQUIRY ?
     }
 
     switch (KEY(raw)) {

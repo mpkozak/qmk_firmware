@@ -1,3 +1,3 @@
-DIP_SWITCH_ENABLE = yes
+# DIP_SWITCH_ENABLE = yes
 
 SRC += dip_keys.c
