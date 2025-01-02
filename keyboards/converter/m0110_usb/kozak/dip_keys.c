@@ -21,38 +21,42 @@
 ////////////////////////////////////////////////////////////////////////////////
 // DIP switch keys
 
-// const keypos_t PROGMEM dip_keypos[1] = {
-//     MAKE_KEYPOS(6, 6)       // \|
-// };
+const keypos_t PROGMEM dip_keypos[1] = {
+    MAKE_KEYPOS(6, 6)       // \|
+};
 
-// bool dip_switch_update_kb(uint8_t index, bool active) {
-//     keypos_t key = dip_keypos[index];
-//     keyevent_t event = MAKE_KEYEVENT(key.row, key.col, active);
-//     action_exec(event);
-//     return true;
+bool dip_switch_update_kb(uint8_t index, bool active) {
+    keypos_t key = dip_keypos[index];
+    keyevent_t event = MAKE_KEYEVENT(key.row, key.col, active);
+    action_exec(event);
+    return true;
+}
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// alternate approach - tested working
+
+// #define DIP_PIN C6
+
+// void matrix_init_kb(void) {
+//     // print("matrix_init_kb");
+//     gpio_set_pin_input_high(DIP_PIN);
+//     matrix_init_user();
 // }
 
-
-
-#define DIP_PIN C6
-
-
-void matrix_init_kb(void) {
-    // print("matrix_init_kb");
-    gpio_set_pin_input_high(DIP_PIN);
-    matrix_init_user();
-}
-
-void matrix_scan_kb(void) {
-    // print("matrix_scan_kb");
-    static bool state = 0;
-    bool active = !gpio_read_pin(DIP_PIN);
-    if (state != active) {
-        // print("active");
-        keypos_t key = MAKE_KEYPOS(6, 6);
-        keyevent_t event = MAKE_KEYEVENT(key.row, key.col, active);
-        action_exec(event);
-        state = active;
-    }
-    matrix_scan_user();
-}
+// void matrix_scan_kb(void) {
+//     // print("matrix_scan_kb");
+//     static bool state = 0;
+//     bool active = !gpio_read_pin(DIP_PIN);
+//     if (state != active) {
+//         // print("active");
+//         keypos_t key = MAKE_KEYPOS(6, 6);
+//         keyevent_t event = MAKE_KEYEVENT(key.row, key.col, active);
+//         action_exec(event);
+//         state = active;
+//     }
+//     matrix_scan_user();
+// }

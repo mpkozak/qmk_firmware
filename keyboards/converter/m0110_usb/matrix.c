@@ -78,8 +78,6 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
-    matrix_scan_kb();
-
     uint8_t key;
 
     is_modified = false;
@@ -98,7 +96,7 @@ uint8_t matrix_scan(void)
         print("["); print_hex8(key); print("]\n");
     }
     
-    // matrix_scan_kb();
+    matrix_scan_kb();
     return 1;
 }
 

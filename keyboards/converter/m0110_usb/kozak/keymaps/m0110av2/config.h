@@ -23,4 +23,4 @@
 #define PRODUCT_ID 0x110A
 
 /* Define DIP switch pin assignments */
-// #define DIP_SWITCH_PINS { C6 }
+#define DIP_SWITCH_PINS { C6 }
