@@ -18,7 +18,6 @@
 
 /* Override Layer count */
 #undef DYNAMIC_KEYMAP_LAYER_COUNT
-#define DYNAMIC_KEYMAP_LAYER_COUNT 4
 
 /* Faster tap threshold */
 #define TAPPING_TERM 175
@@ -35,7 +34,7 @@
 #undef LED_POWER_ON
 
 /* Disable LED diagnostic blinking */
-#undef LED_DIAG_BLINK
+// #undef LED_DIAG_BLINK
 
 /* Disable debug output */
 #undef DEBUG_ENABLE

@@ -25,9 +25,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
-// #define KC_CMDG LCMD_T(KC_GRV)          // left command + grave
-// #define KC_CMDE RCMD_T(KC_PENT)         // right command + enter
-#define GRV_CMD RCMD_T(KC_GRV)          // right command + grave
+#define GRV_CMD LCMD_T(KC_GRV)          // left command + grave
+#define ENT_CMD RCMD_T(KC_PENT)         // right command + enter
 #define LFT_OPT ROPT_T(KC_LEFT)         // right option + left arrow
 
 
@@ -55,21 +54,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
         LCTL_FN, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,
-        KC_TGSP, KC_LOPT, KC_LCMD, ___x___,                   LT(1,KC_SPC),              GRV_CMD, LFT_OPT, KC_RGHT, KC_DOWN, LT(2,KC_UP)
+        KC_TGSP, KC_LOPT, KC_LCMD, GRV_CMD,                   LT(1,KC_SPC),              ENT_CMD, LFT_OPT, KC_RGHT, KC_DOWN, LT(1,KC_UP)
     ),
     [FN0] = LAYOUT_5120_ansi(
         KC_LSCR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,
-        KC_INS,  KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS, KC_BSLS,
-        KC_LCTL, KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,
-        _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,          _______,
-        _______, _______, _______, ___x___,                   _______,                   _______, _______, _______, _______, _______
-    ),
-    [FN1] = LAYOUT_5120_ansi(
-        QK_BOOT, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU, KC_MUTE,
-        _______, ___x___, KC_UP,   ___x___, KC_REFR, KC_NTAB, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___,
-        _______, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___,          _______,
-        _______,          KC_DESK, KC_MVLS, KC_MVRS, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,          _______,
-        _______, _______, _______, ___x___,                   G(KC_SPC),                 _______, KC_MVLS, KC_MVRS, KC_DESK, _______
+        KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT, _______,
+        KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, KC_MCTL, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,
+        _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MCTL, KC_MVLS, KC_MVRS,          _______,
+        _______, _______, _______, QK_BOOT,                   _______,                   TT(3),   KC_MVLS, KC_MVRS, KC_DESK, _______
     ),
     [SPD] = LAYOUT_5120_ansi(
         KC_ESC,  KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___, KC_BSPC,
@@ -77,6 +69,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___x___, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
         OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,          KC_RSFT,
         _______, KC_LOPT, KC_LCMD, ___x___,                   KC_SPC,                    ___x___, ___x___, ___x___, KC_DOWN, KC_UP
+    ),
+    [DFLT] = LAYOUT_5120_ansi(
+        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
+        KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,
+        KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,
+        KC_LCAP, KC_LOPT, KC_LCMD, KC_GRV,                    KC_SPC,                    KC_PENT, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP
     )
 };
 
@@ -114,6 +113,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     if (!process_record_ac(keycode, record)) {
         return false;
+    }
+    // default layer untoggle
+    if (keycode == KC_ESC) {                        // esc key
+        if (record->event.pressed) {                // keydown event
+            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
+                layer_clear();
+                return false;
+            }
+        }
+        return true;
     }
     return true;
 }
