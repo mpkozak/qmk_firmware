@@ -15,7 +15,6 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keychron_common.h"
 #include "rgb_matrix_user.h"
 #include "keymap_user.h"
 #include "keymap_user_config.h"

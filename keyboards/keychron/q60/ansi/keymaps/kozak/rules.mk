@@ -10,5 +10,5 @@ ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
     SRC += rgb_matrix_user.c
 endif
 
-VPATH += keyboards/keychron/common
-SRC += keychron_common.c
+# VPATH += keyboards/keychron/common
+# SRC += keychron_common.c

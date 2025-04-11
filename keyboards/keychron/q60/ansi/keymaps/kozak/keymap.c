@@ -15,12 +15,13 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keychron_common.h"
+// #include "keychron_common.h"
 #include "keymap_user.h"
 #include "keymap_user_config.h"
 #ifdef RGB_MATRIX_ENABLE
 #    include "rgb_matrix_user.h"
 #endif
+#include "custom_keycodes.h"
 #include "fn_key.c"
 #include "spd_autocorrect.c"
 
@@ -178,7 +179,7 @@ void housekeeping_task_user(void) {
             break;
     }
     housekeeping_task_fn();
-    housekeeping_task_keychron();
+    // housekeeping_task_keychron();
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -188,36 +189,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_ac(keycode, record)) {
         return false;
     }
-    if (process_record_keychron(keycode, record)) {
-        switch (keycode) {
-            case QK_BOOT:
-                // We want to turn off LEDs before calling bootloader, so here
-                // we call rgb_matrix_disable_noeeprom() and set a flag because
-                // the LEDs won't be updated until the next frame.
-                if (record->event.pressed) {
-                    rgb_matrix_disable_noeeprom();
-                    bootloader_state = BOOTLOADER_PRESSED;
-                }
-                return false;  // Skip all further processing of this key
-            case RGB_TOG:
-                if (record->event.pressed) {
-                    rgb_matrix_toggle_noeeprom();
-                    user_config_toggle_enable_rgb();
-                }
-                return false;  // Skip all further processing of this key
-            case KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE:
-                if (record->event.pressed) {
-                    user_config_toggle_fn_layer_transparent_keys_off();
-                }
-                return false;  // Skip all further processing of this key
-            case KC_FN_LAYER_COLOR_TOGGLE:
-                if (record->event.pressed) {
-                    user_config_toggle_fn_layer_color_enable();
-                }
-                return false;  // Skip all further processing of this key
-            default:
-                return true;  // Process all other keycodes normally
-        }
+    switch (keycode) {
+        case QK_BOOT:
+            // We want to turn off LEDs before calling bootloader, so here
+            // we call rgb_matrix_disable_noeeprom() and set a flag because
+            // the LEDs won't be updated until the next frame.
+            if (record->event.pressed) {
+                rgb_matrix_disable_noeeprom();
+                bootloader_state = BOOTLOADER_PRESSED;
+            }
+            return false;  // Skip all further processing of this key
+        case RGB_TOG:
+            if (record->event.pressed) {
+                rgb_matrix_toggle_noeeprom();
+                user_config_toggle_enable_rgb();
+            }
+            return false;  // Skip all further processing of this key
+        case KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE:
+            if (record->event.pressed) {
+                user_config_toggle_fn_layer_transparent_keys_off();
+            }
+            return false;  // Skip all further processing of this key
+        case KC_FN_LAYER_COLOR_TOGGLE:
+            if (record->event.pressed) {
+                user_config_toggle_fn_layer_color_enable();
+            }
+            return false;  // Skip all further processing of this key
+        default:
+            return true;  // Process all other keycodes normally
     }
+    // if (!process_record_keychron(keycode, record)) {
+    //     return false;
+    // }
     return true;
 }
