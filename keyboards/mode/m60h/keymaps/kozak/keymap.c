@@ -28,11 +28,9 @@
 // Custom keycodes
 
 #define UP_RSFT RSFT_T(KC_UP)   // right shift under up arrow
-#define DOWN_L3 LT(3, KC_DOWN)  // right fn (layer 2) under down arrow
+#define DOWN_L3 LT(3, KC_DOWN)  // right fn (layer 3) under down arrow
 #define LFT_CMD RCMD_T(KC_LEFT) // right command under left arrow
 #define RGT_OPT ROPT_T(KC_RGHT) // right option under right arrow
-// #define RGHT_L3 LT(3, KC_RGHT)  // right fn (layer 2) under right arrow
-// #define DWN_OPT ROPT_T(KC_DOWN) // right option under down arrow
 
 
 
@@ -75,11 +73,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT, KC_RSFT, MO(3),
                           KC_LOPT, KC_LCMD,                   _______,                            KC_RCMD, KC_ROPT
     ),
-    [FN1] = LAYOUT_60_hhkb(        // layer 3 FN1 - green [right-side arrows + quick toggles]
+    [FN1] = LAYOUT_60_hhkb(        // layer 3 FN1 - green [quick toggles]
         QK_BOOT, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, UG_VALD, UG_VALU, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
         KC_TAB,  ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_MVLT, KC_MVRT, KC_MUTE,
         _______, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_LPAD, KC_MCTL, KC_DESK,          KC_PENT,
-        KC_CAPS,          ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_DESK, KC_MVLS, KC_MVRS, _______, _______,
+        KC_CAPS,          ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_DESK, KC_MVLS, KC_MVRS, KC_CAPS, _______,
                           _______, _______,                   _______,                            _______, UG_TOGG
     )
 };

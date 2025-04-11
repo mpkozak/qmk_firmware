@@ -18,8 +18,8 @@
 
 enum layers{
     BASE,           // Base         (layer 0)
-    BASE_SPD,       // Speed Base   (layer 1)
-    BASE_FN,        // Fn Base      (layer 2)
-    _FN1,           // Fn1          (layer 3)
-    _FN2,           // Fn2          (layer 4)
+    SPD,            // Speed Base   (layer 1)
+    FN0,            // Fn 0         (layer 2)
+    FN1,            // Fn 1         (layer 3)
+    FN2,            // Fn 2         (layer 4)
 };

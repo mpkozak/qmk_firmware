@@ -62,10 +62,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FN0] = LAYOUT_m0115(
         TO(0),            C(KC_1), C(KC_2), C(KC_3), C(KC_4), C(KC_5), C(KC_6), C(KC_7), C(KC_8), KC_F13,  KC_F14,  KC_F15,  KC_F16,          TO(0),   _______, _______,                                    QK_BOOT,
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,          _______, _______, _______,         KC_BSPC, KC_CALU, ___x___, KC_MUTE,
-        KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS, KC_DEL,          _______, _______, _______,         ___x___, KC_UP,   ___x___, KC_VOLD,
-        _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, ___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,                                            KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU,
+        KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT, KC_DEL,          _______, _______, _______,         ___x___, KC_UP,   ___x___, KC_VOLD,
+        _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,                                            KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU,
         _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,          _______,                  _______,                  G(KC_1), G(KC_2), G(KC_3),
-        KC_APFN, _______, _______,                            _______,                                     _______, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_TAB,  _______
+        KC_APFN, _______, _______,                            _______,                                     ___x___, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_R,    _______
     ),
     [SPD] = LAYOUT_m0115(
         TO(0),            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,         _______, TO(0),   _______,                                    TO(0),
