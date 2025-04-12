@@ -33,8 +33,6 @@ enum custom_keycodes {
 
 #define KC_TGTL KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE
 #define KC_TGCL KC_FN_LAYER_COLOR_TOGGLE
-// #define KC_MCTL QK_KB_0
-// #define KC_LPAD QK_KB_1
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
 #define KC_EMOC C(G(KC_SPC))    // character picker
