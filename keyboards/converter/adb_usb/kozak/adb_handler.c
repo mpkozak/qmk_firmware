@@ -78,6 +78,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (get_highest_layer(layer_state) == DFLT) {
         adb_status();
     }
-    return true;
+    return process_record_user(keycode, record);
 }
 #endif
