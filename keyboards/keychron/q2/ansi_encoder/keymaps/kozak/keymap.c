@@ -15,75 +15,19 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keychron_common.h"
+// #include "keychron_common.h"
 #include "keymap_user.h"
-#include "keymap_user_config.h"
-#ifdef RGB_MATRIX_ENABLE
-#    include "rgb_matrix_user.h"
-#endif
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Bootloader
-
-enum user_bootloader_state {
-    BOOTLOADER_INACTIVE,
-    BOOTLOADER_PRESSED,
-    BOOTLOADER_WAIT,
-    BOOTLOADER_DO
-} bootloader_state;
+#include "custom_keycodes.h"
+#include "rgb.c"
+#include "fn_key.c"
+#include "spd_autocorrect.c"
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
-enum user_keycodes {
-    KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE = QK_USER_0,
-    KC_FN_LAYER_COLOR_TOGGLE,
-};
 
-#define KC_TGTL KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE
-#define KC_TGCL KC_FN_LAYER_COLOR_TOGGLE
-#define KC_MCTL QK_KB_0
-#define KC_LPAD QK_KB_1
-
-#define KC_LSCR C(G(KC_Q))      // lock screen
-#define KC_EMOC C(G(KC_SPC))    // character picker
-#define KC_FSTG C(G(KC_F))      // fullscreen toggle
-#define KC_PSTT S(A(G(KC_V)))   // paste plaintext
-#define KC_ZMNS G(KC_MINS)      // zoom out
-#define KC_ZPLS G(KC_EQL)       // zoom in
-#define KC_ZACT G(KC_0)         // zoom actual
-#define KC_MVLT LSG(KC_LBRC)    // move left tab
-#define KC_MVRT LSG(KC_RBRC)    // move right tab
-#define KC_MVLS C(KC_LEFT)      // move left space
-#define KC_MVRS C(KC_RGHT)      // move right space
-#define KC_DESK C(KC_DOWN)      // show desktop
-#define KC_WBAK G(KC_LBRC)      // browser back
-#define KC_WFOR G(KC_RBRC)      // browser forward
-#define KC_CMNT G(KC_SLSH)      // comment shortcut
-#define KC_NTAB G(KC_T)         // new tab
-#define KC_REFR LSG(KC_R)       // refresh
-#define KC_BSPW A(KC_BSPC)      // backspace word
-#define ___x___ KC_NO           // null
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Key overrides for autocorrect BASE_SPD layer
-
-const key_override_t comma_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_COMM, 1 << BASE_SPD);
-const key_override_t period_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_DOT, 1 << BASE_SPD);
-const key_override_t hyphen_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_MINS, KC_MINS, 1 << BASE_SPD);
-
-// This globally defines all key overrides to be used
-const key_override_t *key_overrides[] = {
-    &comma_override,
-    &period_override,
-    &hyphen_override,
-};
 
 
 
@@ -119,41 +63,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_ansi_67(        // layer 0 BASE - white
         KC_ESC,       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,    KC_BSPC,       KC_MUTE,
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,       KC_HOME,
-        KC_LCTL,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        KC_END,
+        LCTL_FN,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        KC_END,
         KC_LSFT,            KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,      KC_RSFT,       KC_UP,
         KC_LCTL,   KC_LOPT,   KC_LCMD,                          LT(2,KC_SPC),                     KC_RCMD,  KC_ROPT,  MO(3),     KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
-    [BASE_SPD] = LAYOUT_ansi_67(    // layer 1 BASE_SPD - cyan
+    [SPD] = LAYOUT_ansi_67(         // layer 1 SPD - orange
         TO(0),        KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___,   KC_BSPC,       KC_MUTE,
-        KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___, KC_BSPW,       _______,
+        KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___, KC_BSPC,       _______,
         ___x___,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,        KC_ENT,        _______,
         OSM(MOD_LSFT),      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,      KC_RSFT,       KC_UP,
-        KC_LCTL,   KC_LOPT,   KC_LCMD,                          LT(2,KC_SPC),                     ___x___,  ___x___,  MO(3),     KC_LEFT, KC_DOWN, KC_RGHT
+        KC_LCTL,   KC_LOPT,   KC_LCMD,                          KC_SPC,                           ___x___,  ___x___,  MO(3),     KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
-    [BASE_FN] = LAYOUT_ansi_67(        // layer 2 BASE_FN - blue [space fn]
-        KC_GRV,       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
-        KC_INS,         KC_MVLT, KC_MVRT, KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLS, KC_MVRS, KC_DEL,        KC_PGUP,
-        KC_LCTL,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, ___x___, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,        KC_ENT,        KC_PGDN,
+    [FN0] = LAYOUT_ansi_67(         // layer 2 FN0 - blue [space fn]
+        KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
+        KC_INS,         ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT, KC_DEL,        KC_PGUP,
+        KC_LCTL,          KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,        KC_ENT,        KC_PGDN,
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,      KC_RSFT,       KC_MCTL,
-        KC_CAPS,   KC_LOPT,   KC_LCMD,                          _______,                          KC_RCMD,  MO(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS
+        KC_APFN,   KC_LOPT,   KC_LCMD,                          _______,                          KC_RCMD,  MO(4),    MO(3),     KC_MVLS, KC_DESK, KC_MVRS
     ),
 
-    [_FN1] = LAYOUT_ansi_67(        // layer 3 _FN1 - orange [right-side arrows + quick toggles]
-        KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    _______,       KC_LSCR,
-        KC_TAB,         KC_MVLT, KC_MVRT, KC_EMOC, ___x___, TG(1),   ___x___, ___x___, ___x___, ___x___, KC_UP,   KC_MVLT, KC_MVRT, _______,       KC_DEL,
-        _______,          KC_MVLS, KC_MVRS, KC_DESK, KC_FSTG, ___x___, ___x___, ___x___, KC_LPAD, KC_LEFT, KC_DOWN, KC_RGHT,        KC_PENT,       KC_INS,
-        _______,            ___x___, ___x___, ___x___, KC_PSTT, ___x___, ___x___, KC_MCTL, KC_DESK, KC_MVLS, KC_MVRS,      _______,       KC_MCTL,
-        _______,   _______,   _______,                          _______,                          KC_RCMD,  MO(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS
+    [FN1] = LAYOUT_ansi_67(         // layer 3 FN1 - green [quick toggles]
+        KC_GRV,       ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU,   _______,       KC_LSCR,
+        KC_TAB,         ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_MVLT, KC_MVRT, KC_GRV,        KC_PGUP,
+        _______,          ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_LPAD, KC_MCTL, KC_DESK,        KC_PENT,       KC_PGDN,
+        KC_CAPS,            ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_DESK, KC_MVLS, KC_MVRS,      KC_CAPS,       KC_MCTL,
+        KC_APFN,   _______,   _______,                          _______,                          KC_RCMD,  MO(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS
     ),
 
-    [_FN2] = LAYOUT_ansi_67(        // layer 4 _FN2 - green [mac media keys + rbg settings]
+    [FN2] = LAYOUT_ansi_67(         // layer 4 FN2 - cyan [mac media keys + rbg settings]
         QK_BOOT,      ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___,   _______,       RGB_TOG,
         _______,        ___x___, ___x___, ___x___, NK_TOGG, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_TGTL, KC_TGCL, _______,       _______,
         _______,          RGB_SAD, RGB_SAI, ___x___, ___x___, RGB_HUD, RGB_HUI, ___x___, RGB_VAD, RGB_VAI, ___x___, ___x___,        _______,       _______,
-        RGB_TOG,            ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,      _______,       KC_ZPLS,
-        _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   KC_MVLT, KC_ZMNS, KC_MVRT
+        RGB_TOG,            ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,      _______,       _______,
+        _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   _______, _______, _______
     )
 };
 
@@ -166,170 +110,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [BASE]     = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [BASE_SPD] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [BASE_FN]  = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
-    [_FN1]     = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
-    [_FN2]     = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [BASE]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [SPD]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [FN0]   = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
+    [FN1]   = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
+    [FN2]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
 };
 #endif
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// RGB layers
+// User hooks
 
 void matrix_init_user(void) {
-#ifdef RGB_MATRIX_ENABLE
-    rgb_matrix_init_user();
-#endif
+    matrix_init_rgb();
 }
 
 void housekeeping_task_user(void) {
-    switch(bootloader_state) {
-        case BOOTLOADER_DO:
-            // bootloader was pressed two frames ago. RGB should now be off,
-            // so we can call the bootloader.
-            reset_keyboard();
-            break;
-        case BOOTLOADER_WAIT:
-            // bootloader was pressed on previous frame, we wait this frame and
-            // set flag to do bootloader at end of next frame. For some reason, my
-            // Q2 needed this extra wait frame.
-            bootloader_state = BOOTLOADER_DO;
-            break;
-        case BOOTLOADER_PRESSED:
-            // User pressed bootloader keycode and RGB was disabled earlier in this
-            // frame. However RGB changes wont take place immediately, so we set a
-            // flag here which will be caught at end of the next frame.
-            bootloader_state = BOOTLOADER_WAIT;
-            break;
-        default:
-            break;
-    }
-    housekeeping_task_keychron();
+    housekeeping_task_fn();
+    housekeeping_task_rgb();
 }
 
 layer_state_t default_layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case BASE:
-            // load base settings
-            rgb_matrix_enable_noeeprom();
-            rgb_matrix_reload_from_eeprom();
-            // check disable
-            if (!user_config_get_enable_rgb()) {
-                rgb_matrix_disable_noeeprom();
-            }
-            break;
-        default:
-            break;
-    }
+    state = default_layer_state_set_rgb(state);
     return state;
-}
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Autocorrect stack
-
-void keyboard_post_init_user(void) {
-    user_config_read_eeprom();
-#ifdef AUTOCORRECT_OFF_AT_STARTUP
-    // toggle autocorrect off at startup
-    if (autocorrect_is_enabled()) {
-        autocorrect_toggle();
-    }
-#endif
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case BASE_SPD:
-            if (!autocorrect_is_enabled()) {
-                autocorrect_enable();
-            }
-            break;
-        default:
-            if (autocorrect_is_enabled()) {
-                autocorrect_disable();
-            }
-            break;
-    }
+    state = layer_state_set_ac(state);
     return state;
 }
 
-bool is_number(uint16_t keycode) {
-    switch (keycode) {
-        case KC_P1 ... KC_P0:
-        case KC_2 ... KC_9:         // range change to allow ! and ) after alphas
-            return true;
-        default:
-            return false;
-    }
+void keyboard_post_init_user(void) {
+    keyboard_post_init_rgb();
+    keyboard_post_init_ac();
 }
-
-bool is_alpha (uint16_t keycode) {
-    switch (keycode) {
-        case KC_A ... KC_Z:
-            return true;
-        default:
-            return false;
-    }
-}
-
-bool is_prev_alpha = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (process_record_keychron(keycode, record)) {
-        // ignore suprious number keys in the middle of alphas for speed layer
-        if (get_highest_layer(layer_state) == BASE_SPD) {
-            if (is_number(keycode)) {
-                if (is_prev_alpha) {
-                    return false;
-                }
-            }
-            // update previous keycode is_alpha state
-            if (record->event.pressed) {
-                if (is_alpha(keycode)) {    // keycode is alpha
-                    if (!is_prev_alpha) {
-                        is_prev_alpha = true;
-                    }
-                } else {                    // keycode is not alpha
-                    if (is_prev_alpha) {
-                        is_prev_alpha = false;
-                    }
-                }
-            }
-        }
-        switch (keycode) {
-            case QK_BOOT:
-                // We want to turn off LEDs before calling bootloader, so here
-                // we call rgb_matrix_disable_noeeprom() and set a flag because
-                // the LEDs won't be updated until the next frame.
-                if (record->event.pressed) {
-                    rgb_matrix_disable_noeeprom();
-                    bootloader_state = BOOTLOADER_PRESSED;
-                }
-                return false;  // Skip all further processing of this key
-            case RGB_TOG:
-                if (record->event.pressed) {
-                    rgb_matrix_toggle_noeeprom();
-                    user_config_toggle_enable_rgb();
-                }
-                return false;  // Skip all further processing of this key
-            case KC_FN_LAYER_TRANSPARENT_KEYS_TOGGLE:
-                if (record->event.pressed) {
-                    user_config_toggle_fn_layer_transparent_keys_off();
-                }
-                return false;  // Skip all further processing of this key
-            case KC_FN_LAYER_COLOR_TOGGLE:
-                if (record->event.pressed) {
-                    user_config_toggle_fn_layer_color_enable();
-                }
-                return false;  // Skip all further processing of this key
-            default:
-                return true;  // Process all other keycodes normally
-        }
+    if (!process_record_fn(keycode, record)) {
+        return false;
     }
+    if (!process_record_ac(keycode, record)) {
+        return false;
+    }
+    if (!process_record_rgb(keycode, record)) {
+        return false;
+    }
+    // if (!process_record_keychron(keycode, record)) {
+    //     return false;
+    // }
     return true;
 }

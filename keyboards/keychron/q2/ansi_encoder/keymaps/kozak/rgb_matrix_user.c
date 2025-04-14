@@ -15,7 +15,6 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keychron_common.h"
 #include "rgb_matrix_user.h"
 #include "keymap_user.h"
 #include "keymap_user_config.h"
@@ -41,16 +40,16 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch (current_layer) {
         case BASE:
             break;
-        case BASE_SPD:
+        case SPD:
             rgb = rgb_scaled_to_val(current_val, SPD_LAYER_COLOR);
             break;
-        case BASE_FN:
+        case FN0:
             rgb = rgb_scaled_to_val(current_val, FN0_LAYER_COLOR);
             break;
-        case _FN1:
+        case FN1:
             rgb = rgb_scaled_to_val(current_val, FN1_LAYER_COLOR);
             break;
-        case _FN2:
+        case FN2:
             rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
             break;
         default:
