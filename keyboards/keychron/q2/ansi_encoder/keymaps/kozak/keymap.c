@@ -15,7 +15,6 @@
  */
 
 #include QMK_KEYBOARD_H
-// #include "keychron_common.h"
 #include "keymap_user.h"
 #include "custom_keycodes.h"
 #include "rgb.c"
@@ -93,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [FN2] = LAYOUT_ansi_67(         // layer 4 FN2 - cyan [mac media keys + rbg settings]
-        QK_BOOT,      ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___,   _______,       RGB_TOG,
+        QK_BOOT,      QK_RBT,  EE_CLR,  ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___,   _______,       RGB_TOG,
         _______,        ___x___, ___x___, ___x___, NK_TOGG, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_TGTL, KC_TGCL, _______,       _______,
         _______,          RGB_SAD, RGB_SAI, ___x___, ___x___, RGB_HUD, RGB_HUI, ___x___, RGB_VAD, RGB_VAI, ___x___, ___x___,        _______,       _______,
         RGB_TOG,            ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,      _______,       _______,
@@ -157,8 +156,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_rgb(keycode, record)) {
         return false;
     }
-    // if (!process_record_keychron(keycode, record)) {
-    //     return false;
-    // }
     return true;
 }
