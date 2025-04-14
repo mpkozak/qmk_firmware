@@ -95,11 +95,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = layer_state_set_ac(state);
     state = layer_state_set_mcu(state);
-    if (get_highest_layer(state) == SPD) {
-        if (host_keyboard_led_state().caps_lock) {
-            register_code(KC_CAPS);
-        }
-    }
     return state;
 }
 
@@ -112,21 +107,14 @@ void housekeeping_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_kc(keycode, record)) {
+        return false;
+    }
     if (!process_record_fn(keycode, record)) {
         return false;
     }
     if (!process_record_ac(keycode, record)) {
         return false;
-    }
-    // default layer untoggle
-    if (keycode == KC_F20) {                        // power key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
-                layer_clear();
-                return false;
-            }
-        }
-        return true;
     }
     return true;
 }

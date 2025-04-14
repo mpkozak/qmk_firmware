@@ -21,5 +21,10 @@
 #define PRODUCT "M0115v2"
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x0115
+
+/* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
+
+/* Enable ADB logging to console */
+// #define ADB_LOGGING

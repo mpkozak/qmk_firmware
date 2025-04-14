@@ -53,6 +53,11 @@ layer_state_t layer_state_set_ac(layer_state_t state) {
             if (!autocorrect_is_enabled()) {
                 autocorrect_enable();
             }
+#ifndef LOCKING_SUPPORT_ENABLE
+            if (host_keyboard_led_state().caps_lock) {  // clear caps lock if non-locking
+                register_code(KC_CAPS);
+            }
+#endif
             break;
         default:
             if (autocorrect_is_enabled()) {

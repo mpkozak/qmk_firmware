@@ -14,11 +14,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "custom_keycodes.h"
 
-enum layers{
-    BASE,           // Base         (layer 0)
-    FN0,            // Fn 0         (layer 1)
-    SPD,            // Speed Base   (layer 2)
-    DFLT,           // Default      (layer 3)
-};
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Default layer untoggle
+
+bool process_record_kc(uint16_t keycode, keyrecord_t *record) {
+    // default layer untoggle
+    if (keycode == KC_F20) {                        // power key
+        if (record->event.pressed) {                // keydown event
+            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
+                layer_clear();
+                return false;
+            }
+        }
+        return true;
+    }
+    return true;
+}

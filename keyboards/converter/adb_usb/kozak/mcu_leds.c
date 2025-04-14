@@ -18,6 +18,9 @@
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// MCU led controls
+
 void mcu_led_reset(void) {
     gpio_set_pin_output(RX_LED);
     gpio_set_pin_output(TX_LED);

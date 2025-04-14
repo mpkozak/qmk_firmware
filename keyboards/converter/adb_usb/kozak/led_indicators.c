@@ -19,6 +19,9 @@
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// Extended keyboard lock led features
+
 /* Write LED state bitmask to ADB bus */
 void adb_led_set(uint8_t led_mask) {
     adb_host_kbd_led(~led_mask);

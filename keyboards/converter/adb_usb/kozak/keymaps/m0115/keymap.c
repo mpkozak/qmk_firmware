@@ -28,6 +28,7 @@
 
 
 
+
 ////////////////////////////////////////////////////////////////////////////////
 // Layout
 
@@ -105,21 +106,14 @@ void housekeeping_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_kc(keycode, record)) {
+        return false;
+    }
     if (!process_record_fn(keycode, record)) {
         return false;
     }
     if (!process_record_ac(keycode, record)) {
         return false;
-    }
-    // default layer untoggle
-    if (keycode == KC_F20) {                        // power key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
-                layer_clear();
-                return false;
-            }
-        }
-        return true;
     }
     return true;
 }

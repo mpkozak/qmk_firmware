@@ -21,3 +21,4 @@ KEYBOARD_SHARED_EP		= yes		# apple fn workaround
 
 SRC = matrix.c adb.c
 SRC += adb_handler.c
+SRC += custom_keycodes.c

@@ -21,8 +21,13 @@
 #define PRODUCT "M0116"
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x0116
+
+/* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-/* ADB port setting */
+/* Disable ADB power port setting */
 #undef ADB_PSW_BIT
+
+/* Enable ADB logging to console */
+// #define ADB_LOGGING

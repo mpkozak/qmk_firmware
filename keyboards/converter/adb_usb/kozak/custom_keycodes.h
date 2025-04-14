@@ -51,3 +51,10 @@ enum custom_keycodes {
 #define KC_CALU HYPR(KC_PEQL)   // launch calculator from services menu
 #define KC_BTAB S(KC_TAB)       // backtab
 #define KC_CTAP LCTL_T(KC_CAPS) // left control / tap caps lock
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Default layer untoggle
+
+bool process_record_kc(uint16_t keycode, keyrecord_t *record);

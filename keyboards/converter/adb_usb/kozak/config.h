@@ -41,6 +41,9 @@
 /* Enable LED diagnostic blinking */
 #define LED_DIAG_BLINK
 
+/* Enable ADB logging to console */
+// #define ADB_LOGGING
+
 /* Faster tap threshold */
 #define TAPPING_TERM 175
 #undef PERMISSIVE_HOLD
