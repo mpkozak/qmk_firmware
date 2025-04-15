@@ -29,7 +29,6 @@
 
 
 
-
 ////////////////////////////////////////////////////////////////////////////////
 // Layout
 
@@ -41,9 +40,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ │ ↺ │
      * │Esc│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │  Bspc │ ╰───╯
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ┌───┐
-     * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ [ │ ] │ Bspc│ │ ` │
+     * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ [ │ ] │  \| │ │Hom│
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ ├───┤
-     * │ Ctrl │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │  Enter │ │ \ │
+     * │ Ctrl │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │  Enter │ │End│
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┘ └───┘
      * │ Shift  │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ Shift│ ┌───┐
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴──┬┴──┬┴──┬───┘ │ ↑ │
@@ -52,13 +51,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                                       └───┴───┴───┘
      */
 
-// template
-     // _______,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   _______,       _______,  // r0
-     // _______,        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,  // r1
-     // _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______,       _______,  // r2
-     // _______,            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,      _______,       _______,           // r3
-     // _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   _______, _______, _______), // r4
-
     [BASE] = LAYOUT_ansi_67(        // layer 0 BASE - white
         KC_ESC,       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,    KC_BSPC,       KC_MUTE,
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,       KC_HOME,
@@ -66,7 +58,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,            KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,      KC_RSFT,       KC_UP,
         KC_LCTL,   KC_LOPT,   KC_LCMD,                          LT(2,KC_SPC),                     KC_RCMD,  KC_ROPT,  MO(3),     KC_LEFT, KC_DOWN, KC_RGHT
     ),
-
     [SPD] = LAYOUT_ansi_67(         // layer 1 SPD - orange
         TO(0),        KC_1,    KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7,   KC_P8,   KC_9,    KC_0,    KC_MINS, ___x___,   KC_BSPC,       KC_MUTE,
         KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ___x___, ___x___, KC_BSPC,       _______,
@@ -74,7 +65,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         OSM(MOD_LSFT),      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUES,      KC_RSFT,       KC_UP,
         KC_LCTL,   KC_LOPT,   KC_LCMD,                          KC_SPC,                           ___x___,  ___x___,  MO(3),     KC_LEFT, KC_DOWN, KC_RGHT
     ),
-
     [FN0] = LAYOUT_ansi_67(         // layer 2 FN0 - blue [space fn]
         KC_LSCR,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,    KC_BSPC,       KC_ZACT,
         KC_INS,         ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT, KC_DEL,        KC_PGUP,
@@ -82,7 +72,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,            KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,      KC_RSFT,       KC_MCTL,
         KC_APFN,   KC_LOPT,   KC_LCMD,                          _______,                          KC_RCMD,  MO(4),    MO(3),     KC_MVLS, KC_DESK, KC_MVRS
     ),
-
     [FN1] = LAYOUT_ansi_67(         // layer 3 FN1 - green [quick toggles]
         KC_GRV,       ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU,   _______,       KC_LSCR,
         KC_TAB,         ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_MVLT, KC_MVRT, KC_GRV,        KC_PGUP,
@@ -90,7 +79,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CAPS,            ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_DESK, KC_MVLS, KC_MVRS,      KC_CAPS,       KC_MCTL,
         KC_APFN,   _______,   _______,                          _______,                          KC_RCMD,  MO(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS
     ),
-
     [FN2] = LAYOUT_ansi_67(         // layer 4 FN2 - cyan [mac media keys + rbg settings]
         QK_BOOT,      QK_RBT,  EE_CLR,  ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___,   _______,       RGB_TOG,
         _______,        ___x___, ___x___, ___x___, NK_TOGG, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_TGTL, KC_TGCL, _______,       _______,
