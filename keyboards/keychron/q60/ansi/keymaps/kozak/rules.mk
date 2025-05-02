@@ -1,8 +1,9 @@
-VIA_ENABLE = yes
-AUTOCORRECT_ENABLE = yes
-DIP_SWITCH_ENABLE = no
-KEY_OVERRIDE_ENABLE = yes
-LTO_ENABLE = yes
+VIA_ENABLE              = yes
+AUTOCORRECT_ENABLE      = yes
+DIP_SWITCH_ENABLE       = no
+KEY_OVERRIDE_ENABLE     = yes
+LTO_ENABLE              = yes
+KEYBOARD_SHARED_EP      = yes       # apple fn -> globe workaround
 
 SRC += keymap_user_config.c
 

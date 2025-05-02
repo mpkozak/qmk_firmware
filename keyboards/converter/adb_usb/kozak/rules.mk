@@ -17,7 +17,7 @@ KEY_OVERRIDE_ENABLE	= yes
 LTO_ENABLE					= yes
 
 DEFERRED_EXEC_ENABLE	= yes		# allow adb_handler recurring cb
-KEYBOARD_SHARED_EP		= yes		# apple fn workaround
+KEYBOARD_SHARED_EP		= yes		# apple fn -> globe workaround
 
 SRC = matrix.c adb.c
 SRC += adb_handler.c
