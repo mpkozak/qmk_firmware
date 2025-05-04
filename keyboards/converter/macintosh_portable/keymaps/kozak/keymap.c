@@ -19,6 +19,7 @@
 #include "custom_keycodes.h"
 #include "fn_key.c"
 #include "spd_autocorrect.c"
+#include "mcu_leds.c"
 
 
 
@@ -86,16 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = layer_state_set_ac(state);
-#ifdef LED_LAYER_STATUS
-    switch (get_highest_layer(state)) {
-        case SPD:
-            gpio_write_pin_high(LED_PIN);
-            break;
-        default:
-            gpio_write_pin_low(LED_PIN);
-            break;
-    }
-#endif
+    state = layer_state_set_mcu(state);
     return state;
 }
 
@@ -108,21 +100,14 @@ void housekeeping_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_kc(keycode, record)) {
+        return false;
+    }
     if (!process_record_fn(keycode, record)) {
         return false;
     }
     if (!process_record_ac(keycode, record)) {
         return false;
-    }
-    // default layer untoggle
-    if (keycode == KC_ESC) {                        // esc key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
-                layer_clear();
-                return false;
-            }
-        }
-        return true;
     }
     return true;
 }
