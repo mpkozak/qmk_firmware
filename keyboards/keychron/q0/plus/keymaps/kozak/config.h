@@ -84,8 +84,9 @@
 #define BOOTMAGIC_LITE_ROW 1
 #define BOOTMAGIC_LITE_COLUMN 0
 
-// Layer count
-#define DYNAMIC_KEYMAP_LAYER_COUNT 6
+// Override Layer count
+#undef DYNAMIC_KEYMAP_LAYER_COUNT
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 // Faster tap threshold
 #define TAPPING_TERM 160

@@ -18,8 +18,8 @@
 
 enum layers{
     BASE,           // Base         (layer 0)
-    BASE_FN,        // Fn Base      (layer 1)
-    _FN1,           // Fn1          (layer 2)
-    _FN2,           // Fn2          (layer 3)
-    _FN3,           // Fn3          (layer 4)
+    FN0,            // Fn 0         (layer 1)
+    FN1,            // Fn 1         (layer 2)
+    FN2,            // Fn 2         (layer 3)
+    FN3             // Fn 3         (layer 4)
 };

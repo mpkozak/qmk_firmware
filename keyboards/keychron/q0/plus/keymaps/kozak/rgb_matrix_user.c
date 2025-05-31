@@ -15,7 +15,6 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "keychron_common.h"
 #include "rgb_matrix_user.h"
 #include "keymap_user.h"
 #include "keymap_user_config.h"
@@ -41,16 +40,16 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch (current_layer) {
         case BASE:
             break;
-        case BASE_FN:
+        case FN0:
             rgb = rgb_scaled_to_val(current_val, FN0_LAYER_COLOR);
             break;
-        case _FN1:
+        case FN1:
             rgb = rgb_scaled_to_val(current_val, FN1_LAYER_COLOR);
             break;
-        case _FN2:
+        case FN2:
             rgb = rgb_scaled_to_val(current_val, FN2_LAYER_COLOR);
             break;
-        case _FN3:
+        case FN3:
             rgb = rgb_scaled_to_val(current_val, FN3_LAYER_COLOR);
             break;
         default:
@@ -83,5 +82,5 @@ void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t l
     }
 }
 
-bool is_transparent(uint16_t keycode) { return keycode == KC_TRNS; }
+bool is_transparent(uint16_t keycode) { return keycode == KC_TRNS || keycode == KC_NO; }
 bool is_not_transparent(uint16_t keycode) { return keycode != KC_TRNS; }
