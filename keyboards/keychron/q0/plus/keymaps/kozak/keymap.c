@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_CALU,  ___x___,  ___x___,  A(KC_PMNS),
         KC_BTAB,   ___x___,  KC_UP,    ___x___,  ___x___,
         _______,   KC_LEFT,  KC_DOWN,  KC_RGHT,
-        _______,   KC_MVLS,  KC_DESK,  KC_MVRT,  _______,
+        _______,   KC_MVLS,  KC_DESK,  KC_MVRS,  _______,
         _______,   _______,            ___x___
     ),
     [FN1] = LAYOUT_numpad_6x5(         // layer 2 FN1 - orange
@@ -78,18 +78,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FN2] = LAYOUT_numpad_6x5(         // layer 3 FN2 - green
         RGB_TOG,   _______,  TO(0),    _______,  QK_BOOT,
         _______,   ___x___,  ___x___,  ___x___,  ___x___,
-        _______,   ___x___,  ___x___,  ___x___,  ___x___,
-        _______,   KC_D,     KC_E,     KC_F,
+        KC_TGTL,   KC_LPRN,  ___x___,  KC_RPRN,  ___x___,
+        KC_TGCL,   KC_D,     KC_E,     KC_F,
         _______,   KC_A,     KC_B,     KC_C,     _______,
-        _______,   _______,            ___x___
+        _______,   _______,            KC_COLN
     ),
     [FN3] = LAYOUT_numpad_6x5(         // layer 4 FN3 - yellow
-        ___x___,   _______,  _______,  TO(0),    _______,
-        _______,   _______,  _______,  _______,  _______,
-        KC_TGTL,   _______,  _______,  _______,  _______,
-        KC_TGCL,   _______,  _______,  _______,
-        _______,   _______,  _______,  _______,  _______,
-        _______,   _______,            _______
+        ___x___,   _______,  _______,  TO(0),    EE_CLR,
+        QK_RBT,    ___x___,  ___x___,  ___x___,  ___x___,
+        ___x___,   ___x___,  ___x___,  ___x___,  ___x___,
+        ___x___,   ___x___,  ___x___,  ___x___,
+        ___x___,   ___x___,  ___x___,  ___x___,  ___x___,
+        ___x___,   ___x___,            ___x___
     )
 };
 
