@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,         KC_DEL,  KC_END,  KC_PGDN,         KC_P7,   KC_P8,   KC_P9,   KC_PMNS,
         KC_CTAP, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                             KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,                  KC_UP,                    KC_P1,   KC_P2,   KC_P3,
-        LCTL_FN, KC_LOPT, KC_LCMD,                            LT(1,KC_SPC),                                ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         LT(1, KC_P0),     KC_PDOT, KC_PENT
+        LCTL_FN, KC_LOPT, KC_LCMD,                            LT(1,KC_SPC),                                ___x___, KC_ROPT, KC_RCTL,         KC_LEFT, KC_DOWN, KC_RGHT,         LT(1, KC_P0),     KC_PDOT, LT(1, KC_PENT)
     ),
     [FN0] = LAYOUT_m0115(
         TO(0),            C(KC_1), C(KC_2), C(KC_3), C(KC_4), C(KC_5), C(KC_6), C(KC_7), C(KC_8), KC_F13,  KC_F14,  KC_F15,  KC_F16,          TO(0),   _______, _______,                                    QK_BOOT,
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_INS,  ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT, KC_DEL,          _______, _______, _______,         ___x___, KC_UP,   ___x___, KC_VOLD,
         _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,          _______,                                            KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU,
         _______,          KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,          _______,                  _______,                  G(KC_1), G(KC_2), G(KC_3),
-        KC_APFN, _______, _______,                            _______,                                     ___x___, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_R,    A(KC_PMNS)
+        KC_APFN, _______, _______,                            _______,                                     ___x___, _______, _______,         KC_BTAB, _______, KC_TAB,          _______,          KC_R,    _______
     ),
     [SPD] = LAYOUT_m0115(
         TO(0),            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,         _______, TO(0),   _______,                                    TO(0),
