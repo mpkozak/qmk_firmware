@@ -87,6 +87,9 @@
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
+// Tap dance
+#define TAPPING_TERM_PER_KEY
+
 // One-shot timeout
 #define ONESHOT_TIMEOUT 500
 
