@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [FN1] = LAYOUT_60_hhkb(        // layer 3 FN1 - green [quick toggles]
         QK_BOOT, QK_RBT,  EE_CLR,  ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, UG_VALD, UG_VALU, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
-        KC_TAB,  ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_MVLT, KC_MVRT, KC_MUTE,
-        KC_APFN, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_LPAD, KC_MCTL, KC_DESK,          KC_PENT,
-        KC_CAPS,          ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_DESK, KC_MVLS, KC_MVRS, KC_CAPS, _______,
+        KC_TAB,  ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_PGUP, KC_PGDN, KC_MUTE,
+        KC_APFN, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_LPAD, KC_HOME, KC_END,           KC_PENT,
+        KC_CAPS,          ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_MCTL, KC_MVLS, KC_MVRS, KC_DESK, _______,
                           _______, _______,                   _______,                            _______, UG_TOGG
     )
 };
