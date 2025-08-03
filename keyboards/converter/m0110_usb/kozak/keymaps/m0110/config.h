@@ -21,3 +21,9 @@
 #define PRODUCT "M0110"
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x0110
+
+/* Disable LED diagnostic blinking */
+// #undef LED_DIAG_BLINK
+
+/* Enable debug output */
+#define DEBUG_ENABLE

@@ -38,6 +38,9 @@
 #define RX_LED B0
 #define TX_LED D5
 
+/* Enable LED power status */
+#define LED_POWER_ON
+
 /* Enable LED diagnostic blinking */
 #define LED_DIAG_BLINK
 
@@ -48,6 +51,3 @@
 
 /* One-shot timeout */
 #define ONESHOT_TIMEOUT 175
-
-/* Disable Autocorrect at startup */
-#define AUTOCORRECT_OFF_AT_STARTUP

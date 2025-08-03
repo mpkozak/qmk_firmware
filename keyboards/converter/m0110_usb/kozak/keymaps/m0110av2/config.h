@@ -24,3 +24,6 @@
 
 /* Define DIP switch pin assignments */
 #define DIP_SWITCH_PINS { C6 }
+
+/* Disable Autocorrect at startup */
+#define AUTOCORRECT_OFF_AT_STARTUP

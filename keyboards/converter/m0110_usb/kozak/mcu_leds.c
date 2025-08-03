@@ -37,11 +37,14 @@ void mcu_led_toggle(uint8_t led_state) {
 layer_state_t layer_state_set_mcu(layer_state_t state) {
     mcu_led_reset();
     switch (get_highest_layer(state)) {
+        case FN0:
+            mcu_led_toggle(0x01);
+            break;
+        case FN1:
+            mcu_led_toggle(0x03);
+            break;
         case DFLT:
             mcu_led_toggle(0x02);
-            break;
-        case SPD:
-            mcu_led_toggle(0x03);
             break;
         default:
             // mcu_led_toggle(0x00);

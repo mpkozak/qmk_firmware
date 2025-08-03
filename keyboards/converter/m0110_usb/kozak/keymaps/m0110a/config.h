@@ -21,3 +21,6 @@
 #define PRODUCT "M0110A"
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x110A
+
+/* Disable Autocorrect at startup */
+#define AUTOCORRECT_OFF_AT_STARTUP

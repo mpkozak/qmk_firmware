@@ -19,5 +19,6 @@
 enum layers{
     BASE,           // Base         (layer 0)
     FN0,            // Fn 0         (layer 1)
-    FN1             // Fn 1         (layer 2)
+    FN1,            // Fn 1         (layer 2)
+    DFLT,           // Default      (layer 3)
 };
