@@ -16,8 +16,6 @@
 
 #pragma once
 
-#define EECONFIG_USER_DATA_SIZE 3  // size of eeprom data, do not change.
-
 // default options applied when eeprom is cleared
 #define DEFAULT_FN_LAYER_TRANSPARENT_OFF 1             // default layer transparency
 #define DEFAULT_FN_LAYER_SHOW_COLOR      1             // default show layer colors

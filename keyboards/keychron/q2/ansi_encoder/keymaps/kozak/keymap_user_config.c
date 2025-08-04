@@ -16,7 +16,6 @@
 
 #include QMK_KEYBOARD_H
 #include "keymap_user_config.h"
-#include "eeconfig.h"
 
 typedef union {
   uint32_t raw;

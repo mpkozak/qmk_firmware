@@ -17,40 +17,44 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user_config.h"
 
-typedef struct {
-    uint8_t fn_layer_transparent_keys_off;
-    uint8_t fn_layer_color_enable;
-    uint8_t enable_rgb;
+typedef union {
+  uint32_t raw;
+  struct {
+    bool     fn_layer_transparent_keys_off :1;
+    bool     fn_layer_color_enable         :1;
+    bool     enable_rgb                    :1;
+  };
 } user_config_t;
 
 user_config_t user_config;
 
 void eeconfig_init_user(void) {
+    user_config.raw = 0;
     user_config.fn_layer_transparent_keys_off = DEFAULT_FN_LAYER_TRANSPARENT_OFF;
     user_config.fn_layer_color_enable = DEFAULT_FN_LAYER_SHOW_COLOR;
     user_config.enable_rgb = DEFAULT_RGB_ENABLE_BASE;
-    user_config_write_eeprom();
+    eeconfig_update_user(user_config.raw);
 }
 
 void user_config_read_eeprom(void) {
-    eeconfig_read_user_datablock(&user_config);
+    user_config.raw = eeconfig_read_user();
 }
 
 void user_config_write_eeprom(void) {
-    eeconfig_update_user_datablock(&user_config);
+    eeconfig_update_user(user_config.raw);
 }
 
 // getters
 
-uint8_t  user_config_get_fn_layer_transparent_keys_off(void) {
+bool user_config_get_fn_layer_transparent_keys_off(void) {
     return user_config.fn_layer_transparent_keys_off;
 }
 
-uint8_t  user_config_get_fn_layer_color_enable(void) {
+bool user_config_get_fn_layer_color_enable(void) {
     return user_config.fn_layer_color_enable;
 }
 
-uint8_t user_config_get_enable_rgb(void) {
+bool user_config_get_enable_rgb(void) {
     return user_config.enable_rgb;
 }
 
