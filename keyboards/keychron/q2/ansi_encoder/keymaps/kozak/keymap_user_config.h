@@ -21,9 +21,9 @@ void user_config_write_eeprom(void);
 
 // getters
 
-uint8_t user_config_get_fn_layer_transparent_keys_off(void);
-uint8_t user_config_get_fn_layer_color_enable(void);
-uint8_t user_config_get_enable_rgb(void);
+bool user_config_get_fn_layer_transparent_keys_off(void);
+bool user_config_get_fn_layer_color_enable(void);
+bool user_config_get_enable_rgb(void);
 
 // setters
 
