@@ -40,7 +40,7 @@ layer_state_t layer_state_set_mcu(layer_state_t state) {
         case FN0:
             mcu_led_toggle(0x01);
             break;
-        case FN1:
+        case 2:
             mcu_led_toggle(0x03);
             break;
         case DFLT:
