@@ -22,5 +22,11 @@
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x110A
 
+/* Disable LED diagnostic blinking */
+// #undef LED_DIAG_BLINK
+
+/* Enable debug output */
+#define DEBUG_ENABLE
+
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP

@@ -18,6 +18,8 @@ LTO_ENABLE					= yes
 
 KEYBOARD_SHARED_EP  = yes		# apple fn workaround
 
+TAP_DANCE_ENABLE    = yes
+
 # Processor frequency
 F_CPU = 16000000
 
