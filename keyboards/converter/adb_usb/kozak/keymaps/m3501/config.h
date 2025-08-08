@@ -27,4 +27,7 @@
 #undef LOCKING_RESYNC_ENABLE
 
 /* Enable ADB logging to console */
-#define ADB_LOGGING
+// #define ADB_LOGGING
+
+/* Enable per-key tap dance timing */
+#define TAPPING_TERM_PER_KEY

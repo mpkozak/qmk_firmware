@@ -17,7 +17,8 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
 #include "custom_keycodes.h"
-#include "fn_key.c"
+// #include "fn_key.c"
+#include "fn_tapdance.c"
 #include "spd_autocorrect.c"
 #include "mcu_leds.c"
 
@@ -26,6 +27,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
+#define LCTL_FN TD(TD_LCTL_FN)
 
 
 
@@ -101,9 +103,9 @@ void keyboard_post_init_user(void) {
     keyboard_post_init_ac();
 }
 
-void housekeeping_task_user(void) {
-    housekeeping_task_fn();
-}
+// void housekeeping_task_user(void) {
+//     housekeeping_task_fn();
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_kc(keycode, record)) {
