@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,6 +34,12 @@
 /* ADB handler callback interval (ms) */
 #define ADB_INIT_CB_MS  60000   // 1 minute
 
+/* Enable ADB logging to console */
+// #define ADB_LOGGING
+
+/* Enable ADB LED indicators */
+// #define ADB_LED_INDICATORS
+
 /* Map MCU LED pins */
 #define RX_LED B0
 #define TX_LED D5
@@ -41,33 +47,23 @@
 /* Enable LED diagnostic blinking */
 #define LED_DIAG_BLINK
 
-/* Enable ADB logging to console */
-// #define ADB_LOGGING
+/* Disable locking support */
+// #undef LOCKING_SUPPORT_ENABLE
+// #undef LOCKING_RESYNC_ENABLE
+
+/* Enable locking speed layer toggle */
+// #define LOCKING_SPEED_TOGGLE
 
 /* Faster tap threshold */
 #define TAPPING_TERM 175
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
+/* Enable per-key tap dance timing */
+#define TAPPING_TERM_PER_KEY
+
 /* One-shot timeout */
 #define ONESHOT_TIMEOUT 175
 
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP
-
-
-
-
-
-/* MCU onboard leds */
-// #define TX_RX_LED_INIT  DDRD |= (1<<5), DDRB |= (1<<0)
-// #define TXLED0          PORTD |= (1<<5)
-// #define TXLED1          PORTD &= ~(1<<5)
-// #define RXLED0          PORTB |= (1<<0)
-// #define RXLED1          PORTB &= ~(1<<0)
-
-/* Apple fn override */
-// #undef VENDOR_ID
-// #undef PRODUCT_ID
-// #define VENDOR_ID  0x05AC // Apple
-// #define PRODUCT_ID 0x0220 // Aluminum Keyboard (ANSI)

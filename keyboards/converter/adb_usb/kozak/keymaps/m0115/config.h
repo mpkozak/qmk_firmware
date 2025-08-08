@@ -24,3 +24,6 @@
 
 /* Enable ADB logging to console */
 // #define ADB_LOGGING
+
+/* Enable ADB LED indicators */
+#define ADB_LED_INDICATORS

@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,6 +36,9 @@ void adb_init(void) {
 /* Callback to reinvoke initialization handler */
 uint32_t adb_init_cb(uint32_t trigger_time, void *cb_arg) {
     adb_init();
+#ifdef ADB_LOGGING
+    print("<<ADB init cb>>");
+#endif
     return ADB_INIT_CB_MS;
 }
 

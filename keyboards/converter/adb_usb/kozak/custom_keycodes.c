@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,18 +19,26 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Default layer untoggle
+// User keymap callbacks
 
 bool process_record_kc(uint16_t keycode, keyrecord_t *record) {
-    // default layer untoggle
-    if (keycode == KC_F20) {                        // power key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
-                layer_clear();
-                return false;
+    switch (keycode) {
+        case KC_APFN:       // apple fn key
+            if (record->event.pressed) {
+                host_consumer_send(0x029D);
+            } else {
+                host_consumer_send(0);
             }
-        }
-        return true;
+            return false;
+        case KC_F20:        // power key
+            if (record->event.pressed) {
+                if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
+                    layer_clear();
+                    return false;
+                }
+            }
+            return true;
+        default:
+            return true;
     }
-    return true;
 }

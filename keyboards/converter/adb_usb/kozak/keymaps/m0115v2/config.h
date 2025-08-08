@@ -22,9 +22,12 @@
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x0115
 
+/* Enable ADB logging to console */
+// #define ADB_LOGGING
+
+/* Enable ADB LED indicators */
+#define ADB_LED_INDICATORS
+
 /* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
-
-/* Enable ADB logging to console */
-// #define ADB_LOGGING

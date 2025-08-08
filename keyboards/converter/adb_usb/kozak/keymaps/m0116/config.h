@@ -22,12 +22,15 @@
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x0116
 
+/* ADB port setting */
+#undef ADB_PSW_BIT          // disabled
+
+/* Enable ADB logging to console */
+#define ADB_LOGGING
+
 /* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
 
-/* Disable ADB power port setting */
-#undef ADB_PSW_BIT
-
-/* Enable ADB logging to console */
-// #define ADB_LOGGING
+/* Enable locking speed layer toggle */
+#define LOCKING_SPEED_TOGGLE

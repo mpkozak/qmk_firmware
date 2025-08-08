@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Extended keyboard lock led features
+
+#ifdef ADB_LED_INDICATORS
 
 /* Write LED state bitmask to ADB bus */
 void adb_led_set(uint8_t led_mask) {
@@ -63,3 +65,5 @@ void led_set(uint8_t usb_led) {
     uint8_t led_mask = get_led_mask(layer, (led_t)usb_led);
     adb_led_set(led_mask);
 }
+
+#endif

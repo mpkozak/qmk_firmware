@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,12 +22,12 @@
 #undef PRODUCT_ID
 #define PRODUCT_ID 0x3501
 
+/* Enable ADB logging to console */
+#define ADB_LOGGING
+
+/* Enable ADB LED indicators */
+#define ADB_LED_INDICATORS
+
 /* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
-
-/* Enable ADB logging to console */
-// #define ADB_LOGGING
-
-/* Enable per-key tap dance timing */
-#define TAPPING_TERM_PER_KEY

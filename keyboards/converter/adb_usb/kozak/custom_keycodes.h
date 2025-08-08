@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,9 +24,8 @@
 // Custom keycodes
 
 enum custom_keycodes {
-  KC_APFN = SAFE_RANGE,         // apple fn
-  LCTL_FN,                      // left control + apple fn (tap-hold)
-  KC_TGSP                       // locking speed toggle
+    KC_APFN = SAFE_RANGE,       // apple fn
+    KC_TGSP                     // locking speed layer toggle
 };
 
 #define KC_LSCR C(G(KC_Q))      // lock screen
@@ -50,11 +49,11 @@ enum custom_keycodes {
 
 #define KC_CALU HYPR(KC_PEQL)   // launch calculator from services menu
 #define KC_BTAB S(KC_TAB)       // backtab
-#define KC_CTAP LCTL_T(KC_CAPS) // left control / tap caps lock
+#define CTL_CAP LCTL_T(KC_CAPS) // left control / tap caps lock
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Default layer untoggle
+// User keymap callbacks
 
 bool process_record_kc(uint16_t keycode, keyrecord_t *record);

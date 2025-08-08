@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "keymap_user.h"
 
 
 
@@ -40,11 +41,14 @@ void mcu_led_toggle(uint8_t led_state) {
 layer_state_t layer_state_set_mcu(layer_state_t state) {
     mcu_led_reset();
     switch (get_highest_layer(state)) {
+        case 1:
+            // mcu_led_toggle(0x01);
+            break;
+        case 2:
+            mcu_led_toggle(0x03);
+            break;
         case DFLT:
             mcu_led_toggle(0x02);
-            break;
-        case SPD:
-            mcu_led_toggle(0x03);
             break;
         default:
             // mcu_led_toggle(0x00);
@@ -52,8 +56,6 @@ layer_state_t layer_state_set_mcu(layer_state_t state) {
     }
     return state;
 }
-
-
 
 /* Runs after each key press, toggles MCU LED off with keydown */
 #ifdef LED_DIAG_BLINK
