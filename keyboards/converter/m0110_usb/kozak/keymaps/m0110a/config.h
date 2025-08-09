@@ -28,5 +28,9 @@
 /* Enable debug output */
 #define DEBUG_ENABLE
 
+/* Disable locking support */
+// #undef LOCKING_SUPPORT_ENABLE
+// #undef LOCKING_RESYNC_ENABLE
+
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP

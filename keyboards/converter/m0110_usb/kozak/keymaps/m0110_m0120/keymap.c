@@ -17,42 +17,19 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
 #include "custom_keycodes.h"
-#include "fn_key.c"
 #include "mcu_leds.c"
+#include "fn_tapdance.c"
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
-// Tap Dance declarations
-enum {
-    TD_ESC_GRV,
-    TD_CMD_CTRL,
-    TD_OPT_CTRL,
-};
-
-// Tap Dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_ESC_GRV] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_GRV),
-    [TD_CMD_CTRL] = ACTION_TAP_DANCE_DOUBLE(KC_LCMD, KC_LCTL),
-    [TD_OPT_CTRL] = ACTION_TAP_DANCE_DOUBLE(KC_LOPT, KC_LCTL),
-};
-
-// Keycode aliases
-#define ESC_GRV   TD(TD_ESC_GRV)
-#define CMD_CTL   TD(TD_CMD_CTRL)
-#define OPT_CTL   TD(TD_OPT_CTRL)
-
-// Set a long-ish tapping term for tap-dance keys
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-            return TAPPING_TERM * 2;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// tapdance keycodes
+#define ESC_GRV TD(TD_ESC_GRV)
+#define CMD_CTL TD(TD_CMD_CTRL)
+#define OPT_CTL TD(TD_OPT_CTRL)
+#define LCTL_FN TD(TD_LCTL_FN)  // left control + apple fn (tap-hold)
 
 
 
@@ -115,66 +92,39 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 // void keyboard_post_init_user(void) {
-//
 // }
 
-void housekeeping_task_user(void) {
-    housekeeping_task_fn();
-}
+// void housekeeping_task_user(void) {
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_record_fn(keycode, record)) {
+    if (!process_record_kc(keycode, record)) {
         return false;
-    }
-    // default layer untoggle
-    if (keycode == KC_GRV) {                        // backtick tilde key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCMD)) {   // while left control active
-                layer_clear();
-                return false;
-            }
-        }
-        return true;
     }
     // default layer numpad arrow behavior augmentation
     if (get_highest_layer(layer_state) == DFLT) {   // on default layer
         if (get_mods() == MOD_BIT(KC_LSFT)) {       // with shift down
-            if (record->event.pressed) {            // keydown event
-                switch (keycode) {
-                    case KC_LEFT:
-                        register_code(KC_PPLS);
-                        return false;
-                    case KC_RGHT:
-                        register_code(KC_PAST);
-                        return false;
-                    case KC_UP:
-                        register_code(KC_PSLS);
-                        return false;
-                    case KC_DOWN:
-                        // register_code(KC_PCMM);
-                        register_code(KC_PEQL);
-                        return false;
-                    default:
-                        return true;
-                }
-            } else {
-                switch (keycode) {
-                    case KC_LEFT:
-                        unregister_code(KC_PPLS);
-                        return false;
-                    case KC_RGHT:
-                        unregister_code(KC_PAST);
-                        return false;
-                    case KC_UP:
-                        unregister_code(KC_PSLS);
-                        return false;
-                    case KC_DOWN:
-                        // unregister_code(KC_PCMM);
-                        unregister_code(KC_PEQL);
-                        return false;
-                    default:
-                        return true;
-                }
+            switch (keycode) {
+                case KC_LEFT:
+                    if (record->event.pressed) register_code(KC_PPLS);
+                    else unregister_code(KC_PPLS);
+                    return false;
+                case KC_RGHT:
+                    if (record->event.pressed) register_code(KC_PAST);
+                    else unregister_code(KC_PAST);
+                    return false;
+                case KC_UP:
+                    if (record->event.pressed) register_code(KC_PSLS);
+                    else unregister_code(KC_PSLS);
+                    return false;
+                case KC_DOWN:
+                    // if (record->event.pressed) register_code(KC_PCMM);
+                    // else unregister_code(KC_PCMM);
+                    if (record->event.pressed) register_code(KC_PEQL);
+                    else unregister_code(KC_PEQL);
+                    return false;
+                default:
+                    return true;
             }
         }
     }

@@ -44,10 +44,26 @@
 /* Enable LED diagnostic blinking */
 #define LED_DIAG_BLINK
 
+/* Enable debug output */
+// #define DEBUG_ENABLE
+
+/* Disable locking support */
+// #undef LOCKING_SUPPORT_ENABLE
+// #undef LOCKING_RESYNC_ENABLE
+
+/* Enable locking speed layer toggle */
+// #define LOCKING_SPEED_TOGGLE
+
 /* Faster tap threshold */
 #define TAPPING_TERM 175
 #undef PERMISSIVE_HOLD
 #undef PREVENT_STUCK_MODIFIERS
 
+/* Enable per-key tap dance timing */
+#define TAPPING_TERM_PER_KEY
+
 /* One-shot timeout */
 #define ONESHOT_TIMEOUT 175
+
+/* Disable Autocorrect at startup */
+// #define AUTOCORRECT_OFF_AT_STARTUP

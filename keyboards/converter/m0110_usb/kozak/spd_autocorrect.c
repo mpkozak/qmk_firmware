@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,6 +53,11 @@ layer_state_t layer_state_set_ac(layer_state_t state) {
             if (!autocorrect_is_enabled()) {
                 autocorrect_enable();
             }
+#ifndef LOCKING_SUPPORT_ENABLE
+            if (host_keyboard_led_state().caps_lock) {  // clear caps lock if non-locking
+                register_code(KC_CAPS);
+            }
+#endif
             break;
         default:
             if (autocorrect_is_enabled()) {
@@ -82,10 +87,11 @@ bool is_alpha (uint16_t keycode) {
     }
 }
 
-bool is_prev_alpha = false;
+static bool is_prev_alpha = false;
 
 bool process_record_ac(uint16_t keycode, keyrecord_t *record) {
     // speed layer toggle
+#ifdef LOCKING_SPEED_TOGGLE
     if (keycode == KC_TGSP) {
         if (record->event.pressed) {
             layer_move(SPD);
@@ -94,6 +100,7 @@ bool process_record_ac(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
     }
+#endif
     // ignore suprious number keys in the middle of alphas for speed layer
     if (get_highest_layer(layer_state) == SPD) {
         if (is_number(keycode)) {

@@ -25,5 +25,15 @@
 /* Define DIP switch pin assignments */
 #define DIP_SWITCH_PINS { C6 }
 
+/* Disable LED diagnostic blinking */
+// #undef LED_DIAG_BLINK
+
+/* Enable debug output */
+#define DEBUG_ENABLE
+
+/* Disable locking support */
+// #undef LOCKING_SUPPORT_ENABLE
+// #undef LOCKING_RESYNC_ENABLE
+
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP

@@ -17,42 +17,19 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
 #include "custom_keycodes.h"
-#include "fn_key.c"
 #include "mcu_leds.c"
+#include "fn_tapdance.c"
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
 
-// Tap Dance declarations
-enum {
-    TD_ESC_GRV,
-    TD_CMD_CTRL,
-    TD_OPT_CTRL,
-};
-
-// Tap Dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_ESC_GRV] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_GRV),
-    [TD_CMD_CTRL] = ACTION_TAP_DANCE_DOUBLE(KC_LCMD, KC_LCTL),
-    [TD_OPT_CTRL] = ACTION_TAP_DANCE_DOUBLE(KC_LOPT, KC_LCTL),
-};
-
-// Keycode aliases
-#define ESC_GRV   TD(TD_ESC_GRV)
-#define CMD_CTL   TD(TD_CMD_CTRL)
-#define OPT_CTL   TD(TD_OPT_CTRL)
-
-// Set a long-ish tapping term for tap-dance keys
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-            return TAPPING_TERM * 2;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// tapdance keycodes
+#define ESC_GRV TD(TD_ESC_GRV)
+#define CMD_CTL TD(TD_CMD_CTRL)
+#define OPT_CTL TD(TD_OPT_CTRL)
+#define LCTL_FN TD(TD_LCTL_FN)  // left control + apple fn (tap-hold)
 
 
 
@@ -115,26 +92,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 // void keyboard_post_init_user(void) {
-//
 // }
 
 // void housekeeping_task_user(void) {
-//     // housekeeping_task_fn();
 // }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // if (!process_record_fn(keycode, record)) {
-    //     return false;
-    // // }
-    // default layer untoggle
-    if (keycode == KC_GRV) {                        // backtick tilde key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCMD)) {   // while left control active
-                layer_clear();
-                return false;
-            }
-        }
-        return true;
+    if (!process_record_kc(keycode, record)) {
+        return false;
     }
     return true;
 }

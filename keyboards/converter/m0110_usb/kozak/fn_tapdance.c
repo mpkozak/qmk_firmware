@@ -22,6 +22,9 @@
 // Tap Dance
 
 enum td_keycodes {
+    TD_ESC_GRV,
+    TD_CMD_CTRL,
+    TD_OPT_CTRL,
     TD_LCTL_FN                  // left control + apple fn (tap-hold)
 };
 
@@ -95,5 +98,8 @@ void lctlfn_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
+    [TD_ESC_GRV] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_GRV),
+    [TD_CMD_CTRL] = ACTION_TAP_DANCE_DOUBLE(KC_LCMD, KC_LCTL),
+    [TD_OPT_CTRL] = ACTION_TAP_DANCE_DOUBLE(KC_LOPT, KC_LCTL),
     [TD_LCTL_FN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lctlfn_finished, lctlfn_reset)
 };
