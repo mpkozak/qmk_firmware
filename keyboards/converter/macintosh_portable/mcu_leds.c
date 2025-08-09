@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "keymap_user.h"
 
 
 
@@ -30,7 +31,6 @@ void keyboard_pre_init_kb(void) {
 }
 
 layer_state_t layer_state_set_mcu(layer_state_t state) {
-    state = layer_state_set_ac(state);
 #ifdef LED_LAYER_STATUS
     switch (get_highest_layer(state)) {
         case SPD:
@@ -43,8 +43,6 @@ layer_state_t layer_state_set_mcu(layer_state_t state) {
 #endif
     return state;
 }
-
-
 
 /* Runs after each key press, toggles MCU LED off with keydown */
 #ifdef LED_DIAG_BLINK

@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,11 +23,13 @@
 
 bool process_record_kc(uint16_t keycode, keyrecord_t *record) {
     // default layer untoggle
-    if (keycode == KC_ESC) {                        // esc key
-        if (record->event.pressed) {                // keydown event
-            if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
-                layer_clear();
-                return false;
+    if (keycode == KC_ESC) {                            // esc key
+        if (get_highest_layer(layer_state) > 0) {       // while above base layer
+            if (record->event.pressed) {                // keydown event
+                if (get_mods() == MOD_BIT(KC_LCTL)) {   // while left control active
+                    layer_clear();
+                    return false;
+                }
             }
         }
         return true;

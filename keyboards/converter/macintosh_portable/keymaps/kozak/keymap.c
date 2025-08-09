@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,17 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
 #include "custom_keycodes.h"
-#include "fn_key.c"
-#include "spd_autocorrect.c"
 #include "mcu_leds.c"
+#include "spd_autocorrect.c"
+#include "fn_tapdance.c"
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom keycodes
+
+// tapdance keycodes
+#define LCTL_FN TD(TD_LCTL_FN)  // left control + apple fn (tap-hold)
 
 #define GRV_CMD LCMD_T(KC_GRV)          // left command + grave
 #define ENT_CMD RCMD_T(KC_PENT)         // right command + enter
@@ -95,15 +98,11 @@ void keyboard_post_init_user(void) {
     keyboard_post_init_ac();
 }
 
-void housekeeping_task_user(void) {
-    housekeeping_task_fn();
-}
+// void housekeeping_task_user(void) {
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_kc(keycode, record)) {
-        return false;
-    }
-    if (!process_record_fn(keycode, record)) {
         return false;
     }
     if (!process_record_ac(keycode, record)) {

@@ -5,13 +5,13 @@
     "bootloader": "rp2040",
     "diode_direction": "COL2ROW",
     "features": {
-        "bootmagic": true,
-        "command": false,
+        "bootmagic": false,
+        "command": true,
         "console": true,
         "extrakey": true,
         "mousekey": false,
-        "dip_switch": true,
-        "nkro": true
+        "nkro": true,
+        "dip_switch": true
     },
     "qmk": {
         "locking": {
