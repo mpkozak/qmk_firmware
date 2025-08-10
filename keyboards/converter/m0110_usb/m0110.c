@@ -106,9 +106,9 @@ void m0110_init(void) {
 uint8_t m0110_send(uint8_t data) {
     m0110_error = 0;
 
-    if ((data != 0x10) & (data != 0x14)) {      // ignore inquiry + instant outgoing
-        print("m0110_send: "); print_hex8(data); print("\n");
-    }
+    // if ((data != M0110_INQUIRY) & (data != M0110_INSTANT)) {      // ignore inquiry + instant outgoing
+    //     print("m0110_send: "); print_hex8(data); print("\n");
+    // }
 
     request();
     WAIT_MS(clock_lo, 250, 1);  // keyboard may block long time
@@ -148,7 +148,7 @@ uint8_t m0110_recv(void) {
     }
     idle();
 
-    if (data != 0x7B) {
+    if (data != M0110_NULL) {
         print("m0110_recv: "); print_hex8(data); print("\n");
     }
 
@@ -208,6 +208,7 @@ During Calc key is hold:
     *c: Arrow/Calc(d) event is ignored.
 */
 uint8_t m0110_recv_key(void) {
+    static bool prevNull = true;
     static uint8_t keybuf  = 0x00;
     static uint8_t keybuf2 = 0x00;
     static uint8_t rawbuf  = 0x00;
@@ -229,7 +230,19 @@ uint8_t m0110_recv_key(void) {
         rawbuf = 0x00;
     } else {
         // raw = inquiry();
-        raw = instant();  // Use INSTANT for better response. Should be INQUIRY ?
+        // raw = instant();  // Use INSTANT for better response. Should be INQUIRY ?
+        if (prevNull == true) {
+            raw = inquiry();
+        } else {
+            raw = instant();
+        }
+    }
+
+    if (raw == M0110_NULL) {
+        prevNull = true;
+        return raw2scan(raw);
+    } else {
+        prevNull = false;
     }
 
     switch (KEY(raw)) {
@@ -251,7 +264,8 @@ uint8_t m0110_recv_key(void) {
             return (raw2scan(raw2) | M0110_KEYPAD_OFFSET);
             break;
         case M0110_SHIFT:
-            raw2 = inquiry();
+            // raw2 = inquiry();
+            raw2 = instant();
             switch (KEY(raw2)) {
                 case M0110_SHIFT:
                     // Case: 5-8,C,G,H
