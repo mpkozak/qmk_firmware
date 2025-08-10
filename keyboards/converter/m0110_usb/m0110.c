@@ -229,20 +229,12 @@ uint8_t m0110_recv_key(void) {
         raw    = rawbuf;
         rawbuf = 0x00;
     } else {
-        // raw = inquiry();
-        // raw = instant();  // Use INSTANT for better response. Should be INQUIRY ?
         if (prevNull == true) {
+            prevNull = false;
             raw = inquiry();
         } else {
             raw = instant();
         }
-    }
-
-    if (raw == M0110_NULL) {
-        prevNull = true;
-        return raw2scan(raw);
-    } else {
-        prevNull = false;
     }
 
     switch (KEY(raw)) {
@@ -264,7 +256,6 @@ uint8_t m0110_recv_key(void) {
             return (raw2scan(raw2) | M0110_KEYPAD_OFFSET);
             break;
         case M0110_SHIFT:
-            // raw2 = inquiry();
             raw2 = instant();
             switch (KEY(raw2)) {
                 case M0110_SHIFT:
@@ -319,6 +310,9 @@ uint8_t m0110_recv_key(void) {
                     break;
             }
             break;
+        case M0110_NULL:
+            // Idle state
+            prevNull = true;
         default:
             // Normal keys
             return raw2scan(raw);
