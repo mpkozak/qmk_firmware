@@ -16,9 +16,6 @@
 
 #pragma once
 
-/* Specify which shift key mapping to use */
-// #define DIP_KEYMAP_USE_RIGHT_SHIFT
-
 /* Disable LED power status */
 // #undef LED_POWER_ON
 
@@ -31,12 +28,12 @@
 /* Enable debug output */
 #define DEBUG_ENABLE
 
+/* Specify which shift key mapping to use */
+// #define DIP_KEYMAP_USE_RIGHT_SHIFT
+
 /* Disable locking support */
 // #undef LOCKING_SUPPORT_ENABLE
 // #undef LOCKING_RESYNC_ENABLE
 
 /* Enable locking speed layer toggle */
 #define LOCKING_SPEED_TOGGLE
-
-/* Disable Autocorrect at startup */
-#define AUTOCORRECT_OFF_AT_STARTUP

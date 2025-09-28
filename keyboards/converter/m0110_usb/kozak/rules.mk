@@ -1,23 +1,11 @@
-# Build Options
-#   change yes to no to disable
-#
-# BOOTMAGIC_ENABLE = no     # Enable Bootmagic Lite
-# MOUSEKEY_ENABLE  = no     # Mouse keys
-# CONSOLE_ENABLE   = yes    # Console for debug
-# COMMAND_ENABLE   = yes    # Commands for debug and configuration
-# NKRO_ENABLE      = no     # Enable N-Key Rollover
-# EXTRAKEY_ENABLE  = yes
-# USB_HID_ENABLE   = yes
-BACKLIGHT_ENABLE = no
-CUSTOM_MATRIX    = yes
+# Chaff
+BACKLIGHT_ENABLE 	= no
+VIA_ENABLE				= no
 
-VIA_ENABLE					= no
+# Unavailable as data-driven
 AUTOCORRECT_ENABLE	= no
 KEY_OVERRIDE_ENABLE	= no
-LTO_ENABLE					= yes
-
-KEYBOARD_SHARED_EP		= yes		# apple fn -> globe workaround
-TAP_DANCE_ENABLE      = yes
+TAP_DANCE_ENABLE    = yes
 
 # Processor frequency
 F_CPU = 16000000

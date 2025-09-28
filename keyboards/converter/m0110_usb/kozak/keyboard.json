@@ -1,18 +1,22 @@
 {
   "keyboard_name": "M0110",
   "manufacturer": "kozak",
-  "url": "",
-  "maintainer": "qmk",
+  "maintainer": "mpkozak",
   "usb": {
     "vid": "0x4D4B",
     "pid": "0x0110",
-    "device_version": "1.0.1"
+    "device_version": "1.0.1",
+    "shared_endpoint": {
+      "keyboard": true,
+      "mouse": false
+    }
   },
   "processor": "atmega32u4",
   "bootloader": "caterina",
+  "build": {
+    "lto": true
+  },
   "features": {
-    "bootmagic": false,
-    "mousekey": false,
     "console": true,
     "command": true,
     "nkro": false,
@@ -24,6 +28,23 @@
       "enabled": true,
       "resync": true
     }
+  },
+  "tapping": {
+    "term": 175,
+    "term_per_key": true,
+    "permissive_hold": false
+  },
+  "oneshot": {
+    "timeout": 175
+  },
+  "bootmagic": {
+    "enabled": false
+  },
+  "mouse_key": {
+    "enabled": false
+  },
+  "matrix_pins": {
+    "custom": true
   },
   "layouts": {
     "LAYOUT_m0110": {

@@ -65,8 +65,8 @@ __attribute__ ((weak))
 void matrix_scan_user(void) {
 }
 
-void matrix_init(void)
-{
+
+void matrix_init(void) {
     m0110_init();
     // initialize matrix state: all keys off
     for (uint8_t i=0; i < MATRIX_ROWS; i++) _matrix0[i] = 0x00;
@@ -76,8 +76,8 @@ void matrix_init(void)
     return;
 }
 
-uint8_t matrix_scan(void)
-{
+
+uint8_t matrix_scan(void) {
     uint8_t key;
 
     is_modified = false;
@@ -100,19 +100,15 @@ uint8_t matrix_scan(void)
     return 1;
 }
 
-void matrix_print(void){
 
-}
+void matrix_print(void) {  }
 
-inline
-uint8_t matrix_get_row(uint8_t row)
-{
+
+inline uint8_t matrix_get_row(uint8_t row) {
     return matrix[row];
 }
 
-inline
-static void register_key(uint8_t key)
-{
+inline static void register_key(uint8_t key) {
     if (key&0x80) {
         matrix[ROW(key)] &= ~(1<<COL(key));
     } else {

@@ -1,16 +1,22 @@
 {
     "keyboard_name": "macintosh_portable",
     "manufacturer": "kozak",
-    "url": "",
     "maintainer": "mpkozak",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x5120",
-        "vid": "0x4D4B"
+        "vid": "0x4D4B",
+        "shared_endpoint": {
+            "keyboard": true,
+            "mouse": false
+        }
+    },
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "build": {
+        "lto": true
     },
     "features": {
-        "bootmagic": false,
-        "mousekey": false,
         "console": true,
         "command": true,
         "nkro": true,
@@ -23,9 +29,24 @@
             "resync": true
         }
     },
+    "tapping": {
+        "term": 175,
+        "term_per_key": true,
+        "permissive_hold": false
+    },
+    "oneshot": {
+        "timeout": 175
+    },
+    "bootmagic": {
+        "enabled": false
+    },
+    "mouse_key": {
+        "enabled": false
+    },
     "matrix_pins": {
         "cols": ["GP10", "GP0", "GP1", "GP2", "GP3", "GP4", "GP5", "GP6", "GP7", "GP8", "GP9"],
         "rows": ["GP28", "GP29", "GP26", "GP27", "GP20", "GP22", "GP21", "GP23"],
+        "custom": false,
         "ghost": true
     },
     "diode_direction": "COL2ROW",
@@ -33,8 +54,6 @@
         "enabled": true,
         "pins": ["GP12", "GP13", "GP14", "GP15", "GP16"]
     },
-    "processor": "RP2040",
-    "bootloader": "rp2040",
     "layouts": {
         "LAYOUT_5120_ansi": {
             "layout": [

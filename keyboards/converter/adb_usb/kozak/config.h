@@ -16,13 +16,9 @@
 
 #pragma once
 
-/* Override info.json */
-// #undef MANUFACTURER
-// #define MANUFACTURER "kozak"
-// #undef VENDOR_ID
-// #define VENDOR_ID 0x4D4B
-// #undef PRODUCT_ID
-// #define PRODUCT_ID 0x0ADB
+/* matrix size */
+#define MATRIX_ROWS 16  // keycode bit: 3-0
+#define MATRIX_COLS 8   // keycode bit: 6-4
 
 /* ADB port setting */
 #define ADB_PORT        PORTD
@@ -30,6 +26,10 @@
 #define ADB_DDR         DDRD
 #define ADB_DATA_BIT    0
 #define ADB_PSW_BIT     1       // optional
+
+/* Map MCU LED pins */
+#define RX_LED B0
+#define TX_LED D5
 
 /* ADB handler callback interval (ms) */
 #define ADB_INIT_CB_MS  60000   // 1 minute
@@ -39,10 +39,6 @@
 
 /* Enable ADB LED indicators */
 // #define ADB_LED_INDICATORS
-
-/* Map MCU LED pins */
-#define RX_LED B0
-#define TX_LED D5
 
 /* Enable LED diagnostic blinking */
 #define LED_DIAG_BLINK
@@ -55,15 +51,7 @@
 // #define LOCKING_SPEED_TOGGLE
 
 /* Faster tap threshold */
-#define TAPPING_TERM 175
-#undef PERMISSIVE_HOLD
-#undef PREVENT_STUCK_MODIFIERS
-
-/* Enable per-key tap dance timing */
-#define TAPPING_TERM_PER_KEY
-
-/* One-shot timeout */
-#define ONESHOT_TIMEOUT 175
+// #define STRICT_LAYER_RELEASE    // breaks autocorrect(?)
 
 /* Disable Autocorrect at startup */
 #define AUTOCORRECT_OFF_AT_STARTUP

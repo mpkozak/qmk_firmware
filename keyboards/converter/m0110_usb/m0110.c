@@ -87,6 +87,7 @@ static inline void     request(void);
 
 uint8_t m0110_error = 0;
 
+
 void m0110_init(void) {
     idle();
     _delay_ms(1000);
@@ -102,6 +103,7 @@ void m0110_init(void) {
         data = m0110_recv();
         print("m0110_init test: "); print_hex8(data); print("\n");
 }
+
 
 uint8_t m0110_send(uint8_t data) {
     m0110_error = 0;
@@ -125,13 +127,12 @@ uint8_t m0110_send(uint8_t data) {
     idle();
     return 1;
 ERROR:
-    print("m0110_send err: ");
-    print_hex8(m0110_error);
-    print("\n");
+    print("m0110_send err: "); print_hex8(m0110_error); print("\n");
     _delay_ms(500);
     idle();
     return 0;
 }
+
 
 uint8_t m0110_recv(void) {
     uint8_t data = 0;
@@ -154,9 +155,7 @@ uint8_t m0110_recv(void) {
 
     return data;
 ERROR:
-    print("m0110_recv err: ");
-    print_hex8(m0110_error);
-    print("\n");
+    print("m0110_recv err: "); print_hex8(m0110_error); print("\n");
     _delay_ms(500);
     idle();
     return 0xFF;

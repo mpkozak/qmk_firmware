@@ -1,9 +1,10 @@
-VIA_ENABLE					= no
-AUTOCORRECT_ENABLE	= no
-KEY_OVERRIDE_ENABLE	= no
-LTO_ENABLE					= yes
+# Chaff
+BACKLIGHT_ENABLE 	= no
+VIA_ENABLE				= no
 
-KEYBOARD_SHARED_EP		= yes		# apple fn -> globe workaround
-TAP_DANCE_ENABLE      = yes
+# Unavailable as data-driven
+AUTOCORRECT_ENABLE	= yes
+KEY_OVERRIDE_ENABLE	= yes
+TAP_DANCE_ENABLE    = yes
 
 SRC += custom_keycodes.c

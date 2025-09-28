@@ -1,24 +1,12 @@
-# Build Options
-#   change yes to no to disable
-#
-# BOOTMAGIC_ENABLE = no     # Enable Bootmagic Lite
-# MOUSEKEY_ENABLE  = no     # Mouse keys
-# CONSOLE_ENABLE   = yes    # Console for debug
-# COMMAND_ENABLE   = yes    # Commands for debug and configuration
-# NKRO_ENABLE      = yes    # Enable N-Key Rollover
-# EXTRAKEY_ENABLE  = yes
-# USB_HID_ENABLE   = yes
-BACKLIGHT_ENABLE = no
-CUSTOM_MATRIX    = yes
+# Chaff
+BACKLIGHT_ENABLE 	= no
+VIA_ENABLE				= no
 
-VIA_ENABLE					= no
-AUTOCORRECT_ENABLE	= yes
-KEY_OVERRIDE_ENABLE	= yes
-LTO_ENABLE					= yes
-
+# Unavailable as data-driven
+AUTOCORRECT_ENABLE		= yes
+KEY_OVERRIDE_ENABLE		= yes
+TAP_DANCE_ENABLE    	= yes
 DEFERRED_EXEC_ENABLE	= yes		# allow adb_handler recurring cb
-KEYBOARD_SHARED_EP		= yes		# apple fn -> globe workaround
-TAP_DANCE_ENABLE      = yes
 
 SRC = matrix.c adb.c
 SRC += adb_handler.c

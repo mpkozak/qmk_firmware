@@ -16,13 +16,9 @@
 
 #pragma once
 
-/* Override info.json */
-// #undef MANUFACTURER
-// #define MANUFACTURER "kozak"
-// #undef VENDOR_ID
-// #define VENDOR_ID 0x4D4B
-// #undef PRODUCT_ID
-// #define PRODUCT_ID 0x0110
+/* matrix size */
+#define MATRIX_ROWS 14
+#define MATRIX_COLS 8
 
 /* Port setting */
 #define M0110_CLOCK_PORT        PORTD
@@ -47,23 +43,11 @@
 /* Enable debug output */
 // #define DEBUG_ENABLE
 
-/* Disable locking support */
-// #undef LOCKING_SUPPORT_ENABLE
-// #undef LOCKING_RESYNC_ENABLE
-
 /* Enable locking speed layer toggle */
 // #define LOCKING_SPEED_TOGGLE
 
 /* Faster tap threshold */
-#define TAPPING_TERM 175
-#undef PERMISSIVE_HOLD
-#undef PREVENT_STUCK_MODIFIERS
-
-/* Enable per-key tap dance timing */
-#define TAPPING_TERM_PER_KEY
-
-/* One-shot timeout */
-#define ONESHOT_TIMEOUT 175
+// #define STRICT_LAYER_RELEASE    // breaks autocorrect(?)
 
 /* Disable Autocorrect at startup */
 // #define AUTOCORRECT_OFF_AT_STARTUP

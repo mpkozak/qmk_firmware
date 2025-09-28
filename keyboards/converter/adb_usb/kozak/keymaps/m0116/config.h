@@ -28,9 +28,9 @@
 /* Enable ADB logging to console */
 #define ADB_LOGGING
 
+/* Enable ADB LED indicators */
+#define ADB_LED_INDICATORS
+
 /* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
-
-/* Enable locking speed layer toggle */
-#define LOCKING_SPEED_TOGGLE
