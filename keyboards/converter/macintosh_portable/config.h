@@ -48,6 +48,3 @@
 
 /* Faster tap threshold */
 // #define STRICT_LAYER_RELEASE    // breaks autocorrect(?)
-
-/* Disable Autocorrect at startup */
-#define AUTOCORRECT_OFF_AT_STARTUP
