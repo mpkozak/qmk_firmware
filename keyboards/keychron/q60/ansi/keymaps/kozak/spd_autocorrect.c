@@ -1,4 +1,4 @@
-/* Copyright 2024 @ M. Parker Kozak (https://github.com/mpkozak)
+/* Copyright 2025 @ M. Parker Kozak (https://github.com/mpkozak)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,12 +39,9 @@ const key_override_t *key_overrides[] = {
 // Autocorrect stack
 
 void keyboard_post_init_ac(void) {
-#ifdef AUTOCORRECT_OFF_AT_STARTUP
-    // toggle autocorrect off at startup
-    if (autocorrect_is_enabled()) {
-        autocorrect_toggle();
+    if (autocorrect_is_enabled()) {     // disabled at startup
+        autocorrect_disable();
     }
-#endif
 }
 
 layer_state_t layer_state_set_ac(layer_state_t state) {
@@ -53,6 +50,12 @@ layer_state_t layer_state_set_ac(layer_state_t state) {
             if (!autocorrect_is_enabled()) {
                 autocorrect_enable();
             }
+#ifndef LOCKING_SUPPORT_ENABLE
+// clear caps lock if switch is non-locking
+            if (host_keyboard_led_state().caps_lock) {
+                register_code(KC_CAPS);
+            }
+#endif
             break;
         default:
             if (autocorrect_is_enabled()) {
@@ -63,29 +66,8 @@ layer_state_t layer_state_set_ac(layer_state_t state) {
     return state;
 }
 
-bool is_number(uint16_t keycode) {
-    switch (keycode) {
-        case KC_P1 ... KC_P0:
-        case KC_2 ... KC_9:         // range change to allow ! and ) after alphas
-            return true;
-        default:
-            return false;
-    }
-}
-
-bool is_alpha (uint16_t keycode) {
-    switch (keycode) {
-        case KC_A ... KC_Z:
-            return true;
-        default:
-            return false;
-    }
-}
-
-bool is_prev_alpha = false;
-
 bool process_record_ac(uint16_t keycode, keyrecord_t *record) {
-    // speed layer toggle
+#ifdef LOCKING_SPEED_TOGGLE
     if (keycode == KC_TGSP) {
         if (record->event.pressed) {
             layer_move(SPD);
@@ -94,24 +76,21 @@ bool process_record_ac(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
     }
-    // ignore suprious number keys in the middle of alphas for speed layer
-    if (get_highest_layer(layer_state) == SPD) {
-        if (is_number(keycode)) {
-            if (is_prev_alpha) {
-                return false;
-            }
-        }
-        // update previous keycode is_alpha state
-        if (record->event.pressed) {
-            if (is_alpha(keycode)) {    // keycode is alpha
-                if (!is_prev_alpha) {
-                    is_prev_alpha = true;
-                }
-            } else {                    // keycode is not alpha
+#endif
+// ignore suprious number keys in the middle of alphas for speed layer
+    static bool is_prev_alpha;
+    if (autocorrect_is_enabled()) {
+        switch (keycode) {
+            case KC_P1 ... KC_P0:       // pad keycodes used for number row in keymap
+            case KC_2 ... KC_9:         // range to allow ! and ) after alphas
                 if (is_prev_alpha) {
-                    is_prev_alpha = false;
+                    return false;
                 }
-            }
+            case KC_A ... KC_Z:
+                is_prev_alpha = true;
+                break;
+            default:
+                is_prev_alpha = false;
         }
     }
     return true;

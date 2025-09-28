@@ -83,16 +83,13 @@
 // Faster tap threshold
 #define TAPPING_TERM 160
 #undef PERMISSIVE_HOLD
-#undef PREVENT_STUCK_MODIFIERS
+// #define STRICT_LAYER_RELEASE    // breaks autocorrect(?)
 
 // Tap dance
 #define TAPPING_TERM_PER_KEY
 
 // One-shot timeout
 #define ONESHOT_TIMEOUT 500
-
-// Disable Autocorrect at startup
-#define AUTOCORRECT_OFF_AT_STARTUP
 
 // Backlight timeout
 #define RGB_MATRIX_TIMEOUT 150000  // 2.5 minutes

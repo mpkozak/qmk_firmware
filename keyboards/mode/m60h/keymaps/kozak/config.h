@@ -71,13 +71,10 @@
 // Faster tap threshold
 #define TAPPING_TERM 160
 #undef PERMISSIVE_HOLD
-#undef PREVENT_STUCK_MODIFIERS
+// #define STRICT_LAYER_RELEASE    // breaks autocorrect(?)
 
 // One-shot timeout
 #define ONESHOT_TIMEOUT 500
-
-// Disable Autocorrect at startup
-#define AUTOCORRECT_OFF_AT_STARTUP
 
 // RBG Light Sleep
 #define RGBLIGHT_SLEEP              // enable rgblight_suspend() and rgblight_wakeup() in keymap.c
