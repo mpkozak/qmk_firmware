@@ -23,7 +23,7 @@ _tempo="$QMK_HOME/keyboards/mode/m60h"
 _m0110="$QMK_HOME/keyboards/converter/m0110_usb"
 _adb="$QMK_HOME/keyboards/converter/adb_usb"
 _portable="$QMK_HOME/keyboards/converter/macintosh_portable"
-_a2="$QMK_HOME/keyboards/coonverter/numeric_keypad_iie"
+_a2="$QMK_HOME/keyboards/converter/numeric_keypad_iie"
 
 # custom keymaps
 _q0km="$_q0/plus/keymaps/kozak"

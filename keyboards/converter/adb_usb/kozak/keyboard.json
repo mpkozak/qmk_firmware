@@ -8,6 +8,15 @@
     "pid": "0x0ADB",
     "device_version": "1.0.1"
   },
+  "features": {
+    "bootmagic": false,
+    "mousekey": false,
+    "console": true,
+    "command": true,
+    "nkro": true,
+    "extrakey": true,
+    "usb_hid": true
+  },
   "processor": "atmega32u4",
   "bootloader": "caterina",
   "qmk": {

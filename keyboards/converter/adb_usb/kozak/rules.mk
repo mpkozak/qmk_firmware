@@ -1,13 +1,13 @@
 # Build Options
 #   change yes to no to disable
 #
-BOOTMAGIC_ENABLE = no     # Enable Bootmagic Lite
-MOUSEKEY_ENABLE  = no     # Mouse keys
-CONSOLE_ENABLE   = yes    # Console for debug
-COMMAND_ENABLE   = yes    # Commands for debug and configuration
-NKRO_ENABLE      = yes    # Enable N-Key Rollover
-EXTRAKEY_ENABLE  = yes
-USB_HID_ENABLE   = yes
+# BOOTMAGIC_ENABLE = no     # Enable Bootmagic Lite
+# MOUSEKEY_ENABLE  = no     # Mouse keys
+# CONSOLE_ENABLE   = yes    # Console for debug
+# COMMAND_ENABLE   = yes    # Commands for debug and configuration
+# NKRO_ENABLE      = yes    # Enable N-Key Rollover
+# EXTRAKEY_ENABLE  = yes
+# USB_HID_ENABLE   = yes
 BACKLIGHT_ENABLE = no
 CUSTOM_MATRIX    = yes
 

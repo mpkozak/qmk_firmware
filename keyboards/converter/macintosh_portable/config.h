@@ -25,10 +25,10 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
 
 /* Compensate for lack of matrix diodes */
-#define MATRIX_HAS_GHOST
+// #define MATRIX_HAS_GHOST
 
 /* Define DIP switch pin assignments */
-#define DIP_SWITCH_PINS { GP12, GP13, GP14, GP15, GP16 }
+// #define DIP_SWITCH_PINS { GP12, GP13, GP14, GP15, GP16 }
 
 /* Map MCU LED pins */
 #define LED_PIN GP17

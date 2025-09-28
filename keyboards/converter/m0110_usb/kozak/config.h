@@ -17,12 +17,12 @@
 #pragma once
 
 /* Override info.json */
-#undef MANUFACTURER
-#define MANUFACTURER "kozak"
-#undef VENDOR_ID
-#define VENDOR_ID 0x4D4B
-#undef PRODUCT_ID
-#define PRODUCT_ID 0x0110
+// #undef MANUFACTURER
+// #define MANUFACTURER "kozak"
+// #undef VENDOR_ID
+// #define VENDOR_ID 0x4D4B
+// #undef PRODUCT_ID
+// #define PRODUCT_ID 0x0110
 
 /* Port setting */
 #define M0110_CLOCK_PORT        PORTD

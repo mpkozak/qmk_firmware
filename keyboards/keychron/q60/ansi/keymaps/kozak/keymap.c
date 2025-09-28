@@ -68,14 +68,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_LOPT,  KC_LCMD,                                LT(2,KC_SPC),                           KC_RCMD,  KC_ROPT
     ),
     [FN0] = LAYOUT_ansi_60(         // layer 2 FN0 - blue [space fn]
-        KC_LSCR,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RGB_VAD, RGB_VAI,
+        KC_LSCR,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  RM_VALD, RM_VALU,
         KC_INS,      ___x___, KC_UP,   KC_EMOC, KC_REFR, KC_NTAB, ___x___, ___x___, KC_UP,   ___x___, ___x___, KC_MVLT, KC_MVRT,        KC_DEL,
         KC_LCTL,       KC_LEFT, KC_DOWN, KC_RGHT, KC_FSTG, KC_LPAD, ___x___, KC_LEFT, KC_DOWN, KC_RGHT, ___x___, KC_MCTL,               KC_ENT,
         KC_LSFT,         KC_ZMNS, KC_ZPLS, KC_ZACT, KC_PSTT, KC_WBAK, KC_WFOR, ___x___, KC_MVLT, KC_MVRT, KC_CMNT,             KC_RSFT, MO(3),
                     KC_LOPT,  KC_LCMD,                                _______,                                KC_RCMD,  KC_ROPT
     ),
     [FN1] = LAYOUT_ansi_60(         // layer 3 FN1 - green [quick toggles]
-        QK_BOOT,   ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
+        QK_BOOT,   ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RM_VALD, RM_VALU, KC_BRID, KC_BRIU, KC_VOLD, KC_VOLU,
         KC_TAB,      ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_PGUP, KC_PGDN,        KC_MUTE,
         KC_APFN,       ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_LPAD, KC_HOME, KC_END,                KC_PENT,
         KC_CAPS,         ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_MCTL, KC_MVLS, KC_MVRS,             KC_DESK, _______,
@@ -84,8 +84,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FN2] = LAYOUT_ansi_60(         // layer 4 FN2 - cyan [mac media keys + rbg settings]
         QK_BOOT,   QK_RBT,  EE_CLR,  ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___, _______, _______,
         _______,     ___x___, ___x___, ___x___, NK_TOGG, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_TGTL, KC_TGCL,        _______,
-        _______,       RGB_SAD, RGB_SAI, ___x___, ___x___, RGB_HUD, RGB_HUI, ___x___, RGB_VAD, RGB_VAI, ___x___, ___x___,               _______,
-        RGB_TOG,         ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,             _______, _______,
+        _______,       RM_SATD, RM_SATU, ___x___, ___x___, RM_HUED, RM_HUEU, ___x___, RM_VALD, RM_VALU, ___x___, ___x___,               _______,
+        RM_TOGG,         ___x___, ___x___, RM_SPDD, RM_SPDU, ___x___, RM_PREV, RM_NEXT, ___x___, ___x___, ___x___,             _______, _______,
                     _______,  _______,                                _______,                                _______,  _______
     )
 };

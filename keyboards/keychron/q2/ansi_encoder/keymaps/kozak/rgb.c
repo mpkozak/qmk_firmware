@@ -98,7 +98,7 @@ bool process_record_rgb(uint16_t keycode, keyrecord_t *record) {
                 bootloader_state = BOOTLOADER_PRESSED;
             }
             return false;  // Skip all further processing of this key
-        case RGB_TOG:
+        case RM_TOGG:
             if (record->event.pressed) {
                 rgb_matrix_toggle_noeeprom();
                 user_config_toggle_enable_rgb();

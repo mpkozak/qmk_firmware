@@ -1,23 +1,25 @@
 {
     "keyboard_name": "Numeric Keypad IIe",
-    "manufacturer": "Apple Inc.",
+    "manufacturer": "kozak",
+    "url": "",
     "maintainer": "qmk",
     "usb": {
-        "vid": "0xFEED",
-        "pid": "0x0000",
+        "vid": "0x4D4B",
+        "pid": "0x2003",
         "device_version": "0.0.1"
     },
     "features": {
-        "bootmagic": false,
-        "command": true,
+        "bootmagic": true,
+        "mousekey": false,
         "console": true,
+        "command": true,
+        "nkro": false,
         "extrakey": true,
-        "mousekey": true,
-        "nkro": false
+        "usb_hid": true
     },
     "matrix_pins": {
-        "cols": ["D1", "D0", "D4", "C6", "D7", "E6"],
-        "rows": ["B0", "B2", "D2", "D3"]
+        "cols": ["B5", "D4", "D7", "E6", "B4", "C6"],
+        "rows": ["B1", "B6", "B2", "B3"]
     },
     "diode_direction": "COL2ROW",
     "processor": "atmega32u4",

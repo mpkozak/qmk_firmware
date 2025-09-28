@@ -101,17 +101,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_APFN,   KC_LOPT,   KC_LCMD,                          _______,                          KC_RCMD,  MO(4),    MO(3),     KC_MVLS, KC_DESK, KC_MVRS
     ),
     [FN1] = LAYOUT_ansi_67(         // layer 3 FN1 - green [quick toggles]
-        KC_GRV,       ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RGB_VAD, RGB_VAI, KC_BRID, KC_BRIU,   _______,       KC_LSCR,
+        KC_GRV,       ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, RM_VALD, RM_VALU, KC_BRID, KC_BRIU,   _______,       KC_LSCR,
         KC_TAB,         ___x___, ___x___, ___x___, ___x___, TO(1),   ___x___, ___x___, ___x___, ___x___, ___x___, KC_MVLT, KC_MVRT, KC_GRV,        KC_PGUP,
         _______,          ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_LPAD, KC_MCTL, KC_DESK,        KC_PENT,       KC_PGDN,
         KC_CAPS,            ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_DESK, KC_MVLS, KC_MVRS,      KC_CAPS,       KC_MCTL,
         KC_APFN,   _______,   _______,                          _______,                          KC_RCMD,  MO(4),    _______,   KC_MVLS, KC_DESK, KC_MVRS
     ),
     [FN2] = LAYOUT_ansi_67(         // layer 4 FN2 - cyan [mac media keys + rbg settings]
-        QK_BOOT,      QK_RBT,  EE_CLR,  ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___,   _______,       RGB_TOG,
+        QK_BOOT,      QK_RBT,  EE_CLR,  ___x___, ___x___, ___x___, ___x___, KC_MPRV, KC_MPLY, KC_MNXT, ___x___, ___x___, ___x___,   _______,       RM_TOGG,
         _______,        ___x___, ___x___, ___x___, NK_TOGG, ___x___, ___x___, ___x___, ___x___, ___x___, ___x___, KC_TGTL, KC_TGCL, _______,       _______,
-        _______,          RGB_SAD, RGB_SAI, ___x___, ___x___, RGB_HUD, RGB_HUI, ___x___, RGB_VAD, RGB_VAI, ___x___, ___x___,        _______,       _______,
-        RGB_TOG,            ___x___, ___x___, RGB_SPD, RGB_SPI, ___x___, RGB_RMOD,RGB_MOD, ___x___, ___x___, ___x___,      _______,       _______,
+        _______,          RM_SATD, RM_SATU, ___x___, ___x___, RM_HUED, RM_HUEU, ___x___, RM_VALD, RM_VALU, ___x___, ___x___,        _______,       _______,
+        RM_TOGG,            ___x___, ___x___, RM_SPDD, RM_SPDU, ___x___, RM_PREV, RM_NEXT, ___x___, ___x___, ___x___,      _______,       _______,
         _______,   _______,   _______,                          _______,                          _______,  _______,  _______,   _______, _______, _______
     )
 };
@@ -129,7 +129,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [SPD]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [FN0]   = { ENCODER_CCW_CW(KC_ZMNS, KC_ZPLS) },
     [FN1]   = { ENCODER_CCW_CW(KC_BRID, KC_BRIU) },
-    [FN2]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [FN2]   = { ENCODER_CCW_CW(RM_VALD, RM_VALU) },
 };
 #endif
 
