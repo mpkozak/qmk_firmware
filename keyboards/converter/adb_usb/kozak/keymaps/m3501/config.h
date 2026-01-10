@@ -23,7 +23,7 @@
 #define PRODUCT_ID 0x3501
 
 /* Enable ADB logging to console */
-#define ADB_LOGGING
+// #define ADB_LOGGING
 
 /* Enable ADB LED indicators */
 #define ADB_LED_INDICATORS

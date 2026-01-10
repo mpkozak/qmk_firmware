@@ -26,10 +26,10 @@
 #undef ADB_PSW_BIT          // disabled
 
 /* Enable ADB logging to console */
-#define ADB_LOGGING
+// #define ADB_LOGGING
 
 /* Enable ADB LED indicators */
-#define ADB_LED_INDICATORS
+// #define ADB_LED_INDICATORS
 
 /* Disable locking support */
 #undef LOCKING_SUPPORT_ENABLE
