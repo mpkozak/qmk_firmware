@@ -47,10 +47,20 @@ POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 /* Commands */
-#define M0110_INQUIRY 0x10
-#define M0110_INSTANT 0x14
-#define M0110_MODEL 0x16
-#define M0110_TEST 0x36
+#define M0110_INQUIRY     0x10
+#define M0110_INSTANT     0x14
+#define M0110_MODEL       0x16
+#define M0110_TEST        0x36
+#define M0110_TEST_REMOTE 0x76
+
+/* Models(raw byte from M0110) */
+#define M0110_MODEL_MASK        0x0F
+#define M0110_MODEL_KEYPAD_MASK 0x10
+#define M0110_MODEL_NONE        0x01
+#define M0110_MODEL_M0110       0x03
+#define M0110_MODEL_M0110_REV   0x09
+#define M0110_MODEL_M0110A      0x0B
+#define M0110_MODEL_M0120       0x11
 
 /* Response(raw byte from M0110) */
 #define M0110_NULL 0x7B
@@ -73,6 +83,8 @@ POSSIBILITY OF SUCH DAMAGE.
 extern uint8_t m0110_error;
 
 /* host role */
+bool    m0110_model(void);
+void    m0110_test(bool remote);
 void    m0110_init(void);
 uint8_t m0110_send(uint8_t data);
 uint8_t m0110_recv(void);

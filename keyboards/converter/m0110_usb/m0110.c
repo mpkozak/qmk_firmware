@@ -85,15 +85,85 @@ static inline void     request(void);
 #define KEY(raw) ((raw)&0x7f)
 #define IS_BREAK(raw) (((raw)&0x80) == 0x80)
 
+#define MODEL_BASE(raw) ((raw)&M0110_MODEL_MASK)
+#define MODEL_KEYPAD(raw) (((raw)&M0110_MODEL_KEYPAD_MASK) == M0110_MODEL_KEYPAD_MASK)
+
+
 uint8_t m0110_error = 0;
+
+
+bool m0110_model(void) {
+    bool has_remote = false;
+    uint8_t data;
+    m0110_send(M0110_MODEL);
+    data = m0110_recv();
+
+    print("m0110_model: ");
+    switch (MODEL_BASE(data)) {
+        case M0110_MODEL_NONE:
+            break;
+        case M0110_MODEL_M0110:
+            print("M0110");
+            break;
+        case M0110_MODEL_M0110_REV:
+            print("M0110rev");
+            break;
+        case M0110_MODEL_M0110A:
+            print("M0110A");
+            break;
+        default:
+            print("<unknown>");
+            break;
+    }
+    if (MODEL_KEYPAD(data)) {
+        if (data != M0110_MODEL_M0120) {
+            has_remote = true;
+            print(" + ");
+        }
+        print("M0120");
+    }
+    print("\n");
+
+    return has_remote;
+}
+
+
+void m0110_test(bool remote) {
+    uint8_t data;
+    m0110_send(remote ? M0110_TEST_REMOTE : M0110_TEST);
+    data = m0110_recv();
+
+    print("m0110_test: ");
+    switch (data) {
+        case M0110_TEST_ACK:
+            print("PASS");
+            break;
+        case M0110_TEST_NAK:
+            print("FAIL");
+            break;
+        default:
+            print("error");
+            break;
+    }
+    if (remote) {
+        print(" (remote)");
+    }
+    print("\n");
+}
 
 
 void m0110_init(void) {
     idle();
     _delay_ms(1000);
 
+    bool has_remote;
+    has_remote = m0110_model();
+    m0110_test(false);
+    if (has_remote) {
+        m0110_test(true);
+    }
+
     /* Not needed to initialize in fact.
-    */
         uint8_t data;
         m0110_send(M0110_MODEL);
         data = m0110_recv();
@@ -102,15 +172,12 @@ void m0110_init(void) {
         m0110_send(M0110_TEST);
         data = m0110_recv();
         print("m0110_init test: "); print_hex8(data); print("\n");
+    */
 }
 
 
 uint8_t m0110_send(uint8_t data) {
     m0110_error = 0;
-
-    // if ((data != M0110_INQUIRY) & (data != M0110_INSTANT)) {      // ignore inquiry + instant outgoing
-    //     print("m0110_send: "); print_hex8(data); print("\n");
-    // }
 
     request();
     WAIT_MS(clock_lo, 250, 1);  // keyboard may block long time
