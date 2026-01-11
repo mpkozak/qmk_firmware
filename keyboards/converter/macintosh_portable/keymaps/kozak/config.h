@@ -26,7 +26,7 @@
 #define LED_LAYER_STATUS
 
 /* Enable debug output */
-#define DEBUG_ENABLE
+// #define DEBUG_ENABLE
 
 /* Specify which shift key mapping to use */
 // #define DIP_KEYMAP_USE_RIGHT_SHIFT
