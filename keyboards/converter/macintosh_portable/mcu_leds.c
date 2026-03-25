@@ -24,9 +24,9 @@
 
 /* Activate MCU led on power-on */
 void keyboard_pre_init_kb(void) {
-    setPinOutput(LED_PIN);
+    gpio_set_pin_output(LED_PIN);
 #ifdef LED_POWER_ON
-    writePinHigh(LED_PIN);
+    gpio_write_pin_high(LED_PIN);
 #endif
 }
 
